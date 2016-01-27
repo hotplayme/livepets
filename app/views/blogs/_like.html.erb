@@ -1,0 +1,9 @@
+<% if current_user && blog.votes.where(user: current_user).exists? %>
+    <span class="stat-item-value" title="Ваш голос уже учтен"><%= blog.votes.count %></span>
+    <span class="stat-item-ico" title="Ваш голос уже учтен"><i class="heart-pink"></i></span>
+<% else %>
+    <a href="<%= vote_blog_path(blog) %>" data-remote="true">
+      <span class="stat-item-value" title="<%= current_user ? "Нравится" : "Войдите для того чтобы отдать голос" %>"><%= blog.votes.count %></span>
+      <span class="stat-item-ico" title="<%= current_user ? "Нравится" : "Войдите для того чтобы отдать голос" %>"><i class="heart"></i></span>
+    </a>
+<% end %>

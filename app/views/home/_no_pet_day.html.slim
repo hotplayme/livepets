@@ -1,0 +1,10 @@
+div class="photo-day"
+  = image_tag pet.pet_attachments.sample.file.thumb_880, width:880, height:495, alt:nil
+  a class="photo-day-title" href="#{user_path(pet.user.nickname.downcase)}"
+    div class="nicknames"
+      strong = pet.name
+      span   = pet.breed.name
+    span class="owner" #{pet.user.first_name if pet.user.first_name}  #{pet.user.last_name if pet.user.last_name}
+  div class="photo-day-stick"
+    span Случайный питомец
+  /a class="select-photo" href="#{weekly_path}" Участвовать в конкурсе

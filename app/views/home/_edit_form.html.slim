@@ -1,0 +1,54 @@
+script src="http://code.jquery.com/jquery-1.10.2.js"
+script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"
+link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"
+javascript:
+  $.widget( "custom.catcomplete", $.ui.autocomplete, {
+    _create: function() {
+      this._super();
+      this.widget().menu( "option", "items", "> :not(.ui-autocomplete-category)" );
+    },
+    _renderMenu: function( ul, items ) {
+      var that = this,
+        currentCategory = "";
+      $.each( items, function( index, item ) {
+        var li;
+        if ( item.category != currentCategory ) {
+          ul.append( "<li class='ui-autocomplete-category'>" + item.category + "</li>" );
+          currentCategory = item.category;
+        }
+        li = that._renderItemData( ul, item );
+        if ( item.category ) {
+          li.attr( "aria-label", item.category + " : " + item.label );
+        }
+      });
+    }
+  });
+javascript:
+  $(function() {
+    var data = [
+      #{render partial: 'cities'}
+    ];
+
+    $( "#user_city_id" ).catcomplete({
+      delay: 0,
+      source: data
+    });
+  });
+= form_for @user, html: {:class => "my-profile-form"}, url: im_edit_path, method: :put do |f|
+  fieldset
+    div class="my-profile-holder"
+      div class="photo-profile-holder"
+        div class="photo-profile"
+          img src="#{current_user.avatar.url(:small)}" width="198" height="198"
+
+      div class="my-profile"
+        h3 Профиль #{current_user.nickname.capitalize}
+        = flash[:notice]
+        - @user.errors.full_messages.each do |msg|
+          li = msg
+
+        = f.text_field :first_name, class: "text", value: "#{current_user.first_name.nil? ? '' : current_user.first_name}", placeholder: "Имя"
+        = f.text_field :last_name,  class: "text", value: "#{current_user.last_name.nil? ? '' : current_user.last_name}" ,placeholder: "Фамилия"
+        = f.text_field :city_id,    class: "text", value: "#{current_user.city.nil? ? '' : current_user.city.name}", placeholder: "Ваш город"
+        = f.file_field :avatar, class: "download"
+        = f.submit "Сохранить",  class: "submit"

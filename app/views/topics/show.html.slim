@@ -1,0 +1,57 @@
+- content_for :title, "#{@topic.title} - LivePets"
+div class="content"
+  p
+    b #{link_to 'Форум', topics_path} -> #{link_to @topic.title, topic_path(@topic)}
+
+  div class="forum_page_wrapper"
+    div class="forum_post_full"
+      div class="forum_post_full_left_bl"
+        h1 = @topic.title
+        div class="forum_post_full_descritption"
+          p = simple_format(sanitize @topic.body, tags: %w())
+      div class="forum_post_full_right_bl"
+        ul
+          li class="user_info"
+            a href="#{user_path(@topic.user.nickname)}"
+              img src="#{@topic.user.avatar.url(:small)}" width="100" height="100" /
+              span class="user_title" = @topic.user.nickname
+          li
+            span Создан:
+            = @topic.created_at.strftime("%d/%m/%Y, %H:%M")
+          li
+            span Просмотров:
+            | #{@topic.posts.count if @topic.posts.count > 0}#{@topic.views}
+      div class="forum_post_edit_link forum_post_edit_link_answer"
+        = link_to 'Редактировать', edit_topic_path(@topic) if @topic.user == current_user
+
+    div class="forum_post_answer_field"
+      div class="forum_post_answer_avatar"
+        img src="#{current_user.avatar.url(:small) if current_user}" alt="" /
+
+      = form_for [@topic, @post], html: { :class => "forum_post_answer_form" } do |f|
+        fieldset
+          = f.text_area :body
+          div class="pets-row"
+            = f.submit 'Отправить', class:"send", data: { disable_with: 'Публикуем...' }
+
+    div class="forum_post_answers"
+      div class="forum_post_answers_title"
+        h2 #{@topic.posts.count} Ответов
+
+      - @posts.each do |post|
+        div class="forum_post_answer"
+          div class="forum_post_answer_info"
+            ul
+              li
+                a href="#{user_path(post.user.nickname)}"
+                  img src="#{post.user.avatar.url(:small)}" alt="" /
+                  span class="user_title" = post.user.nickname
+              li = post.created_at.strftime("%d/%m/%Y, %H:%M")
+          div class="forum_post_answer_answer"
+            = simple_format(sanitize post.body, tags: %w())
+            /= simple_format(auto_link(post.body))
+            div class="forum_post_edit_link"
+              = link_to 'Редактировать', edit_topic_post_path(@topic, post) if post.user == current_user
+
+
+

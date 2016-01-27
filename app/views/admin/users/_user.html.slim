@@ -1,0 +1,23 @@
+td width="10" bgcolor="#{ user.approve ? "" : "red"}#{ user.block ? "orange" : "" }" = user.id
+td = user.email
+td #{link_to user.nickname, user_path(user.nickname.downcase)}
+td = user.city.name if user.city
+td = user.blogs.count
+td = user.created_at.strftime("%d %b %Y")
+td = time_ago_in_words(user.last_sign_in_at, highest_measures: 1) if user.last_sign_in_at
+td = image_tag user.avatar.url(:small), size:"70x70"
+td
+  = link_to 'принять', admin_user_approve_path(user), method: :get, remote:true unless user.approve
+  br
+  - if user.block
+    = link_to 'unblock', admin_user_unblock_path(user), remote: true
+  - else
+    = link_to 'block', admin_user_block_path(user), remote: true
+td = link_to 'Ред', edit_admin_user_path(user)
+td
+  - if user.admin
+    | admin
+  - elsif user.writer
+    | writer
+  - else
+    | user

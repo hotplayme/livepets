@@ -1,0 +1,15 @@
+p = link_to 'добавить статью', new_admin_article_path
+table border="1"
+  tr
+    td ID
+    td Заголовок
+    td Фото
+    td Дата
+    td Редактирование
+  - @articles.each do |article|
+    tr bgcolor="#{ 'grey' if article.created_at > Time.now }"
+      td = article.id
+      td = article.title
+      td = image_tag article.avatar.url
+      td = article.created_at
+      td = link_to "Редактировать", edit_admin_article_path(article)

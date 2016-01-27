@@ -1,0 +1,14 @@
+- pet.pet_attachments.each do |attachment|
+  li id="#{attachment.id}"
+    div class="image-holder"
+      img src="#{attachment.file.thumb_135}" alt="#" width="135" /
+      - if attachment.main
+        a class="cover"
+          span Обложка
+      - else
+        = link_to mypet_do_main_path(pet, attachment), class: "do-cover", remote: true
+          span Сделать <br />обложкой
+        /a class="do-cover" href="#{attachment_do_main_path(attachment)}", remote: true
+          span Сделать <br />обложкой
+    span class="ok"загружено
+    = link_to 'Удалить', mypet_a_delete_path(pet, attachment), class:"delete", title: "Удалить фото", method: :delete, remote: true

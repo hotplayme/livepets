@@ -1,0 +1,23 @@
+div class="comments-holder"
+  div class="comments-title"
+    h3 Последние комментарии к статье &laquo;#{link_to article.title, '#top'}&raquo;
+  - article.comments.reverse.each do |comment|
+    div class="user-comment"
+      div class="image-holder"
+        a href="#{user_path(comment.user.nickname)}"
+          img src="#{comment.user.avatar.url(:small)}" alt="#" width="61" height="60" /
+      div class="text-box"
+        div class="comment-info" #{link_to comment.user.nickname, user_path(comment.user.nickname), class:"comment-author"} писал(а) #{time_ago_in_words(comment.created_at, highest_measures: 2)} назад. #{link_to "Изменить" if current_user && comment.user == current_user}
+        p = comment.body
+  - if current_user
+    = form_for [article, Comment.new], remote: true do |f|
+      fieldset
+        div class="new-comment"
+          div class="image-holder"
+            img src="#{current_user.avatar.url(:small)}" alt="#" width="61" height="60" /
+          = f.text_area :body, class: "text", placeholder: "Введите текст комментария"
+        div class="load-row"
+          = f.submit "Отправить", class: "send"
+		  /div class="add-attachment"
+		    label Приложить изображение
+			input type="file"

@@ -1,0 +1,23 @@
+default:
+  plugins:
+    - image
+    - link
+
+
+alternate:
+  selector: 'textarea'
+  language: 'ru'
+  menu: {}
+  toolbar: 'bold italic | media | image'
+  plugins:
+    - autolink
+    - media
+    - image
+  setup :
+    function(ed) {
+      ed.on('init', function()
+      {
+          this.getDoc().body.style.fontSize = '15px';
+          ed.schema.addValidElements('img[*]');
+      });
+    }

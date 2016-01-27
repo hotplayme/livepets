@@ -1,0 +1,33 @@
+<div class="content">
+				<div class="message-holder">
+					<div class="dialogue">
+						<h3>Ваши Диалоги</h3>
+							Выберите собеседника ->
+						</form>
+					</div>
+					<div class="contacts-holder">
+						<h3>Ваши Контакты</h3>
+						<ul class="dialogue-list">
+							<% @dialogs.each do |dialog| %>
+							<% unless dialog.messages.empty? %>
+                            <% user = dialog.users.where.not(id: current_user.id).first %>
+							<li>
+								<div class="image-holder">
+									<a href="#"><img src="<%= user.avatar.url(:small) %>" alt="#" width="56" height="56" /></a>
+								</div>
+								<div class="text-box">
+									<a href="#"><%= user.nickname %></a>
+									<span><%= time_ago_in_words(dialog.messages.first.created_at, :highest_measures => 1) + " назад" %></span>
+								</div>
+                                <% if dialog.messages.where("user_id != ?", current_user.id).where(state: "new").count > 0 %>
+								<span class="new-message"><%= dialog.messages.where("user_id != ?", current_user.id).where(state: "new").count %></span>
+                                <% end %>
+								<a href="<%= dialogs_show_path(user.nickname) %>">&nbsp;</a>
+							</li>
+							<% end %>
+							<% end %>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>

@@ -1,0 +1,15 @@
+- content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+div class="content"
+  div class="vote-holder"
+    h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+    ul class="vote-list"
+      - @breed.mypets.each do |pet|
+        li
+          div class="image-holder"
+            a href="#{user_path(pet.user.nickname.downcase)}"
+              img src="#{pet.pet_attachments.where(main:true).first.file.thumb_280 if pet.pet_attachments.count > 0}" alt="#{pet.name}" width="280" height="201" /
+          div class="vote-row"
+            div class="vote-user"
+              span = pet.name
+              = link_to "#{pet.user.nickname}", user_path(pet.user.nickname.downcase)
+            = link_to "Смотреть", user_path(pet.user.nickname.downcase), class: "button"

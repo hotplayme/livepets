@@ -1,0 +1,10 @@
+div class="photo-day"
+  = image_tag pet_day.pet_attachments.sample.file.thumb_880, width:880, height:495, alt:nil if pet_day
+  a class="photo-day-title" href="#{user_path(pet_day.user.nickname.downcase) if pet_day}"
+    div class="nicknames"
+      strong = pet_day.name if pet_day
+      span   = pet_day.breed.name if pet_day
+    span class="owner" href="" #{pet_day.user.first_name} #{pet_day.user.last_name if pet_day && pet_day.user}
+  div class="photo-day-stick"
+    span Победитель месяца
+  a class="select-photo" href="#{weekly_path}" Участвовать в конкурсе

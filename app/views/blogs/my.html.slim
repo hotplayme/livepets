@@ -1,0 +1,25 @@
+- content_for :title, "Лента новостей - LivePets"
+| Количество подписок #{current_user.subscribes.count}
+div class="content"
+  ul class="feed-list"
+    - @blogs.each do |blog|
+	  li
+		div class="feed-holder"
+		  div class="user-avatar"
+		    a href="#"
+		      img src="#{blog.user.avatar.url(:small)}" alt="#" width="61" height="60" /
+		  div class="feed-text"
+			div class="note-title"
+			  span #{link_to "#{blog.user.nickname}", user_path(blog.user.nickname)} опубликовал запись #{time_ago_in_words(blog.created_at)} назад
+			h4 = blog.title
+			div class="text-holder"
+			  p = blog.body.first(280)
+              - if blog.pictures.count > 0
+                p = image_tag blog.pictures.first.image.url(:thumb)
+              a href="#{blog_path(blog)}"
+                font color="red"
+                  b Читать далее
+		  a class="comment" href="#{blog_path(blog)}#comments"
+		    span = blog.comments.count
+		  a class="like-me"
+		    span = blog.votes.count

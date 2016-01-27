@@ -1,0 +1,5 @@
+<% if @commentable.class == Article %>
+    $('.comments-holder').html('<%= j render partial: 'articles/comments', object: @commentable , as: 'article' %>');
+<% elsif @commentable.class == Blog %>
+    $('.comments-block').html('<%= j render partial: 'blogs/comments', object: @commentable , as: 'blog' %>');
+<% end %>

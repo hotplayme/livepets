@@ -1,0 +1,7 @@
+<%= form_for @breed, url: admin_breed_path, method: :put do |t| %>
+    <%= t.text_field :name %>
+    <%= t.text_field :breed_type %>
+    <%= t.text_field :translate %>
+    <%= t.file_field :avatar %>
+    <%= t.submit %>
+<% end %>

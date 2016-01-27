@@ -1,0 +1,16 @@
+h1 = @user.nickname
+p = link_to 'назад', admin_users_path
+h3 Данные:
+p = image_tag @user.avatar.url(:small)
+p = @user.id
+p = @user.first_name
+p = @user.last_name
+p = @user.created_at.strftime("%d %b %Y")
+p = @user.city.name if @user.city
+p = @user.blogs.count
+p
+p Посты:
+p
+  - @user.blogs.each do |blog|
+    p = blog.title
+

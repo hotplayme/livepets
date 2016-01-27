@@ -1,0 +1,8 @@
+ul class="general-list"
+  - pets.each do |pet|
+    li
+      = link_to (image_tag pet.pet_attachments.sample.file.thumb_70), user_path(pet.user.nickname.downcase)
+    /- unless pet.nil?
+      li
+        a href="/user/#{pet.user.nickname}"
+          img src="#{pet.photo.url(:thumb_small)}"

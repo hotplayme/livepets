@@ -1,0 +1,9 @@
+td width="10" = comment.id
+td = comment.commentable_type
+td = link_to comment.commentable.title, comment.commentable_type.constantize.find(comment.commentable_id)
+td = comment.body
+td = comment.created_at.strftime("%d %b %Y")
+td = comment.user.nickname
+td bgcolor="#{"yellow" if comment.approve == false}" = link_to 'принять', admin_comment_approve_path(comment), remote: true unless comment.approve
+td = link_to 'edit', edit_admin_comment_path(comment)
+td = link_to 'del',  admin_comment_path(comment), method: :delete

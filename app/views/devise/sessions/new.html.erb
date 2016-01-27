@@ -1,0 +1,38 @@
+<% content_for :title, "Вход на сайт LivePets" %>
+<div class="content narrow">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "new-post-form" }) do |f| %>
+      <i></i>
+      <i></i>
+      <fieldset>
+        <h3>Вход на сайт</h3>
+        <p class="error">
+          <% unless flash.empty? %>
+          <% flash.each do |name, msg| %><%= msg %><% end %>
+          <% end %>
+        </p>
+        <label class="field">
+          <p>Введите ваш e-mail</p>
+          <span>
+            <%= f.email_field :email, class: "text #{'pass' unless flash.empty? }" %>
+            <!--<input type="text" class="text" placeholder="sample@mail.com"/>-->
+                </span>
+                </label>
+                <label class="field">
+                  <p>Введите ваш пароль</p>
+          <span>
+            <%= f.password_field :password, autocomplete: "off", class: "text #{'pass' unless flash.empty? }" %>
+            <!--<input type="password" class="text pass"/>-->
+                </span>
+                </label>
+                <label class="remember">
+                  <%= f.check_box :remember_me %>
+                  Запомнить меня
+                </label>
+        <div><%= f.button "Войти", type:"submit" %></div>
+        <div class="forgot">
+          <%= link_to 'Забыли пароль?', new_user_password_path %>
+          <%= link_to 'Регистрация', new_user_registration_path %>
+        </div>
+                </fieldset>
+  <% end %>
+</div>

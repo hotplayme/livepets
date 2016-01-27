@@ -1,0 +1,20 @@
+h1 Список пользователей (#{User.count})
+p #{link_to "реальные (#{User.where(bot: false).count})", "?"} / #{link_to "боты (#{User.where(bot: true).count})", '?sort=bots'} / #{link_to "Новые (#{User.where(approve: false).count})", '?sort=new'} / #{link_to "Заблокированные (#{User.where(block: true).count})", '?sort=banned'} / #{link_to "Писатели (#{User.where(writer:true).count})", '?sort=writer'}
+p = paginate @users
+table border=1
+  tr bgcolor="grey"
+    td ИД
+    td Емаил
+    td Никнейм
+    td Город
+    td Постов
+    td Дата регистрации
+    td Последний заход
+    td Фото
+    td Актив/Блок
+    td Редактировать
+    td Роль
+  - @users.each do |user|
+    tr bgcolor="#{ user.admin ? "yellow" : "" }" id="user-#{user.id}"
+      = render partial: 'user', object: user, as: 'user'
+p = paginate @users

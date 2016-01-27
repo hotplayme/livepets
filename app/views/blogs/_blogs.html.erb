@@ -1,0 +1,51 @@
+<% @blogs.each do |blog| %>
+    <li>
+      <div class="feed-user-block-item">
+        <div class="feed-user-block-item-title">
+          <div class="feed-user-block-item-title-wrapp"><span><%= link_to blog.user.nickname, user_path(blog.user.nickname.downcase) %></span> опубликовал(a) запись <%= time_ago_in_words(blog.created_at, :highest_measures => 1) %> назад</div>
+        </div>
+        <div class="feed-user-block-message">
+          <div class="message-controls">
+            <div class="user-pic-block"><%= link_to (image_tag blog.user.avatar.url(:small)), user_path(blog.user.nickname.downcase) %></div>
+                        <span class="stat-item" title="Количество комментариев">
+                          <a href="<%= blog_path(blog) %>#comments">
+                            <span class="stat-item-value"><%= blog.comments.count %></span>
+                            <span class="stat-item-ico"><i class="pen"></i></span>
+                          </a>
+                        </span>
+                        <span class="stat-item" id="like-<%= blog.id %>">
+                          <%= render partial: 'like', object: blog, as: 'blog' %>
+                        </span>
+          </div>
+          <div class="post-block">
+            <h4 class="post-block-title"><%= link_to blog.title, blog_path(blog) %></h4>
+            <div class="post-block-content">
+              <% if blog.blog_attachments.count > 0 %>
+                  <div class="post-block-pic">
+                    <div class="post-block-pic-wrapp">
+                      <%= link_to (image_tag blog.blog_attachments.first.file.thumb), blog_path(blog) %>
+                      <% if blog.blog_attachments.count > 1 %>
+                          <span><%= link_to "+ #{blog.blog_attachments.count - 1} фото", blog_path(blog) %></span>
+                      <% end %>
+                    </div>
+                  </div>
+              <% end %>
+              <div class="post-block-text">
+                <div class="post-block-text-wrapp">
+                  <p><%= blog.body.first(285).html_safe %> <%= "..." if blog.body.size > 285 %></p>
+                </div>
+                <div class="post-links-block">
+                  <% if current_user && blog.user == current_user %>
+                      <%= link_to 'Редактировать', edit_blog_path(blog) %>
+                  <% end %>
+                  <% if blog.body.size > 285 %>
+                      <%= link_to 'Читать далее', blog_path(blog) %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+<% end %>

@@ -1,0 +1,9 @@
+- content_for :title, "Редактирование записи - LivePets"
+div class="content"
+  = form_for [@topic, @post], html: {:class => 'new-post-form' } do |f|
+    fieldset
+      h3 Редактировать вашу запись на форуме
+      = f.text_area :body, placeholder: :body
+      div class="pets-row"
+        = link_to 'Удалить запись', topic_post_path(@topic, @post), method: :delete, data: { confirm: 'Вы уверены?' }
+        = link_to 'Сохранить', "#", class: "send", :onclick=>"$('.new-post-form').submit()"

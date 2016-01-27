@@ -1,0 +1,23 @@
+- content_for :title, "Профиль #{@pet.name} - LivePets"
+div class="content"
+  = form_for @pet, :html => {:class => "my-profile-form"}, :method => :put do |f|
+    fieldset
+      div class="my-profile-holder"
+        div class="photo-profile-holder"
+          div class="photo-profile"
+            = render partial: 'mypets/avatar', object: @pet, as: 'pet'
+        div class="my-profile"
+          h3 Изменение профиля
+          = f.text_field :name, class: "text", placeholder: "Кличка"
+          = f.text_field :breed_id, class: "text", value: "#{@pet.breed.nil? ? 'Выберите породу' : @pet.breed.name}"
+          = f.select :sex, options_for_select([['Мальчик', 1], ['Девочка', 2]], @pet.sex)
+          | Дата рождения </br>
+          = f.date_select :birthday, :start_year =>  Time.now.year - 25, :end_year => Time.now.year, :order => [:day, :month, :year], :use_month_names => ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь','Декабрь']
+          = submit_tag "Сохранить",  class: "send"
+          = link_to "Удалить", mypet_path, method: :delete, data: {confirm: "Вы уверены?"}
+          /= f.file_field :pet_attachments, multiple: true, name: "images[]"
+      ul class="download-photo"
+        h1 Загрузить фотографии
+        = render partial: 'mypets/attachment', object: @pet, as: 'pet'
+      p = f.file_field :pet_attachments, multiple: true, name: "images[]"
+      p = f.submit "Загрузить"

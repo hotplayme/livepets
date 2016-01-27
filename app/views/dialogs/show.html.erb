@@ -1,0 +1,64 @@
+<div class="content">
+				<div class="message-holder">
+					<div class="dialogue">
+						<h3>Диалог с <%= @user.nickname %></h3>
+						<div class="delete-correspondence-holder">
+							<span class="delete-correspondence">&nbsp;</span>
+						</div>
+						<ul class="dialogue-list">
+                            <% if @dialog.messages.count > 0 %>
+							<% @dialog.messages.reverse.each do |m| %>
+							<li>
+                                <div class="image-holder">
+                                    <a href="<%= user_path(m.user.nickname) %>"><img src="<%= m.user.avatar.url(:small) %>" alt="#" width="56" height="56" /></a>
+                                </div>
+                                <div class="text-box">
+                                    <span><a href="<%= user_path(m.user.nickname) %>"><%= m.user.nickname %></a><%= time_ago_in_words(m.created_at) %> назад</span>
+                                    <p><%= m.body %></p>
+                                </div>
+							</li>
+							<% end %>
+                            <% end %>
+						</ul>
+						
+						<%= form_for @message, url: dialogs_send_path, method: :post, :html => {:class => "comment-edit"} do |f| %>
+
+							<fieldset>
+								<div class="new-comment">
+									<div class="image-holder">
+										<a href="#"><img src="<%= @user.avatar.url(:small) %>" alt="#" width="61" height="60" /></a>
+									</div>
+									<%= f.hidden_field :dialog_id,  value: @dialog.id %>
+									<%= f.text_field   :body, class: "text", placeholder: "Введите сообщение", autocomplete: "off" %>
+								</div>
+								<div class="load-row">
+									<a class="send" href="" onClick="document.getElementById('new_message').submit(); return false;">Отправить</a>
+								</div>
+							</fieldset>
+
+						<% end %>
+					</div>
+					<div class="contacts-holder">
+						<h3>Ваши Контакты</h3>
+						<ul class="dialogue-list">
+							<% @dialogs.each do |dialog| %>
+							<% user = dialog.users.where.not(id: current_user.id).first %>
+							<li>
+								<div class="image-holder">
+									<a href="#"><img src="<%= user.avatar.url(:small) %>" alt="#" width="56" height="56" /></a>
+								</div>
+								<div class="text-box">
+									<a href="#"><%= user.nickname %></a>
+									<span><%= time_ago_in_words(dialog.messages.first.created_at, :highest_measures => 1) + " назад" unless dialog.messages.empty? %></span>
+								</div>
+                              <% if dialog.messages.where("user_id != ?", current_user.id).where(state: "new").count > 0 %>
+                                  <span class="new-message"><%= dialog.messages.where("user_id != ?", current_user.id).where(state: "new").count %></span>
+                              <% end %>
+								<a href="<%= dialogs_show_path(user.nickname) %>">&nbsp;</a>
+							</li>
+							<% end %>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>

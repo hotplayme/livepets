@@ -1,0 +1,45 @@
+<% if blog.comments.count == 0 %>
+  <p>Комментариев пока не было.</p>
+  <% else %>
+    <p>Последние комментарии. </p>
+    <ul class="comments">
+      <% blog.comments.each do |comment| %>
+      <li id="comment_<%= comment.id %>">
+        <div class="feed-user-block-item">
+          <div class="feed-user-block-item-title">
+            <div class="feed-user-block-item-title-wrapp"><span><%= link_to comment.user.nickname, user_path(comment.user.nickname.downcase) %></span> пишет <%= time_ago_in_words(comment.created_at, :highest_measures => 1) %> назад.  <% if current_user && comment.user == current_user %><b><%= link_to 'Удалить', blog_comment_path(blog, comment), method: :delete, remote: true %></b><% end %></div>
+          </div>
+          <div class="feed-user-block-message">
+            <div class="message-controls">
+              <div class="user-pic-block"><%= link_to (image_tag comment.user.avatar.url(:small)), user_path(comment.user.nickname.downcase) %></div>
+            </div>
+            <div class="post-block">
+              <div class="post-block-content">
+                <div class="post-block-text">
+                  <p><%= simple_format(sanitize comment.body, tags: %w()) %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+  <% end %>
+<% if current_user %>
+    <div class="send-comment-form">
+      <%= form_for [blog, Comment.new], remote: true do |f| %>
+      <label>
+        <div>Оставьте комментарий</div>
+        <div>
+          <%= f.text_area :body, cols:'30', rows:'10' %>
+        </div>
+        <div class="bttn-block">
+          <%= f.button 'Отправить', type:'submit', data: { disable_with: 'Публикуем...' } %>
+        </div>
+      </label>
+<% end %>
+</div>
+<% else %>
+<p><%= link_to 'Зарегистрируйтесь', new_user_registration_path %> или <%= link_to 'Войдите', new_user_session_path %> для того чтобы оставить комментарий.</p>
+<% end %>

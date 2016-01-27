@@ -1,0 +1,6 @@
+- blog.blog_attachments.each do |a|
+  li id="#{a.id}"
+    div class="image-holder"
+      img src="#{a.file.thumb}" alt="#" width="135" /
+    span class="ok"загружено
+    = link_to 'Удалить', blog_a_delete_path(@blog, a), class:"delete", title: 'Удалить фото', method: :delete, remote: true

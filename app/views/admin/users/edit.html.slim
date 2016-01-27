@@ -1,0 +1,15 @@
+p Редактирование юзера #{@user.nickname}
+= form_for @user, url: "/admin/users/#{@user.id}" do |f|
+  p
+    = f.label :nickname
+    = f.text_field :nickname
+  p
+    = f.label :email
+    = f.text_field :email
+  p
+    = f.label :admin
+    = f.check_box  :admin
+  p
+    = f.label :writer
+    = f.check_box  :writer
+  p = f.submit

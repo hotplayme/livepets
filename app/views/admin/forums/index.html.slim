@@ -1,0 +1,32 @@
+p #{link_to 'новые', '?all=false'} / #{link_to 'все', '?all=true'}
+h2 #{ params[:all] == 'true' ? "Все" : "Новые" } Темы
+table border=1 width=800
+  tr
+    td Заголовок
+    td Тело
+    td Юзер
+    td Активировать
+    td Удалить
+  - @topics_not_approve.each do |topic|
+    tr bgcolor="#{"grey" unless topic.approve}"
+      td = topic.title
+      td = topic.body
+      td = topic.user.nickname if topic.user
+      td = link_to 'принять', admin_forum_topic_approve_path(topic) unless topic.approve
+      td = link_to 'удалить', admin_forum_topic_delete_path(topic)
+
+h2 #{ params[:all] == 'true' ? "Все" : "Новые" } ответы
+table border=1 width=800
+  tr
+    td Топик
+    td Ответ
+    td Юзер
+    td Активировать
+    td Удалить
+  - @posts_not_approve.each do |post|
+    tr bgcolor="#{"grey" unless post.approve}"
+      td = link_to post.topic.title, topic_path(post.topic)
+      td = post.body
+      td = post.user.nickname if post.user
+      td = link_to 'принять' if post.approve == false
+      td = link_to 'удалить', admin_forum_post_delete_path(post)

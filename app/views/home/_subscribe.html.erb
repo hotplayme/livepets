@@ -1,0 +1,16 @@
+<div class="user-name-title">
+  <strong><%= @user.nickname %></strong>
+  <span><%= @user.first_name.nil? || @user.first_name.blank? ? "Аноним" : @user.first_name %> <%= @user.last_name.nil? || @user.last_name.blank? ? "" : @user.last_name %></span>
+</div>
+<div class="user-photo">
+  <a href="#"><img src="<%= @user.avatar.url(:small) %>" alt="" width="198" height="198" /></a>
+</div>
+<div class="age-holder">
+  <span><%= @user.city ? @user.city.name : "Не указал" %>, Россия</span>
+</div>
+<%= link_to "Отправить сообщение", dialogs_show_path(@user.nickname), class: "send-massege" %>
+<% if current_user.subscribes.where(subscriber_id: @user.id).exists? %>
+  <%= link_to 'Вы подписаны', subscribe_path, class: "news-good", remote: true %>
+<% else %>
+  <%= link_to 'Подписаться на обновления', subscribe_path, class: "news", remote: true %>
+<% end %>

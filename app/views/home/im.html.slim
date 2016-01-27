@@ -1,0 +1,96 @@
+- content_for :title, "Моя страница - LivePets"
+div class="content"
+  div class="profile-frame"
+    div class="info-profile"
+      div class="user-name-title"
+      	strong =  current_user.nickname
+        span
+          = current_user.first_name.nil? || current_user.first_name.blank? ? "" : current_user.first_name
+          = " "
+		  = current_user.last_name.nil? || current_user.last_name.blank? ? "" : current_user.last_name
+		  = "Аноним" if current_user.first_name.empty? && current_user.last_name.empty?
+	  div class="user-photo"
+        a href="#"
+          img src="#{current_user.avatar.url(:small)}" alt="#" width="198" height="198" /
+      div class="age-holder"
+        span
+          = current_user.city ? current_user.city.name : "Не указал"
+          = current_user.country ? ", #{current_user.country.name}" : ""
+      = link_to "Редактировать профиль", im_edit_path, class: "show-all"
+    - if current_user.mypets.count == 0
+      div class="info-pets"
+	    div class="image-holder"
+		  img src="../images/img20.jpg" width="600" height="470" /
+		  div class="footnote"
+			p Здесь будет информация о вашем любимчике, добавьте питомца и заполните для него профиль
+            = link_to "Добавить питомца", new_mypet_path
+	- else
+	  div class="info-pets"
+        div class="pets-holder"
+          - x = 1
+          ul class="info-pets-list tabset"
+            - @pets.each do |pet|
+              li
+                a href="#pets-0#{x}" class="#{x == 1 ? "active" : ""}"
+                  = pet.name
+              - x += 1
+
+          div class="add-pet"
+            = link_to "Добавить питомца", new_mypet_path
+
+        - x = 0
+        - @pets.each do |pet|
+            - x = x + 1
+            div id="pets-0#{x}"
+              div class="gallery-holder slideshow"
+                div class="gallery"
+                  div class="gholder"
+                    a class="btn-prev" href="#" &nbsp;
+                    a class="btn-next" href="#" &nbsp;
+                    div class="gmask"
+                      div class="slideset"
+                        div class="slide active"
+                          = image_tag pet.pet_attachments.last.file.thumb_600
+                        /div class="slide"
+                          = image_tag current_user.avatar.url(:small)
+                        div class="data-pet"
+                          div class="name-pet"
+                            span
+                              = pet.name
+                              strong = distance_of_time_in_words(pet.birthday, Time.now, :only => [:years, :months, :days], :highest_measures => 2, :two_words_connector => ' ',  :locale => :ru) if pet.birthday
+							= link_to pet.breed.name, show_breed_path(pet.breed.translate)
+                          = link_to "Изменить", edit_mypet_path(pet), class: "button"
+                          = link_to vote_mypet_path(pet), remote: true
+                            div class="likes"
+                              = render partial: 'mypets/likes', object: pet, as: 'pet'
+  div class="all-notes"
+    strong = current_user.blogs.where(del: false).count == 0 ? "0 posts" : ""
+    ul class="all-notes-list"
+      li: a href="#"
+    = link_to "Написать в блог", new_blog_path, class: "write-to-blog"
+
+				
+  - @blogs.each do |blog|
+    div class="note-holder"
+      div class="note"
+        div class="note-title"
+          span
+            = link_to current_user.nickname, user_path(current_user.nickname)
+            |  опубликовал(а) запись #{time_ago_in_words(blog.created_at, highest_measures: 1)} назад
+        h4 = link_to blog.title, blog_path(blog)
+        p style="width: 700px; text-align: justify"
+          = blog.body.first(320)
+          = " ..." if blog.body.size > 320
+        - if blog.attachments.present?
+          p
+            - blog.attachments.limit(3).each do |attach|
+              = image_tag attach.file.thumb
+        div class="actions-row"
+          = link_to 'Редактировать запись', edit_blog_path(blog), class:"edit-form"
+          a class="comment"
+            | Комментариев
+            span = blog.comments.count
+          a class="like-me"
+            | Нравится
+            span = blog.votes.count
+          = link_to "Далее", blog_path(blog), class: "write-to-blog"

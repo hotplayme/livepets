@@ -1,0 +1,48 @@
+<% content_for :title, "#{@blog.title} - LivePets" %>
+<div class="content narrow">
+  <div class="new-post-form no-bg">
+    <i></i>
+    <i></i>
+    <div class="feed-user-block">
+      <ul>
+        <li>
+          <div class="feed-user-block-item">
+            <div class="feed-user-block-item-title">
+              <div class="feed-user-block-item-title-wrapp"><span><%= link_to @blog.user.nickname, user_path(@blog.user.nickname.downcase) %></span> опубликовал(a) запись <%= time_ago_in_words(@blog.created_at, :highest_measures => 1) %> назад</div>
+              <% if current_user && @blog.user == current_user %>
+                  <div class="feed-user-block-item-title-edit"><%= link_to 'Редактировать', edit_blog_path(@blog) %></div>
+              <% end %>
+            </div>
+            <div class="feed-user-block-message">
+              <div class="message-controls">
+                <div class="user-pic-block"><%= link_to (image_tag @blog.user.avatar.url(:small)), user_path(@blog.user.nickname.downcase) %></div>
+											<span class="stat-item" id="like-<%= @blog.id %>">
+												<%= render partial:'like', object: @blog, as: 'blog' %>
+											</span>
+              </div>
+              <div class="post-block">
+                <h4 class="post-block-title"><%= @blog.title %></h4>
+                <div class="post-block-content">
+                  <div class="post-block-text">
+                    <div class="post-block-text-wrapp">
+                      <p><%= @blog.body.html_safe %></p>
+                      <br/><p></p>
+                      <% @blog.blog_attachments.each do |attach| %>
+                        <p><%= image_tag attach.file %></p>
+                        <p>&nbsp;</p>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a name="comments"></a>
+          <div class="comments-block">
+            <%= render partial: 'blogs/comments', object: @blog , as: 'blog' %>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

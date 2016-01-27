@@ -1,0 +1,16 @@
+= content_for :title, "Породы Кошек - LivePets"
+div class="content"
+  div class="vote-holder"
+    h1 Породы кошек
+    ul class="vote-list"
+      - @breeds_cat.each do |breed|
+        li
+          div class="image-holder"
+            a href="#{show_cats_breed_path(breed.translate)}"
+              img src="#{breed.avatar.url}" alt="#{breed.name}" width="280" height="201" /
+          div class="vote-row"
+            div class="vote-user"
+              span = breed.name
+            = link_to "Смотреть", show_cats_breed_path(breed.translate), class: "button"
+          div class="photo-day-stick"
+            span = breed.mypets.count

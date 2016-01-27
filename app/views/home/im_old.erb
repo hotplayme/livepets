@@ -1,0 +1,125 @@
+<% content_for :title, "Моя страница - LivePets" %>
+<div class="content">
+	<div class="profile-frame">
+  	<div class="info-profile">
+    	<div class="user-name-title">
+      	<strong><%= current_user.nickname %></strong>
+        <span>
+					<%= current_user.first_name.nil? || current_user.first_name.blank? ? "Аноним" : current_user.first_name %> 
+					<%= current_user.last_name.nil? || current_user.last_name.blank? ? "" : current_user.last_name %>
+				</span>
+            </div>
+            <div class="user-photo">
+              <a href="#"><img src="<%= current_user.avatar.url(:small) %>" alt="#" width="198" height="198" /></a>
+            </div>
+            <div class="age-holder">
+              <span><%= current_user.city ? current_user.city.name : "Не указал" %>, Россия</span>
+            </div>
+            <%= link_to "Редактировать профиль", im_edit_path, class: "show-all" %>
+          </div>
+					
+					<% if current_user.mypets.count == 0 %>
+					
+		      <div class="info-pets">
+		            <div class="image-holder">
+		              <img src="../images/img20.jpg" width="600" height="470" />
+		              <div class="footnote">
+										<p>Здесь будет информация о вашем любимчике, добавьте питомца и заполните для него профиль</p>
+										<%= link_to "Добавить питомца", pet_new_path %>
+									</div>
+		            </div>
+		      </div>
+					
+					<% else %>
+					
+					
+          <div class="info-pets">
+            <div class="pets-holder">
+                <ul class="info-pets-list tabset">
+                    <% x = 0 %>
+                    <% @pets.each do |t| %>
+                    <% x = x + 1 %>
+                        <li><a <%= "class = active" if x == 1 %> href="#pets-0<%= x %>"><%= t.name %></a></li>
+                    <% end %>
+                </ul>
+              <% if x < 3 %>
+                  <div class="add-pet"><%= link_to "Добавить питомца", pet_new_path %></div>
+              <% end %>
+            </div>
+
+            <% x = 0 %>
+            <% @pets.each do |t| %>
+            <% x = x + 1 %>
+            <div id="pets-0<%= x %>">
+              <div class="gallery-holder slideshow">
+                <div class="gallery">
+                  <div class="gholder">
+                    <a class="btn-prev" href="#">&nbsp;</a>
+                    <a class="btn-next" href="#">&nbsp;</a>
+                    <div class="gmask">
+                      <div class="slideset">
+                        <div class="slide active">
+                          <%= image_tag t.photo.url(:medium) %>
+                        </div>
+                        
+                        <div class="data-pet">
+                          <div class="name-pet">
+                            <span><%= t.name %><strong>&nbsp;<%= distance_of_time_in_words(t.birthday, Time.now, :only => [:years, :months, :days], :highest_measures => 2, :two_words_connector => ' ',  :locale => :ru) if t.birthday  %></strong></span>
+														<%= link_to "#{t.breed.name}", show_breed_path(t.breed.translate) %>
+                          </div>
+                          <%= link_to "Изменить", edit_path(t.id), class: "button" %>
+                          <a href="like+1">
+                          <div class="likes">
+                            <strong>1061</strong>
+                            <span>нравится</span>
+                          </div>
+                              </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% end %>
+
+          </div>
+					<% end %>
+        </div>
+        <div class="all-notes">
+          <strong><%= current_user.blogs.where("del = ?", false).count == 0 ? "0 posts" : "" %></strong>
+          <ul class="all-notes-list">
+            <li><a href="#"></a></li>
+          </ul>
+					<%= link_to "Написать в блог", blog_new_path, class: "write-to-blog"%>
+        </div>
+				
+        <% @blogs.each do |t| %>
+      <div class="note-holder">
+          <div class="note">
+            <div class="note-title">
+              <span><%= link_to "#{current_user.nickname.capitalize}", show_user_path(current_user.nickname) %> опубликовал запись <%= time_ago_in_words(t.created_at) %> назад</span>
+            </div>
+            <h4><%= link_to "#{t.title}", show_blog_path(t.id) %></h4>
+            <p style="width: 700px; text-align: justify"><%= t.body.first(320) %><%= "..." if t.body.size > 320 %></p>
+
+            <div class="actions-row">
+              <a href="" class="edit-form"></a>
+              <form action="destroy" class="edit-form">
+                <fieldset>
+                  <select onChange="document.location = this.value">
+                    <option selected disabled>Редактировать</option>
+                    <option value="<%= blog_edit_path(t.id) %>">Изменить</option>
+                    <option confirm="ddd?" value="<%= blog_delete_path(t.id) %>" >Удалить</option>
+                  </select>
+                </fieldset>
+              </form>
+              <a class="comment" href="#">Комментариев <span><%= t.comments.count %></span></a>
+              <a class="like-me" href="#">Нравится <span>75</span></a>
+              <%= link_to "Далее", show_blog_path(t.id), class: "write-to-blog" %>
+            </div>
+          </div>
+
+        </div>
+				<% end %>
+      </div>

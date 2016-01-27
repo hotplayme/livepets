@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title><%= h(yield(:title) || "LivePets") %></title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+
+
+  <script type="text/javascript">
+    jcf.lib.domReady(function(){
+      jcf.customForms.replaceAll();
+    });
+  </script>
+  <script type="text/javascript">
+      $(document).ready(function() {
+          $('.fancybox').fancybox();
+      });
+  </script>
+
+  <%= yield(:head) %>
+  <%= csrf_meta_tags %>
+
+  <!--[if IE]><script type="text/javascript" src="js/html5.js"></script><![endif]-->
+
+</head>
+<body>
+  <div class="wrapper">
+    <aside class="sidebar">
+      <% if current_user %>
+        <div class="logout-holder">
+          <%= link_to "Выйти", destroy_user_session_path, class:"logout", method: :delete %>
+        </div>
+        <div class="profile-photo">
+          <%= link_to (image_tag current_user.avatar.url(:small), size:"89x89"), user_path(current_user.nickname.downcase) %>
+        </div>
+      <% else %>
+        <ul class="login-box">
+          <li class="login-btn"><%= link_to 'Вход', new_user_session_path, class: "fancybox" %></li>
+          <li><%= link_to 'Регистрация', new_user_registration_path, class: "fancybox" %></li>
+        </ul>
+
+      <% end %>
+
+      <ul class="profile-list">
+        <li class="my-main <%= "active" if request.path == root_path %>">
+          <%= link_to "Главная", root_path %>
+        </li>
+        <% if current_user %>
+        <li class="my-page <%= "active" if request.fullpath == user_path(current_user.nickname.downcase) %>">
+          <%= link_to "Моя страница", user_path(current_user.reload.nickname.downcase) %>
+        </li>
+        <li class="my-massege <%= "active" if request.fullpath == dialogs_path %>">
+		  <%= link_to "Мои сообщения", dialogs_path %>
+          <% if current_user && current_user.dialogs.includes(:messages).where(messages: { state: 'new'}).where.not(messages: { user_id: current_user.id }).count > 0 %>
+          <span class="counter"><%= current_user.dialogs.includes(:messages).where(messages: { state: 'new'}).where.not(messages: { user_id: current_user.id }).count %></span>
+          <% end %>
+        </li>
+        <% end %>
+        <li class="my-feed <%= "active" if request.fullpath == feed_path %>">
+          <%= link_to "Лента", feed_path %>
+        </li>
+        <li class="my-dogs <%= "active" if request.fullpath == dogs_breed_path %>">
+          <a href="/dogs">Наши собаки</a>
+        </li>
+        <li class="my-cats <%= "active" if request.fullpath == cats_breed_path %>">
+          <a href="/cats">Наши кошки</a>
+        </li>
+        <li class="my-articles <%= "active" if request.fullpath == articles_path %>">
+          <%= link_to "Статьи", articles_path %>
+        </li>
+        <li class="my-comments <%= "active" if request.fullpath == topics_path %>">
+          <%= link_to "Форум", topics_path %>
+        </li>
+      </ul>
+    </aside>
+    <div class="main">
+      <header class="header">
+        <strong class="logo"><a href="/">LivePets</a></strong>
+        <% if current_user && current_user.admin %>
+            <%= link_to "admin", admin_index_path %>
+        <% end %>
+      </header>
+
+
+<%= yield %>
+
+    </div>
+  </div>
+<!-- Yandex.Metrika counter --><script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter26654604 = new Ya.Metrika({ id:26654604, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="https://mc.yandex.ru/watch/26654604" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
+</body>

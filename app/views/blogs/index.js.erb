@@ -1,0 +1,10 @@
+// Append new data
+$("<%=j render(:partial => 'blogs', :object => @blogs) %>").appendTo($(".feed-user-block ul"));
+
+
+// Update pagination link
+<% if @blogs.last_page? %>
+$('p.pagination').html("Больше нет ;)");
+<% else %>
+$('p.pagination').html("<%=j link_to_next_page(@blogs, 'Следующая страница', :remote => true) %>");
+<% end %>

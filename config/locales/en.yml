@@ -1,0 +1,39 @@
+en:
+  activerecord:
+      attributes:
+        mypet:
+          email: "E-mail address"
+      errors:
+        models:
+          mypet:
+            attributes:
+              name:
+                blank: "is required"
+  hello: "Hello world"
+  datetime:
+    distance_in_words:
+      about_x_years:
+        few: около %{count} лет
+        many: около %{count} лет
+        one: около %{count} года
+        other: около %{count} лет
+      about_x_months:
+        few: около %{count} месяцев
+        many: около %{count} месяцев
+        one: '%{count} месяц'
+        other: около %{count} месяца
+      x_days:
+        few: ! '%{count} дня'
+        many: ! '%{count} дня'
+        one: ! '%{count} день'
+        other: ! '%{count} дней'
+      x_months:
+        other: ! '%{count} мес.'
+      almost_x_years:
+        one: почти 1 год
+        few: почти %{count} года
+        many: почти %{count} лет
+        other: почти %{count} года
+  time:
+      formats:
+        short: "%d/%m/%Y"

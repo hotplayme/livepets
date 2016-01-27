@@ -1,0 +1,9 @@
+p #{link_to 'все', '?'} / #{link_to 'новые', '?sort=new'} / #{link_to 'удаленные', '?sort=del'} / #{link_to 'по юзерам', '?sort=users'}
+- if params[:sort] == 'new'
+  = render partial: 'admin/blogs/new_blogs', object: @blogs
+- elsif params[:sort] == 'del'
+  = render partial: 'admin/blogs/delete_blogs', object: @blogs
+- elsif params[:sort] == 'users'
+  = render partial: 'admin/blogs/users_blogs', object: @users
+- else
+  = render partial: 'admin/blogs/all_blogs', object: @users

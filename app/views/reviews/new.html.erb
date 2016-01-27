@@ -1,0 +1,8 @@
+<%= form_for @review do |f| %>
+    <p><%= f.text_field :title %></p>
+    <p><%= f.text_area :body %></p>
+    <p><%= select_tag :breed_type, "<option value='dog'>Собака</option><option value='cat'>Кошка</option>".html_safe %></p>
+    <p><%= f.select :breed_id, options_for_select(@breeds.collect { |country| [country.name.titleize, country.id] }, 1), {}, { id: 'breeds_select' } %></p>
+    <p><%= f.file_field :review_attachments, multiple: true, name:"images[]" %></p>
+    <p><%= f.submit %></p>
+<% end %>

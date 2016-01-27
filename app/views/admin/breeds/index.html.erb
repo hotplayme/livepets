@@ -1,0 +1,47 @@
+<%= form_for @breed, url: admin_breeds_path, method: :post do |f| %>
+    <%= f.text_field :name %><br/>
+    <%= f.text_field :breed_type %><br/>
+    <%= f.text_field :translate %><br/>
+    <%= f.submit %>
+<% end %>
+
+<strong>собаки</strong><br>
+<table border="1">
+  <tr>
+    <td>ID</td>
+    <td>Название</td>
+    <td>Перевод</td>
+    <td>Аватар</td>
+    <td>Изменить</td>
+  </tr>
+<% @breeds_dog.each do |dog| %>
+      <tr>
+        <td><%= dog.id %></td>
+        <td><%= dog.name %></td>
+        <td><%= dog.translate %></td>
+        <td><%= image_tag dog.avatar.url %></td>
+        <td><%= link_to "edit", edit_admin_breed_path(dog) %></td>
+      </tr>
+<% end %>
+</table>
+<br><br/>
+<strong>кошки</strong><br>
+<table border="1">
+  <tr>
+    <td>ID</td>
+    <td>Название</td>
+    <td>Перевод</td>
+    <td>Аватар</td>
+    <td>Изменить</td>
+  </tr>
+  <% @breeds_cat.each do |cat| %>
+      <tr>
+        <td><%= cat.id %></td>
+        <td><%= cat.name %></td>
+        <td><%= cat.translate %></td>
+        <td><%= image_tag cat.avatar.url %></td>
+        <td><%= link_to "edit", edit_admin_breed_path(cat) %></td>
+      </tr>
+  <% end %>
+</table>
+

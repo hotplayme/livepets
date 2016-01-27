@@ -1,0 +1,5 @@
+h1 Редактирование поста "#{@post.title}"
+= form_for @post, url: "/admin/post/#{@post.id}", method: :put do |f|
+  p = f.text_field :title
+  p = f.text_area  :body
+  p = f.submit

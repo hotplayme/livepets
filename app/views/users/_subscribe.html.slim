@@ -1,0 +1,8 @@
+- if current_user && current_user == user
+  = link_to "Редактировать профиль", edit_user_path, class: "show-all"
+- else
+  = link_to "Отправить сообщение", dialogs_show_path(@user.nickname), class: "send-massege"
+  - if current_user && current_user.subscribes.where(subscriber_id: @user.id).exists?
+    = link_to 'Вы подписаны', subscribe_path(user), class: "news-good", remote: true
+  - else
+    = link_to 'Подписаться на обновления', subscribe_path(user), class: "news", remote: true

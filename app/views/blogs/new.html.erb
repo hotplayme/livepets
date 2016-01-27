@@ -1,0 +1,45 @@
+<% content_for :title, "Создание новой записи в блоге - LivePets" %>
+<%= tinymce_assets %>
+<div class="content narrow">
+  <div class="new-post-form no-bg">
+    <i></i>
+    <i></i>
+    <div class="edit-post-block">
+      <div class="title-block">
+        <h3>Создать новую запись в блоге</h3>
+      </div>
+      <%= nested_form_for @blog, url: blogs_path, method: :post do |f| %>
+        <label class="field">
+          <p>Заголовок</p>
+          <span><%= f.text_field :title, class: "text", required: true, minlength:"4" %></span>
+        </label>
+        <div class="editor">
+          <%= f.text_area :body, :class => "tinymce" %>
+          <%= tinymce :alternate %>
+        </div>
+        <label class="field">
+          <p>Добавить фото (можно выбрать несколько)</p>
+								<span class="input-file">
+                                  <%= f.file_field :blog_attachment, multiple: true, accept:'image/*' %>
+                                  <span class="dummy-bttn">Выберите файл</span>
+								</span>
+          <div class="vote-list-progress">
+            <span class="vote-list-progress-bg" style="display: none;">
+              <span class="vote-list-progress-state" style="width: 0%;"></span>
+            </span>
+          </div>
+        </label>
+        <ul class="post-pics">
+
+        </ul>
+        <br>
+          <div id="picture_ids">
+
+          </div>
+        <div class="to-center">
+          <%= button_tag "Опубликовать", data: { disable_with: 'Публикуем...' } %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

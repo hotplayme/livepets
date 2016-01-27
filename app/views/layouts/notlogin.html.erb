@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title><%= yield(:title) %></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	 <%= csrf_meta_tags %>
+	<!--[if IE]><script type="text/javascript" src="js/html5.js"></script><![endif]-->
+	<script type="text/javascript">
+		// replace custom forms
+		jcf.lib.domReady(function(){
+			jcf.customForms.replaceAll();
+		});
+	</script>
+	
+</head>
+<body>
+	<div class="wrapper">
+		<aside class="sidebar">
+			<ul class="login-box">
+				<li class="login-btn">
+				<%= link_to 'Вход', new_user_session_path, class: "fancybox" %></li>
+				<li><%= link_to 'Регистрация', new_user_registration_path, class: "fancybox" %></li>
+			</ul>
+			
+			<h2>Топ 20 <br />Пород собак</h2>
+			<ul class="top-list">
+
+				<% Breed.where(breed_type: "dog").limit(20).each do |dog| %>
+					<li><%= link_to "#{dog.name}", show_breed_path(dog.translate)%></li>
+				<% end %>
+
+				
+				<li class="all"><%= link_to "Все породы собак", dogs_breed_path %></li>
+			</ul>
+			<h2>Топ 20 <br />Пород кошек</h2>
+			<ul class="top-list bg-out">
+
+				<% Breed.where(breed_type: "cat").limit(20).each do |cat| %>
+					<li><%= link_to "#{cat.name}", show_breed_path(cat.translate)%></li>
+				<% end %>
+
+				
+				<li class="all"><%= link_to "Все породы кошек", cats_breed_path %></li>
+			</ul>
+		</aside>
+		<div class="main">
+			<header class="header">
+				<strong class="logo"><a href="/">LivePets</a></strong>
+				
+				
+			</header>
+			
+		<%= yield %>
+			
+					</div>
+				</div>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function() {
+                try {
+                    w.yaCounter26654604 = new Ya.Metrika({id:26654604,
+                        webvisor:true,
+                        clickmap:true,
+                        accurateTrackBounce:true});
+                } catch(e) { }
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                    s = d.createElement("script"),
+                    f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <noscript><div><img src="//mc.yandex.ru/watch/26654604" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+</body>
+</html>

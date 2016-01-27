@@ -1,0 +1,16 @@
+h1 Комментарии
+table border=1 width=800
+  tr
+    td ИД
+    td Комментируемое
+    td Коммент
+    td Автор
+  - @comments.each do |comment|
+    tr
+      td = comment.id
+      - if comment.commentable_type == 'Article'
+        td = link_to comment.commentable_type, article_path(comment.commentable.randid)
+      - else
+        td = link_to comment.commentable_type, polymorphic_path(comment.commentable)
+      td = comment.body
+      td = link_to comment.user.nickname, user_path(comment.user.nickname)

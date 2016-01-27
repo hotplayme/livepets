@@ -1,0 +1,34 @@
+h2 Комментарии
+h3 Всего комментариев (#{Comment.count})
+
+h3 Новые комментарии
+table border=1 width="100%"
+  tr bgcolor="grey"
+    td ИД
+    td Ресурс
+    td Заголовок
+    td Коммент
+    td Дата создания
+    td Автор
+    td Принять
+    td Редактировать
+    td Удалить
+  - @comments_new.each do |comment|
+    tr id="comment-#{comment.id}"
+      = render partial: 'comment', object: comment, as: 'comment'
+
+h3 Старые комментарии
+table border=1 width="100%"
+  tr bgcolor="grey"
+    td ИД
+    td Ресурс
+    td Заголовок
+    td Коммент
+    td Дата создания
+    td Автор
+    td Принять
+    td Редактировать
+    td Удалить
+  - @comments_old.each do |comment|
+    tr id="comment-#{comment.id}"
+      = render partial: 'comment', object: comment, as: 'comment'

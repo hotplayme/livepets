@@ -1,0 +1,19 @@
+- content_for :title, "Статьи о животных - LivePets"
+div class="title-holder"
+  h2 Статьи о животных
+div class="pet-list-holder"
+  ul class="pet-list"
+    - @articles.each do |article|
+      li
+        div class="image-holder"
+          a href="#{article_path(article.randid)}"
+            img src="#{article.avatar.url}" alt="#{article.title}" width="280" height="193" /
+        div class="inner-box"
+          h3 = link_to article.title.html_safe, article_path(article.randid)
+          p = (strip_tags(article.body.first(300))).html_safe
+        = link_to "далее", article_path(article.randid), class: "more"
+        div class="like-box"
+          a class="views" title="Просмотров #{article.views}" = article.views
+          a class="like"  title="Лайков #{article.votes.count}" = article.votes.count
+          a class="comments" title="Комментариев #{article.comments.count}" href="#{article_path(article.randid)}#comments" = article.comments.count
+          span = l article.created_at, :format => :short

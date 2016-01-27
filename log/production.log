@@ -1,0 +1,662 @@
+F, [2016-01-03T09:39:43.753420 #899] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_78137660'
+
+
+F, [2016-01-06T04:41:56.938111 #904] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_60393520'
+
+
+F, [2016-01-06T17:42:33.398490 #904] FATAL -- : 
+ActionView::Template::Error (undefined method `nickname' for nil:NilClass):
+    43:           div class="forum_post_answer_info"
+    44:             ul
+    45:               li
+    46:                 a href="#{user_path(post.user.nickname)}"
+    47:                   img src="#{post.user.avatar.url(:small)}" alt="" /
+    48:                   span class="user_title" = post.user.nickname
+    49:               li = post.created_at.strftime("%d/%m/%Y, %H:%M")
+  app/views/topics/show.html.slim:46:in `block in _app_views_topics_show_html_slim__3846221616813314224_8099800'
+  app/views/topics/show.html.slim:41:in `each'
+  app/views/topics/show.html.slim:41:in `_app_views_topics_show_html_slim__3846221616813314224_8099800'
+
+
+F, [2016-01-07T04:59:09.704552 #901] FATAL -- : 
+ActionView::Template::Error (undefined method `nickname' for nil:NilClass):
+    43:           div class="forum_post_answer_info"
+    44:             ul
+    45:               li
+    46:                 a href="#{user_path(post.user.nickname)}"
+    47:                   img src="#{post.user.avatar.url(:small)}" alt="" /
+    48:                   span class="user_title" = post.user.nickname
+    49:               li = post.created_at.strftime("%d/%m/%Y, %H:%M")
+  app/views/topics/show.html.slim:46:in `block in _app_views_topics_show_html_slim__3846221616813314224_37739800'
+  app/views/topics/show.html.slim:41:in `each'
+  app/views/topics/show.html.slim:41:in `_app_views_topics_show_html_slim__3846221616813314224_37739800'
+
+
+F, [2016-01-07T04:59:22.680687 #904] FATAL -- : 
+ActionView::Template::Error (undefined method `nickname' for nil:NilClass):
+    43:           div class="forum_post_answer_info"
+    44:             ul
+    45:               li
+    46:                 a href="#{user_path(post.user.nickname)}"
+    47:                   img src="#{post.user.avatar.url(:small)}" alt="" /
+    48:                   span class="user_title" = post.user.nickname
+    49:               li = post.created_at.strftime("%d/%m/%Y, %H:%M")
+  app/views/topics/show.html.slim:46:in `block in _app_views_topics_show_html_slim__3846221616813314224_54689220'
+  app/views/topics/show.html.slim:41:in `each'
+  app/views/topics/show.html.slim:41:in `_app_views_topics_show_html_slim__3846221616813314224_54689220'
+
+
+F, [2016-01-07T14:52:53.074870 #907] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_33211000'
+
+
+F, [2016-01-07T14:53:21.822136 #904] FATAL -- : 
+ActionController::RoutingError (No route matches [PROPFIND] "/webdav"):
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  unicorn (4.8.3) lib/unicorn/http_server.rb:576:in `process_client'
+  unicorn (4.8.3) lib/unicorn/http_server.rb:670:in `worker_loop'
+  unicorn (4.8.3) lib/unicorn/http_server.rb:525:in `spawn_missing_workers'
+  unicorn (4.8.3) lib/unicorn/http_server.rb:140:in `start'
+  unicorn (4.8.3) bin/unicorn:126:in `<top (required)>'
+  /usr/local/rvm/gems/ruby-2.1.3/bin/unicorn:23:in `load'
+  /usr/local/rvm/gems/ruby-2.1.3/bin/unicorn:23:in `<main>'
+  /usr/local/rvm/gems/ruby-2.0.0-p353/bin/ruby_executable_hooks:15:in `eval'
+  /usr/local/rvm/gems/ruby-2.0.0-p353/bin/ruby_executable_hooks:15:in `<main>'
+
+
+F, [2016-01-07T15:06:24.405651 #904] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_53590080'
+
+
+F, [2016-01-07T15:14:28.022300 #904] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_53590080'
+
+
+F, [2016-01-07T15:29:00.088434 #899] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_60023380'
+
+
+F, [2016-01-07T15:35:41.261670 #899] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_60023380'
+
+
+F, [2016-01-07T15:42:06.286917 #901] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_38518740'
+
+
+F, [2016-01-07T15:48:06.130501 #901] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_38518740'
+
+
+F, [2016-01-07T15:51:11.029592 #907] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_33211000'
+
+
+F, [2016-01-07T16:05:20.019991 #904] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_53590080'
+
+
+F, [2016-01-07T20:17:55.864790 #907] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_33211000'
+
+
+F, [2016-01-07T20:25:32.764331 #904] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_53590080'
+
+
+F, [2016-01-07T20:32:45.903732 #899] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_60023380'
+
+
+F, [2016-01-07T20:42:18.305720 #907] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_33211000'
+
+
+F, [2016-01-07T20:46:56.743103 #901] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_38518740'
+
+
+F, [2016-01-07T20:51:30.021407 #907] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_33211000'
+
+
+F, [2016-01-07T20:53:48.801029 #904] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_53590080'
+
+
+F, [2016-01-07T20:56:05.589526 #901] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_38518740'
+
+
+F, [2016-01-07T21:00:20.837679 #901] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_38518740'
+
+
+F, [2016-01-07T21:04:37.053445 #907] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_33211000'
+
+
+F, [2016-01-07T21:08:56.015787 #899] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_60023380'
+
+
+F, [2016-01-07T21:17:59.875850 #904] FATAL -- : 
+ActionView::Template::Error (undefined method `nickname' for nil:NilClass):
+    43:           div class="forum_post_answer_info"
+    44:             ul
+    45:               li
+    46:                 a href="#{user_path(post.user.nickname)}"
+    47:                   img src="#{post.user.avatar.url(:small)}" alt="" /
+    48:                   span class="user_title" = post.user.nickname
+    49:               li = post.created_at.strftime("%d/%m/%Y, %H:%M")
+  app/views/topics/show.html.slim:46:in `block in _app_views_topics_show_html_slim__3846221616813314224_67746540'
+  app/views/topics/show.html.slim:41:in `each'
+  app/views/topics/show.html.slim:41:in `_app_views_topics_show_html_slim__3846221616813314224_67746540'
+
+
+F, [2016-01-07T21:21:11.243557 #904] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_53590080'
+
+
+F, [2016-01-07T21:29:05.641598 #899] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_60023380'
+
+
+F, [2016-01-07T21:36:41.557993 #904] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_53590080'
+
+
+F, [2016-01-07T21:38:53.930211 #899] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_60023380'
+
+
+F, [2016-01-08T01:32:37.367827 #901] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_38518740'
+
+
+F, [2016-01-08T01:36:08.597277 #904] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_53590080'
+
+
+F, [2016-01-08T21:05:57.497814 #907] FATAL -- : 
+ActionView::Template::Error (undefined method `nickname' for nil:NilClass):
+    43:           div class="forum_post_answer_info"
+    44:             ul
+    45:               li
+    46:                 a href="#{user_path(post.user.nickname)}"
+    47:                   img src="#{post.user.avatar.url(:small)}" alt="" /
+    48:                   span class="user_title" = post.user.nickname
+    49:               li = post.created_at.strftime("%d/%m/%Y, %H:%M")
+  app/views/topics/show.html.slim:46:in `block in _app_views_topics_show_html_slim__3846221616813314224_61442480'
+  app/views/topics/show.html.slim:41:in `each'
+  app/views/topics/show.html.slim:41:in `_app_views_topics_show_html_slim__3846221616813314224_61442480'
+
+
+F, [2016-01-08T21:06:13.273683 #904] FATAL -- : 
+ActionView::Template::Error (undefined method `nickname' for nil:NilClass):
+    43:           div class="forum_post_answer_info"
+    44:             ul
+    45:               li
+    46:                 a href="#{user_path(post.user.nickname)}"
+    47:                   img src="#{post.user.avatar.url(:small)}" alt="" /
+    48:                   span class="user_title" = post.user.nickname
+    49:               li = post.created_at.strftime("%d/%m/%Y, %H:%M")
+  app/views/topics/show.html.slim:46:in `block in _app_views_topics_show_html_slim__3846221616813314224_8099800'
+  app/views/topics/show.html.slim:41:in `each'
+  app/views/topics/show.html.slim:41:in `_app_views_topics_show_html_slim__3846221616813314224_8099800'
+
+
+F, [2016-01-09T00:02:11.245933 #901] FATAL -- : 
+ActionView::Template::Error (undefined method `breed_type' for nil:NilClass):
+    1: - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+    2: div class="content"
+    3:   div class="vote-holder"
+    4:     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
+  app/views/breeds/show.html.slim:1:in `_app_views_breeds_show_html_slim___3612151067959897443_58708120'
+
+
+F, [2016-01-10T00:17:18.338879 #904] FATAL -- : 
+ActionController::RoutingError (No route matches [PROPFIND] "/webdav"):
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  unicorn (4.8.3) lib/unicorn/http_server.rb:576:in `process_client'
+  unicorn (4.8.3) lib/unicorn/http_server.rb:670:in `worker_loop'
+  unicorn (4.8.3) lib/unicorn/http_server.rb:525:in `spawn_missing_workers'
+  unicorn (4.8.3) lib/unicorn/http_server.rb:140:in `start'
+  unicorn (4.8.3) bin/unicorn:126:in `<top (required)>'
+  /usr/local/rvm/gems/ruby-2.1.3/bin/unicorn:23:in `load'
+  /usr/local/rvm/gems/ruby-2.1.3/bin/unicorn:23:in `<main>'
+  /usr/local/rvm/gems/ruby-2.0.0-p353/bin/ruby_executable_hooks:15:in `eval'
+  /usr/local/rvm/gems/ruby-2.0.0-p353/bin/ruby_executable_hooks:15:in `<main>'
+
+
+F, [2016-01-10T22:59:36.455347 #904] FATAL -- : 
+ActionController::RoutingError (No route matches [POST] "/wp-admin/admin-ajax.php"):
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  unicorn (4.8.3) lib/unicorn/http_server.rb:576:in `process_client'
+  unicorn (4.8.3) lib/unicorn/http_server.rb:670:in `worker_loop'
+  unicorn (4.8.3) lib/unicorn/http_server.rb:525:in `spawn_missing_workers'
+  unicorn (4.8.3) lib/unicorn/http_server.rb:140:in `start'
+  unicorn (4.8.3) bin/unicorn:126:in `<top (required)>'
+  /usr/local/rvm/gems/ruby-2.1.3/bin/unicorn:23:in `load'
+  /usr/local/rvm/gems/ruby-2.1.3/bin/unicorn:23:in `<main>'
+  /usr/local/rvm/gems/ruby-2.0.0-p353/bin/ruby_executable_hooks:15:in `eval'
+  /usr/local/rvm/gems/ruby-2.0.0-p353/bin/ruby_executable_hooks:15:in `<main>'
+
+
+F, [2016-01-10T23:01:10.470598 #899] FATAL -- : 
+ActionController::RoutingError (No route matches [POST] "/wp-admin/admin-ajax.php"):
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  unicorn (4.8.3) lib/unicorn/http_server.rb:576:in `process_client'
+  unicorn (4.8.3) lib/unicorn/http_server.rb:670:in `worker_loop'
+  unicorn (4.8.3) lib/unicorn/http_server.rb:525:in `spawn_missing_workers'
+  unicorn (4.8.3) lib/unicorn/http_server.rb:140:in `start'
+  unicorn (4.8.3) bin/unicorn:126:in `<top (required)>'
+  /usr/local/rvm/gems/ruby-2.1.3/bin/unicorn:23:in `load'
+  /usr/local/rvm/gems/ruby-2.1.3/bin/unicorn:23:in `<main>'
+  /usr/local/rvm/gems/ruby-2.0.0-p353/bin/ruby_executable_hooks:15:in `eval'
+  /usr/local/rvm/gems/ruby-2.0.0-p353/bin/ruby_executable_hooks:15:in `<main>'
+
+
+F, [2016-01-11T04:17:23.110144 #899] FATAL -- : 
+ActionView::Template::Error (undefined method `nickname' for nil:NilClass):
+    43:           div class="forum_post_answer_info"
+    44:             ul
+    45:               li
+    46:                 a href="#{user_path(post.user.nickname)}"
+    47:                   img src="#{post.user.avatar.url(:small)}" alt="" /
+    48:                   span class="user_title" = post.user.nickname
+    49:               li = post.created_at.strftime("%d/%m/%Y, %H:%M")
+  app/views/topics/show.html.slim:46:in `block in _app_views_topics_show_html_slim__3846221616813314224_71254480'
+  app/views/topics/show.html.slim:41:in `each'
+  app/views/topics/show.html.slim:41:in `_app_views_topics_show_html_slim__3846221616813314224_71254480'
+
+
+F, [2016-01-11T10:39:43.805405 #904] FATAL -- : 
+ActionView::Template::Error (undefined method `nickname' for nil:NilClass):
+    43:           div class="forum_post_answer_info"
+    44:             ul
+    45:               li
+    46:                 a href="#{user_path(post.user.nickname)}"
+    47:                   img src="#{post.user.avatar.url(:small)}" alt="" /
+    48:                   span class="user_title" = post.user.nickname
+    49:               li = post.created_at.strftime("%d/%m/%Y, %H:%M")
+  app/views/topics/show.html.slim:46:in `block in _app_views_topics_show_html_slim__3846221616813314224_67746540'
+  app/views/topics/show.html.slim:41:in `each'
+  app/views/topics/show.html.slim:41:in `_app_views_topics_show_html_slim__3846221616813314224_67746540'
+
+
+F, [2016-01-11T16:46:44.145407 #899] FATAL -- : 
+ActionView::Template::Error (undefined method `nickname' for nil:NilClass):
+    43:           div class="forum_post_answer_info"
+    44:             ul
+    45:               li
+    46:                 a href="#{user_path(post.user.nickname)}"
+    47:                   img src="#{post.user.avatar.url(:small)}" alt="" /
+    48:                   span class="user_title" = post.user.nickname
+    49:               li = post.created_at.strftime("%d/%m/%Y, %H:%M")
+  app/views/topics/show.html.slim:46:in `block in _app_views_topics_show_html_slim__3846221616813314224_71254480'
+  app/views/topics/show.html.slim:41:in `each'
+  app/views/topics/show.html.slim:41:in `_app_views_topics_show_html_slim__3846221616813314224_71254480'
+
+
+F, [2016-01-11T22:42:18.932233 #901] FATAL -- : 
+ActionView::Template::Error (undefined method `nickname' for nil:NilClass):
+    43:           div class="forum_post_answer_info"
+    44:             ul
+    45:               li
+    46:                 a href="#{user_path(post.user.nickname)}"
+    47:                   img src="#{post.user.avatar.url(:small)}" alt="" /
+    48:                   span class="user_title" = post.user.nickname
+    49:               li = post.created_at.strftime("%d/%m/%Y, %H:%M")
+  app/views/topics/show.html.slim:46:in `block in _app_views_topics_show_html_slim__3846221616813314224_68850140'
+  app/views/topics/show.html.slim:41:in `each'
+  app/views/topics/show.html.slim:41:in `_app_views_topics_show_html_slim__3846221616813314224_68850140'
+
+
+F, [2016-01-12T04:50:27.228695 #904] FATAL -- : 
+ActionView::Template::Error (undefined method `nickname' for nil:NilClass):
+    43:           div class="forum_post_answer_info"
+    44:             ul
+    45:               li
+    46:                 a href="#{user_path(post.user.nickname)}"
+    47:                   img src="#{post.user.avatar.url(:small)}" alt="" /
+    48:                   span class="user_title" = post.user.nickname
+    49:               li = post.created_at.strftime("%d/%m/%Y, %H:%M")
+  app/views/topics/show.html.slim:46:in `block in _app_views_topics_show_html_slim__3846221616813314224_67746540'
+  app/views/topics/show.html.slim:41:in `each'
+  app/views/topics/show.html.slim:41:in `_app_views_topics_show_html_slim__3846221616813314224_67746540'
+
+
+F, [2016-01-14T15:11:28.745146 #904] FATAL -- : 
+ActionView::MissingTemplate (Missing template home/index, application/index with {:locale=>[:ru], :formats=>[:gif, "image/x-xbitmap", :jpeg, "image/pjpeg", "application/x-shockwave-flash", "application/vnd.ms-excel", "application/vnd.ms-powerpoint", "application/msword"], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :slim, :coffee, :jbuilder]}. Searched in:
+  * "/home/rails/app/views"
+  * "/usr/local/rvm/gems/ruby-2.1.3/gems/kaminari-0.16.3/app/views"
+  * "/usr/local/rvm/gems/ruby-2.1.3/gems/devise-3.4.1/app/views"
+):
+  actionview (4.2.0) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.2.0) lib/action_view/lookup_context.rb:121:in `find'
+  actionview (4.2.0) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:40:in `determine_template'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.2.0) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.0) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.0) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.0) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.0) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.0) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.0) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.2.0) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /usr/local/rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.2.0) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  remotipart (1.2.1) lib/remotipart/render_overrides.rb:14:in `render_with_remotipart'
+  actionpack (4.2.0) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.0) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:151:in `block in halting_and_conditional'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:151:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:151:in `block in halting_and_conditional'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_process_action_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.0) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal.rb:236:in `block in action'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:42:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:802:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  route_downcaser (0.2.2) lib/route_downcaser/downcase_route_middleware.rb:27:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  remotipart (1.2.1) lib/remotipart/middleware.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:647:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  unicorn (4.8.3) lib/unicorn/http_server.rb:576:in `process_client'
+  unicorn (4.8.3) lib/unicorn/http_server.rb:670:in `worker_loop'
+  unicorn (4.8.3) lib/unicorn/http_server.rb:525:in `spawn_missing_workers'
+  unicorn (4.8.3) lib/unicorn/http_server.rb:140:in `start'
+  unicorn (4.8.3) bin/unicorn:126:in `<top (required)>'
+  /usr/local/rvm/gems/ruby-2.1.3/bin/unicorn:23:in `load'
+  /usr/local/rvm/gems/ruby-2.1.3/bin/unicorn:23:in `<main>'
+  /usr/local/rvm/gems/ruby-2.0.0-p353/bin/ruby_executable_hooks:15:in `eval'
+  /usr/local/rvm/gems/ruby-2.0.0-p353/bin/ruby_executable_hooks:15:in `<main>'
+
+
+F, [2016-01-17T18:43:41.932424 #907] FATAL -- : 
+RuntimeError (NilClass is not impressionable!):
+  app/controllers/articles_controller.rb:12:in `show'
+
+

@@ -1,0 +1,20 @@
+= form_for @city, url: admin_cities_path, method: :post do |f|
+  p
+    = f.label :name
+    = f.text_field :name
+  p
+    = f.label :country_id
+      = f.select :country_id, options_for_select( @countries.collect { |city| [city.name.titleize, city.id] }, 1 ), { }
+  p = f.submit
+
+p
+  | Страны:
+  - @countries.each do |country|
+    | #{country.name}(#{country.cities.count})
+
+h1 Список стран и городов
+- @countries.each do |country|
+  p = country.name
+  ul
+    - country.cities.each do |city|
+     li = city.name

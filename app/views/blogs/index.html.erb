@@ -1,0 +1,15 @@
+<% content_for :title, "Лента новостей - LivePets" %>
+<div class="content narrow">
+  <div class="new-post-form no-bg">
+    <i></i>
+    <i></i>
+    <div class="feed-user-block">
+      <ul>
+        <%= render :partial => 'blogs', :object => @blogs %>
+      </ul>
+      <p class="pagination">
+        <%= link_to_next_page(@blogs, 'Следующая страница', :remote => true) %>
+      </p>
+    </div>
+  </div>
+</div>

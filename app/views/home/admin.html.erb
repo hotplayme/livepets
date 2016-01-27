@@ -1,0 +1,11 @@
+<% @breeds.each do |t| %>
+	<p><%= t.id %>, <%= t.name %>, <%= t.translate %> ,<%= t.breed_type %></p>
+<% end %>
+
+<h1>Добавить Породу</h1>
+<%= form_for @breed, url: add_breed_path, method: :post do |f| %>
+	<p>название <%= f.text_field :name %></p>
+	<p>перевод <%= f.text_field :translate %></p>
+	<p>тип <%= f.text_field :breed_type, value: "dog" %></p>
+	<p><%= f.submit %>
+<% end %>

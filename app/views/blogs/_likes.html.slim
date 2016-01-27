@@ -1,0 +1,13 @@
+form action="#" class="edit-form"
+  fieldset
+    /h3 = link_to 'Редактировать', edit_blog_path(blog)
+    - if blog.user == current_user
+      = link_to 'Редактировать запись', edit_blog_path(blog), class: "edit-text"
+      /select onChange="document.location = this.value"
+        optgroup label="Управление записью"
+        option value="#{edit_blog_path(blog)}" Редактировать
+        option confirm="ddd?" value="#{blog_path(blog)}" Удалить
+a class="comment" href="#comments"
+  span = blog.comments.count
+= link_to vote_blog_path, class:"like-me", remote: true
+  span = blog.votes.count

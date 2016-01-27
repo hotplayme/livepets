@@ -1,0 +1,15 @@
+<div class="content narrow">
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: "new-post-form", method: :post }) do |f| %>
+  <i></i>
+    <i></i>
+    <fieldset>
+      <h3>Забыли пароль?</h3>
+      <p class="error"><%= devise_error_messages! %></p>
+      <label class="field">
+        <p>Ваш логин или e-mail</p>
+        <span><%= f.email_field :email, class:"text" %></span>
+      </label>
+      <div><%= f.button "Отправить", type:"submit" %></div>
+    </fieldset>
+  <% end %>
+</div>

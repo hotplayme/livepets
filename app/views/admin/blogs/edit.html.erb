@@ -1,0 +1,50 @@
+<%= tinymce_assets %>
+<div class="content narrow">
+  <div class="new-post-form no-bg">
+    <i></i>
+    <i></i>
+    <div class="edit-post-block">
+      <div class="title-block">
+        <h3>Редактирование записи</h3>
+        <a class="delete-bttn" href="#">Удалить запись</a>
+      </div>
+      <%= nested_form_for @blog, id:'new_blog', url: admin_blog_path(@blog.id), method: :put do |f| %>
+          <label class="field">
+            <p>Заголовок</p>
+            <span><%= f.text_field :title, class: "text", required: true, minlength:"4" %></span>
+          </label>
+          <div class="editor">
+            <%= f.text_area :body, :class => "tinymce" %>
+            <%= tinymce %>
+          </div>
+          <label class="field">
+            <p>Добавить фото (можно выбрать несколько)</p>
+								<span class="input-file">
+                                  <%= f.file_field :blog_attachment, multiple: true, accept:'image/*' %>
+                                  <span class="dummy-bttn">Выберите файл</span>
+								</span>
+            <div class="vote-list-progress">
+            <span class="vote-list-progress-bg" style="display: none;">
+              <span class="vote-list-progress-state" style="width: 0%;"></span>
+            </span>
+            </div>
+          </label>
+          <ul class="post-pics">
+            <% @blog.blog_attachments.each do |image| %>
+                <li id="attach_<%= image.id %>">
+                  <%= image_tag image.file.url(:thumb) %>
+                  <%= link_to 'Удалить', a_delete_blogs_path(image), method: :delete, remote: true %>
+                </li>
+            <% end %>
+          </ul>
+          <br>
+          <div id="picture_ids">
+
+          </div>
+          <div class="to-center">
+            <%= button_tag "Сохранить", data: { disable_with: 'Сохраняем...' } %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

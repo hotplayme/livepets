@@ -1,0 +1,11 @@
+div class="content"
+  = form_for @topic, html: {:class => 'new-post-form' } do |f|
+    fieldset
+      h3 Создать новую запись на форуме
+      - @topic.errors.full_messages.each do |msg|
+        h4 = msg
+      = f.text_field :title, :maxlength => 65, placeholder: 'Введите заголовок', class: 'text', required: true, minlength:"4"
+      br
+      = f.text_area :body, required: true, minlength:"4"
+      div class="pets-row"
+        = f.submit 'Создать', class:"send", data: { disable_with: 'Публикуем...' }

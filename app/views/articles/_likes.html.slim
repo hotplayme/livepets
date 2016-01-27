@@ -1,0 +1,10 @@
+a class="comment" href="#comments" title="Комментариев #{article.comments.count}"
+  span = article.comments.count
+  - if 0 == 0
+    = link_to vote_article_path(article), class:"like-me", title:"Лайков #{article.votes.count}", remote: true
+      span = article.votes.count
+  //a class="like-me" href="#" data-method="post" title="Лайков"
+            span  2
+  - else
+    a class="like-me" title="Лайков"
+      span class="like-me" 1

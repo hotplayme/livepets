@@ -1,0 +1,21 @@
+h1 Питомцы
+table border=1
+  tr bgcolor="grey"
+    td ИД
+    td Кличка
+    td Порода
+    td Хозяин
+    td Фото
+    td Актив/Блок
+    td Удалить
+  - @pets.each do |pet|
+    tr bgcolor="#{"grey" unless pet.approve}"
+      td = pet.id
+      td = pet.name
+      td = pet.breed.name
+      td = link_to pet.user.nickname, user_path(pet.user.nickname), target:"_blank"
+      td
+        - pet.pet_attachments.each do |a|
+          = image_tag a.file.thumb_70
+      td = link_to 'Активировать', admin_pet_approve_path(pet)
+      td = link_to 'Удалить', admin_pet_path(pet), method: :delete, data: {confirm: "Уверен?"}

@@ -1,0 +1,54 @@
+<div class="new-post-form no-bg">
+  <i></i>
+  <i></i>
+  <fieldset>
+    <div class="reg-col">
+      <form action="#">
+        <div class="pic-block"><%= image_tag current_user.avatar.url(:small) %></div>
+        <p>Сменить аватар</p>
+        <div class="input-file">
+          <%= file_field_tag :avatar, accept:'image/*' %>
+          <span class="dummy-bttn">Выберите файл</span>
+        </div>
+      </form>
+    </div>
+    <div class="reg-col">
+      <h3>Ваш профиль:</h3>
+      <%= form_for @user, url: edit_user_path, method: :put do |f| %>
+        <label class="field-new">
+          <p>Логин</p>
+          <span><%= f.text_field :nickname, disabled: true, class: "text" %></span>
+        </label>
+        <label class="field-new">
+          <p>Имя</p>
+          <span><%= f.text_field :first_name, class: "text" %></span>
+        </label>
+        <label class="field-new">
+          <p>Фамилия</p>
+          <span><%= f.text_field :last_name, class: "text" %></span>
+        </label>
+        <% if @user.country.nil? %>
+              <label class="field-new">
+                <p>Страна</p>
+                <%= f.select :country_id, options_for_select(@countries.collect { |country| [country.name, country.id] }, 1), {}, { id: 'countries_select' } %>
+              </label>
+              <label class="field-new">
+                <p>Город</p>
+              <%= f.select :city_id,    options_for_select(@cities.collect    { |city| [city.name, city.id] }, 0), {}, {id:'cities_select'} %>
+              </label>
+        <% else %>
+              <label class="field-new">
+                <p>Страна</p>
+                <%= f.select :country_id, options_for_select(@countries.collect { |country| [country.name.titleize, country.id] }, @user.country_id), {}, { id: 'countries_select' } %>
+              </label>
+              <label class="field-new">
+                <p>Город</p>
+                <%= f.select :city_id, options_for_select(@cities.collect { |city| [city.name.titleize, city.id] }, @user.city_id), {}, { id: 'cities_select' } %>
+              </label>
+        <% end %>
+        <br>
+        <div class="to-right"><button type="submit">Cохранить</button></div>
+      <% end %>
+    </div>
+  </fieldset>
+</div>

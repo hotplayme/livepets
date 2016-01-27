@@ -1,0 +1,11 @@
+- content_for :title, "Редактирование записи - LivePets"
+div class="content"
+  = form_for @topic, html: {:class => 'new-post-form' } do |f|
+    fieldset
+      h3 Редактировать вашу запись на форуме
+      = f.text_field :title, :maxlength => 65, class:'text', placeholder: :title, required: true, minlength:"4"
+      br
+      = f.text_area :body, placeholder: :body, required: true, minlength:"4"
+      div class="pets-row"
+        = link_to 'Удалить запись', topic_path(@topic), method: :delete, data: { confirm: 'Вы уверены?' }
+        = f.submit 'Сохранить', class:"send", data: { disable_with: 'Сохраняем...' }
