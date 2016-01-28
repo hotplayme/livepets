@@ -1,0 +1,12 @@
+<h1>У вас <%= @notices.where(new:true).count %> новых комментариев</h1>
+<% @notices.each do |notice| %>
+    <p>
+      У вас новый комментарий в записе <%= link_to notice.noticeable.title, "#{blog_path(notice.noticeable_id)}/##{notice.cid}" %>
+      <% if notice.new %>
+        <font color="red">
+            NEW
+        </font>
+      <% end %>
+      <%= link_to 'удалить', notice_path(notice), method: :delete, remote: true %>
+    </p>
+<% end %>

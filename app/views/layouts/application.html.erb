@@ -41,12 +41,23 @@
           <%= link_to "Моя страница", user_path(current_user.nickname.downcase) %>
         </li>
         <li class="my-massege <%= "active" if request.fullpath == dialogs_path %>">
-		  <%= link_to "Мои сообщения", dialogs_path %>
+          <%= link_to "Мои сообщения", dialogs_path %>
+          <!--if current_user && current_user.dialogs.includes(:messages).where(messages: { state: 'new'}).where.not(messages: { user_id: current_user.id }).count > 0 %>
+              <span class="counter">= current_user.dialogs.includes(:messages).where(messages: { state: 'new'}).where.not(messages: { user_id: current_user.id }).count %></span>
+           end -->
         </li>
         <% end %>
         <li class="my-feed <%= "active" if request.fullpath == feed_path %>">
           <%= link_to "Лента", feed_path %>
         </li>
+        <% if current_user %>
+        <li class="my-comments <%= "active" if request.fullpath == notices_path %>">
+          <%= link_to "Комментарии", notices_path %>
+          <% if current_user.notices.where(new: true).present? %>
+            <span class="counter"><%= current_user.notices.where(new: true).count %></span>
+          <% end %>
+        </li>
+        <% end %>
         <li class="my-dogs <%= "active" if request.fullpath == dogs_breed_path %>">
           <a href="/dogs">Наши собаки</a>
         </li>

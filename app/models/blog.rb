@@ -6,10 +6,13 @@ class Blog < ActiveRecord::Base
 
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
+  has_many :notices,  as: :noticeable,  dependent: :destroy
   has_many :votes, as: :votable, dependent: :destroy
   has_many :blog_attachments, dependent: :destroy
 
   accepts_nested_attributes_for :blog_attachments
 
+
+  has_many :subscribes
 
 end

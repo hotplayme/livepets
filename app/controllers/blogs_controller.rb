@@ -37,6 +37,7 @@ class BlogsController < ApplicationController
       increment = 20 + (@blog.blog_attachments.count*2)
 
       @blog.user.increment!(:repa, increment)
+      current_user.subscribes.create(blog: @blog)
       redirect_to blog_path(@blog)
     else
       flash[:notice] = "Заполните все поля"
@@ -55,6 +56,7 @@ class BlogsController < ApplicationController
       @blog = Blog.find(params[:id])
       @comments = @blog.comments
       @comment = Comment.new
+      @blog.notices.update_all(new:false)
     rescue
       redirect_to root_path, status: 301
     end

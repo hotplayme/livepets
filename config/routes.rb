@@ -29,6 +29,11 @@ Rails.application.routes.draw do
 
   # COMMENTS CONTOLLER BEGIN
 
+
+  # NOTICES CONTROLLER BEGIN
+  resources :notices
+  # NOTICES CONTROLLER END
+
   constraints subdomain: false do
     get ':any', to: redirect(subdomain: 'www', path: '/%{any}', status: 301), any: /.*/
   end

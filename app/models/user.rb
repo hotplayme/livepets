@@ -13,16 +13,17 @@ class User < ActiveRecord::Base
   has_many   :mini_reviews
   has_many   :blogs
   has_many   :comments
+  has_many   :notices
   belongs_to :city
   has_and_belongs_to_many :dialogs
   has_many   :messages
   has_many   :topics
   has_many   :posts
   belongs_to :country
-  has_many :votes
-  has_many :subscribes
-  has_many :winners
-  has_many :authorizations, dependent: :destroy
+  has_many   :votes
+  has_many   :subscribes
+  has_many   :winners
+  has_many   :authorizations, dependent: :destroy
 
   
   has_attached_file :avatar, :styles => { :small => "200x200#", :large => "500x500>" },

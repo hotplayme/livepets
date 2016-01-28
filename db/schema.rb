@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160127101616) do
+ActiveRecord::Schema.define(version: 20160128035921) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",               limit: 255
@@ -126,6 +126,20 @@ ActiveRecord::Schema.define(version: 20160127101616) do
   add_index "mypets", ["breed_id"], name: "index_mypets_on_breed_id", using: :btree
   add_index "mypets", ["user_id"], name: "index_mypets_on_user_id", using: :btree
 
+  create_table "notices", force: :cascade do |t|
+    t.integer  "user_id",         limit: 4
+    t.integer  "noticeable_id",   limit: 4
+    t.string   "noticeable_type", limit: 255
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.text     "body",            limit: 65535
+    t.boolean  "new",             limit: 1,     default: true
+    t.integer  "cid",             limit: 4
+  end
+
+  add_index "notices", ["noticeable_id", "noticeable_type"], name: "index_notices_on_noticeable_id_and_noticeable_type", using: :btree
+  add_index "notices", ["user_id"], name: "index_notices_on_user_id", using: :btree
+
   create_table "pet_attachments", force: :cascade do |t|
     t.string   "file",       limit: 255
     t.boolean  "main",       limit: 1
@@ -168,16 +182,6 @@ ActiveRecord::Schema.define(version: 20160127101616) do
 
   add_index "reviews", ["breed_id"], name: "index_reviews_on_breed_id", using: :btree
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
-
-  create_table "subscribes", force: :cascade do |t|
-    t.integer  "user_id",       limit: 4
-    t.integer  "subscriber_id", limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
-
-  add_index "subscribes", ["subscriber_id"], name: "index_subscribes_on_subscriber_id", using: :btree
-  add_index "subscribes", ["user_id"], name: "index_subscribes_on_user_id", using: :btree
 
   create_table "topics", force: :cascade do |t|
     t.string   "title",      limit: 255
