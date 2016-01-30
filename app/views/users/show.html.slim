@@ -5,21 +5,7 @@
 div class="content #{"user-page" if current_user != @user}"
   div class="profile-frame"
     div class="info-profile"
-      div class="user-name-title"
-      	strong = @user.nickname
-        span
-          = @user.first_name.nil? || @user.first_name.blank? ? "" : @user.first_name
-          = " "
-		  = @user.last_name.nil? || @user.last_name.blank? ? "" : @user.last_name
-		  = "Аноним" if @user.first_name.blank? && @user.last_name.blank?
-	  div class="user-photo"
-        a href="#"
-          img src="#{@user.avatar.url(:small)}" alt="#" width="198" height="198" /
-      div class="age-holder"
-        span
-          = @user.city ? @user.city.name : "Город не указан"
-          = @user.country ? ", #{@user.country.name}" : ""
-      = render partial: 'subscribe', object: @user, as: 'user'
+      = render partial: 'info_profile', object: @user, as: 'user'
     - if @user.mypets.count == 0
       div class="info-pets"
 	    div class="image-holder"

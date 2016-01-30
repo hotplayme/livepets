@@ -29,9 +29,21 @@ Rails.application.routes.draw do
 
   # COMMENTS CONTOLLER BEGIN
 
-  constraints subdomain: false do
-    get ':any', to: redirect(subdomain: 'www', path: '/%{any}', status: 301), any: /.*/
+
+  # NOTICES CONTROLLER BEGIN
+  resources :notices, only: [:index, :create, :destroy] do
+    get :followers, on: :collection
+    get :following, on: :collection
+    get :newpets,   on: :collection
+    post :breed_subscribers_create,   on: :collection, as: :breed_s, path: 'newpets'
+    delete :breed_subscribers_delete, on: :collection, as: :breed_d, path: 'newpets/:breed_id'
   end
+  # NOTICES CONTROLLER END
+
+
+  #constraints subdomain: false do
+  #  get ':any', to: redirect(subdomain: 'www', path: '/%{any}', status: 301), any: /.*/
+  #end
 
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   devise_scope :user do
@@ -39,7 +51,10 @@ Rails.application.routes.draw do
   end
 
   root   'home#index'
-  resources :users, only: [:show], path: 'user'
+  resources :users, only: [:show], path: 'user' do
+    delete 'subscribers' => 'subscribers#destroy'
+    resources :subscribers, only: [:create]
+  end
   put 'users/update_avatar' => 'users#update_avatar'
   get 'users/update_cities', as: 'update_cities'
   get 'profile/edit' => 'users#edit', as: :edit_user

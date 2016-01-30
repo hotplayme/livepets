@@ -42,6 +42,12 @@ class Admin::BlogsController < AdminController
   def approve
     @blog = Blog.find(params[:admin_blog_id])
     @blog.update(approve: true, comment: 'принят')
+    attach = @blog.blog_attachments.count*5
+    attach = 15 if attach > 15
+    price  = (10 + attach + ActionView::Base.full_sanitizer.sanitize(@blog.body).size*0.02).to_i
+    price  = 50 if price > 50
+    @blog.cost = price
+    @blog.save
     redirect_to admin_blog_path(@blog)
   end
 

@@ -4,6 +4,7 @@
     <p>Последние комментарии. </p>
     <ul class="comments">
       <% blog.comments.each do |comment| %>
+      <a name="<%= comment.id %>"></a>
       <li id="comment_<%= comment.id %>">
         <div class="feed-user-block-item">
           <div class="feed-user-block-item-title">

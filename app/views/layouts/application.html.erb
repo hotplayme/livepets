@@ -41,12 +41,26 @@
           <%= link_to "Моя страница", user_path(current_user.nickname.downcase) %>
         </li>
         <li class="my-massege <%= "active" if request.fullpath == dialogs_path %>">
-		  <%= link_to "Мои сообщения", dialogs_path %>
+          <%= link_to "Мои сообщения", dialogs_path %>
+          <!--if current_user && current_user.dialogs.includes(:messages).where(messages: { state: 'new'}).where.not(messages: { user_id: current_user.id }).count > 0 %>
+              <span class="counter">= current_user.dialogs.includes(:messages).where(messages: { state: 'new'}).where.not(messages: { user_id: current_user.id }).count %></span>
+           end -->
         </li>
         <% end %>
         <li class="my-feed <%= "active" if request.fullpath == feed_path %>">
-          <%= link_to "Лента", feed_path %>
+          <%= link_to "Лента", "#{feed_path}/?sort=my" %>
+          <% if current_user && current_user.my_feed_count > 0 %>
+            <span class="counter"><%= current_user.my_feed_count %></span>
+          <% end %>
         </li>
+        <% if current_user %>
+        <li class="my-comments <%= "active" if request.fullpath == notices_path %>">
+          <%= link_to "Уведомления", notices_path %>
+          <% if Notice.where(user: current_user, new: true).present? %>
+            <span class="counter"><%= Notice.where(user: current_user, new: true).count %></span>
+          <% end %>
+        </li>
+        <% end %>
         <li class="my-dogs <%= "active" if request.fullpath == dogs_breed_path %>">
           <a href="/dogs">Наши собаки</a>
         </li>
@@ -68,7 +82,7 @@
             <%= link_to "admin", admin_index_path %>
         <% end %>
         <% if current_user && current_user.writer %>
-            <%= link_to "Админ зона", writer_index_path %>
+            <b><%= link_to "Админ зона. Внимание новые правила.", writer_index_path %></b>
         <% end %>
       </header>
 

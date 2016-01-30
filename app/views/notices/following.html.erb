@@ -1,0 +1,6 @@
+<%= link_to 'Уведомления', notices_path %> / <%= link_to 'Ваши подписчики', followers_notices_path %> / <%= link_to 'Вы читаете', following_notices_path %> / <%= link_to 'Отслеживание новых питомцев', newpets_notices_path %>
+
+<h1>Их вы читаете (<%= @following.count %>)</h1>
+<% @following.each do |f| %>
+    <p><%= image_tag f.subscribable.avatar.url(:small) %></p>
+<% end %>
