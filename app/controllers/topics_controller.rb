@@ -21,7 +21,7 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     @topic.record_timestamps=false
     @topic.increment!(:views)
-    @posts = @topic.posts.reverse
+    @posts = @topic.posts
     @post  = Post.new
   end
 

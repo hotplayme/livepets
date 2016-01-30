@@ -8,7 +8,7 @@ alternate:
   selector: 'textarea'
   language: 'ru'
   menu: {}
-  toolbar: 'bold italic | media | image'
+  toolbar: 'media'
   plugins:
     - autolink
     - media

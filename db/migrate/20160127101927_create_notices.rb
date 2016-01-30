@@ -9,6 +9,6 @@ class CreateNotices < ActiveRecord::Migration
       t.timestamps null: false
     end
     add_index :notices, :user_id
-    add_index :notices, [:noticeable_id, :noticeable_type]
+    add_index :notices, [:noticeable_id, :noticable_type]
   end
 end

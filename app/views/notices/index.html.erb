@@ -1,7 +1,15 @@
-<h1>У вас <%= @notices.where(new:true).count %> новых комментариев</h1>
-<% @notices.each do |notice| %>
+<%= link_to 'Уведомления', notices_path %> / <%= link_to 'Ваши подписчики', followers_notices_path %> / <%= link_to 'Вы читаете', following_notices_path %> / <%= link_to 'Отслеживание новых питомцев', newpets_notices_path %>
+<h1>У вас <%= current_user.my_notices.count %> новых уведомлений</h1>
+<% current_user.my_notices.each do |notice| %>
     <p>
-      У вас новый комментарий в записе <%= link_to notice.noticeable.title, "#{blog_path(notice.noticeable_id)}/##{notice.cid}" %>
+      <% if notice.noticeable.class.name == 'Blog' %>
+        <p>Новый комментарий в теме на которую вы подписаны - <%= link_to notice.noticeable.title, notice.noticeable %>
+      <% elsif notice.noticeable.class.name == 'User' %>
+        <p><%= notice.add ? "У вас новый подписчик" : "От вас отписались" %> - <%= link_to notice.noticeable.nickname, user_path(notice.noticeable.nickname.downcase) %>, <%= time_ago_in_words(notice.created_at) %> назад
+      <% elsif notice.noticeable.class.name == 'Mypet' %>
+        <p>На сайте новый питомец- <%= link_to notice.noticeable.name, user_path(notice.noticeable.user.nickname) %>, <%= time_ago_in_words(notice.created_at) %> назад
+      <% end %>
+
       <% if notice.new %>
         <font color="red">
             NEW

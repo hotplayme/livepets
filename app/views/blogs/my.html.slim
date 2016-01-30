@@ -1,5 +1,5 @@
 - content_for :title, "Лента новостей - LivePets"
-| Количество подписок #{current_user.subscribes.count}
+| Количество подписок #{current_user.subscribers.count}
 div class="content"
   ul class="feed-list"
     - @blogs.each do |blog|
@@ -14,8 +14,8 @@ div class="content"
 			h4 = blog.title
 			div class="text-holder"
 			  p = blog.body.first(280)
-              - if blog.pictures.count > 0
-                p = image_tag blog.pictures.first.image.url(:thumb)
+              - if blog.blog_attachments.count > 0
+                p = image_tag blog.blog_attachments.first.image.url(:thumb)
               a href="#{blog_path(blog)}"
                 font color="red"
                   b Читать далее

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160128035921) do
+ActiveRecord::Schema.define(version: 20160130172631) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",               limit: 255
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20160128035921) do
     t.integer  "blog_attachments_count", limit: 4,     default: 0
     t.boolean  "payed",                  limit: 1,     default: false
     t.string   "comment",                limit: 255,   default: "на проверке"
+    t.integer  "cost",                   limit: 4,     default: 0
   end
 
   create_table "breeds", force: :cascade do |t|
@@ -135,6 +136,7 @@ ActiveRecord::Schema.define(version: 20160128035921) do
     t.text     "body",            limit: 65535
     t.boolean  "new",             limit: 1,     default: true
     t.integer  "cid",             limit: 4
+    t.boolean  "add",             limit: 1,     default: true
   end
 
   add_index "notices", ["noticeable_id", "noticeable_type"], name: "index_notices_on_noticeable_id_and_noticeable_type", using: :btree
@@ -183,6 +185,17 @@ ActiveRecord::Schema.define(version: 20160128035921) do
   add_index "reviews", ["breed_id"], name: "index_reviews_on_breed_id", using: :btree
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
+  create_table "subscribers", force: :cascade do |t|
+    t.integer  "user_id",           limit: 4
+    t.integer  "subscribable_id",   limit: 4
+    t.string   "subscribable_type", limit: 255
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "subscribers", ["subscribable_id", "subscribable_type"], name: "index_subscribers_on_subscribable_id_and_subscribable_type", using: :btree
+  add_index "subscribers", ["user_id"], name: "index_subscribers_on_user_id", using: :btree
+
   create_table "topics", force: :cascade do |t|
     t.string   "title",      limit: 255
     t.text     "body",       limit: 65535
@@ -227,6 +240,7 @@ ActiveRecord::Schema.define(version: 20160128035921) do
     t.boolean  "writer",                 limit: 1,   default: false
     t.integer  "balance",                limit: 4,   default: 0
     t.string   "purse",                  limit: 255
+    t.integer  "my_feed_count",          limit: 4,   default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -1,0 +1,21 @@
+<h1>Вас читает <%= current_user.subscribers.count %> человек</h1>
+<% current_user.subscribers.each do |f|  %>
+    <p><%= link_to f.user.nickname, user_path(f.user.nickname.downcase) %></p>
+<% end %>
+<hr>
+<h1>Вы читаете <%= current_user.my_subscribers.where(subscribable_type:'User').count %> человек</h1>
+<% Subscriber.where(subscribable_type:'User', user: current_user).each do |f|  %>
+    <p><%= link_to f.subscribable.nickname, user_path(f.subscribable.nickname.downcase) %></p>
+<% end %>
+<hr>
+<h1>Лента</h1>
+<% ids = current_user.my_subscribers.where(subscribable_type:'User').pluck(:subscribable_id) %>
+<% @blogs = Blog.where("blogs.created_at < ?", Time.now).where(del: false).joins(:user).where(users: {id: ids}).order('created_at DESC') %>
+<% @blogs.each do |blog| %>
+    <p><%= link_to blog.title, blog_path(blog) %></p>
+<% end %>
+<hr>
+<h1>Блоги на которые вы подписаны</h1>
+<% current_user.my_subscribers.where(subscribable_type:'Blog').each do |s| %>
+    <p><%= s.subscribable.title %>, <%= s.subscribable.user.nickname %></p>
+<% end %>

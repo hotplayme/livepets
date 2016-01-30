@@ -48,13 +48,16 @@
         </li>
         <% end %>
         <li class="my-feed <%= "active" if request.fullpath == feed_path %>">
-          <%= link_to "Лента", feed_path %>
+          <%= link_to "Лента", "#{feed_path}/?sort=my" %>
+          <% if current_user && current_user.my_feed_count > 0 %>
+            <span class="counter"><%= current_user.my_feed_count %></span>
+          <% end %>
         </li>
         <% if current_user %>
         <li class="my-comments <%= "active" if request.fullpath == notices_path %>">
-          <%= link_to "Комментарии", notices_path %>
-          <% if current_user.notices.where(new: true).present? %>
-            <span class="counter"><%= current_user.notices.where(new: true).count %></span>
+          <%= link_to "Уведомления", notices_path %>
+          <% if Notice.where(user: current_user, new: true).present? %>
+            <span class="counter"><%= Notice.where(user: current_user, new: true).count %></span>
           <% end %>
         </li>
         <% end %>
@@ -79,7 +82,7 @@
             <%= link_to "admin", admin_index_path %>
         <% end %>
         <% if current_user && current_user.writer %>
-            <%= link_to "Админ зона", writer_index_path %>
+            <b><%= link_to "Админ зона. Внимание новые правила.", writer_index_path %></b>
         <% end %>
       </header>
 

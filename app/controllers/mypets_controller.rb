@@ -13,6 +13,11 @@ class MypetsController < ApplicationController
   def create
     pet = current_user.mypets.new(pet_params)
     if pet.save
+      #разослать уведомления о новом питомце подписчикам данной породы
+      pet.breed.subscribers.where.not(user:current_user).each do |s|
+        # создаем уведомление каждому подписчику
+        pet.notices.create(user: s.user)
+      end
       redirect_to edit_mypet_path(pet)
     else
       flash.now[:notice] = 'Не верно заполнено поле'

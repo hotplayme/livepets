@@ -3,12 +3,18 @@ class CommentsController < ApplicationController
   before_action :load_commentable, only: [:create]
 
   def create
+    # создаем коммент для комментируемого объекта
     @comment = @commentable.comments.create(comments_params.merge(user: current_user))
     @comment.user.increment!(:repa, 3)
-    # проверка, есть ли у текущего юзера уведомление о новой записи в этом объекте
-    if @commentable.user.id.to_i != current_user.id.to_i
-      @notice  = @commentable.notices.create(user:@commentable.user, cid: @comment.id) unless @commentable.user.notices.where(noticeable_type: @commentable.class.name, noticeable_id: @commentable.id, new: true).present?
+    # создаем подписчика на данный блог для current_user, если ее нет
+    unless @commentable.subscribers.where(user: current_user).present?
+      @commentable.subscribers.create(user: current_user)
     end
+    # рассылаем подписчикам уведомление, кроме текущего юзера
+    @commentable.subscribers.where.not(user: current_user).each do |subscriber|
+      @commentable.notices.create(user:subscriber.user, cid: @comment.id) unless Notice.where(noticeable: @commentable, user: subscriber.user, new: true).present?
+    end
+
   end
 
   def destroy

@@ -17,7 +17,7 @@ class Mypet < ActiveRecord::Base
   belongs_to :breed
   has_many   :votes, as: :votable, dependent: :destroy
   has_many   :pet_attachments, dependent: :destroy
-  #has_many :attachments, as: :attachable, dependent: :destroy
+  has_many   :notices,     as: :noticeable,   dependent: :destroy
 
   def self.default_url
     "/images/pet_no_image_1.png"

@@ -1,0 +1,22 @@
+div class="user-name-title"
+  strong = user.nickname
+  span
+    = user.first_name.nil? || user.first_name.blank? ? "" : user.first_name
+    = " "
+    = user.last_name.nil? || user.last_name.blank? ? "" : user.last_name
+    = "Аноним" if user.first_name.blank? && user.last_name.blank?
+div class="user-photo"
+  a href="#"
+    img src="#{user.avatar.url(:small)}" alt="#" width="198" height="198" /
+div class="age-holder"
+  span
+    = user.city ? user.city.name : "Город не указан"
+    = user.country ? ", #{user.country.name}" : ""
+- if current_user && current_user == user
+  = link_to "Редактировать профиль", edit_user_path, class: "show-all"
+- else
+  = link_to "Отправить сообщение", dialogs_show_path(user.nickname.downcase), class: "send-massege"
+  - if current_user && user.subscribers.where(subscribable_type: 'User', subscribable_id: user.id, user: current_user).present?
+    = link_to 'Вы подписаны', user_subscribers_path(user.nickname.downcase), class: "news-good", remote: true, method: :delete, title: 'отписаться'
+  - else
+    = link_to 'Подписаться на обновления', user_subscribers_path(user.nickname.downcase), class: "news", method: :post, remote: true

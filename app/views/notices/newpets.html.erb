@@ -1,0 +1,31 @@
+<%= link_to 'Уведомления', notices_path %> / <%= link_to 'Ваши подписчики', followers_notices_path %> / <%= link_to 'Вы читаете', following_notices_path %> / <%= link_to 'Отслеживание новых питомцев', newpets_notices_path %>
+
+<p>Вы подписаны на новых питомцев породы:</p>
+<% Breed.where(id: @ids).each do |breed| %>
+    <p><%= breed.name %> - <%= link_to 'Отписаться', breed_d_notices_path(breed), method: :delete %></p>
+<% end %>
+<hr>
+<p>Подписаться на другие породы:</p>
+<%= form_tag breed_s_notices_path, method: :post %>
+<p>Собаки</p>
+<% @dogs.each do |breed| %>
+    <!--Если есть подписка на данную породу, то ставим checked = true-->
+    <% if @ids.include? breed.id %>
+        <p><%= breed.name %><%= check_box_tag 'breed_id[]', breed.id, 1 %></p>
+    <% else %>
+        <p><%= breed.name %><%= check_box_tag 'breed_id[]', breed.id %></p>
+    <% end %>
+
+<% end %>
+
+<p>Кошки</p>
+<% @cats.each do |breed| %>
+    <!--Если есть подписка на данную породу, то ставим checked = true-->
+    <% if @ids.include? breed.id %>
+        <p><%= breed.name %><%= check_box_tag 'breed_id[]', breed.id, 1 %></p>
+    <% else %>
+        <p><%= breed.name %><%= check_box_tag 'breed_id[]', breed.id %></p>
+    <% end %>
+<% end %>
+
+<%= submit_tag 'Подписаться' %>

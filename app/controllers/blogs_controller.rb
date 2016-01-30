@@ -1,10 +1,15 @@
 class BlogsController < ApplicationController
 
   include Voted
-  before_action :blog_load, only: [:destroy]
 
   def index
-    @blogs = Blog.where("created_at < ?", Time.now).where(del: false).order('created_at DESC').page(params[:page]).per(10)
+    if params[:sort] == 'my' && current_user
+      ids = Subscriber.where(subscribable_type: 'User', user_id: current_user.id).pluck(:subscribable_id)
+      @blogs = Blog.where("blogs.created_at < ?", Time.now).where(del: false).joins(:user).where(users: {id: ids}).order('created_at DESC').page(params[:page]).per(10)
+      current_user.update(my_feed_count: 0)
+    else
+      @blogs = Blog.where("created_at < ?", Time.now).where(del: false).order('created_at DESC').page(params[:page]).per(10)
+    end
   end
   
   def new
@@ -15,6 +20,7 @@ class BlogsController < ApplicationController
   end
   
   def create
+    #Установка created_at для писателей
     if current_user.writer
       if current_user.blogs.count > 0
         if Time.now - current_user.blogs.last.created_at > 12.hours
@@ -31,13 +37,19 @@ class BlogsController < ApplicationController
 
     @blog = current_user.blogs.build(blog_params.merge(created_at: time))
     if @blog.save
+      # создание картинок, если они есть
       if params[:attach_ids].present?
         BlogAttachment.where(id: params[:attach_ids]).update_all(blog_id: @blog.id, user_id: current_user.id)
       end
       increment = 20 + (@blog.blog_attachments.count*2)
-
       @blog.user.increment!(:repa, increment)
-      current_user.subscribes.create(blog: @blog)
+
+      # Создание подписки на этот блог для автора
+      @blog.subscribers.create(user: current_user)
+
+      # Увеличение my_feed_count для подписчиков
+      current_user.subscribers.joins(:user).update_all("users.my_feed_count = users.my_feed_count + 1")
+
       redirect_to blog_path(@blog)
     else
       flash[:notice] = "Заполните все поля"
@@ -56,7 +68,7 @@ class BlogsController < ApplicationController
       @blog = Blog.find(params[:id])
       @comments = @blog.comments
       @comment = Comment.new
-      @blog.notices.update_all(new:false)
+      @blog.notices.where(user: current_user).update_all(new:false) if current_user
     rescue
       redirect_to root_path, status: 301
     end
@@ -85,11 +97,12 @@ class BlogsController < ApplicationController
   end
   
   def destroy
+    @blog = Blog.find(params[:id])
     if current_user == @blog.user
       increment = 20 + (@blog.blog_attachments.count*2)
       @blog.user.increment!(:repa, -increment)
       @blog.update(del:true)
-      redirect_to user_path(@blog.user.nickname.downcase)
+      redirect_to user_path(current_user.nickname.downcase)
     else
       redirect_to root_path
     end
@@ -99,7 +112,6 @@ class BlogsController < ApplicationController
     @attachment = BlogAttachment.find(params[:id])
     @attachment.destroy if @attachment.user_id == current_user.id
   end
-
   
   private
 
@@ -107,8 +119,5 @@ class BlogsController < ApplicationController
     params.require(:blog).permit(:title, :body, :approve, attachments_attributes:[:file])
   end
 
-  def blog_load
-    @blog = Blog.find(params[:id])
-  end
 
 end
