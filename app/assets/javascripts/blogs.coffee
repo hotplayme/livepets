@@ -18,3 +18,7 @@ $ ->
       $(this).html('<center><img src="/images/480.gif"></center>')
     error: ->
       $(this).button('Произошла ошибка. Повторите запрос позже...')
+
+  $('input#feed').on 'change', ->
+    $('input#feed').not(this).prop 'checked', false
+    return

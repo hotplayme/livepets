@@ -3,13 +3,14 @@ class BlogsController < ApplicationController
   include Voted
 
   def index
-    if params[:sort] == 'my' && current_user
-      ids = Subscriber.where(subscribable_type: 'User', user_id: current_user.id).pluck(:subscribable_id)
-      @blogs = Blog.where("blogs.created_at < ?", Time.now).where(del: false).joins(:user).where(users: {id: ids}).order('created_at DESC').page(params[:page]).per(10)
-      current_user.update(my_feed_count: 0)
-    else
       @blogs = Blog.where("created_at < ?", Time.now).where(del: false).order('created_at DESC').page(params[:page]).per(10)
-    end
+  end
+
+  def my
+    ids = Subscriber.where(subscribable_type: 'User', user_id: current_user.id).pluck(:subscribable_id)
+    @blogs = Blog.where("blogs.created_at < ?", Time.now).where(del: false).joins(:user).where(users: {id: ids}).order('created_at DESC').page(params[:page]).per(10)
+    current_user.update(my_feed_count: 0)
+    render 'blogs/index'
   end
   
   def new

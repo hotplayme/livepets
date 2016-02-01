@@ -47,12 +47,19 @@
            end -->
         </li>
         <% end %>
+
+        <!-- ЛЕНТА -->
         <li class="my-feed <%= "active" if request.fullpath == feed_path %>">
-          <%= link_to "Лента", "#{feed_path}/?sort=my" %>
-          <% if current_user && current_user.my_feed_count > 0 %>
+        <% if current_user && current_user.my_feed_count > 0 %>
+            <%= link_to "Лента", "#{feed_path}/my" %>
             <span class="counter"><%= current_user.my_feed_count %></span>
-          <% end %>
+        <% else %>
+            <%= link_to "Лента", feed_path %>
+        <% end %>
         </li>
+        <!-- ЛЕНТА -->
+
+        <!-- УВЕДОМЛЕНИЯ -->
         <% if current_user %>
         <li class="my-comments <%= "active" if request.fullpath == notices_path %>">
           <%= link_to "Уведомления", notices_path %>
@@ -61,6 +68,8 @@
           <% end %>
         </li>
         <% end %>
+        <!-- УВЕДОМЛЕНИЯ -->
+
         <li class="my-dogs <%= "active" if request.fullpath == dogs_breed_path %>">
           <a href="/dogs">Наши собаки</a>
         </li>
