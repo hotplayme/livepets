@@ -70,6 +70,12 @@
         <% end %>
         <!-- УВЕДОМЛЕНИЯ -->
 
+        <!-- ПИТОМЦЫ -->
+        <li class="my-dogs <%= "active" if request.fullpath == dogs_breed_path %>">
+          <a href="/dogs">Питомцы</a>
+        </li>
+        <!-- ПИТОМЦЫ -->
+
         <li class="my-dogs <%= "active" if request.fullpath == dogs_breed_path %>">
           <a href="/dogs">Наши собаки</a>
         </li>
