@@ -1,12 +1,17 @@
 <% content_for :title, "Лента новостей - LivePets" %>
 <script>
-    function myFunc(value) {
-        window.location = value
-    }
+    $(function(){
+        $("input[type='checkbox']").change(function(){
+            var item=$(this);
+            if(item.is(":checked"))
+            {
+                window.location.href= item.data("target")
+            }
+        });
+    });
 </script>
 <div class="content narrow">
   <div class="new-post-form no-bg">
-    <!--= select_tag "slaves", options_from_collection_for_select(@slaves, "id", "domain", @slave.id), onchange:'myFunc(this.value)'-->
 
     <i></i>
     <i></i>
@@ -16,8 +21,9 @@
           <div class="filter-block-row">
             <div class="filter-block-col">
               <label>
+
                 <span class="llabel">показывать всех участников</span>
-                <span><input type="checkbox" value="asc" checked>
+                <span><input type="checkbox" id="feed" data-target="/feed/" <%= "checked" if params[:action] == 'index' %>>
                   <span class="check"></span>
                 </span>
               </label>
@@ -58,7 +64,7 @@
               <label>
                 <span class="llabel">только мои подписки</span>
                 <span>
-				    <input type="checkbox" checked>
+				    <input type="checkbox" id="feed" data-target="/feed/my/" <%= "checked" if params[:action] == 'my' %>>
 					<span class="check"></span>
 				</span>
               </label>

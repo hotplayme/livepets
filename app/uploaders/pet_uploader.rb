@@ -20,6 +20,10 @@ class PetUploader < CarrierWave::Uploader::Base
     process resize_to_fill: [200, 200]
   end
 
+  version :thumb_185 do
+    process resize_to_fill: [180, 135]
+  end
+
   version :thumb_174 do
     process resize_to_fill: [174, 120]
   end

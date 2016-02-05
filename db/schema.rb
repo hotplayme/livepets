@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160130172631) do
+ActiveRecord::Schema.define(version: 20160205042707) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",               limit: 255
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20160130172631) do
     t.boolean  "payed",                  limit: 1,     default: false
     t.string   "comment",                limit: 255,   default: "на проверке"
     t.integer  "cost",                   limit: 4,     default: 0
+    t.integer  "body_size",              limit: 4
   end
 
   create_table "breeds", force: :cascade do |t|
@@ -144,10 +145,11 @@ ActiveRecord::Schema.define(version: 20160130172631) do
 
   create_table "pet_attachments", force: :cascade do |t|
     t.string   "file",       limit: 255
-    t.boolean  "main",       limit: 1
+    t.boolean  "main",       limit: 1,   default: false
     t.integer  "mypet_id",   limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.integer  "user_id",    limit: 4
   end
 
   create_table "posts", force: :cascade do |t|
@@ -180,6 +182,7 @@ ActiveRecord::Schema.define(version: 20160130172631) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.string   "title",          limit: 255
+    t.string   "breed_type",     limit: 255
   end
 
   add_index "reviews", ["breed_id"], name: "index_reviews_on_breed_id", using: :btree

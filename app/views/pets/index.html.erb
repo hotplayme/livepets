@@ -1,0 +1,12 @@
+<h3>Наши питомцы (<%= @pets.count %>)</h3>
+<p>Фильтры:</p>
+<p>Собаки <input type="checkbox" value="Dog" id="breed" checked></p>
+<p>Кошки <input type="checkbox" value="Cat" id="breed" checked></p>
+<div id="loading">
+
+</div>
+<ol id="list">
+  <% @pets.each do |pet| %>
+    <%= render partial: 'mypet', object: pet, as: 'pet' %>
+  <% end %>
+</ol>

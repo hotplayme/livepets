@@ -1,4 +1,5 @@
 class MypetsController < ApplicationController
+
   include Voted
 
   def new
@@ -9,10 +10,22 @@ class MypetsController < ApplicationController
       @breeds = Breed.where(breed_type:'dog')
     end
   end
+
+  def image_create
+    params[:mypet][:pet_attachment].each do |file|
+      @file = current_user.pet_attachments.create(file: file)
+    end
+  end
   
   def create
-    pet = current_user.mypets.new(pet_params)
+    pet = current_user.mypets.build(pet_params)
     if pet.save
+      # создание картинок, если они есть
+      if params[:attach_ids].present?
+        PetAttachment.where(id: params[:attach_ids]).update_all(mypet_id: pet.id)
+        pet.pet_attachments.first.update(main:true)
+        pet.update(pet_attachments_count: pet.pet_attachments.count)
+      end
       #разослать уведомления о новом питомце подписчикам данной породы
       pet.breed.subscribers.where.not(user:current_user).each do |s|
         # создаем уведомление каждому подписчику
@@ -20,9 +33,6 @@ class MypetsController < ApplicationController
       end
       redirect_to edit_mypet_path(pet)
     else
-      flash.now[:notice] = 'Не верно заполнено поле'
-      @pet = Mypet.new
-      @breeds = Breed.where(breed_type:'dog')
       render 'new'
     end
   end
@@ -39,19 +49,14 @@ class MypetsController < ApplicationController
   def update
     @pet = Mypet.find(params[:id])
     if current_user == @pet.user
-      if breed = Breed.find_by_name(params[:mypet][:breed_id])
-        @pet.update(pet_params)
-        @pet.breed_id = breed.id
-        @pet.save
-        if params[:images]
-          params[:images].each do |image|
-            @pet.pet_attachments.create(file:image, main:"#{ @pet.pet_attachments.count == 0 ? "true" : "false" }")
-          end
+      if params[:attach_ids].present?
+        PetAttachment.where(id: params[:attach_ids]).update_all(mypet_id: @pet.id)
+        if @pet.pet_attachments.where(main: true).count == 0
+          @pet.pet_attachments.first.update(main:true)
         end
-        redirect_to edit_mypet_path(@pet)
-      else
-        flash[:notice] = "Правильно выберите породу"
-        render :action => 'edit'
+      end
+      if @pet.update(pet_params.merge(approve: false))
+        redirect_to user_path(@pet.user.nickname.downcase)
       end
     else
       redirect_to root_path
@@ -81,9 +86,9 @@ class MypetsController < ApplicationController
 
   def a_delete
     @attachment = PetAttachment.find(params[:id])
-    @pet = @attachment.mypet
-    if @pet.user == current_user
+    if @attachment.user == current_user
       if @attachment.main
+        @pet = @attachment.mypet
         @attachment.destroy
         @pet.pet_attachments.first.update(main:true) if @pet.pet_attachments.count > 0
       else

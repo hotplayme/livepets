@@ -1,6 +1,7 @@
 class BlogAttachment < ActiveRecord::Base
 
-  belongs_to :blog, counter_cache: true
+  belongs_to :blog
   mount_uploader :file, BlogUploader
+
 
 end

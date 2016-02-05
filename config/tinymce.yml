@@ -13,11 +13,12 @@ alternate:
     - autolink
     - media
     - image
+    - paste
+  paste_as_text: 'true'
   setup :
     function(ed) {
       ed.on('init', function()
       {
           this.getDoc().body.style.fontSize = '15px';
-          ed.schema.addValidElements('img[*]');
       });
     }

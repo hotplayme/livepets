@@ -42,7 +42,7 @@ div class="content #{"user-page" if current_user != @user}"
                       div class="slideset"
                         div class="slide active"
                           = image_tag Mypet.main_image(pet)
-                        - pet.pet_attachments.where(main:false).limit(10).each do |attachment|
+                        - pet.pet_attachments.where(main: false).limit(10).each do |attachment|
                           div class="slide"
                             = image_tag attachment.file.thumb_600
                         div class="data-pet"

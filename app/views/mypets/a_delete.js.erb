@@ -1,6 +1,1 @@
-<% if @attachment.main %>
-    $('.download-photo').html('<%= j render partial: 'mypets/attachment', object: @pet , as: 'pet' %>');
-    $('.photo-profile').html('<%= j render partial: 'mypets/avatar', object: @pet , as: 'pet' %>');
-<% else %>
-    $('li#' + <%= @attachment.id %>).remove();
-<% end %>
+$('li#attach_' + <%= @attachment.id %>).remove();

@@ -23,9 +23,4 @@ table border=1
         td bgcolor='green'
       - else
         td bgcolor="red" = link_to 'pay', admin_blog_pay_blog_path(blog.id), remote: true if blog.approve
-      - if blog.blog_attachments.count > 3
-        - attach = 15
-      - else
-        - attach = blog.blog_attachments.count*5
-      - price = (10 + attach + ActionView::Base.full_sanitizer.sanitize(blog.body).size*0.02).round(2)
-      td = price
+      td = blog.cost

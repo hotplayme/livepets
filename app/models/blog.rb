@@ -14,4 +14,14 @@ class Blog < ActiveRecord::Base
   has_many :blog_attachments, dependent: :destroy
 
   accepts_nested_attributes_for :blog_attachments
+
+  after_create :calculate_body_size
+
+  private
+
+  def calculate_body_size
+    body_size = ActionView::Base.full_sanitizer.sanitize(self.body).size
+    self.update(body_size: body_size)
+  end
+
 end

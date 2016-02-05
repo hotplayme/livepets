@@ -8,6 +8,10 @@ class BlogUploader < CarrierWave::Uploader::Base
     process resize_to_fill: [180, 135]
   end
 
+  version :thumb_index do
+    process resize_to_fill: [280, 193]
+  end
+
   storage :file
 
   def store_dir

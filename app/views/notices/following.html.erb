@@ -2,5 +2,5 @@
 
 <h1>Их вы читаете (<%= @following.count %>)</h1>
 <% @following.each do |f| %>
-    <p><%= image_tag f.subscribable.avatar.url(:small) %></p>
+    <p><%= link_to (image_tag f.subscribable.avatar.url(:small)), user_path(f.subscribable.nickname.downcase) %></p>
 <% end %>
