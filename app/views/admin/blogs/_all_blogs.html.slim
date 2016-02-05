@@ -15,7 +15,7 @@ table border=1
       td bgcolor="#{"red" if blog.created_at > Time.now }" width="10" = blog.id
       td = link_to blog.title.first(15), admin_blog_path(blog), target: "_blank"
       td = blog.blog_attachments.count
-      td = blog.created_at.strftime("%d %b %Y")
+      td = blog.created_at.strftime("%H:%M - %d %b %Y")
       td = link_to blog.user.nickname, user_path(blog.user.nickname.downcase)
       td = link_to 'edit', edit_admin_blog_path(blog)
       td = link_to 'del', admin_blog_path(blog), method: :delete

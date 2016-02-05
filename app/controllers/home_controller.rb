@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   
   def index
+    @blogs = Blog.where("blog_attachments_count > 0").where("created_at < ?", Time.now).where(del: false).where("body_size > ?", 300).order("Rand()").limit(6)
     @articles = Article.where("created_at < ?", Time.now).order("created_at DESC").limit(6)
     @pet_day = Winner.last.user.mypets.where("pet_attachments_count > 0").sample
     @pets = Mypet.where("pet_attachments_count > 0").order("Rand()").limit(12)

@@ -41,9 +41,38 @@ Rails.application.routes.draw do
   # NOTICES CONTROLLER END
 
 
-  #constraints subdomain: false do
-  #  get ':any', to: redirect(subdomain: 'www', path: '/%{any}', status: 301), any: /.*/
-  #end
+  # PETS CONTROLLER BEGIN #
+  resources :pets
+  post 'pets/filter' => 'pets#index'
+  # PETS CONTROLLER END #
+
+
+  # REVIEWS CONTROLLER BEGIN #
+  resources :reviews, except: [:show] do
+    resources :comments, defaults: { commentable: 'reviews' }
+  end
+  get '/reviews/:breed_type' => 'reviews#breed_type', as: :reviews_type
+  get '/reviews/:breed_type/:breed_translate' => 'reviews#breed_translate', as: :reviews_translate
+  get 'reviews/:breed_type/:breed_translate/:id' => 'reviews#show', as: :review_show
+  # REVIEWS CONTROLLER END #
+
+
+  # MYPETS CONTROLLER BEGIN #
+  get 'pet/update_breeds' => 'mypets#update_breeds', path: 'pet/update_breeds', as: 'update_breeds'
+  resources :mypets, path: 'pet' do
+    post :image_create, on: :collection
+    put :image_create, on: :collection
+    get :do_main, path: 'attach/:id'
+    delete :a_delete, path: '/pet_attach/:id', on: :collection
+    member do
+      get :vote
+    end
+  end
+  # MYPETS CONTROLLER END #
+
+  constraints subdomain: false do
+    get ':any', to: redirect(subdomain: 'www', path: '/%{any}', status: 301), any: /.*/
+  end
 
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   devise_scope :user do
@@ -70,23 +99,13 @@ Rails.application.routes.draw do
   get    'refresh'           => 'home#refresh', as: :refresh
   get    'weekly'            => 'home#weekly',  as: :weekly
 
-  get 'pet/update_breeds' => 'mypets#update_breeds', path: 'pet/update_breeds', as: 'update_breeds'
-  resources :mypets, path: 'pet' do
-    get :do_main, path: 'attach/:id'
-    delete :a_delete, path: 'attach/:id'
-    member do
-      get :vote
-      end
-  end
 
 
 
 
 
-  get 'reviews/:breed_translate/:id' => 'reviews#show', as: :review
-  resources :reviews, except: [:show] do
-    resources :comments, defaults: { commentable: 'reviews' }
-  end
+
+
 
   resources :mini_reviews, path: '5kopeek', only: [:index, :new, :create]
   get '5kopeek/:breed_translate' => 'mini_reviews#breed', as: :breed_5kopeek

@@ -1,0 +1,67 @@
+<% content_for :title, "Редактирование питомца - LivePets" %>
+<div class="content narrow">
+  <div class="new-post-form no-bg">
+    <i></i>
+    <i></i>
+    <%= form_for @pet, :method => :put do |f|  %>
+        <fieldset>
+          <div class="reg-col">
+            <div class="pic-block"><img src="<%= @pet.pet_attachments.where(main:true).first.file.thumb_200 if @pet.pet_attachments.where(main:true).count > 0 %>" alt=""></div>
+          </div>
+          <div class="reg-col">
+            <h3>Профиль питомца:</h3>
+            <label class="field-new">
+              <p>Кличка</p>
+              <span><%= f.text_field :name, class:"text", required: true, minlength:"4" %></span>
+            </label>
+            <label class="field-new">
+              <p>Кто мы?</p>
+              <%= select_tag :breed_type, "<option value='dog'>Собака</option><option value='cat'>Кошка</option>".html_safe %>
+            </label>
+            <label class="field-new">
+              <p>Порода</p>
+              <%= f.select :breed_id, options_for_select(@breeds.collect { |country| [country.name.titleize, country.id] }, 1), {}, { id: 'breeds_select' } %>
+            </label>
+            <label class="field-new">
+              <p>Пол</p>
+              <%= f.select :sex, "<option value='1'>Мальчик</option><option value='2'>Девочка</option>".html_safe %>
+            </label>
+            <label class="field-new">
+              <p>Дата Рождения</p>
+              <span><%= f.date_select :birthday, class: 'text', :start_year =>  Time.now.year - 25, :end_year => Time.now.year, :order => [:day, :month, :year], :use_month_names => ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь','Декабрь'] %></span>
+            </label>
+            <br>
+          </div>
+        </fieldset>
+
+        <div class="edit-post-block">
+          <label class="field">
+            <p>Добавить фото (можно выбрать до 10 файлов)</p>
+        <span class="input-file">
+          <%= f.file_field :pet_attachment, multiple: true, accept:'image/*' %>
+          <span class="dummy-bttn">выберите файл</span>
+        </span>
+            <div class="vote-list-progress">
+          <span class="vote-list-progress-bg" style="display: none;">
+            <span class="vote-list-progress-state" style="width: 0%;"></span>
+          </span>
+            </div>
+          </label>
+          <ul class="post-pics">
+            <% @pet.pet_attachments.each do |image| %>
+                <li id="attach_<%= image.id %>">
+                  <%= image_tag image.file.url(:thumb_185) %>
+                  <%= link_to 'Удалить', a_delete_mypets_path(image), method: :delete, remote: true %>
+                </li>
+            <% end %>
+          </ul>
+          <br>
+          <div id="picture_ids">
+
+          </div>
+          <div class="to-center"><%= button_tag "Сохранить", data: { disable_with: 'Сохраняем...' } %></div>
+
+        </div>
+    <% end %>
+  </div>
+</div>

@@ -1,3 +1,4 @@
+<p><font color="red">Страница в стадии разработки</font></p>
 <%= link_to 'Уведомления', notices_path %> / <%= link_to 'Ваши подписчики', followers_notices_path %> / <%= link_to 'Вы читаете', following_notices_path %> / <%= link_to 'Отслеживание новых питомцев', newpets_notices_path %>
 <h1>У вас <%= current_user.my_notices.count %> новых уведомлений</h1>
 <% current_user.my_notices.each do |notice| %>

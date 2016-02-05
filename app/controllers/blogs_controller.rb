@@ -24,10 +24,10 @@ class BlogsController < ApplicationController
     #Установка created_at для писателей
     if current_user.writer
       if current_user.blogs.count > 0
-        if Time.now - current_user.blogs.last.created_at > 12.hours
+        if Time.now - current_user.blogs.last.created_at > 24.hours
           time = Time.now
         else
-          time = current_user.blogs.last.created_at + Random.rand(600..800).minutes
+          time = current_user.blogs.last.created_at + Random.rand(1000..1440).minutes
         end
       else
         time = Time.now
@@ -41,6 +41,7 @@ class BlogsController < ApplicationController
       # создание картинок, если они есть
       if params[:attach_ids].present?
         BlogAttachment.where(id: params[:attach_ids]).update_all(blog_id: @blog.id, user_id: current_user.id)
+        @blog.update(blog_attachments_count: @blog.blog_attachments.count)
       end
       increment = 20 + (@blog.blog_attachments.count*2)
       @blog.user.increment!(:repa, increment)

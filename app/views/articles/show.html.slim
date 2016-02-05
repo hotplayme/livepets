@@ -1,4 +1,5 @@
 - content_for :title, "#{@article.title} - LivePets"
+- content_for :description, ActionView::Base.full_sanitizer.sanitize(@article.body).first(150)
 div class="content"
   div class="note-holder"
     div class="note"

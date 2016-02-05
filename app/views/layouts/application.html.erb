@@ -2,7 +2,7 @@
 <head>
   <meta charset="utf-8">
   <title><%= h(yield(:title) || "LivePets") %></title>
-
+  <meta name="description" content="<%= h(yield(:description) || "LivePets") %>">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
@@ -71,8 +71,8 @@
         <!-- УВЕДОМЛЕНИЯ -->
 
         <!-- ПИТОМЦЫ -->
-        <li class="my-dogs <%= "active" if request.fullpath == dogs_breed_path %>">
-          <a href="/dogs">Питомцы</a>
+        <li class="my-dogs <%= "active" if request.fullpath == pets_path %>">
+          <%= link_to 'Питомцы', pets_path %>
         </li>
         <!-- ПИТОМЦЫ -->
 

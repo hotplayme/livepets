@@ -1,4 +1,5 @@
 - content_for :title, "LivePets - Клуб любителей домашних животных"
+- content_for :description, "Социальная сеть для любитилей домашних животных. Верный друг для тебя и твоего питомца. Размещай фотографии и видеозаписи, рассказывай самые важные события, задавай вопросы и делись опытом, изучай новое. На LivePets все только самое интересное о наших четырехлапых друзьях."
 div class="content"
   ul class="photo-list"
     - Mypet.where("pet_attachments_count > 0").last(5).reverse.each do |pet|
@@ -42,7 +43,28 @@ div class="content"
               = link_to user.nickname, user_path(user.nickname.downcase)
               span = user.repa_total
 
-  div class="title-holder": h2 Самое интересное
+  div class="title-holder": h2 Блоги
+  div class="pet-list-holder"
+    ul class="pet-list"
+      - @blogs.each do |blog|
+        li
+          div class="image-holder"
+            a href = blog_path(blog)
+              img src = blog.blog_attachments.first.file.url(:thumb_index) alt="#" width="280" height="193" /
+          div class="inner-box"
+            h3 = link_to blog.title, blog_path(blog)
+            p = (strip_tags(blog.body.first(300))).html_safe
+          = link_to "далее", blog_path(blog), class: "more"
+
+          div class="like-box"
+            /= link_to '11', '#', class: "views", title: "Просмотров xxx"
+            = link_to blog.votes.count, blog_path(blog), class: "like"
+            = link_to blog.comments.count, "#{blog_path(blog)}#comments", class: "comments", title: "Комментариев #{blog.comments.count}"
+            span = l blog.created_at, :format => :short
+    div class="load-more-holder"
+      = link_to "Все блоги", feed_path, class: "load-more"
+
+  div class="title-holder": h2 Последние статьи
   div class="pet-list-holder"
     ul class="pet-list"
       - @articles.each do |article|

@@ -1,5 +1,14 @@
 <h1>Отзывы о животных</h1>
 <p><%= link_to 'написать отзыв', new_review_path %></p>
+<p><%= link_to 'Все отзывы', reviews_path %> -> <%= link_to params[:breed_type], reviews_type_path('cat') %> -> <%= link_to params[:breed_translate], reviews_translate_path('cat', 'mun') %></p>
+<p><%= link_to 'Все', reviews_path %>/<%= link_to 'Собаки', '/reviews/dog' %>/<%=link_to 'Кошки', '/reviews/cat' %></p>
+
+<% if params[:action] == 'breed_type' %>
+    <% @breeds.each do |breed| %>
+        <p><%= link_to breed.name, "/reviews/#{params[:breed_type]}/#{breed.translate}" %></p>
+    <% end %>
+<% end %>
+
 <% @reviews.each do |review| %>
-    <p><%= link_to (image_tag review.review_attachments.where(main:true).first.file.thumb), review_path(review.breed.translate, review) %>, <%= review.breed.name %></p>
+    <p><%= link_to review.id, review_show_path(review.breed.breed_type, review.breed.translate, review) %>, <%= review.breed.name %></p>
 <% end %>

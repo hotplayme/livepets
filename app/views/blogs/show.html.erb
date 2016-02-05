@@ -1,4 +1,5 @@
 <% content_for :title, "#{@blog.title} - LivePets" %>
+<% content_for :description, ActionView::Base.full_sanitizer.sanitize(@blog.body).first(150) %>
 <div class="content narrow">
   <div class="new-post-form no-bg">
     <i></i>
