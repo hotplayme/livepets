@@ -43,26 +43,26 @@ div class="content"
               = link_to user.nickname, user_path(user.nickname.downcase)
               span = user.repa_total
 
-  div class="title-holder": h2 Блоги
-  div class="pet-list-holder"
-    ul class="pet-list"
-      - @blogs.each do |blog|
-        li
-          div class="image-holder"
-            a href = blog_path(blog)
-              img src = blog.blog_attachments.first.file.url(:thumb_index) alt="#" width="280" height="193" /
-          div class="inner-box"
-            h3 = link_to blog.title, blog_path(blog)
-            p = (strip_tags(blog.body.first(300))).html_safe
-          = link_to "далее", blog_path(blog), class: "more"
-
-          div class="like-box"
-            /= link_to '11', '#', class: "views", title: "Просмотров xxx"
-            = link_to blog.votes.count, blog_path(blog), class: "like"
-            = link_to blog.comments.count, "#{blog_path(blog)}#comments", class: "comments", title: "Комментариев #{blog.comments.count}"
-            span = l blog.created_at, :format => :short
-    div class="load-more-holder"
-      = link_to "Все блоги", feed_path, class: "load-more"
+  /div class="title-holder": h2 Блоги
+  /div class="pet-list-holder"
+  /  ul class="pet-list"
+  /    - @blogs.each do |blog|
+  /      li
+  /        div class="image-holder"
+  /          a href = blog_path(blog)
+  /            img src = blog.blog_attachments.first.file.url(:thumb_index) alt="#" width="280" height="193" /
+  /        div class="inner-box"
+  /          h3 = link_to blog.title, blog_path(blog)
+  /          p = (strip_tags(blog.body.first(300))).html_safe
+  /        = link_to "далее", blog_path(blog), class: "more"
+  /
+  /        div class="like-box"
+  /          /= link_to '11', '#', class: "views", title: "Просмотров xxx"
+  /          = link_to blog.votes.count, blog_path(blog), class: "like"
+  /          = link_to blog.comments.count, "#{blog_path(blog)}#comments", class: "comments", title: "Комментариев #{blog.comments.count}"
+  /          span = l blog.created_at, :format => :short
+  /  div class="load-more-holder"
+  /    = link_to "Все блоги", feed_path, class: "load-more"
 
   div class="title-holder": h2 Последние статьи
   div class="pet-list-holder"

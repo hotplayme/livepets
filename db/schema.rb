@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160205042707) do
+ActiveRecord::Schema.define(version: 20160208131116) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",               limit: 255
@@ -106,6 +106,28 @@ ActiveRecord::Schema.define(version: 20160205042707) do
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "dialogs", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "dialogs_users", force: :cascade do |t|
+    t.integer "dialog_id", limit: 4
+    t.integer "user_id",   limit: 4
+  end
+
+  add_index "dialogs_users", ["dialog_id"], name: "index_dialogs_users_on_dialog_id", using: :btree
+  add_index "dialogs_users", ["user_id"], name: "index_dialogs_users_on_user_id", using: :btree
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "body",       limit: 255
+    t.integer  "user_id",    limit: 4
+    t.integer  "dialog_id",  limit: 4
+    t.string   "state",      limit: 255, default: "new"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   create_table "mypets", force: :cascade do |t|
