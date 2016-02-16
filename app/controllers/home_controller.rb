@@ -4,7 +4,7 @@ class HomeController < ApplicationController
     @blogs = Blog.where("created_at < ?", Time.now).where(del: false).where("body_size > ?", 300).order("Rand()")
     @blogs = @blogs.joins(:blog_attachments).group('blogs.id').having("count(blog_attachments.id) > ?", 1).order('Rand()').limit(6)
     @articles = Article.where("created_at < ?", Time.now).order("created_at DESC").limit(6)
-    @pet_day = Winner.last.user.mypets.where("pet_attachments_count > 0").sample
+    @pet_day = Winner.last.user.mypets.where("pet_attachments_count > 0").sample if Winner.count > 1
     @pets = Mypet.where("pet_attachments_count > 0").order("Rand()").limit(12)
     if current_user && current_user.city
       @pets_city = current_user.city.mypets.where("pet_attachments_count > 0").order("Rand()").limit(12)

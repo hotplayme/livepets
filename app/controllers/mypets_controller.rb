@@ -32,7 +32,7 @@ class MypetsController < ApplicationController
         # создаем уведомление каждому подписчику
         pet.notices.create(user: s.user)
       end
-      redirect_to edit_mypet_path(pet)
+      redirect_to user_path(current_user.nickname.downcase)
     else
       render 'new'
     end
@@ -97,8 +97,6 @@ class MypetsController < ApplicationController
       else
         @attachment.destroy
       end
-      @pet.pet_attachments_count = @pet.pet_attachments.count
-      @pet.save
     else
       redirect_to root_path
     end

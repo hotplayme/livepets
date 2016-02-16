@@ -1,10 +1,17 @@
 class Review < ActiveRecord::Base
 
+  include Votable
+
+  validates :title, presence: true, length: { minimum: 4, maximum: 65 }
+  validates :body,  presence: true, length: { minimum: 200, maximum: 15000 }
+
   after_save :set_main
 
+  belongs_to :user
   belongs_to :breed
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :review_attachments, dependent: :destroy
+  has_many :votes,       as: :votable, dependent: :destroy
 
   private
 

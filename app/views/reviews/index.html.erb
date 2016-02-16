@@ -1,7 +1,45 @@
+<p>
+  <%= link_to 'LivePets', root_path %> ->
+  <% if params[:action] == 'index' %>
+      Все отзывы
+  <% else %>
+      <%= link_to 'Все отзывы', reviews_path %>
+  <% end %>
+  <% if params[:action] == 'breed_type' || params[:action] == 'breed_translate' %>
+      <% if params[:action] == 'breed_translate' %>
+        <%= params[:breed_type] == 'dog' ? ' -> ссылка Отзывы о породах собак' : ' -> ссылка Отзывы о породах кошек' %>
+      <% else %>
+        <%= params[:breed_type] == 'dog' ? ' -> Отзывы о породах собак' : ' -> Отзывы о породах кошек' %>
+      <% end %>
+  <% end %>
+  <% if params[:action] == 'breed_translate' %>
+      -> <%= Breed.find_by_translate(params[:breed_translate]).name %>
+  <% end %>
+</p>
 <h1>Отзывы о животных</h1>
-<p><%= link_to 'написать отзыв', new_review_path %></p>
-<p><%= link_to 'Все отзывы', reviews_path %> -> <%= link_to params[:breed_type], reviews_type_path('cat') %> -> <%= link_to params[:breed_translate], reviews_translate_path('cat', 'mun') %></p>
-<p><%= link_to 'Все', reviews_path %>/<%= link_to 'Собаки', '/reviews/dog' %>/<%=link_to 'Кошки', '/reviews/cat' %></p>
+
+<p><%= link_to 'Написать отзыв', new_review_path %></p>
+
+<% unless params[:action] == 'breed_type' %>
+<p>
+  Показывать:
+  <% if params[:action] == 'index' %>
+      Все отзывы
+  <% else %>
+      <%= link_to 'Все Отзывы', reviews_path %>
+  <% end %>
+  /
+  <% if params[:action] == 'breed_type' %>
+    <% if params[:breed_type] == 'dog' %>
+      Только Собаки / <%=link_to 'Только Кошки', '/reviews/cat' %>
+    <% else %>
+      <%= link_to 'Только Собаки', '/reviews/dog' %> / Только Кошки
+    <% end %>
+  <% else %>
+    <%= link_to 'Только Собаки', '/reviews/dog' %> / <%= link_to 'Только Кошки', '/reviews/cat' %>
+  <% end %>
+</p>
+<% end %>
 
 <% if params[:action] == 'breed_type' %>
     <% @breeds.each do |breed| %>
@@ -12,3 +50,8 @@
 <% @reviews.each do |review| %>
     <p><%= link_to review.id, review_show_path(review.breed.breed_type, review.breed.translate, review) %>, <%= review.breed.name %></p>
 <% end %>
+
+
+<p><%= params[:action] %></p>
+<p><%= params[:breed_type] %></p>
+<%= link_to 'Все отзывы', reviews_path %> -> <%= link_to params[:breed_type], reviews_type_path('cat') %> -> <%= link_to params[:breed_translate], reviews_translate_path('cat', 'mun') %></p>

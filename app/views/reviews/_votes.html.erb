@@ -1,0 +1,16 @@
+<script>
+    function vote_review(id,score,user)
+    {
+        $.ajax({
+            type: "GET",
+            url: "<%= vote_review_path(review) %>/?vote=" + score
+        });
+    }
+</script>
+<p>
+  Оценить отзыв:
+  <%= form_tag(vote_review_path(review), method: :get, id:'form_votes', remote: true) %>
+  <% for i in 1..5 do %>
+      <%= link_to i, '#', onclick:"vote_review(#{review.id},#{i},#{current_user.id});"%>
+  <% end %>
+</p>

@@ -3,16 +3,19 @@ class NoticesController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @notices = current_user.my_notices.order("created_at DESC")
+    @notices.where("created_at < ?", Time.now - 15.days).delete_all
+    @notices.update_all(new: false)
   end
 
   # подписчики юзера
   def followers
-    @followers = current_user.subscribers
+    @followers = current_user.subscribers.order("created_at DESC")
   end
 
   # подписки юзера
   def following
-    @following = current_user.my_subscribers.where(subscribable_type:'User')
+    @following = current_user.my_subscribers.where(subscribable_type:'User').order("created_at DESC")
   end
 
   def destroy
@@ -36,8 +39,10 @@ class NoticesController < ApplicationController
   end
 
   def breed_subscribers_delete
-    breed = Breed.find(params[:breed_id])
-    breed.subscribers.where(user: current_user).delete_all
+    breeds = Breed.where(id: params[:breed_id])
+    breeds.each do |breed|
+      breed.subscribers.where(user:current_user).delete_all
+    end
     redirect_to newpets_notices_path
   end
 

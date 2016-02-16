@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208131116) do
+ActiveRecord::Schema.define(version: 20160211090111) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",               limit: 255
@@ -201,10 +201,11 @@ ActiveRecord::Schema.define(version: 20160208131116) do
     t.integer  "comments_count", limit: 4
     t.integer  "votes_count",    limit: 4
     t.text     "body",           limit: 65535
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.string   "title",          limit: 255
     t.string   "breed_type",     limit: 255
+    t.boolean  "del",            limit: 1,     default: false
   end
 
   add_index "reviews", ["breed_id"], name: "index_reviews_on_breed_id", using: :btree

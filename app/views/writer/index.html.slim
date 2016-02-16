@@ -16,9 +16,10 @@ div id='rules' style='display: none'
 
 - total_price = 0
 h4 Не оплаченые блоги
-table border=1 width=500
+table border=1 width=700
   tr
     td width=50 ID
+    td Дата Публикации
     td Заголовок
     td Кол-во знаков
     td Кол-во фоток
@@ -28,27 +29,31 @@ table border=1 width=500
   - @not_payed_blogs.each do |blog|
     tr
       td = blog.id
+      td = blog.created_at.strftime("%H:%M - %d %b %Y")
       td = link_to blog.title, blog_path(blog), target: '_blank'
       td = blog.body.size
       td = blog.blog_attachments.count
-      - if blog.blog_attachments.count > 3
-        - attach = 15
-      - else
-        - attach = blog.blog_attachments.count*5
-      - price = (10 + attach + ActionView::Base.full_sanitizer.sanitize(blog.body).size*0.02).round(2)
-      td = price
-      td = blog.comment
-      td bgcolor="#{ blog.payed ? "green" : "red" }" = blog.payed ? "Да" : "Нет"
-      - total_price = total_price + price if blog.comment == 'принят' && !blog.payed
+      td = blog.cost
+      - if blog.comment == 'без оплаты'
+        - c = 'red'
+      - elsif blog.comment == 'принят'
+        - c = 'green'
+      - elsif blog.comment == 'на проверке'
+        - c = 'yellow'
+      td bgcolor="#{c}" = blog.comment
+      td = blog.payed ? "Да" : "Нет"
+      - total_price = total_price + blog.cost if blog.comment == 'принят' && !blog.payed
 p Ваш баланс: #{total_price}
 h4 Оплаченые блоги
-table border=1 width=500
+table border=1 width=700
   tr
     td width=50 ID
     td Заголовок
+    td Цена
     td Оплачен
   - @payed_blogs.each do |blog|
     tr
       td = blog.id
       td = link_to blog.title, blog_path(blog), target: '_blank'
+      td = blog.cost
       td bgcolor="#{ blog.payed ? "green" : "red" }" = blog.payed ? "Да" : "Нет"

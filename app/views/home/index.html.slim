@@ -5,10 +5,10 @@ div class="content"
     - Mypet.where("pet_attachments_count > 0").last(5).reverse.each do |pet|
       li
         = link_to (image_tag pet.pet_attachments.sample.file.thumb_174), user_path(pet.user.nickname.downcase) if pet.pet_attachments
-  - if Time.now - Winner.last.created_at < 1.week
+  - if Winner.count > 1 && Time.now - Winner.last.created_at < 1.week
     = render partial: 'pet_day', object: @pet_day, as: 'pet_day'
   - else
-    = render partial: 'no_pet_day', object: Mypet.where("pet_attachments_count > 0").sample, as: 'pet'
+    = render partial: 'no_pet_day', object: Mypet.where("pet_attachments_count > 0").sample, as: 'pet' if Mypet.where("pet_attachments_count > 0").count > 0
   div class="top-holder"
     div class="top-100"
       div class="top-title"

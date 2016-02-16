@@ -35,8 +35,8 @@ Rails.application.routes.draw do
     get :followers, on: :collection
     get :following, on: :collection
     get :newpets,   on: :collection
-    post :breed_subscribers_create,   on: :collection, as: :breed_s, path: 'newpets'
-    delete :breed_subscribers_delete, on: :collection, as: :breed_d, path: 'newpets/:breed_id'
+    post :breed_subscribers_create, on: :collection, as: :breed_s, path: 'newpets-add'
+    post :breed_subscribers_delete, on: :collection, as: :breed_d, path: 'newpets-del'
   end
   # NOTICES CONTROLLER END
 
@@ -50,6 +50,9 @@ Rails.application.routes.draw do
   # REVIEWS CONTROLLER BEGIN #
   resources :reviews, except: [:show] do
     resources :comments, defaults: { commentable: 'reviews' }
+    member do
+      get :vote
+    end
   end
   get '/reviews/:breed_type' => 'reviews#breed_type', as: :reviews_type
   get '/reviews/:breed_type/:breed_translate' => 'reviews#breed_translate', as: :reviews_translate
@@ -69,6 +72,11 @@ Rails.application.routes.draw do
     end
   end
   # MYPETS CONTROLLER END #
+
+
+  # SEARCH CONTROLLER BEGIN #
+  resources :search, only: [:index]
+  # SEARCH CONTROLLER END #
 
   constraints subdomain: false do
     get ':any', to: redirect(subdomain: 'www', path: '/%{any}', status: 301), any: /.*/
@@ -124,6 +132,7 @@ Rails.application.routes.draw do
       resources :articles, controller: 'admin/articles', as: 'admin_articles'
       resources :blogs,    controller: 'admin/blogs',    as: 'admin_blogs' do
         get :approve
+        get :notapprove
         get :pay_blog
       end
       resources :breeds,   controller: 'admin/breeds',   as: 'admin_breeds'

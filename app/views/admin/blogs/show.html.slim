@@ -5,4 +5,5 @@ center
     - @blog.blog_attachments.each do |attach|
       = image_tag attach.file.url(:thumb)
   - if !@blog.approve
-    h2 #{link_to 'принять', admin_blog_approve_path(@blog)} / #{link_to 'удалить', admin_blog_path(@blog), method: :delete}
+    h2 #{link_to 'принять', admin_blog_approve_path(@blog)} / #{link_to 'без оплаты', admin_blog_notapprove_path(@blog)} / #{link_to 'удалить', admin_blog_path(@blog), method: :delete}
+p = link_to @blog.user.nickname, user_path(@blog.user.nickname.downcase)

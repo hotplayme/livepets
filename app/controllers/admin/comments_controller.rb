@@ -22,9 +22,6 @@ class Admin::CommentsController < AdminController
 
   def destroy
     @comment = Comment.find(params[:id])
-    #admin = User.where(admin: true).first
-    #dialog = admin.dialogs.includes(:users).where(users: {id: @comment.user.id}).first_or_create
-    #dialog.messages.create(user_id: admin.id, body: "Добрый день. Ваш комментарий '#{@comment.body.first(200)}' был удален.")
     @comment.user.increment!(:repa, -3)
     @comment.destroy
     redirect_to admin_comments_path

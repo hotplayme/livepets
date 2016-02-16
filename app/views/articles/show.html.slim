@@ -4,7 +4,7 @@ div class="content"
   div class="note-holder"
     div class="note"
       h1 = @article.title
-      p = (simple_format(@article.body, style: "width: 680px; text-align: justify"))
+      p style="width: 680px; text-align: justify" = @article.body.html_safe
       div class="actions-row"
         = render partial: 'likes', object: @article, as: 'article'
 	  p class="protected" Статья защищена ОригинальныеТексты.Яндекс.<br>При копировании материала, ссылка на источник обязательна.
