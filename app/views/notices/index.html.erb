@@ -1,21 +1,34 @@
-<p><font color="red">Страница в стадии разработки</font></p>
-<%= link_to 'Уведомления', notices_path %> / <%= link_to 'Ваши подписчики', followers_notices_path %> / <%= link_to 'Вы читаете', following_notices_path %> / <%= link_to 'Отслеживание новых питомцев', newpets_notices_path %>
-<h1>У вас <%= current_user.my_notices.count %> новых уведомлений</h1>
-<% current_user.my_notices.each do |notice| %>
-    <p>
-      <% if notice.noticeable.class.name == 'Blog' %>
-        <p>Новый комментарий в теме на которую вы подписаны - <%= link_to notice.noticeable.title, notice.noticeable %>
-      <% elsif notice.noticeable.class.name == 'User' %>
-        <p><%= notice.add ? "У вас новый подписчик" : "От вас отписались" %> - <%= link_to notice.noticeable.nickname, user_path(notice.noticeable.nickname.downcase) %>, <%= time_ago_in_words(notice.created_at) %> назад
-      <% elsif notice.noticeable.class.name == 'Mypet' %>
-        <p>На сайте новый питомец- <%= link_to notice.noticeable.name, user_path(notice.noticeable.user.nickname) %>, <%= time_ago_in_words(notice.created_at) %> назад
+<div class="content narrow">
+  <div class="new-post-form no-bg">
+    <i></i>
+    <i></i>
+    <div class="breadcrumbs">
+      Уведомления / <%= link_to 'Ваши подписчики', followers_notices_path %> / <%= link_to 'Вы читаете', following_notices_path %> / <%= link_to 'Отслеживание новых питомцев', newpets_notices_path %>
+    </div>
+    <br>
+    <h3>Ваши уведомления</h3>
+    <div class="notification-block">
+      <% @notices.each do |notice| %>
+          <ul>
+            <li>
+              <div class="notification-item">
+                <% if notice.noticeable.class.name == 'Blog' %>
+                  <div class="pic-block"><i class="notification-new-message"></i></div>
+                  <div class="text-block"><span>Новый комментарий в записе - <%= link_to notice.noticeable.title.first(45), "#{blog_path(notice.noticeable)}/##{notice.cid ? notice.cid : "comments"}" %></span></div>
+                  <div class="link-block"><i class="like-ico"></i></div>
+                <% elsif notice.noticeable.class.name == 'User' %>
+                  <div class="pic-block"><%= image_tag notice.noticeable.avatar.url(:small) %></div>
+                  <div class="text-block"><span><%= notice.add ? "У вас новый подписчик" : "От вас отписался" %> - <%= link_to notice.noticeable.nickname, user_path(notice.noticeable.nickname.downcase) %>, <%= time_ago_in_words(notice.created_at, highest_measures: 1) %> назад</span></div>
+                  <div class="link-block"><i class="<%= notice.add ? "like-ico" : "dislike-ico" %>"></i></div>
+                <% elsif notice.noticeable.class.name == 'Mypet' %>
+                  <div class="pic-block"><i class="notification-new-message"></i></div>
+                  <div class="text-block"><span>На сайте новый питомец породы <%= notice.noticeable.breed.name %> - <%= link_to notice.noticeable.name, user_path(notice.noticeable.user.nickname.downcase) %>, <%= time_ago_in_words(notice.created_at, highest_measures: 1) %> назад</span></div>
+                  <div class="link-block"><i class="<%= notice.add ? "like-ico" : "dislike-ico" %>"></i></div>
+                <% end %>
+              </div>
+            </li>
+          </ul>
       <% end %>
-
-      <% if notice.new %>
-        <font color="red">
-            NEW
-        </font>
-      <% end %>
-      <%= link_to 'удалить', notice_path(notice), method: :delete, remote: true %>
-    </p>
-<% end %>
+    </div>
+  </div>
+</div>

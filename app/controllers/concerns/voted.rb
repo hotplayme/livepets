@@ -6,7 +6,16 @@ module Voted
   end
 
   def vote
-    @votable.voted_by(current_user)
+    if params[:vote].present?
+      if params[:vote] > 5
+        score = 5
+      else
+        score = params[:vote]
+      end
+    else
+      score = nil
+    end
+    @votable.voted_by(current_user, score)
   end
 
   private

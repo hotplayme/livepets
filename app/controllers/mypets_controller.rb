@@ -24,14 +24,15 @@ class MypetsController < ApplicationController
       if params[:attach_ids].present?
         PetAttachment.where(id: params[:attach_ids]).update_all(mypet_id: pet.id)
         pet.pet_attachments.first.update(main:true)
-        pet.update(pet_attachments_count: pet.pet_attachments.count)
       end
+      pet.pet_attachments_count = pet.pet_attachments.count
+      pet.save
       #разослать уведомления о новом питомце подписчикам данной породы
       pet.breed.subscribers.where.not(user:current_user).each do |s|
         # создаем уведомление каждому подписчику
         pet.notices.create(user: s.user)
       end
-      redirect_to edit_mypet_path(pet)
+      redirect_to user_path(current_user.nickname.downcase)
     else
       render 'new'
     end
@@ -40,7 +41,7 @@ class MypetsController < ApplicationController
   def edit
     @pet = Mypet.find(params[:id])
     if current_user == @pet.user
-      @breeds = Breed.all
+      @breeds = Breed.where(breed_type: @pet.breed.breed_type)
     else
       redirect_to root_path
     end
@@ -56,6 +57,8 @@ class MypetsController < ApplicationController
         end
       end
       if @pet.update(pet_params.merge(approve: false))
+        @pet.pet_attachments_count = @pet.pet_attachments.count
+        @pet.save
         redirect_to user_path(@pet.user.nickname.downcase)
       end
     else

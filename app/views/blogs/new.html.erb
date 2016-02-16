@@ -11,7 +11,7 @@
       <%= nested_form_for @blog, url: blogs_path, method: :post do |f| %>
         <label class="field">
           <p>Заголовок</p>
-          <span><%= f.text_field :title, class: "text", required: true, minlength:"4" %></span>
+          <span><%= f.text_field :title, class: "text", required: true, minlength:"4", maxlength:"65" %></span>
         </label>
         <div class="editor">
           <%= f.text_area :body, :class => "tinymce" %>

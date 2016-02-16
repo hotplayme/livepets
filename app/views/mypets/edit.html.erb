@@ -16,11 +16,11 @@
             </label>
             <label class="field-new">
               <p>Кто мы?</p>
-              <%= select_tag :breed_type, "<option value='dog'>Собака</option><option value='cat'>Кошка</option>".html_safe %>
+              <%= select_tag :breed_type, "<option value='dog'>Собака</option><option value='cat' #{ 'selected' if @pet.breed.breed_type == 'cat' }>Кошка</option>".html_safe %>
             </label>
             <label class="field-new">
               <p>Порода</p>
-              <%= f.select :breed_id, options_for_select(@breeds.collect { |country| [country.name.titleize, country.id] }, 1), {}, { id: 'breeds_select' } %>
+              <%= f.select :breed_id, options_for_select(@breeds.collect { |breed| [breed.name.titleize, breed.id] }, @pet.breed.id), {}, { id: 'breeds_select' } %>
             </label>
             <label class="field-new">
               <p>Пол</p>

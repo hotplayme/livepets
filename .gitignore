@@ -11,3 +11,5 @@ Thumbs.db
 /vendor/
 /config/database.yml
 /log/*
+/spec
+.rspec

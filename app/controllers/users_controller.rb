@@ -46,9 +46,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def followers
-  end
-
   private
 
   def user_params

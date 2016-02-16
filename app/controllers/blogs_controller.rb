@@ -3,7 +3,7 @@ class BlogsController < ApplicationController
   include Voted
 
   def index
-      @blogs = Blog.where("created_at < ?", Time.now).where(del: false).order('created_at DESC').page(params[:page]).per(10)
+    @blogs = Blog.where("created_at < ?", Time.now).where(del: false).order('created_at DESC').page(params[:page]).per(10)
   end
 
   def my
@@ -24,10 +24,10 @@ class BlogsController < ApplicationController
     #Установка created_at для писателей
     if current_user.writer
       if current_user.blogs.count > 0
-        if Time.now - current_user.blogs.last.created_at > 24.hours
+        if Time.now - current_user.blogs.last.created_at > 3.days
           time = Time.now
         else
-          time = current_user.blogs.last.created_at + Random.rand(1000..1440).minutes
+          time = current_user.blogs.last.created_at + 3.days
         end
       else
         time = Time.now
@@ -55,7 +55,7 @@ class BlogsController < ApplicationController
       redirect_to blog_path(@blog)
     else
       flash[:notice] = "Заполните все поля"
-      render 'new'
+      render :new
     end
   end
 
@@ -66,12 +66,9 @@ class BlogsController < ApplicationController
   end
   
   def show
-    begin
-      @blog = Blog.find(params[:id])
-      @comments = @blog.comments
-      @comment = Comment.new
-      @blog.notices.where(user: current_user).update_all(new:false) if current_user
-    rescue
+    if @blog = Blog.find_by_id(params[:id])
+      @blog.notices.where(user: current_user).delete_all if current_user
+    else
       redirect_to root_path, status: 301
     end
   end
@@ -92,6 +89,8 @@ class BlogsController < ApplicationController
       end
       if @blog.update(blog_params.merge(approve: false))
         redirect_to blog_path(@blog)
+      else
+        render :edit
       end
     else
       redirect_to root_path

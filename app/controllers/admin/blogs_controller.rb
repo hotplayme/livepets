@@ -51,6 +51,14 @@ class Admin::BlogsController < AdminController
     redirect_to admin_blog_path(@blog)
   end
 
+  def notapprove
+    @blog = Blog.find(params[:admin_blog_id])
+    @blog.update(approve: true, comment: 'без оплаты')
+    @blog.cost = 0
+    @blog.save
+    redirect_to admin_blog_path(@blog)
+  end
+
   def pay_blog
     blog = Blog.find(params[:admin_blog_id])
     blog.update(payed:true)

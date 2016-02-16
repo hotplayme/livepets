@@ -1,6 +1,24 @@
-<%= link_to 'Уведомления', notices_path %> / <%= link_to 'Ваши подписчики', followers_notices_path %> / <%= link_to 'Вы читаете', following_notices_path %> / <%= link_to 'Отслеживание новых питомцев', newpets_notices_path %>
-
-<h1>Ваши подписчики (<%= @followers.count %>)</h1>
-<% @followers.each do |follower| %>
-    <p><%= image_tag follower.user.avatar.url(:small) %></p>
-<% end %>
+<div class="content narrow">
+  <div class="new-post-form no-bg">
+    <i></i>
+    <i></i>
+    <div class="breadcrumbs">
+      <%= link_to 'Уведомления', notices_path %> / Ваши подписчики / <%= link_to 'Вы читаете', following_notices_path %> / <%= link_to 'Отслеживание новых питомцев', newpets_notices_path %>
+    </div>
+    <br>
+    <h3>Ваши подписчики - <%= @followers.count %></h3>
+    <ul class="subscribers-block">
+      <% @followers.each do |follower| %>
+        <li>
+          <a href="#">
+            <span><%= image_tag follower.user.avatar.url(:small) %></span>
+            <span><%= time_ago_in_words(follower.created_at, highest_measures: 1) %> назад</span>
+          </a>
+          <div class="nik-name"><%= follower.user.nickname %></div>
+          <% follower.user.first_name ? x = follower.user.first_name : x = 'Аноним' %>
+          <div class="name"><%= link_to x, user_path(follower.user.nickname.downcase) %></div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

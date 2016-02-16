@@ -1,6 +1,8 @@
 = form_for @article, url: admin_article_path, method: :put do |f|
   p = f.text_field :title
-  p = f.text_area  :body, rows: 30, cols: 150
+  p
+    = f.text_area  :body, rows: 30, cols: 100, class: "tinymce"
+    = tinymce
   p = f.date_field :created_at
   p = image_tag @article.avatar.url
   p = f.file_field :avatar

@@ -1,5 +1,5 @@
 div class="photo-day"
-  = image_tag pet.pet_attachments.sample.file.thumb_880, width:880, height:495, alt:nil
+  = image_tag pet.pet_attachments.sample.file.thumb_880, width:880, height:495, alt:nil if pet.pet_attachments.count > 0
   a class="photo-day-title" href="#{user_path(pet.user.nickname.downcase)}"
     div class="nicknames"
       strong = pet.name

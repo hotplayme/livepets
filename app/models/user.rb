@@ -2,9 +2,7 @@ class User < ActiveRecord::Base
   devise   :database_authenticatable, :registerable,
            :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook, :vkontakte, :odnoklassniki, :yandex, :mailru, :google_oauth2]
   
-  validates :nickname, :uniqueness  => { case_sensitive: false }, length: { minimum: 3 }, format: { with: /\A[a-zA-Z0-9]+\z/, message: "only allows letters" }, allow_nil: true
-  #validates_format_of :nickname , with: /\A[a-zA-Z0-9]+\z/
-  #validates_uniqueness_of :nickname, allow_nil: true
+  validates :nickname, presence: true, :uniqueness  => { case_sensitive: false }, length: { minimum: 3 }, format: { with: /\A[a-zA-Z0-9]+\z/, message: "только английские буквы и цифры" }
 
 
 
@@ -48,7 +46,7 @@ class User < ActiveRecord::Base
   after_create :send_welcome_email
 
   def send_welcome_email
-    UserMailer.send_new_user_message(self).deliver
+    UserMailer.send_new_user_message(self).deliver_now
   end
 
 

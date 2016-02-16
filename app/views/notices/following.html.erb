@@ -1,6 +1,24 @@
-<%= link_to 'Уведомления', notices_path %> / <%= link_to 'Ваши подписчики', followers_notices_path %> / <%= link_to 'Вы читаете', following_notices_path %> / <%= link_to 'Отслеживание новых питомцев', newpets_notices_path %>
-
-<h1>Их вы читаете (<%= @following.count %>)</h1>
-<% @following.each do |f| %>
-    <p><%= link_to (image_tag f.subscribable.avatar.url(:small)), user_path(f.subscribable.nickname.downcase) %></p>
-<% end %>
+<div class="content narrow">
+  <div class="new-post-form no-bg">
+    <i></i>
+    <i></i>
+    <div class="breadcrumbs">
+      <%= link_to 'Уведомления', notices_path %> / <%= link_to 'Ваши подписчики', followers_notices_path %> / Вы читаете / <%= link_to 'Отслеживание новых питомцев', newpets_notices_path %>
+    </div>
+    <br>
+    <h3>Вы читаете - <%= @following.count %></h3>
+    <ul class="subscribers-block">
+      <% @following.each do |f| %>
+          <li id="<%= f.subscribable.id %>">
+            <%= link_to(user_subscribers_path(f.subscribable.nickname.downcase), method: :delete, data: {confirm: "Вы уверены?"}, remote: true) do %>
+              <span><%= image_tag f.subscribable.avatar.url(:small) %></span>
+              <span>отписаться</span>
+            <% end %>
+            <div class="nik-name"><%= f.subscribable.nickname %></div>
+            <% f.subscribable.first_name ? x = f.subscribable.first_name : x = 'Аноним' %>
+            <div class="name"><%= link_to x, user_path(f.subscribable.nickname.downcase) %></div>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

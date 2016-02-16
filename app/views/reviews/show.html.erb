@@ -1,9 +1,9 @@
 <p><%= link_to 'Все отзывы', reviews_path %> -> <%= link_to params[:breed_type], reviews_type_path %> -> <%= link_to params[:breed_translate], reviews_translate_path %></p>
 <p>Отзыв о породе собак <%= @review.breed.name %></p>
-<p>
-  Оценить отзыв:
-  <%= link_to '1' %> <%= link_to '2' %> <%= link_to '3' %> <%= link_to '4' %> <%= link_to '5' %>
-</p>
+<p>Средняя оценка отзыва - <%= @score %>(всего голосов <%= @review.votes.count %>)</p>
+<% if current_user && !@review.votes.where(user: current_user).present? %>
+    <div id="votes"><%= render partial: 'votes', object: @review, as: 'review' %></div>
+<% end %>
 <h1><%= @review.title %></h1>
 <h3><%= simple_format(@review.body) %></h3>
 <% @review.review_attachments.each do |attach| %>

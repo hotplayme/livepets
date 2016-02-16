@@ -1,1 +1,2 @@
+$('#<%= @user.id %>').remove()
 $('.info-profile').html('<%= j render partial: 'users/info_profile', object: @user , as: 'user' %>');
