@@ -1,4 +1,4 @@
-p #{link_to 'все', '?'} / #{link_to 'новые', '?sort=new'} / #{link_to 'удаленные', '?sort=del'} / #{link_to 'по юзерам', '?sort=users'}
+p #{link_to 'все', '?'}(#{Blog.count}) / #{link_to 'новые', '?sort=new'}(#{Blog.where(approve:false).count}) / #{link_to 'удаленные', '?sort=del'}(#{Blog.where(del:true).count}) / #{link_to 'по юзерам', '?sort=users'}
 - if params[:sort] == 'new'
   = render partial: 'admin/blogs/new_blogs', object: @blogs
 - elsif params[:sort] == 'del'

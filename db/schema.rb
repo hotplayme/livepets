@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160211090111) do
+ActiveRecord::Schema.define(version: 20160216025918) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",               limit: 255
@@ -230,6 +230,7 @@ ActiveRecord::Schema.define(version: 20160211090111) do
     t.datetime "updated_at",                               null: false
     t.integer  "views",      limit: 4,     default: 0
     t.boolean  "approve",    limit: 1,     default: false
+    t.boolean  "attach",     limit: 1,     default: false
   end
 
   add_index "topics", ["user_id"], name: "index_topics_on_user_id", using: :btree

@@ -9,7 +9,7 @@ Thumbs.db
 /tmp/*
 /public/*
 /vendor/
-/config/database.yml
+config/database.yml
 /log/*
 /spec
 .rspec

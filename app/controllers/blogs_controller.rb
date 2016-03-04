@@ -27,7 +27,7 @@ class BlogsController < ApplicationController
         if Time.now - current_user.blogs.last.created_at > 3.days
           time = Time.now
         else
-          time = current_user.blogs.last.created_at + 3.days
+          time = current_user.blogs.last.created_at + Random.rand(48..120).hours
         end
       else
         time = Time.now
