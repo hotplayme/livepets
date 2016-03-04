@@ -7,18 +7,10 @@ div class="content"
       = paginate @topics
 
       div class="forum_posts_main"
+        - @attach_topics.each do |topic|
+          = render partial: 'topic', object: topic, as: 'topic'
         - @topics.each do |topic|
-          ul
-            li class="left_column"
-              span 0
-                <br> голосов
-              a class="column_answers" href="#"
-                | #{topic.posts.count} <br> ответов
-              span  #{topic.posts.count if topic.posts.count > 0}#{topic.views} <br> просмотра
-            li class="right_column"
-              = link_to topic.title, topic_path(topic), class: "theme_title"
-              div class="right_column_info"
-                | #{topic.created_at.strftime("%d/%m/%Y, %H:%M")} , Автор: #{link_to topic.user.nickname, user_path(topic.user.nickname)}
+          = render partial: 'topic', object: topic, as: 'topic'
       = paginate @topics
       div class="create_theme_button"
         = link_to 'Создать новую тему', new_topic_path

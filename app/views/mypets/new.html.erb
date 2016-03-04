@@ -28,7 +28,7 @@
         </label>
         <label class="field-new">
           <p>Дата Рождения</p>
-          <span><%= f.date_select :birthday, class: 'text' %></span>
+          <span><%= f.date_select :birthday, start_year: Date.today.year - 25, end_year: Date.today.year,  class: 'text' %></span>
         </label>
         <br>
       </div>

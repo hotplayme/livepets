@@ -7,5 +7,7 @@ div class="content"
       = f.text_field :title, :maxlength => 65, placeholder: 'Введите заголовок', class: 'text', required: true, minlength:"4"
       br
       = f.text_area :body, required: true, minlength:"4"
+      - if current_user.admin
+        = f.check_box :attach
       div class="pets-row"
         = f.submit 'Создать', class:"send", data: { disable_with: 'Публикуем...' }

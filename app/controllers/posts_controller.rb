@@ -1,12 +1,17 @@
 class PostsController < ApplicationController
+
   def create
     @topic = Topic.find(params[:topic_id])
-    @post = @topic.posts.new(post_params)
-    @post.user = current_user
-    @post.save
-    @topic.updated_at = Time.now
-    @topic.save
-    redirect_to topic_path(@topic)
+    @post = @topic.posts.new(post_params.merge(user: current_user))
+    if @post.save
+      # текущего юзера добавить в подписчики данного топика
+      @topic.subscribers.create(user: current_user) unless @topic.subscribers.where(user: current_user).present?
+      # разослать всем(кроме себя) уведомления о новой записи в топике
+      @topic.subscribers.where.not(user: current_user).each do |s|
+        @topic.notices.create(user: s.user) unless @topic.notices.where(user: s.user, new: true).present?
+      end
+      redirect_to topic_path(@topic)
+    end
   end
 
   def edit
