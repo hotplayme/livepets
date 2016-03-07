@@ -14,7 +14,7 @@ set :deploy_user, 'rails'
 set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml', '.env')
 
 # Default value for linked_dirs is []
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads', 'public/images', 'public/photos')
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public')
 
 set :keep_releases, 5
 
