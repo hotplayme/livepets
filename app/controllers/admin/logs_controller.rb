@@ -6,7 +6,7 @@ class Admin::LogsController < AdminController
   end
 
   def clear
-    system("cp /dev/null /home/rails/log/production.log")
+    system("cp /dev/null /home/rails/shared/log/production.log")
     redirect_to log_admin_index_path
   end
 
