@@ -1,7 +1,7 @@
 class Admin::LogsController < AdminController
 
   def show
-    @log = `tail -n #{5000} /home/rails/log/production.log`
+    @log = `tail -n #{5000} /home/rails/shared/log/production.log`
     @log = @log.gsub(/\n/, "<br>")
   end
 
