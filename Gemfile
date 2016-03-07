@@ -47,6 +47,7 @@ gem 'omniauth-odnoklassniki'
 gem 'unicorn'
 
 
+
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
 gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
