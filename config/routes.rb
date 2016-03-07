@@ -78,9 +78,9 @@ Rails.application.routes.draw do
   resources :search, only: [:index]
   # SEARCH CONTROLLER END #
 
-  constraints subdomain: false do
-    get ':any', to: redirect(subdomain: 'www', path: '/%{any}', status: 301), any: /.*/
-  end
+  #constraints subdomain: false do
+  #  get ':any', to: redirect(subdomain: 'www', path: '/%{any}', status: 301), any: /.*/
+  #end
 
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   devise_scope :user do
@@ -165,5 +165,5 @@ Rails.application.routes.draw do
   get  'dialogs'                => 'dialogs#index',        as: :dialogs
   get  'dialogs/:nickname'      => 'dialogs#show',         as: :dialogs_show
   post 'dialogs/:nickname/send' => 'dialogs#send_message', as: :dialogs_send
-  get '*path' => redirect('/')
+  #get '*path' => redirect('/')
 end
