@@ -32,6 +32,8 @@ gem 'remotipart'
 
 gem 'dotenv'
 gem 'dotenv-deployment', require: 'dotenv/deployment'
+gem 'sitemap_generator'
+
 
 group :assets do
   gem 'sprockets-rails', github: 'rails/sprockets-rails'
