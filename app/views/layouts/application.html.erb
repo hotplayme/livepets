@@ -42,9 +42,9 @@
         </li>
         <li class="my-massege <%= "active" if request.fullpath == dialogs_path %>">
           <%= link_to "Мои сообщения", dialogs_path %>
-          <!--if current_user && current_user.dialogs.includes(:messages).where(messages: { state: 'new'}).where.not(messages: { user_id: current_user.id }).count > 0 %>
-              <span class="counter">= current_user.dialogs.includes(:messages).where(messages: { state: 'new'}).where.not(messages: { user_id: current_user.id }).count %></span>
-           end -->
+          <% if current_user && current_user.dialogs.includes(:messages).where(messages: { state: 'new'}).where.not(messages: { user_id: current_user.id }).count > 0 %>
+              <span class="counter"><%= current_user.dialogs.includes(:messages).where(messages: { state: 'new'}).where.not(messages: { user_id: current_user.id }).count %></span>
+           <% end %>
         </li>
         <% end %>
 

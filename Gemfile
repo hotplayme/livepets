@@ -33,8 +33,6 @@ gem 'remotipart'
 gem 'dotenv'
 gem 'dotenv-deployment', require: 'dotenv/deployment'
 
-gem 'turnout'
-
 group :assets do
   gem 'sprockets-rails', github: 'rails/sprockets-rails'
 end
