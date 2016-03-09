@@ -46,8 +46,15 @@ class AdminController < ApplicationController
   end
 
   def check_admin
-    unless current_user && current_user.admin
+    unless current_user && current_user.admin || current_user.moderator
       redirect_to root_path
     end
+    unless params[:controller] == 'admin/articles' || params[:controller] == 'admin/tags'
+      redirect_to admin_articles_path
+    end
+  end
+
+  def check_moderator
+
   end
 end

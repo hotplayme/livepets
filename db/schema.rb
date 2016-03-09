@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160309030236) do
+ActiveRecord::Schema.define(version: 20160309035215) do
 
   create_table "article_attachments", force: :cascade do |t|
     t.string   "file",       limit: 255
@@ -290,6 +290,7 @@ ActiveRecord::Schema.define(version: 20160309030236) do
     t.integer  "balance",                limit: 4,   default: 0
     t.string   "purse",                  limit: 255
     t.integer  "my_feed_count",          limit: 4,   default: 0
+    t.boolean  "moderator",              limit: 1,   default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
