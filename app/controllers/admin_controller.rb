@@ -49,7 +49,7 @@ class AdminController < ApplicationController
     unless current_user && current_user.admin || current_user.moderator
       redirect_to root_path
     end
-    unless params[:controller] == 'admin/articles' || params[:controller] == 'admin/tags'
+    unless params[:controller] == 'admin/articles' || params[:controller] == 'admin/tags' || current_user.admin
       redirect_to admin_articles_path
     end
   end
