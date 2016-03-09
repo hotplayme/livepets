@@ -3,7 +3,12 @@ class ArticlesController < ApplicationController
   include Voted
 
   def index
-    @articles = Article.where("created_at < ?", Time.now).order("created_at DESC")
+    if params[:tag].present? && Tag.find_by_slug(params[:tag])
+      @articles = Tag.find_by_slug(params[:tag]).articles.where("created_at < ?", Time.now).order("created_at DESC")
+    else
+      @articles = Article.where("created_at < ?", Time.now).order("created_at DESC")
+    end
+
   end
   
   def show

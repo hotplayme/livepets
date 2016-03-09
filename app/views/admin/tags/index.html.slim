@@ -1,0 +1,18 @@
+h1 Тэги
+p = link_to 'Добавить тэг', new_admin_tag_path
+table border='1'
+  tr bgcolor='yellow'
+    td ИД
+    td Название
+    td Slug
+    td Кол-во статей
+    td Редактировать
+    td Удалить
+  - @tags.each do |tag|
+    tr
+      td = tag.id
+      td = tag.name
+      td = tag.slug
+      td = tag.articles.count
+      td = link_to 'Ред', edit_admin_tag_path(tag)
+      td = link_to 'Удалить', admin_tag_path(tag), method: :delete, data: { confirm: 'Точно удалить?' }

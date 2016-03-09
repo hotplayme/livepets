@@ -1,6 +1,9 @@
 - content_for :title, "Статьи о животных - LivePets"
 div class="title-holder"
   h2 Статьи о животных
+  p
+    - Tag.all.each do |tag|
+      = link_to tag.name, "?tag=#{tag.slug}"
 div class="pet-list-holder"
   ul class="pet-list"
     - @articles.each do |article|

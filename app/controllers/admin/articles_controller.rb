@@ -10,10 +10,13 @@ class Admin::ArticlesController < AdminController
   end
 
   def create
-    @article = Article.create(article_params)
+    @article = Article.new(article_params)
     require 'securerandom'
     @article.randid = SecureRandom.hex(5)
     @article.save
+    Tag.where(id: params[:tag]).each do |tag|
+      @article.tags << tag
+    end
     redirect_to admin_articles_path
   end
 
@@ -28,6 +31,10 @@ class Admin::ArticlesController < AdminController
   def update
     @article = Article.find(params[:id])
     @article.update_attributes!(article_params)
+    @article.tags.destroy_all
+    Tag.where(id: params[:tag]).each do |tag|
+      @article.tags << tag
+    end
     redirect_to admin_article_path(@article)
   end
 

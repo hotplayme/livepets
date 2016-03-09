@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  post '/tinymce_assets' => 'tinymce_assets#create'
+
   # ARTICLES CONTROLLER BEGIN
   resources :articles do
     resources :comments, defaults: { commentable: 'articles' }
@@ -130,6 +132,7 @@ Rails.application.routes.draw do
     get 'log/clear' => 'admin/logs#clear', as: 'log_clear', on: :collection
     collection do
       resources :articles, controller: 'admin/articles', as: 'admin_articles'
+      resources :tags,     controller: 'admin/tags',     as: 'admin_tags'
       resources :blogs,    controller: 'admin/blogs',    as: 'admin_blogs' do
         get :approve
         get :notapprove

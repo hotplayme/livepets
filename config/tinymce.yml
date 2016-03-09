@@ -2,6 +2,7 @@ default:
   plugins:
     - image
     - link
+    - uploadimage
 
 
 alternate:

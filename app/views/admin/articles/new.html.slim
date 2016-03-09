@@ -6,6 +6,11 @@
     | Тело статьи
     = f.text_area  :body, rows: 30, cols: 100, class: "tinymce"
     = tinymce
+  p Теги
+  p
+    - Tag.all.each do |tag|
+      = tag.name
+      = check_box_tag 'tag[]', tag.id
   p
    | Дата
    = f.date_field :created_at

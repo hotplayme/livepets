@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160216025918) do
+ActiveRecord::Schema.define(version: 20160309030236) do
+
+  create_table "article_attachments", force: :cascade do |t|
+    t.string   "file",       limit: 255
+    t.integer  "article_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",               limit: 255
@@ -25,6 +32,14 @@ ActiveRecord::Schema.define(version: 20160216025918) do
     t.integer  "avatar_file_size",    limit: 4
     t.datetime "avatar_updated_at"
   end
+
+  create_table "articles_tags", id: false, force: :cascade do |t|
+    t.integer "article_id", limit: 4
+    t.integer "tag_id",     limit: 4
+  end
+
+  add_index "articles_tags", ["article_id"], name: "index_articles_tags_on_article_id", using: :btree
+  add_index "articles_tags", ["tag_id"], name: "index_articles_tags_on_tag_id", using: :btree
 
   create_table "attachments", force: :cascade do |t|
     t.string   "file",            limit: 255
@@ -221,6 +236,13 @@ ActiveRecord::Schema.define(version: 20160216025918) do
 
   add_index "subscribers", ["subscribable_id", "subscribable_type"], name: "index_subscribers_on_subscribable_id_and_subscribable_type", using: :btree
   add_index "subscribers", ["user_id"], name: "index_subscribers_on_user_id", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "slug",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "topics", force: :cascade do |t|
     t.string   "title",      limit: 255
