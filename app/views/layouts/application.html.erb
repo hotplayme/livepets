@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <title><%= h(yield(:title) || "LivePets") %></title>
   <meta name="description" content="<%= h(yield(:description) || "LivePets") %>">
-  <% if yield(:keywords) %>
+  <% unless yield(:keywords).blank? %>
   <meta name="keywords" content="<%= h(yield(:keywords) || '') %>">
   <% end %>
 
