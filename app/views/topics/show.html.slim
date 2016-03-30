@@ -25,15 +25,16 @@ div class="content"
       div class="forum_post_edit_link forum_post_edit_link_answer"
         = link_to 'Редактировать', edit_topic_path(@topic) if @topic.user == current_user
 
-    div class="forum_post_answer_field"
-      div class="forum_post_answer_avatar"
-        img src="#{current_user.avatar.url(:small) if current_user}" alt="" /
+    - if current_user
+      div class="forum_post_answer_field"
+        div class="forum_post_answer_avatar"
+          img src="#{current_user.avatar.url(:small) if current_user}" alt="" /
 
-      = form_for [@topic, @post], html: { :class => "forum_post_answer_form" } do |f|
-        fieldset
-          = f.text_area :body
-          div class="pets-row"
-            = f.submit 'Отправить', class:"send", data: { disable_with: 'Публикуем...' }
+        = form_for [@topic, @post], html: { :class => "forum_post_answer_form" } do |f|
+          fieldset
+            = f.text_area :body
+            div class="pets-row"
+              = f.submit 'Отправить', class:"send", data: { disable_with: 'Публикуем...' }
 
     div class="forum_post_answers"
       div class="forum_post_answers_title"
