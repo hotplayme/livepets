@@ -20,34 +20,42 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @topic = Topic.find(params[:id])
-    @topic.notices.where(user: current_user).delete_all if current_user
-    @topic.record_timestamps=false
-    @topic.increment!(:views)
-    @posts = @topic.posts
-    @post  = Post.new
+    if @topic = Topic.find_by_id(params[:id])
+      @topic.notices.where(user: current_user).delete_all if current_user
+      @topic.record_timestamps=false
+      @topic.increment!(:views)
+      @posts = @topic.posts
+      @post  = Post.new
+    else
+      redirect_to topics_path
+    end
   end
 
   def edit
-    @topic = Topic.find(params[:id])
-    unless @topic.user == current_user
+    if @topic = Topic.find_by_id(params[:id])
+      redirect_to topics_path unless @topic.user == current_user
+    else
       redirect_to topics_path
     end
   end
 
   def update
-    @topic = Topic.find(params[:id])
-    if @topic.user == current_user
-      @topic.update(topic_params)
-      redirect_to topic_path(@topic)
+    if @topic = Topic.find_by_id(params[:id])
+      if @topic.user == current_user
+        @topic.update(topic_params)
+        redirect_to topic_path(@topic)
+      else
+        redirect_to topics_path
+      end
     else
       redirect_to topics_path
     end
   end
 
   def destroy
-    @topic = Topic.find(params[:id])
-    @topic.destroy
+    if @topic = Topic.find_by_id(params[:id])
+      @topic.destroy if @topic.user == current_user
+    end
     redirect_to topics_path
   end
 
