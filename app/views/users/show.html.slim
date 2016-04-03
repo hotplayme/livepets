@@ -2,7 +2,7 @@
   - content_for :title, "Моя страница - LivePets"
 - else
   - content_for :title, "#{@user.nickname} #{"- " + @user.first_name if @user.first_name} #{" " + @user.last_name if @user.last_name}"
-  - content_for :description, "Личный блог пользователя #{@user.first_name if @user.first_name} #{@user.last_name if @user.last_name}. Питомец #{@user.mypets.first.breed.name if @user.mypets.count}"
+  - content_for :description, "Личный блог пользователя #{@user.first_name if @user.first_name} #{@user.last_name if @user.last_name}"
 div class="content #{"user-page" if current_user != @user}"
   div class="profile-frame"
     div class="info-profile"
