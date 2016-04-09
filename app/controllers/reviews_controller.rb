@@ -35,7 +35,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = current_user.reviews.new(review_params)
+    @review = current_user.reviews.new(review_params.merge(breed_type: params[:breed_type]))
     if @review.save
       if params[:images]
         params[:images].each do |image|

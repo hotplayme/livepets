@@ -1,24 +1,142 @@
-<p>
-  <%= link_to 'LivePets', root_path %> ->
-  <% if params[:action] == 'index' %>
-      Все отзывы
-  <% else %>
-      <%= link_to 'Все отзывы', reviews_path %>
-  <% end %>
-  <% if params[:action] == 'breed_type' || params[:action] == 'breed_translate' %>
-      <% if params[:action] == 'breed_translate' %>
-        <%= params[:breed_type] == 'dog' ? ' -> ссылка Отзывы о породах собак' : ' -> ссылка Отзывы о породах кошек' %>
-      <% else %>
-        <%= params[:breed_type] == 'dog' ? ' -> Отзывы о породах собак' : ' -> Отзывы о породах кошек' %>
-      <% end %>
-  <% end %>
-  <% if params[:action] == 'breed_translate' %>
-      -> <%= Breed.find_by_translate(params[:breed_translate]).name %>
-  <% end %>
-</p>
-<h1>Отзывы о животных</h1>
+<% content_for :title, "Отзывы о породах животных  - LivePets" %>
+<script>
+    $(function(){
+        $("input[type='checkbox']").change(function(){
+            var item=$(this);
+            if(item.is(":checked"))
+            {
+                window.location.href= item.data("target")
+            }
+        });
+    });
+</script>
+<div class="content narrow">
+  <div class="new-post-form no-bg">
+    <i></i>
+    <i></i>
+    <div class="breadcrumbs">
+        <%= link_to 'LivePets', root_path %> ->
+        <% if params[:action] == 'index' %>
+            Все отзывы
+        <% else %>
+            <%= link_to 'Все отзывы', reviews_path %>
+        <% end %>
+        <% if params[:action] == 'breed_type' || params[:action] == 'breed_translate' %>
+            <% if params[:action] == 'breed_translate' %>
+                <%= params[:breed_type] == 'dog' ? ' -> ссылка Отзывы о породах собак' : ' -> ссылка Отзывы о породах кошек' %>
+            <% else %>
+                <%= params[:breed_type] == 'dog' ? ' -> Отзывы о породах собак' : ' -> Отзывы о породах кошек' %>
+            <% end %>
+        <% end %>
+        <% if params[:action] == 'breed_translate' %>
+            -> <%= Breed.find_by_translate(params[:breed_translate]).name %>
+        <% end %>
+    </div>
+    <br>
+    <%= params[:action] %>
+    <%= params[:breed_type] %>
+    <h1>Отзывы о питомцах</h1>
+    <div class="feed2-block">
+      <div class="feed2-cloud">
+        <div class="filter-block">
+          <form action="#">
+            <div class="filter-block-table">
+              <div class="filter-block-row">
+                <div class="filter-block-col">
+                  <label>
+                    <span class="llabel">Все отзывы</span>
+					<span>
+                      <input type="checkbox" id="feed" data-target="/reviews" <%= "checked" if params[:action] == 'index' %>>
+                      <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+                <div class="filter-block-col">
+                  <label>
+                    <span><i class="dog"></i></span>
+                    <span class="plabel">Отзывы о собаках</span>
+                    <span>
+                      <input type="checkbox" id="feed" data-target="/reviews/dog" <%= "checked" if params[:action] == 'breed_type' && params[:breed_type] == 'dog' %>>
+                      <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+                <div class="filter-block-col">
+                  <label>
+                    <span><i class="cat"></i></span>
+                    <span class="plabel">Отзывы о котах</span>
+                    <span>
+                      <input type="checkbox" id="feed" data-target="/reviews/cat" <%= "checked" if params[:action] == 'breed_type' && params[:breed_type] == 'cat' %>>
+                      <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div class="filter-block-row">
+                <div class="filter-block-col-alt">
+                  <ul>
+                    <% breeds = Breed.all if params[:action] == 'index' %>
+                    <% breeds = Breed.where(breed_type: 'dog') if params[:breed_type] == 'dog' %>
+                    <% breeds = Breed.where(breed_type: 'cat') if params[:breed_type] == 'cat' %>
+                    <% breeds.each do |breed| %>
+                        <li><%= link_to breed.name, "/reviews/#{breed.breed_type}/#{breed.translate}" %>  -  <%= breed.reviews.count %></li>
+                    <% end %>
+                  </ul>
+                </div>
+                <div class="filter-block-col-alt">
+                  <ul>
+                  </ul>
+                </div>
+                <div class="filter-block-col-alt">
+                  <ul>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <ul class="feed2-list">
+        <li>
+          <div class="feed2-add">
+            <a href="<%= new_review_path %>">
+              <span><i></i>Добавить отзыв</span>
+            </a>
+          </div>
+        </li>
+        <% reviews = Review.order("created_at DESC") if params[:action] == 'index' %>
+        <% reviews = Review.where(breed_type: 'Dog').order("created_at DESC") if params[:breed_type] == 'dog' %>
+        <% reviews = Review.where(breed_type: 'Cat').order("created_at DESC") if params[:breed_type] == 'cat' %>
+        <% reviews = Breed.find_by_translate(params[:breed_translate]).reviews.order("created_at DESC") if params[:action] == 'breed_translate' %>
+        <% reviews.each do |review| %>
+            <li>
+              <div class="feed2-list-item">
+                <div class="feed2-list-item-top-block">
+                  <div class="feed2-list-item-top-block-num"><%= (review.votes.sum(:score).to_f/review.votes.count).round(1) %></div>
+                  <div class="feed2-list-item-top-block-text">
+                    <div class="feed2-list-item-top-block-text-name"><%= link_to review.user.nickname, user_path(review.user.nickname.downcase) %></div>
+                    <div class="feed2-list-item-top-block-text-place"><%= review.user.city ? review.user.city.name : 'Город не указан' %></div>
+                  </div>
+                </div>
+                <div class="feed2-list-item-pic-block"><%= link_to (image_tag review.review_attachments.sample.file), review_show_path(review.breed.breed_type, review.breed.translate, review) %></div>
+                <div class="feed2-list-item-bottom-block">
+                  <div class="feed2-list-item-bottom-block-name"><%= link_to review.title, review_show_path(review.breed.breed_type, review.breed.translate, review) %></div>
+                  <div class="feed2-list-item-bottom-block-breed"><%= link_to review.breed.name, "/reviews/#{review.breed.breed_type}/#{review.breed.translate}" %></div>
+                </div>
+              </div>
+            </li>
+        <% end %>
 
-<p><%= link_to 'Написать отзыв', new_review_path %></p>
+      </ul>
+      <div class="feed2-add-link"><%= link_to 'Добавить отзыв', new_review_path %></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<h1>Отзывы о животных</h1>
 
 <% unless params[:action] == 'breed_type' %>
 <p>

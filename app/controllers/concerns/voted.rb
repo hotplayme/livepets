@@ -7,7 +7,7 @@ module Voted
 
   def vote
     if params[:vote].present?
-      if params[:vote] > 5
+      if params[:vote].to_i > 5
         score = 5
       else
         score = params[:vote]
