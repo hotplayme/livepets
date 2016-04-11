@@ -78,17 +78,23 @@
                     <% breeds = Breed.all if params[:action] == 'index' %>
                     <% breeds = Breed.where(breed_type: 'dog') if params[:breed_type] == 'dog' %>
                     <% breeds = Breed.where(breed_type: 'cat') if params[:breed_type] == 'cat' %>
-                    <% breeds.each do |breed| %>
+                    <% breeds.first(5).each do |breed| %>
                         <li><%= link_to breed.name, "/reviews/#{breed.breed_type}/#{breed.translate}" %>  -  <%= breed.reviews.count %></li>
                     <% end %>
                   </ul>
                 </div>
                 <div class="filter-block-col-alt">
                   <ul>
+                    <% breeds.offset(5).limit(5).each do |breed| %>
+                        <li><%= link_to breed.name, "/reviews/#{breed.breed_type}/#{breed.translate}" %>  -  <%= breed.reviews.count %></li>
+                    <% end %>
                   </ul>
                 </div>
                 <div class="filter-block-col-alt">
                   <ul>
+                    <% breeds.offset(10).limit(5).each do |breed| %>
+                        <li><%= link_to breed.name, "/reviews/#{breed.breed_type}/#{breed.translate}" %>  -  <%= breed.reviews.count %></li>
+                    <% end %>
                   </ul>
                 </div>
               </div>
@@ -112,7 +118,7 @@
             <li>
               <div class="feed2-list-item">
                 <div class="feed2-list-item-top-block">
-                  <div class="feed2-list-item-top-block-num"><%= (review.votes.sum(:score).to_f/review.votes.count).round(1) %></div>
+                  <div class="feed2-list-item-top-block-num"><%= review.votes.count > 0 ? (review.votes.sum(:score).to_f/review.votes.count).round(1) : "" %></div>
                   <div class="feed2-list-item-top-block-text">
                     <div class="feed2-list-item-top-block-text-name"><%= link_to review.user.nickname, user_path(review.user.nickname.downcase) %></div>
                     <div class="feed2-list-item-top-block-text-place"><%= review.user.city ? review.user.city.name : 'Город не указан' %></div>
