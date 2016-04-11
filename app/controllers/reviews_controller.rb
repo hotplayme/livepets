@@ -49,8 +49,12 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @review = Review.find(params[:id])
-    @score = (@review.votes.sum(:score).to_f/@review.votes.count).round(1)
+    if @review = Review.find_by_id(params[:id])
+      redirect_to review_show_path(@review.breed.breed_type, @review.breed.translate, @review) if params[:breed_translate] != @review.breed.translate || params[:breed_type] != @review.breed.breed_type
+      @score = (@review.votes.sum(:score).to_f/@review.votes.count).round(1)
+    else
+      redirect_to reviews_path, status: 301
+    end
   end
 
   def edit

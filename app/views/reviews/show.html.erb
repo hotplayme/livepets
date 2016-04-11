@@ -2,7 +2,9 @@
 <div class="content narrow post">
   <div class="new-post-form no-bg">
     <i><%= params[:action] %>
-      <%= params[:breed_type] %></i>
+      <%= params[:breed_type] %>
+        <%= @review.breed.breed_type %>
+    </i>
     <i></i>
     <div class="breadcrumbs">
       <%= render 'nav' %>
