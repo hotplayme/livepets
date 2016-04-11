@@ -1,0 +1,63 @@
+<div class="feed2-cloud">
+  <div class="filter-block">
+    <div class="filter-block-table">
+      <div class="filter-block-row">
+        <div class="filter-block-col">
+          <label>
+            <span class="llabel">Все отзывы</span>
+					<span>
+                      <input type="checkbox" id="feed" data-target="/reviews" <%= "checked" if params[:action] == 'index' %>>
+                      <span class="check"></span>
+                    </span>
+          </label>
+        </div>
+        <div class="filter-block-col">
+          <label>
+            <span><i class="dog"></i></span>
+            <span class="plabel">Отзывы о собаках</span>
+                    <span>
+                      <input type="checkbox" id="feed" data-target="/reviews/dog" <%= "checked" if params[:action] == 'breed_type' && params[:breed_type] == 'dog' %>>
+                      <span class="check"></span>
+                    </span>
+          </label>
+        </div>
+        <div class="filter-block-col">
+          <label>
+            <span><i class="cat"></i></span>
+            <span class="plabel">Отзывы о котах</span>
+                    <span>
+                      <input type="checkbox" id="feed" data-target="/reviews/cat" <%= "checked" if params[:action] == 'breed_type' && params[:breed_type] == 'cat' %>>
+                      <span class="check"></span>
+                    </span>
+          </label>
+        </div>
+      </div>
+      <div class="filter-block-row">
+        <div class="filter-block-col-alt">
+          <ul>
+            <% breeds = Breed.all if params[:action] == 'index' %>
+            <% breeds = Breed.where(breed_type: 'dog') if params[:breed_type] == 'dog' %>
+            <% breeds = Breed.where(breed_type: 'cat') if params[:breed_type] == 'cat' %>
+            <% breeds.first(5).each do |breed| %>
+                <li><%= link_to breed.name, "/reviews/#{breed.breed_type}/#{breed.translate}" %>  -  <%= breed.reviews.count %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="filter-block-col-alt">
+          <ul>
+            <% breeds.offset(5).limit(5).each do |breed| %>
+                <li><%= link_to breed.name, "/reviews/#{breed.breed_type}/#{breed.translate}" %>  -  <%= breed.reviews.count %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="filter-block-col-alt">
+          <ul>
+            <% breeds.offset(10).limit(5).each do |breed| %>
+                <li><%= link_to breed.name, "/reviews/#{breed.breed_type}/#{breed.translate}" %>  -  <%= breed.reviews.count %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

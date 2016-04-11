@@ -1,0 +1,20 @@
+<%= link_to 'LivePets', root_path %> ->
+<% if params[:action] == 'index' %>
+    Все отзывы
+<% else %>
+    <%= link_to 'Все отзывы', reviews_path %>
+<% end %>
+<% if params[:action] == 'breed_type' || params[:action] == 'breed_translate' %>
+    <% if params[:action] == 'breed_translate' %>
+        <% if params[:breed_type] == 'dog' %>
+            -> <%= link_to 'Отзывы о породах собак', '/reviews/dog' %>
+        <% else %>
+            -> <%= link_to 'Отзывы о породах кошек', '/reviews/cat' %>
+        <% end %>
+    <% else %>
+        <%= params[:breed_type] == 'dog' ? ' -> Отзывы о породах собак' : ' -> Отзывы о породах кошек' %>
+    <% end %>
+<% end %>
+<% if params[:action] == 'breed_translate' %>
+    -> <%= Breed.find_by_translate(params[:breed_translate]).name %>
+<% end %>

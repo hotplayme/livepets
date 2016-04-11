@@ -1,12 +1,53 @@
-<%= form_for @review do |f| %>
-    <p>Выберите породу питомца:</p>
-    <p><%= select_tag :breed_type, "<option value='dog'>Собака</option><option value='cat'>Кошка</option>".html_safe %></p>
-    <p><%= f.select :breed_id, options_for_select(@breeds.collect { |country| [country.name.titleize, country.id] }, 1), {}, { id: 'breeds_select' } %></p>
-    <p>Кличка питомца:</p>
-    <p><%= f.text_field :title %></p></p>
-    <p>Ваш отзыв</p>
-    <p><%= f.text_area :body, minlength:"200", id:"field", onkeyup:"countChar(this)" %></p>
-    <p>Фото:</p>
-    <p><%= f.file_field :review_attachments, multiple: true, name:"images[]" %></p>
-    <p><%= f.submit 'Опубликовать' %></p>
-<% end %>
+<%= tinymce_assets %>
+<div class="content narrow post">
+  <div class="new-post-form no-bg">
+    <i></i>
+    <i></i>
+    <div class="edit-post-block">
+      <div class="title-block">
+        <h3>Создать новый отзыв о породе</h3>
+      </div>
+      <%= form_for @review do |f| %>
+        <label class="field">
+          <p>Кличка питомца</p>
+          <span><%= f.text_field :title, class: "text" %></span>
+        </label>
+            <span class="whos">
+                <label class="field-new">
+                  <p>Порода</p>
+                    <%= select_tag :breed_type, "<option value='dog'>Собака</option><option value='cat'>Кошка</option>".html_safe, class:"field-new" %>
+                </label>
+            </span>
+            <span class="whys">
+                <label class="field-new">
+                  <%= f.select :breed_id, options_for_select(@breeds.collect { |country| [country.name.titleize, country.id] }, 1), {}, { id: 'breeds_select', class:"field-new" } %>
+                </label>
+            </span>
+
+        <div class="editor">
+          <%= f.text_area :body, class:"tinymce" %>
+          <%= tinymce :alternate %>
+        </div>
+
+        <label class="field">
+          <p>Добавить фото (можно выбрать до 10 файлов)</p>
+								<span class="input-file">
+									<%= f.file_field :review_attachments, multiple: true, name:"images[]" %>
+									<span class="dummy-bttn">выберите файл</span>
+								</span>
+          <div class="vote-list-progress">
+            <span class="vote-list-progress-bg"><span class="vote-list-progress-state" style="width: 60%;"></span></span>
+          </div>
+        </label>
+        <ul class="post-pics">
+          <li>
+            <img src="images/add_pic.jpg" alt="">
+            <a href="#">удалить</a>
+          </li>
+        </ul>
+        <br>
+        <div class="to-center"><%= f.button 'Опубликовать' %></div>
+      <% end %>
+    </div>
+  </div>
+</div>

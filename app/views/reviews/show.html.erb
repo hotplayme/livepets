@@ -1,3 +1,125 @@
+<div class="content narrow post">
+  <div class="new-post-form no-bg">
+    <i></i>
+    <i></i>
+    <div class="breadcrumbs">
+      <%= render 'nav' %>
+      <a href="#">Главная</a> / <a href="#">Отзывы</a> / Собаки / Шарпей  /   Отзыв №12 от 12.12.12
+    </div>
+    <br>
+    <h3>Отзывы о питомцах</h3>
+    <div class="feed-user-block">
+      <ul>
+        <li>
+          <div class="feed-user-block-item">
+            <div class="notification-block posting">
+
+              <ul>
+                <li>
+                  <div class="notification-item posting">
+
+                    <div class="text-block">
+									<span class="wra">
+										<span class="vote-list-nick-name name">Автор: <%= link_to @review.user.nickname, user_path(@review.user.nickname.downcase) %></span><span class="vote-list-nick-name city">Город: <a href="#"><%= @review.user.city.name %></a></span><span  class="vote-list-nick-name pit">Питомец: <a href="#" ><%= @review.title %></a></span>
+										<br>
+										<span class="vote-list-true-name come"><i class="paper"></i>Комментариев - <%= @review.comments.count %></span>
+										<span class="vote-list-true-name"><i class="eays"></i>просмотров - <%= @review.views %></span>
+									</span>
+                    </div>
+									<span class="otz"><span class="ot">Оцените отзыв</span><span class="gol">24 голоса</span>
+									<span class="nomsp">
+									<a class="block-num one">1</a>
+									<a class="block-num two">2</a>
+									<a class="block-num three">3</a>
+									<a class="block-num four">4</a>
+									<a class="block-num five">5</a>
+									</span>
+									</span>
+                    <div class="feed2-list-item-top-block-num">4,5</div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="feed-user-block-message">
+              <div class="post-block">
+                <div class="post-block-content">
+                  <div class="post-block-text">
+                    <div class="post-block-text-wrapp">
+                      <p><%= @review.body.html_safe %></p>
+                      <% if @review.review_attachments.count > 0 %>
+                        <% @review.review_attachments.each do |img| %>
+                          <p><%= image_tag img.file %></p>
+                        <% end %>
+                      <% end %>
+                      <% if current_user && current_user == @review.user %>
+                          <div class="post-links-block">
+                            <p></p>
+                            <p></p>
+                            <a href="#">Редактировать</a>
+                          </div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="comments-block post">
+            <% if @review.comments.count > 0 %>
+                <ul class="comments">
+                  <h1 class="commentsh1">Комментарии</h1>
+                  <% @review.comments.each do |comment| %>
+                  <li>
+                    <div class="feed-user-block-item">
+                      <div class="feed-user-block-item-title">
+                        <div class="feed-user-block-item-title-wrapp"><span><%= link_to comment.user.nickname, user_path(comment.user.nickname.downcase) %></span> опубликовал(a) запись <%= time_ago_in_words(comment.created_at) %> назад</div>
+                      </div>
+                      <div class="feed-user-block-message">
+                        <div class="message-controls">
+                          <div class="user-pic-block"><%= image_tag comment.user.avatar(:small) %></div>
+                        </div>
+                        <div class="post-block">
+                          <div class="post-block-content">
+                            <div class="post-block-text">
+                              <p><%= comment.body %></p>
+                              <% if current_user && current_user == comment.user %>
+                                  <div class="post-links-block">
+                                    <a href="#">Редактировать</a>
+                                  </div>
+                              <% end %>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <% end %>
+                </ul>
+            <% else %>
+                <p>Комментариев пока не было.</p>
+            <% end %>
+            <% if current_user %>
+                <div class="send-comment-form post">
+                  <%= form_for [@review, Comment.new], remote: true do |f| %>
+                    <label>
+                      <div>Оставьте комментарий</div>
+                      <div><%= f.text_area :body %></div>
+                      <div class="bttn-block"><%= f.button 'Отправить' %></div>
+                    </label>
+                  <% end %>
+                </div>
+            <% else %>
+                <a href="#">Зарегистрируйтесь</a> или <a href="#">Войдите</a> для того чтобы оставить комментарий.
+            <% end %>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
 <p><%= link_to 'Все отзывы', reviews_path %> -> <%= link_to params[:breed_type], reviews_type_path %> -> <%= link_to params[:breed_translate], reviews_translate_path %></p>
 <p>Отзыв о породе собак <%= @review.breed.name %></p>
 <p>Средняя оценка отзыва - <%= @score %>(всего голосов <%= @review.votes.count %>)</p>
