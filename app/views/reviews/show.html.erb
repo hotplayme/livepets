@@ -1,10 +1,11 @@
+<% content_for :title, "Отзыв № #{@review.id} о породе #{@review.breed.name} от #{@review.created_at.strftime('%d/%m/%Y')} - LivePets" %>
 <div class="content narrow post">
   <div class="new-post-form no-bg">
-    <i></i>
+    <i><%= params[:action] %>
+      <%= params[:breed_type] %></i>
     <i></i>
     <div class="breadcrumbs">
       <%= render 'nav' %>
-      <a href="#">Главная</a> / <a href="#">Отзывы</a> / Собаки / Шарпей  /   Отзыв №12 от 12.12.12
     </div>
     <br>
     <h3>Отзывы о питомцах</h3>
