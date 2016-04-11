@@ -15,8 +15,10 @@
         <%= params[:breed_type] == 'dog' ? ' -> Отзывы о породах собак' : ' -> Отзывы о породах кошек' %>
     <% end %>
 <% end %>
-<% if params[:action] == 'breed_translate' || params[:action] == 'show' %>
+<% if params[:action] == 'breed_translate' %>
     -> <%= Breed.find_by_translate(params[:breed_translate]).name %>
+    <% elsif params[:action] == 'show' %>
+    -> <%= link_to Breed.find_by_translate(params[:breed_translate]).name, "/reviews/#{Breed.find_by_translate(params[:breed_translate]).breed_type}/#{Breed.find_by_translate(params[:breed_translate]).translate}" %>
 <% end %>
 <% if params[:action] == 'show' %>
     -> Отзыв № <%= params[:id] %> от <%= Review.find(params[:id]).created_at.strftime("%d/%m/%Y") %>
