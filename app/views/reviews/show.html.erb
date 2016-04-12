@@ -121,29 +121,3 @@
     </div>
   </div>
 </div>
-
-
-<p><%= link_to 'Все отзывы', reviews_path %> -> <%= link_to params[:breed_type], reviews_type_path %> -> <%= link_to params[:breed_translate], reviews_translate_path %></p>
-<p>Отзыв о породе собак <%= @review.breed.name %></p>
-<p>Средняя оценка отзыва - <%= @score %>(всего голосов <%= @review.votes.count %>)</p>
-<% if current_user && !@review.votes.where(user: current_user).present? %>
-    <div id="votes"><%= render partial: 'votes', object: @review, as: 'review' %></div>
-<% end %>
-<h1><%= @review.title %></h1>
-<h3><%= simple_format(@review.body) %></h3>
-<% @review.review_attachments.each do |attach| %>
-    <p><%= image_tag attach.file %> <%= attach.main %></p>
-<% end %>
-
-<p>Комментарии(<%= @review.comments.count %>):</p>
-<% if @review.comments.count == 0 %>
-    <p>Комментов пока не было</p>
-<% else %>
-    <% @review.comments.each do |comment| %>
-        <p><%= simple_format(comment.body) %>, <%= comment.user.nickname %></p>
-    <% end %>
-<% end %>
-<%= form_for [@review, Comment.new], remote: true do |f| %>
-    <p><%= f.text_area :body %></p>
-    <p><%= f.submit %></p>
-<% end %>

@@ -35,25 +35,25 @@
       <div class="filter-block-row">
         <div class="filter-block-col-alt">
           <ul>
-            <% breeds = Breed.all if params[:action] == 'index' %>
+            <% breeds = Breed.order('reviews_count desc').limit(21) if params[:action] == 'index' %>
             <% breeds = Breed.where(breed_type: 'dog') if params[:breed_type] == 'dog' %>
             <% breeds = Breed.where(breed_type: 'cat') if params[:breed_type] == 'cat' %>
-            <% breeds.first(5).each do |breed| %>
-                <li><%= link_to breed.name, "/reviews/#{breed.breed_type}/#{breed.translate}" %>  -  <%= breed.reviews.count %></li>
+            <% breeds.first(7).each do |breed| %>
+                <li><%= link_to breed.name, "/reviews/#{breed.breed_type}/#{breed.translate}" %>  -  <%= breed.reviews_count %></li>
             <% end %>
           </ul>
         </div>
         <div class="filter-block-col-alt">
           <ul>
-            <% breeds.offset(5).limit(5).each do |breed| %>
-                <li><%= link_to breed.name, "/reviews/#{breed.breed_type}/#{breed.translate}" %>  -  <%= breed.reviews.count %></li>
+            <% breeds.offset(7).limit(7).each do |breed| %>
+                <li><%= link_to breed.name, "/reviews/#{breed.breed_type}/#{breed.translate}" %>  -  <%= breed.reviews_count %></li>
             <% end %>
           </ul>
         </div>
         <div class="filter-block-col-alt">
           <ul>
-            <% breeds.offset(10).limit(5).each do |breed| %>
-                <li><%= link_to breed.name, "/reviews/#{breed.breed_type}/#{breed.translate}" %>  -  <%= breed.reviews.count %></li>
+            <% breeds.offset(14).limit(7).each do |breed| %>
+                <li><%= link_to breed.name, "/reviews/#{breed.breed_type}/#{breed.translate}" %>  -  <%= breed.reviews_count %></li>
             <% end %>
           </ul>
         </div>

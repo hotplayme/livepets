@@ -1,0 +1,16 @@
+<li>
+  <div class="feed2-list-item">
+    <div class="feed2-list-item-top-block">
+      <div class="feed2-list-item-top-block-num"><%= review.votes.count > 0 ? (review.votes.sum(:score).to_f/review.votes.count).round(1) : "" %></div>
+      <div class="feed2-list-item-top-block-text">
+        <div class="feed2-list-item-top-block-text-name"><%= link_to review.user.nickname, user_path(review.user.nickname.downcase) %></div>
+        <div class="feed2-list-item-top-block-text-place"><%= review.user.city ? review.user.city.name : 'Город не указан' %></div>
+      </div>
+    </div>
+    <div class="feed2-list-item-pic-block"><%= link_to (image_tag review.avatar), review_show_path(review.breed.breed_type, review.breed.translate, review) %></div>
+    <div class="feed2-list-item-bottom-block">
+      <div class="feed2-list-item-bottom-block-name"><%= link_to review.title, review_show_path(review.breed.breed_type, review.breed.translate, review) %></div>
+      <div class="feed2-list-item-bottom-block-breed"><%= link_to review.breed.name, "/reviews/#{review.breed.breed_type}/#{review.breed.translate}" %></div>
+    </div>
+  </div>
+</li>

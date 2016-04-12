@@ -2,7 +2,7 @@ class ReviewUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::MiniMagick
 
-  process resize_to_fit: [690, 690]
+  process resize_to_fit: [780, 780]
 
   version :thumb do
     process resize_to_fill: [180, 135]

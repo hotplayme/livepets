@@ -8,10 +8,18 @@ class Review < ActiveRecord::Base
   after_save :set_main
 
   belongs_to :user
-  belongs_to :breed
+  belongs_to :breed, counter_cache: true
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :review_attachments, dependent: :destroy
   has_many :votes,       as: :votable, dependent: :destroy
+
+  def avatar
+    if self.review_attachments.count > 0
+      self.review_attachments.sample.file
+    else
+      "default.jpg"
+    end
+  end
 
   private
 
@@ -20,5 +28,7 @@ class Review < ActiveRecord::Base
       self.review_attachments.first.update(main:true)
     end
   end
+
+
 
 end
