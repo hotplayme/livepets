@@ -69,7 +69,7 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-    if @review.update(review_params)
+    if @review.update(review_params.merge(breed_type: params[:breed_type]))
       redirect_to review_show_path(@review.breed.breed_type, @review.breed.translate, @review)
     else
       render :edit

@@ -16,3 +16,381 @@ Processing by AdminController#index as HTML
   [1m[35m (1.2ms)[0m  SELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)
   [1m[36mNotice Load (0.7ms)[0m  [1mSELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1[0m
 Completed 200 OK in 1892ms (Views: 1791.3ms | ActiveRecord: 63.7ms)
+
+
+Started GET "/reviews/dog/ovcharka/40" for ::1 at 2016-04-12 12:52:45 +0600
+Processing by ReviewsController#show as HTML
+  Parameters: {"breed_type"=>"dog", "breed_translate"=>"ovcharka", "id"=>"40"}
+  [1m[35mReview Load (2.5ms)[0m  SELECT  `reviews`.* FROM `reviews` WHERE `reviews`.`id` = 40 LIMIT 1
+  [1m[36mBreed Load (0.4ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1[0m
+  [1m[35m (1.7ms)[0m  SELECT SUM(`votes`.`score`) FROM `votes` WHERE `votes`.`votable_id` = 40 AND `votes`.`votable_type` = 'Review'
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 40 AND `votes`.`votable_type` = 'Review'[0m
+  [1m[35mBreed Load (0.4ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`translate` = 'ovcharka' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`translate` = 'ovcharka' LIMIT 1[0m  [["translate", "ovcharka"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`translate` = 'ovcharka' LIMIT 1  [["translate", "ovcharka"]]
+  [1m[36mCACHE (0.7ms)[0m  [1mSELECT  `reviews`.* FROM `reviews` WHERE `reviews`.`id` = 40 LIMIT 1[0m  [["id", "40"]]
+  Rendered reviews/_nav.html.erb (6.8ms)
+  [1m[35mUser Load (0.8ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mCity Load (0.6ms)[0m  [1mSELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 40 AND `comments`.`commentable_type` = 'Review'
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 40[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 40 AND `comments`.`commentable_type` = 'Review'[0m  [["commentable_id", 40], ["commentable_type", "Review"]]
+  Rendered reviews/_comments.html.erb (9.4ms)
+  Rendered reviews/show.html.erb within layouts/application (186.2ms)
+  [1m[35m (1.0ms)[0m  SELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)
+  [1m[36mNotice Load (0.4ms)[0m  [1mSELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1[0m
+Completed 200 OK in 1271ms (Views: 936.2ms | ActiveRecord: 218.7ms)
+
+
+Started GET "/reviews/40/edit" for ::1 at 2016-04-12 12:52:51 +0600
+Processing by ReviewsController#edit as HTML
+  Parameters: {"id"=>"40"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT  `reviews`.* FROM `reviews` WHERE `reviews`.`id` = 40 LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mBreed Load (0.3ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1[0m
+  [1m[35mBreed Load (0.5ms)[0m  SELECT `breeds`.* FROM `breeds` WHERE `breeds`.`breed_type` = 'dog'
+  [1m[36mReviewAttachment Load (0.4ms)[0m  [1mSELECT `review_attachments`.* FROM `review_attachments` WHERE `review_attachments`.`review_id` = 40[0m
+  Rendered reviews/edit.html.erb within layouts/application (356.3ms)
+  [1m[35m (0.6ms)[0m  SELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)
+  [1m[36mNotice Load (0.5ms)[0m  [1mSELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1[0m
+Completed 200 OK in 1116ms (Views: 1106.6ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/pet/update_breeds?breed_type=cat&_=1460443972905" for ::1 at 2016-04-12 12:53:04 +0600
+Processing by MypetsController#update_breeds as JS
+  Parameters: {"breed_type"=>"cat", "_"=>"1460443972905"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mBreed Load (0.4ms)[0m  [1mSELECT `breeds`.* FROM `breeds` WHERE (breed_type = 'cat')[0m
+  Rendered breeds/_breed.html.erb (0.8ms)
+  Rendered mypets/update_breeds.js.coffee (58.2ms)
+Completed 200 OK in 86ms (Views: 82.0ms | ActiveRecord: 0.8ms)
+
+
+Started PATCH "/reviews/40" for ::1 at 2016-04-12 12:53:05 +0600
+Processing by ReviewsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"R8XyGoSXCKdGfko7aJXWx/SF6hylKejzdYwbp6ueWQ8fCbSeLu00rINAB32AgwvooVB57Tp4g4CDVJRrUfuH2A==", "review"=>{"title"=>"vdvsdgf dgfd gdf", "breed_id"=>"3", "body"=>"<p>fdsg f gdf gdf gd</p>"}, "breed_type"=>"cat", "button"=>"", "id"=>"40"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT  `reviews`.* FROM `reviews` WHERE `reviews`.`id` = 40 LIMIT 1[0m
+  [1m[35m (5.8ms)[0m  BEGIN
+  [1m[36mSQL (20.9ms)[0m  [1mUPDATE `reviews` SET `breed_id` = 3, `updated_at` = '2016-04-12 06:53:05.572657' WHERE `reviews`.`id` = 40[0m
+  [1m[35mSQL (1.9ms)[0m  UPDATE `breeds` SET `reviews_count` = COALESCE(`reviews_count`, 0) + 1 WHERE `breeds`.`id` = 3
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE `breeds` SET `reviews_count` = COALESCE(`reviews_count`, 0) - 1 WHERE `breeds`.`id` = 2[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 40
+  [1m[36m (2.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mBreed Load (0.3ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 3 LIMIT 1
+Redirected to http://www.www.localhost:3000/reviews/cat/sibir/40
+Completed 302 Found in 49ms (ActiveRecord: 32.9ms)
+
+
+Started GET "/reviews/cat/sibir/40" for ::1 at 2016-04-12 12:53:05 +0600
+Processing by ReviewsController#show as HTML
+  Parameters: {"breed_type"=>"cat", "breed_translate"=>"sibir", "id"=>"40"}
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT  `reviews`.* FROM `reviews` WHERE `reviews`.`id` = 40 LIMIT 1[0m
+  [1m[35mBreed Load (0.3ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 3 LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mSELECT SUM(`votes`.`score`) FROM `votes` WHERE `votes`.`votable_id` = 40 AND `votes`.`votable_type` = 'Review'[0m
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 40 AND `votes`.`votable_type` = 'Review'
+  [1m[36mBreed Load (0.4ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`translate` = 'sibir' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`translate` = 'sibir' LIMIT 1  [["translate", "sibir"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`translate` = 'sibir' LIMIT 1[0m  [["translate", "sibir"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `reviews`.* FROM `reviews` WHERE `reviews`.`id` = 40 LIMIT 1  [["id", "40"]]
+  Rendered reviews/_nav.html.erb (3.2ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCity Load (0.3ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 40 AND `comments`.`commentable_type` = 'Review'[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 40
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 40 AND `comments`.`commentable_type` = 'Review'  [["commentable_id", 40], ["commentable_type", "Review"]]
+  Rendered reviews/_comments.html.erb (2.3ms)
+  Rendered reviews/show.html.erb within layouts/application (17.9ms)
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)[0m
+  [1m[35mNotice Load (0.4ms)[0m  SELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1
+Completed 200 OK in 439ms (Views: 428.4ms | ActiveRecord: 4.8ms)
+  [1m[36mReview Load (0.4ms)[0m  [1mSELECT  `reviews`.* FROM `reviews` WHERE `reviews`.`id` = 40 LIMIT 1[0m
+
+
+Started GET "/reviews/40/edit" for ::1 at 2016-04-12 12:53:54 +0600
+Processing by ReviewsController#edit as HTML
+  Parameters: {"id"=>"40"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mReview Load (0.3ms)[0m  SELECT  `reviews`.* FROM `reviews` WHERE `reviews`.`id` = 40 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mBreed Load (0.3ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 3 LIMIT 1
+  [1m[36mBreed Load (0.4ms)[0m  [1mSELECT `breeds`.* FROM `breeds` WHERE `breeds`.`breed_type` = 'cat'[0m
+  [1m[35mReviewAttachment Load (0.4ms)[0m  SELECT `review_attachments`.* FROM `review_attachments` WHERE `review_attachments`.`review_id` = 40
+  Rendered reviews/edit.html.erb within layouts/application (245.9ms)
+  [1m[36m (0.9ms)[0m  [1mSELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)[0m
+  [1m[35mNotice Load (0.6ms)[0m  SELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1
+Completed 200 OK in 778ms (Views: 769.1ms | ActiveRecord: 3.5ms)
+
+
+Started PATCH "/reviews/40" for ::1 at 2016-04-12 12:53:59 +0600
+Processing by ReviewsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lUCWCYRJ9krAFIvSuubYVAUgf/68Rl/f1uwXQ/H8i9HNjNCNLjPKQQUqxpRS8AV7UPXsDyMXNKwgNJiPC5lVBg==", "review"=>{"title"=>"vdvsdgf dgfd gdf", "breed_id"=>"4", "body"=>"<p>fdsg f gdf gdf gd</p>"}, "breed_type"=>"cat", "button"=>"", "id"=>"40"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mReview Load (0.3ms)[0m  SELECT  `reviews`.* FROM `reviews` WHERE `reviews`.`id` = 40 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE `reviews` SET `breed_id` = 4, `updated_at` = '2016-04-12 06:53:59.787960' WHERE `reviews`.`id` = 40
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE `breeds` SET `reviews_count` = COALESCE(`reviews_count`, 0) + 1 WHERE `breeds`.`id` = 4[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE `breeds` SET `reviews_count` = COALESCE(`reviews_count`, 0) - 1 WHERE `breeds`.`id` = 3
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 40[0m
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36mBreed Load (0.4ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 4 LIMIT 1[0m
+Redirected to http://www.www.localhost:3000/reviews/cat/mun/40
+Completed 302 Found in 14ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/reviews/cat/mun/40" for ::1 at 2016-04-12 12:53:59 +0600
+Processing by ReviewsController#show as HTML
+  Parameters: {"breed_type"=>"cat", "breed_translate"=>"mun", "id"=>"40"}
+  [1m[35mReview Load (0.4ms)[0m  SELECT  `reviews`.* FROM `reviews` WHERE `reviews`.`id` = 40 LIMIT 1
+  [1m[36mBreed Load (0.3ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 4 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT SUM(`votes`.`score`) FROM `votes` WHERE `votes`.`votable_id` = 40 AND `votes`.`votable_type` = 'Review'
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 40 AND `votes`.`votable_type` = 'Review'[0m
+  [1m[35mBreed Load (0.3ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`translate` = 'mun' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`translate` = 'mun' LIMIT 1[0m  [["translate", "mun"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`translate` = 'mun' LIMIT 1  [["translate", "mun"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `reviews`.* FROM `reviews` WHERE `reviews`.`id` = 40 LIMIT 1[0m  [["id", "40"]]
+  Rendered reviews/_nav.html.erb (2.3ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mCity Load (0.3ms)[0m  [1mSELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 40 AND `comments`.`commentable_type` = 'Review'
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 40[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 40 AND `comments`.`commentable_type` = 'Review'[0m  [["commentable_id", 40], ["commentable_type", "Review"]]
+  Rendered reviews/_comments.html.erb (2.1ms)
+  Rendered reviews/show.html.erb within layouts/application (15.4ms)
+  [1m[35m (0.6ms)[0m  SELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)
+  [1m[36mNotice Load (0.5ms)[0m  [1mSELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1[0m
+Completed 200 OK in 537ms (Views: 528.4ms | ActiveRecord: 4.4ms)
+  [1m[35mReview Load (0.4ms)[0m  SELECT  `reviews`.* FROM `reviews` WHERE `reviews`.`id` = 40 LIMIT 1
+  [1m[36mReview Load (0.4ms)[0m  [1mSELECT  `reviews`.* FROM `reviews` WHERE `reviews`.`id` = 40 LIMIT 1[0m
+
+
+Started GET "/reviews/40/edit" for ::1 at 2016-04-12 12:54:30 +0600
+Processing by ReviewsController#edit as HTML
+  Parameters: {"id"=>"40"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mReview Load (0.9ms)[0m  [1mSELECT  `reviews`.* FROM `reviews` WHERE `reviews`.`id` = 40 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mBreed Load (0.3ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 4 LIMIT 1[0m
+  [1m[35mBreed Load (0.4ms)[0m  SELECT `breeds`.* FROM `breeds` WHERE `breeds`.`breed_type` = 'cat'
+  [1m[36mReviewAttachment Load (0.4ms)[0m  [1mSELECT `review_attachments`.* FROM `review_attachments` WHERE `review_attachments`.`review_id` = 40[0m
+  Rendered reviews/edit.html.erb within layouts/application (322.4ms)
+  [1m[35m (0.9ms)[0m  SELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)
+  [1m[36mNotice Load (0.7ms)[0m  [1mSELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1[0m
+Completed 200 OK in 1126ms (Views: 899.6ms | ActiveRecord: 143.5ms)
+
+
+Started PATCH "/reviews/40" for ::1 at 2016-04-12 12:54:34 +0600
+Processing by ReviewsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"n3pozyEwJjTLQgxrobDeRrBxIdkzNlM/ZWIsV4DtyuXHti5Li0oaPw58QS1JpgNp5aSyKKxnOEyTuqObeogUMg==", "review"=>{"title"=>"vdvsdgf dgfd gdf", "breed_id"=>"4", "body"=>"<p>fdsg f gdf gdf gd</p>"}, "breed_type"=>"cat", "button"=>"", "id"=>"40"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT  `reviews`.* FROM `reviews` WHERE `reviews`.`id` = 40 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE `reviews` SET `breed_type` = 'cat', `updated_at` = '2016-04-12 06:54:34.666585' WHERE `reviews`.`id` = 40[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 40
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mBreed Load (0.3ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 4 LIMIT 1
+Redirected to http://www.www.localhost:3000/reviews/cat/mun/40
+Completed 302 Found in 16ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/reviews/cat/mun/40" for ::1 at 2016-04-12 12:54:34 +0600
+Processing by ReviewsController#show as HTML
+  Parameters: {"breed_type"=>"cat", "breed_translate"=>"mun", "id"=>"40"}
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT  `reviews`.* FROM `reviews` WHERE `reviews`.`id` = 40 LIMIT 1[0m
+  [1m[35mBreed Load (0.2ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 4 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT SUM(`votes`.`score`) FROM `votes` WHERE `votes`.`votable_id` = 40 AND `votes`.`votable_type` = 'Review'[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 40 AND `votes`.`votable_type` = 'Review'
+  [1m[36mBreed Load (0.3ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`translate` = 'mun' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`translate` = 'mun' LIMIT 1  [["translate", "mun"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`translate` = 'mun' LIMIT 1[0m  [["translate", "mun"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `reviews`.* FROM `reviews` WHERE `reviews`.`id` = 40 LIMIT 1  [["id", "40"]]
+  Rendered reviews/_nav.html.erb (3.5ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCity Load (0.3ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 40 AND `comments`.`commentable_type` = 'Review'[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 40
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 40 AND `comments`.`commentable_type` = 'Review'  [["commentable_id", 40], ["commentable_type", "Review"]]
+  Rendered reviews/_comments.html.erb (6.8ms)
+  Rendered reviews/show.html.erb within layouts/application (84.0ms)
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)[0m
+  [1m[35mNotice Load (0.5ms)[0m  SELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1
+Completed 200 OK in 706ms (Views: 631.8ms | ActiveRecord: 62.0ms)
+  [1m[35mReview Load (0.6ms)[0m  SELECT  `reviews`.* FROM `reviews` WHERE `reviews`.`id` = 40 LIMIT 1
+
+
+Started GET "/reviews/cat" for ::1 at 2016-04-12 12:54:40 +0600
+Processing by ReviewsController#breed_type as HTML
+  Parameters: {"breed_type"=>"cat"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered reviews/_nav.html.erb (0.2ms)
+  [1m[35mBreed Load (6.7ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`breed_type` = 'cat'  ORDER BY `breeds`.`id` ASC LIMIT 7
+  [1m[36mBreed Load (0.5ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`breed_type` = 'cat' LIMIT 7 OFFSET 7[0m
+  [1m[35mBreed Load (0.4ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`breed_type` = 'cat' LIMIT 7 OFFSET 14
+  Rendered reviews/_filter.html.erb (11.1ms)
+  [1m[36mReview Load (13.2ms)[0m  [1mSELECT `reviews`.* FROM `reviews` WHERE `reviews`.`breed_type` = 'Cat'  ORDER BY created_at DESC[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 40 AND `votes`.`votable_type` = 'Review'
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCity Load (0.3ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 40[0m
+  [1m[35mBreed Load (0.4ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 4 LIMIT 1
+  Rendered reviews/_review.html.erb (16.4ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 30 AND `votes`.`votable_type` = 'Review'[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 30[0m
+  [1m[35mBreed Load (0.3ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1
+  Rendered reviews/_review.html.erb (7.5ms)
+  Rendered reviews/index.html.erb within layouts/application (57.2ms)
+  [1m[36m (0.8ms)[0m  [1mSELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)[0m
+  [1m[35mNotice Load (0.5ms)[0m  SELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1
+Completed 200 OK in 446ms (Views: 418.4ms | ActiveRecord: 25.7ms)
+
+
+Started GET "/images/default.jpg" for ::1 at 2016-04-12 12:54:40 +0600
+
+
+Started GET "/" for ::1 at 2016-04-12 12:54:40 +0600
+Processing by HomeController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `winners`[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mCity Load (0.4ms)[0m  [1mSELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1[0m
+  [1m[35mMypet Load (2.2ms)[0m  SELECT  `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)  ORDER BY `mypets`.`id` DESC LIMIT 5
+  [1m[36mPetAttachment Load (0.7ms)[0m  [1mSELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `winners`[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `mypets` WHERE (pet_attachments_count > 0)
+  [1m[36mMypet Load (0.3ms)[0m  [1mSELECT `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m  [["mypet_id", 49]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  [1m[36mBreed Load (0.3ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1[0m
+  Rendered home/_no_pet_day.html.slim (8.3ms)
+  [1m[35mMypet Load (45.2ms)[0m  SELECT  `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)  ORDER BY Rand() LIMIT 12
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m  [["mypet_id", 49]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  Rendered home/_general.html.slim (52.2ms)
+  [1m[36mMypet Load (6.7ms)[0m  [1mSELECT  `mypets`.* FROM `mypets` INNER JOIN `users` ON `mypets`.`user_id` = `users`.`id` WHERE `users`.`city_id` = 5 AND (pet_attachments_count > 0)  ORDER BY Rand() LIMIT 12[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49  [["mypet_id", 49]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  Rendered home/_town01.html.slim (11.3ms)
+  [1m[35mUser Load (0.6ms)[0m  SELECT  `users`.* FROM `users`  ORDER BY repa DESC LIMIT 10
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users`  ORDER BY repa_total DESC LIMIT 10[0m
+  [1m[35mArticle Load (6.7ms)[0m  SELECT  `articles`.* FROM `articles` WHERE (created_at < '2016-04-12 06:54:40.898457')  ORDER BY created_at DESC LIMIT 6
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 7 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 7 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 7 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 7], ["commentable_type", "Article"]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 6 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 6 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 6 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 6], ["commentable_type", "Article"]]
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 3 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (1.1ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 3 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 3 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 3], ["commentable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 4 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 4], ["commentable_type", "Article"]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 5 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 5 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 5 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 5], ["commentable_type", "Article"]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 1], ["commentable_type", "Article"]]
+  Rendered home/index.html.slim within layouts/application (307.8ms)
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)[0m
+  [1m[35mNotice Load (0.4ms)[0m  SELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1
+Completed 200 OK in 913ms (Views: 656.8ms | ActiveRecord: 134.1ms)
+
+
+Started GET "/reviews/cat/mun/40" for ::1 at 2016-04-12 12:54:42 +0600
+Processing by ReviewsController#show as HTML
+  Parameters: {"breed_type"=>"cat", "breed_translate"=>"mun", "id"=>"40"}
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT  `reviews`.* FROM `reviews` WHERE `reviews`.`id` = 40 LIMIT 1[0m
+  [1m[35mBreed Load (0.3ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 4 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT SUM(`votes`.`score`) FROM `votes` WHERE `votes`.`votable_id` = 40 AND `votes`.`votable_type` = 'Review'[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 40 AND `votes`.`votable_type` = 'Review'
+  [1m[36mBreed Load (0.3ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`translate` = 'mun' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`translate` = 'mun' LIMIT 1  [["translate", "mun"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`translate` = 'mun' LIMIT 1[0m  [["translate", "mun"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `reviews`.* FROM `reviews` WHERE `reviews`.`id` = 40 LIMIT 1  [["id", "40"]]
+  Rendered reviews/_nav.html.erb (3.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCity Load (0.3ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 40 AND `comments`.`commentable_type` = 'Review'[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 40
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 40 AND `comments`.`commentable_type` = 'Review'  [["commentable_id", 40], ["commentable_type", "Review"]]
+  Rendered reviews/_comments.html.erb (2.3ms)
+  Rendered reviews/show.html.erb within layouts/application (16.2ms)
+  [1m[36m (1.3ms)[0m  [1mSELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)[0m
+  [1m[35mNotice Load (0.6ms)[0m  SELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1
+Completed 200 OK in 469ms (Views: 460.1ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/reviews/40/edit" for ::1 at 2016-04-12 12:54:44 +0600
+Processing by ReviewsController#edit as HTML
+  Parameters: {"id"=>"40"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mReview Load (0.3ms)[0m  SELECT  `reviews`.* FROM `reviews` WHERE `reviews`.`id` = 40 LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mBreed Load (0.3ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 4 LIMIT 1
+  [1m[36mBreed Load (0.5ms)[0m  [1mSELECT `breeds`.* FROM `breeds` WHERE `breeds`.`breed_type` = 'cat'[0m
+  [1m[35mReviewAttachment Load (0.8ms)[0m  SELECT `review_attachments`.* FROM `review_attachments` WHERE `review_attachments`.`review_id` = 40
+  Rendered reviews/edit.html.erb within layouts/application (260.8ms)
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)[0m
+  [1m[35mNotice Load (0.3ms)[0m  SELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1
+Completed 200 OK in 681ms (Views: 673.1ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/pet/update_breeds?breed_type=dog&_=1460444085531" for ::1 at 2016-04-12 12:54:47 +0600
+Processing by MypetsController#update_breeds as JS
+  Parameters: {"breed_type"=>"dog", "_"=>"1460444085531"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mBreed Load (0.3ms)[0m  SELECT `breeds`.* FROM `breeds` WHERE (breed_type = 'dog')
+  Rendered breeds/_breed.html.erb (0.8ms)
+  Rendered mypets/update_breeds.js.coffee (61.5ms)
+Completed 200 OK in 90ms (Views: 82.5ms | ActiveRecord: 0.8ms)
+
+
+Started PATCH "/reviews/40" for ::1 at 2016-04-12 12:54:48 +0600
+Processing by ReviewsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CgCjrXZbJ9OLtXv42oSIQ2ezBRsz0aSbcM1XiqzZTf9SzOUp3CEb2E6LNr4yklVsMmaW6qyAz+iGFdhGVryTKA==", "review"=>{"title"=>"vdvsdgf dgfd gdf", "breed_id"=>"1", "body"=>"<p>fdsg f gdf gdf gd</p>"}, "breed_type"=>"dog", "button"=>"", "id"=>"40"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mReview Load (0.3ms)[0m  SELECT  `reviews`.* FROM `reviews` WHERE `reviews`.`id` = 40 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE `reviews` SET `breed_id` = 1, `breed_type` = 'dog', `updated_at` = '2016-04-12 06:54:49.005638' WHERE `reviews`.`id` = 40
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE `breeds` SET `reviews_count` = COALESCE(`reviews_count`, 0) + 1 WHERE `breeds`.`id` = 1[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE `breeds` SET `reviews_count` = COALESCE(`reviews_count`, 0) - 1 WHERE `breeds`.`id` = 4
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 40[0m
+  [1m[35m (2.2ms)[0m  COMMIT
+  [1m[36mBreed Load (0.4ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 1 LIMIT 1[0m
+Redirected to http://www.www.localhost:3000/reviews/dog/sharpei/40
+Completed 302 Found in 18ms (ActiveRecord: 5.3ms)
+
+
+Started GET "/reviews/dog/sharpei/40" for ::1 at 2016-04-12 12:54:49 +0600
+Processing by ReviewsController#show as HTML
+  Parameters: {"breed_type"=>"dog", "breed_translate"=>"sharpei", "id"=>"40"}
+  [1m[35mReview Load (0.4ms)[0m  SELECT  `reviews`.* FROM `reviews` WHERE `reviews`.`id` = 40 LIMIT 1
+  [1m[36mBreed Load (0.3ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT SUM(`votes`.`score`) FROM `votes` WHERE `votes`.`votable_id` = 40 AND `votes`.`votable_type` = 'Review'
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 40 AND `votes`.`votable_type` = 'Review'[0m
+  [1m[35mBreed Load (0.3ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`translate` = 'sharpei' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`translate` = 'sharpei' LIMIT 1[0m  [["translate", "sharpei"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`translate` = 'sharpei' LIMIT 1  [["translate", "sharpei"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `reviews`.* FROM `reviews` WHERE `reviews`.`id` = 40 LIMIT 1[0m  [["id", "40"]]
+  Rendered reviews/_nav.html.erb (2.2ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mCity Load (0.4ms)[0m  [1mSELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 40 AND `comments`.`commentable_type` = 'Review'
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 40[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 40 AND `comments`.`commentable_type` = 'Review'[0m  [["commentable_id", 40], ["commentable_type", "Review"]]
+  Rendered reviews/_comments.html.erb (1.6ms)
+  Rendered reviews/show.html.erb within layouts/application (14.8ms)
+  [1m[35m (0.6ms)[0m  SELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)
+  [1m[36mNotice Load (0.4ms)[0m  [1mSELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1[0m
+Completed 200 OK in 541ms (Views: 531.7ms | ActiveRecord: 4.6ms)
+  [1m[36mReview Load (0.6ms)[0m  [1mSELECT  `reviews`.* FROM `reviews` WHERE `reviews`.`id` = 40 LIMIT 1[0m
