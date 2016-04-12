@@ -12,6 +12,8 @@ class Review < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :review_attachments, dependent: :destroy
   has_many :votes,       as: :votable, dependent: :destroy
+  has_many :subscribers, as: :subscribable, dependent: :destroy
+  has_many :notices,     as: :noticeable,   dependent: :destroy
 
   def avatar
     if self.review_attachments.count > 0

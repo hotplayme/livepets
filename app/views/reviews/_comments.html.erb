@@ -1,0 +1,27 @@
+<h1 class="commentsh1">Комментарии</h1>
+<% review.comments.each do |comment| %>
+    <li>
+      <div class="feed-user-block-item">
+        <div class="feed-user-block-item-title">
+          <div class="feed-user-block-item-title-wrapp"><span><%= link_to comment.user.nickname, user_path(comment.user.nickname.downcase) %></span> опубликовал(a) запись <%= time_ago_in_words(comment.created_at) %> назад</div>
+        </div>
+        <div class="feed-user-block-message">
+          <div class="message-controls">
+            <div class="user-pic-block"><%= image_tag comment.user.avatar(:small) %></div>
+          </div>
+          <div class="post-block">
+            <div class="post-block-content">
+              <div class="post-block-text">
+                <p><%= comment.body %></p>
+                <% if current_user && current_user == comment.user %>
+                    <div class="post-links-block">
+                      <a href="#">Редактировать</a>
+                    </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+<% end %>
