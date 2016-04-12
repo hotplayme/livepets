@@ -68,27 +68,8 @@
             </div>
           </div>
 
-          <div class="comments-block post">
-            <% if @review.comments.count > 0 %>
-                <ul class="comments">
-                  <%= render partial: 'comments', object: @review, as: 'review' %>
-                </ul>
-            <% else %>
-                <p>Комментариев пока не было.</p>
-            <% end %>
-            <% if current_user %>
-                <div class="send-comment-form post">
-                  <%= form_for [@review, Comment.new], remote: true do |f| %>
-                    <label>
-                      <div>Оставьте комментарий</div>
-                      <div><%= f.text_area :body %></div>
-                      <div class="bttn-block"><%= f.button 'Отправить', type:'submit', data: { disable_with: 'Публикуем...' } %></div>
-                    </label>
-                  <% end %>
-                </div>
-            <% else %>
-                <a href="#">Зарегистрируйтесь</a> или <a href="#">Войдите</a> для того чтобы оставить комментарий.
-            <% end %>
+          <div id='comments' class="comments-block post">
+            <%= render partial: 'comments', object: @review, as: 'review' %>
           </div>
         </li>
       </ul>

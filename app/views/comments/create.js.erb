@@ -3,5 +3,5 @@
 <% elsif @commentable.class == Blog %>
     $('.comments-block').html('<%= j render partial: 'blogs/comments', object: @commentable , as: 'blog' %>');
 <% elsif @commentable.class == Review %>
-    $('ul.comments').html('<%= j render partial: 'reviews/comments', object: @commentable , as: 'review' %>');
+    $('#comments').html('<%= j render partial: 'reviews/comments', object: @commentable , as: 'review' %>');
 <% end %>
