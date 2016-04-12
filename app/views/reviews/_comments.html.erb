@@ -1,9 +1,9 @@
 <h1 class="commentsh1">Комментарии</h1>
 <% review.comments.each do |comment| %>
-    <li>
+    <li id="comment_<%= comment.id %>">
       <div class="feed-user-block-item">
         <div class="feed-user-block-item-title">
-          <div class="feed-user-block-item-title-wrapp"><span><%= link_to comment.user.nickname, user_path(comment.user.nickname.downcase) %></span> опубликовал(a) запись <%= time_ago_in_words(comment.created_at) %> назад</div>
+          <div class="feed-user-block-item-title-wrapp"><span><%= link_to comment.user.nickname, user_path(comment.user.nickname.downcase) %></span> опубликовал(a) запись <%= time_ago_in_words(comment.created_at) %> назад.  <% if current_user && comment.user == current_user %><b><%= link_to 'Удалить', review_comment_path(review, comment), method: :delete, remote: true %></b><% end %></div>
         </div>
         <div class="feed-user-block-message">
           <div class="message-controls">
@@ -13,11 +13,7 @@
             <div class="post-block-content">
               <div class="post-block-text">
                 <p><%= comment.body %></p>
-                <% if current_user && current_user == comment.user %>
-                    <div class="post-links-block">
-                      <a href="#">Редактировать</a>
-                    </div>
-                <% end %>
+
               </div>
             </div>
           </div>
