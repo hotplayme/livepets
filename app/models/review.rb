@@ -3,7 +3,7 @@ class Review < ActiveRecord::Base
   include Votable
 
   validates :title, presence: true, length: { minimum: 4, maximum: 65 }
-  validates :body,  presence: true, length: { minimum: 200, maximum: 15000 }
+  validates :body,  presence: true, length: { minimum: 20, maximum: 15000 }
 
   after_save :set_main
 

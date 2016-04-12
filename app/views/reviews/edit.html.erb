@@ -36,14 +36,18 @@
                                   <span class="dummy-bttn">выберите файл</span>
 								</span>
             <div class="vote-list-progress">
-              <span class="vote-list-progress-bg"><span class="vote-list-progress-state" style="width: 60%;"></span></span>
+              <span class="vote-list-progress-bg" style="display: none;">
+                <span class="vote-list-progress-state" style="width: 0%;"></span>
+              </span>
             </div>
           </label>
           <ul class="post-pics">
-            <li>
-              <img src="images/add_pic.jpg" alt="">
-              <a href="#">удалить</a>
-            </li>
+            <% @review.review_attachments.each do |image| %>
+                <li id="attach_<%= image.id %>">
+                  <%= image_tag image.file.url(:thumb) %>
+                  <%= link_to 'Удалить', a_delete_reviews_path(image), method: :delete, remote: true %>
+                </li>
+            <% end %>
           </ul>
           <br>
           <div class="to-center"><%= f.button 'Редактировать', data: { disable_with: 'Сохраняем...' } %></div>
