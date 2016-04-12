@@ -70,7 +70,7 @@
 
           <div class="comments-block post">
             <% if @review.comments.count > 0 %>
-                <ul class="comments">
+                <ul id='comments_block' class="comments">
                   <h1 class="commentsh1">Комментарии</h1>
                   <% @review.comments.each do |comment| %>
                   <li>
@@ -108,7 +108,7 @@
                     <label>
                       <div>Оставьте комментарий</div>
                       <div><%= f.text_area :body %></div>
-                      <div class="bttn-block"><%= f.button 'Отправить' %></div>
+                      <div class="bttn-block"><%= f.button 'Отправить', type:'submit', data: { disable_with: 'Публикуем...' } %></div>
                     </label>
                   <% end %>
                 </div>
