@@ -1,1 +1,53 @@
-edit review
+<%= tinymce_assets %>
+<div class="content narrow post">
+  <div class="new-post-form no-bg">
+    <i></i>
+    <i></i>
+    <div class="edit-post-block">
+      <div class="title-block">
+        <h3>Редактирование вашего отзыва</h3>
+      </div>
+      <%= form_for @review do |f| %>
+          <label class="field">
+            <p>Кличка питомца</p>
+            <span><%= f.text_field :title, class: "text" %></span>
+          </label>
+            <span class="whos">
+                <label class="field-new">
+                  <p>Порода</p>
+                  <%= select_tag :breed_type, "<option value='dog'>Собака</option><option value='cat' #{ 'selected' if @review.breed.breed_type == 'cat' }>Кошка</option>".html_safe, class:"field-new" %>
+                </label>
+            </span>
+            <span class="whys">
+                <label class="field-new">
+                  <%= f.select :breed_id, options_for_select(@breeds.collect { |breed| [breed.name.titleize, breed.id] }, @review.breed.id), {}, { id: 'breeds_select'} %>
+                </label>
+            </span>
+
+          <div class="editor">
+            <%= f.text_area :body, class:"tinymce" %>
+            <%= tinymce :alternate %>
+          </div>
+
+          <label class="field">
+            <p>Добавить фото (можно выбрать до 10 файлов)</p>
+								<span class="input-file">
+									<%= f.file_field :review_attachments, multiple: true, name:"images[]" %>
+                                  <span class="dummy-bttn">выберите файл</span>
+								</span>
+            <div class="vote-list-progress">
+              <span class="vote-list-progress-bg"><span class="vote-list-progress-state" style="width: 60%;"></span></span>
+            </div>
+          </label>
+          <ul class="post-pics">
+            <li>
+              <img src="images/add_pic.jpg" alt="">
+              <a href="#">удалить</a>
+            </li>
+          </ul>
+          <br>
+          <div class="to-center"><%= f.button 'Редактировать', data: { disable_with: 'Сохраняем...' } %></div>
+      <% end %>
+    </div>
+  </div>
+</div>

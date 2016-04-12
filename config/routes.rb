@@ -51,7 +51,10 @@ Rails.application.routes.draw do
 
   # REVIEWS CONTROLLER BEGIN #
   resources :reviews, except: [:show] do
-    resources :comments, defaults: { commentable: 'reviews' }
+    post :image_create, on: :collection
+    put :image_create, on: :collection
+    delete :a_delete, path: '/attach/:id', on: :collection
+    resources :comments, defaults: { commentable: 'reviews' }, only: [:create, :destroy]
     member do
       get :vote
     end

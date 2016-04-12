@@ -17,7 +17,7 @@ class Review < ActiveRecord::Base
 
   def avatar
     if self.review_attachments.count > 0
-      self.review_attachments.sample.file
+      self.review_attachments.sample.file.thumb
     else
       "default.jpg"
     end

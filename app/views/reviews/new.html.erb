@@ -32,20 +32,20 @@
         <label class="field">
           <p>Добавить фото (можно выбрать до 10 файлов)</p>
 								<span class="input-file">
-									<%= f.file_field :review_attachments, multiple: true, name:"images[]" %>
+									<%= f.file_field :review_attachments, multiple: true, accept:'image/*' %>
 									<span class="dummy-bttn">выберите файл</span>
 								</span>
           <div class="vote-list-progress">
-            <span class="vote-list-progress-bg"><span class="vote-list-progress-state" style="width: 60%;"></span></span>
+            <span class="vote-list-progress-bg" style="display: none;">
+              <span class="vote-list-progress-state" style="width: 0%;"></span>
+            </span>
           </div>
         </label>
         <ul class="post-pics">
-          <li>
-            <img src="images/add_pic.jpg" alt="">
-            <a href="#">удалить</a>
-          </li>
+
         </ul>
         <br>
+        <div id="picture_ids"></div>
         <div class="to-center"><%= f.button 'Опубликовать' %></div>
       <% end %>
     </div>

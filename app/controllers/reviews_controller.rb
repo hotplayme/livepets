@@ -37,10 +37,8 @@ class ReviewsController < ApplicationController
   def create
     @review = current_user.reviews.new(review_params.merge(breed_type: params[:breed_type]))
     if @review.save
-      if params[:images]
-        params[:images].each do |image|
-          @review.review_attachments.create(file:image)
-        end
+      if params[:attach_ids].present?
+        ReviewAttachment.where(id: params[:attach_ids]).update_all(review_id: @review.id)
       end
       redirect_to review_show_path(@review.breed.breed_type, @review.breed.translate, @review)
     else
@@ -58,7 +56,15 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @review = Review.find(params[:id])
+    if @review = Review.find_by_id(params[:id])
+      if current_user && @review.user == current_user
+        @breeds = Breed.where(breed_type: @review.breed.breed_type)
+      else
+        redirect_to reviews_path
+      end
+    else
+      redirect_to reviews_path
+    end
   end
 
   def update
@@ -74,6 +80,17 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.update(del: true) if @review.user == current_user
     redirect_to reviews_path
+  end
+
+  def image_create
+    params[:review][:review_attachments].each do |file|
+      @file = ReviewAttachment.create(file: file, user_id: current_user.id)
+    end
+  end
+
+  def a_delete
+    @attachment = ReviewAttachment.find(params[:id])
+    @attachment.destroy if @attachment.user_id == current_user.id
   end
 
   private

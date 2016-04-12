@@ -1,16 +1,13 @@
 <% content_for :title, "Отзыв № #{@review.id} о породе #{@review.breed.name} от #{@review.created_at.strftime('%d/%m/%Y')} - LivePets" %>
 <div class="content narrow post">
   <div class="new-post-form no-bg">
-    <i><%= params[:action] %>
-      <%= params[:breed_type] %>
-        <%= @review.breed.breed_type %>
-    </i>
+    <i></i>
     <i></i>
     <div class="breadcrumbs">
       <%= render 'nav' %>
     </div>
     <br>
-    <h3>Отзывы о питомцах</h3>
+    <h3>Отзыв № <%= @review.id %> о породе <%= @review.breed.name %> от <%= @review.created_at.strftime('%d/%m/%Y') %></h3>
     <div class="feed-user-block">
       <ul>
         <li>
@@ -58,7 +55,7 @@
                           <div class="post-links-block">
                             <p></p>
                             <p></p>
-                            <a href="#">Редактировать</a>
+                            <%= link_to 'Редактировать', edit_review_path(@review) %>
                           </div>
                       <% end %>
                     </div>
