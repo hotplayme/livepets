@@ -1,7 +1,9 @@
 class BreedsController < ApplicationController
   
   def show
-    @breed = Breed.find_by_translate(params[:translate])
+    unless @breed = Breed.find_by_translate(params[:translate])
+      redirect_to root_path
+    end
   end
   
   def index_dogs
