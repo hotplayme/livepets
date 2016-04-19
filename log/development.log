@@ -994,3 +994,2275 @@ Processing by HomeController#index as HTML
   [1m[35m (0.7ms)[0m  SELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)
   [1m[36mNotice Load (0.6ms)[0m  [1mSELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1[0m
 Completed 200 OK in 1350ms (Views: 1156.3ms | ActiveRecord: 174.9ms)
+
+
+Started GET "/" for ::1 at 2016-04-16 12:34:32 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (17.6ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+
+
+Started GET "/" for ::1 at 2016-04-16 12:34:32 +0600
+
+
+Started GET "/" for ::1 at 2016-04-16 12:34:32 +0600
+Processing by HomeController#index as HTML
+  [1m[35m (1.7ms)[0m  SELECT COUNT(*) FROM `winners`
+  [1m[36mMypet Load (25.2ms)[0m  [1mSELECT  `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)  ORDER BY `mypets`.`id` DESC LIMIT 5[0m
+  [1m[35mPetAttachment Load (3.2ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49
+  [1m[36mUser Load (2.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `winners`
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `mypets` WHERE (pet_attachments_count > 0)[0m
+  [1m[35mMypet Load (0.2ms)[0m  SELECT `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49  [["mypet_id", 49]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBreed Load (2.2ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1
+  Rendered home/_no_pet_day.html.slim (49.0ms)
+  [1m[36mMypet Load (6.9ms)[0m  [1mSELECT  `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)  ORDER BY Rand() LIMIT 12[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49  [["mypet_id", 49]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  Rendered home/_general.html.slim (18.1ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users`  ORDER BY repa DESC LIMIT 10
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users`  ORDER BY repa_total DESC LIMIT 10[0m
+  [1m[35mArticle Load (3.8ms)[0m  SELECT  `articles`.* FROM `articles` WHERE (created_at < '2016-04-16 06:34:32.767903')  ORDER BY created_at DESC LIMIT 6
+  [1m[36m (3.1ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 7 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (2.2ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 7 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 7 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 7], ["commentable_type", "Article"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 6 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 6 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 6 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 6], ["commentable_type", "Article"]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 3 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 3 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 3 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 3], ["commentable_type", "Article"]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 4 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 4], ["commentable_type", "Article"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 5 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 5 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 5 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 5], ["commentable_type", "Article"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 1], ["commentable_type", "Article"]]
+  Rendered home/index.html.slim within layouts/application (1036.6ms)
+Completed 200 OK in 3617ms (Views: 3319.3ms | ActiveRecord: 227.9ms)
+
+
+Started GET "/assets/admin/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:34:36 +0600
+
+
+Started GET "/assets/all.self-bdd9d45518acdf2c1d2796b6ca72d6fedd959ddeec8468c2cbe2d50d481a8aa3.css?body=1" for ::1 at 2016-04-16 12:34:36 +0600
+
+
+Started GET "/assets/blogs.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:34:36 +0600
+
+
+Started GET "/assets/articles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:34:36 +0600
+
+
+Started GET "/assets/dialogs.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:34:36 +0600
+
+
+Started GET "/assets/breeds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:34:36 +0600
+
+
+Started GET "/assets/home.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:34:36 +0600
+
+
+Started GET "/assets/jcf.self-120b58eca0a3e001ec120e080a74b6569fdadf029ab7a2e73299fbd5f52d0aa3.css?body=1" for ::1 at 2016-04-16 12:34:36 +0600
+
+
+Started GET "/assets/admin.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:34:36 +0600
+
+
+Started GET "/assets/mypets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:34:36 +0600
+
+
+Started GET "/assets/pets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:34:36 +0600
+
+
+Started GET "/assets/writer.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:34:36 +0600
+
+
+Started GET "/assets/notices.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:34:36 +0600
+
+
+Started GET "/assets/reviews.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:34:36 +0600
+
+
+Started GET "/assets/search.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:34:36 +0600
+
+
+Started GET "/assets/tinymce_assets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:34:36 +0600
+
+
+Started GET "/assets/subscribers.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:34:36 +0600
+
+
+Started GET "/assets/jquery-ui/theme.self-df1da30301997b52795cb0213bccd335f2897b65f84d1d7d7c63c04f048d902f.css?body=1" for ::1 at 2016-04-16 12:34:36 +0600
+
+
+Started GET "/assets/jquery-ui/core.self-23329dbe1961b938278306c019037fe36ff6ccb28193f1038e52ccbf52858163.css?body=1" for ::1 at 2016-04-16 12:34:36 +0600
+
+
+Started GET "/assets/jquery-ui/menu.self-5277268fc75b8d6e851ccb5ca12e162c7440315d70974f34db800bc70330f135.css?body=1" for ::1 at 2016-04-16 12:34:36 +0600
+
+
+Started GET "/assets/jquery-ui/accordion.self-ab9f397561a07488cf14279bc7186619e859cdd485b81d3a6439e85b81d32a05.css?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-ui/button.self-524bbf2d9cf9547e14eda3866ad90726890ff390563ea46013c1ca019694c320.css?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-ui/autocomplete.self-2d6dfccae4fba2fe27d00372b974d4540d75a00cea6ceaa0a6aa33852b9d3ac3.css?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-ui/datepicker.self-bf92a2196df590f06fad4ab5bb7ed4db1874a9bef0c9af85ea0490d2108b9966.css?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-ui/resizable.self-3a16663ae8d70cc7f633554daff3a5875f54915ae3071fc3f3a1aeb0f7c8ab24.css?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-ui/draggable.self-ff524fb7ae3023ef910b4e6c5cd7260e4f4dc6fb2eca9a525dd478017639bbba.css?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-ui/sortable.self-bd8078895e9d12cd8586eb9b507ccb4d533daadd0f103f7387554c30cc96313f.css?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-ui/slider.self-57c4d255d192836d85e1253fe091b5b01fed1c389b0dbdedd71c129dcf1cfd35.css?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-ui/dialog.self-3e41d6ad769c697e76dceeef1bf376008c8e93e85c144fea25437fa3188d86b8.css?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-ui/progressbar.self-de3d9f82b3ceaaa88bb0686e77f2548a3cfea1cf4dc37df4f3bc70f99d86a95a.css?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-ui/selectable.self-fa1d88ada89c5a57dae84c7cb4f17bf153cb1cff063ed4ba2091b5b5f54e77e6.css?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-ui/selectmenu.self-9a2b20dc7f10d3a7b09d0dc5d038d02dd1aff160e97abf8eaa3d3f5ab09fbb4b.css?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-ui/tooltip.self-a349b3ba7b1458eed72dc3ffba597af53b9ceb622e7a324cdfd1c01c7b351f1f.css?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-ui/spinner.self-2d292d2e83f1281032010a5acb9cb23492aeecdc95395a5d93f2a3bba9a2c400.css?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-ui/all.self-a9629accff9d629face2489f3b6d620ded83dd62f6f04f69e5b33eea2b8d73b6.css?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-ui/tabs.self-3dec02555ec77af087a252cdd5be276e714d0059e052a2c92dc2c5401e9df63d.css?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-ui/base.self-1b94b6a8eaf399d6f662a2ffe0b9b52a958c6180e15b6e07a7ecab0087c9234d.css?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-ui.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/application.self-d885a0a66bd595c10edb24f8879f94e334d88be0730c4d7c7a7b57c731c09037.css?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/jquery.ui.widget.self-92c37a41e67e528eecf100716907331b4b9aa4f546bf75ef2e0529c8c03a562d.js?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/load-image.all.min.self-a3decd3471e27cc44c17cc9f176569a047d8935eea573063a69b2ed5772808a7.js?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-image.self-54a7741d50863381c24017e646802b5fbca6e02889e3b9b9e2b6e99514432728.js?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-audio.self-f4a39f4b95d17c6f777258564f8fa563ba75368a43163d090a7494e7523c623c.js?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/canvas-to-blob.self-c99e244311177f0f13838c99b020b483faf38285f2b27666c65d8fccc763dd8c.js?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.iframe-transport.self-6fdaccef712b63a5a9aa8fbcd0e6d2071a6056eb3e165835e05ff0734dd9d5fe.js?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload.self-c6cbb0b05ba3d5565ddfbc78d52abc7a89e964b7cb015b0c930d5bb6c89e4b8f.js?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-fileupload/basic-plus.self-636159b35205da4142a43bc02d2849d77d3ac07a0946211585cde15a9c6ff21f.js?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-process.self-b6c54bbe6f4ba84a6cd34e268e09f983787e0d753b5fa02b954bdeeca8f72359.js?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/tmpl.self-c2108a63ad9ae9ab4a723bcf0104f6a92a63eb917331ff69fad6f02fe7219488.js?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-video.self-7d0c1888cad62b161fd980eef98269ac6977c0cb9affa9fd3202c2221a94f80c.js?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-validate.self-950050c5bc37f6061bb71c43af1194f0d3f9b0476f6a4cdb66802bb975ecf07f.js?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery-fileupload/locale.self-0f10a6e25d374828492cc17fafc26ee33cb9980d3152cb6c2437d5395fe63847.js?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/jquery.infinite-pages.self-afd06674b95a6a7b0bf1e568c2f9470bc852dd39668a22ec097cc7d424393d5a.js?body=1" for ::1 at 2016-04-16 12:34:37 +0600
+
+
+Started GET "/assets/tinymce/tinymce.self-715a15cb3cb25c032ccc2afacfd8e02d068a7f1ca80de9f7a1adfd7f33eadcf6.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/assets/admin.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/assets/tinymce/preinit.self-84328a53e798df12f891eb49871773fd9f925439c8630e9e22423a82ef9e6f89.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/assets/blogs.self-0183d592b9ea09f83f10dffc2f58a69fd0b7698a324a4f412421251b8ff3989b.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/assets/tinymce.self-75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/assets/breeds.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/assets/admin/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/assets/dialogs.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/assets/tinymce/tinymce.self-715a15cb3cb25c032ccc2afacfd8e02d068a7f1ca80de9f7a1adfd7f33eadcf6.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/assets/home.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/assets/jcf.self-41018834b0b5f6f2c05b056186170ba2f87f8bdb93fada802711518a3bc4cbed.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/assets/html5.self-223b9ac2fdbc5da5433f4c05c5ae0f7a80733bb77f0ff1c5d9db9acb2fc42014.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/assets/jquery.fancybox.self-69b20ea1f20f8f0b0c228ba0986a139f353039e8ab43bd66d60d81ad63ad642f.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/assets/jquery.tabs.self-1cd5668db686a49c1a4be091979011e7869c29c20c1896b256085b2ac7665ba0.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/assets/notices.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/assets/mypets.self-06597c66f20796e7c340b7d431b93446255c93cc41b6060ababb79402ad3019f.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/assets/pets.self-b3488b2cfe48102eb1cc4459060b56af152daf384b556671757c19da440afd72.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/assets/popups.self-f3caed5b40dae466daf7f6fd7da3a1fc8f17388790175bbc1c9ee22392413bef.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/assets/search.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/assets/reviews.self-ee9186cbcde2e9956f5a1aaacd8cbf84c91e869deba95bc022b0b88fce39037d.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/assets/subscribers.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/assets/tinymce_assets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/assets/writer.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/assets/users.self-70aa361306486c1a674cd8bed16c906c5366e1b502722f9d641297b9b8916ee7.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/assets/application.self-538d6440534fa5f615e8a26932792a82a2e4a33a97886e2d815eab8fc216d415.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/assets/jquery.slideshow.self-9408ca078c8ce5cea9239010c466afc0ba4314aad5e60ee682db3d09134c6834.js?body=1" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/avatars/original/missing.png" for ::1 at 2016-04-16 12:34:38 +0600
+
+
+Started GET "/" for ::1 at 2016-04-16 12:34:38 +0600
+Processing by HomeController#index as HTML
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `winners`[0m
+  [1m[35mMypet Load (1.2ms)[0m  SELECT  `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)  ORDER BY `mypets`.`id` DESC LIMIT 5
+  [1m[36mPetAttachment Load (1.2ms)[0m  [1mSELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m
+  [1m[35mUser Load (1.1ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `winners`[0m
+  [1m[35m (1.1ms)[0m  SELECT COUNT(*) FROM `mypets` WHERE (pet_attachments_count > 0)
+  [1m[36mMypet Load (2.1ms)[0m  [1mSELECT `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m  [["mypet_id", 49]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  [1m[36mBreed Load (0.3ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1[0m
+  Rendered home/_no_pet_day.html.slim (5.7ms)
+  [1m[35mMypet Load (0.7ms)[0m  SELECT  `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)  ORDER BY Rand() LIMIT 12
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m  [["mypet_id", 49]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  Rendered home/_general.html.slim (25.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users`  ORDER BY repa DESC LIMIT 10[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT  `users`.* FROM `users`  ORDER BY repa_total DESC LIMIT 10
+  [1m[36mArticle Load (2.6ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE (created_at < '2016-04-16 06:34:39.031687')  ORDER BY created_at DESC LIMIT 6[0m
+  [1m[35m (1.1ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 7 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 7 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 7 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 7], ["commentable_type", "Article"]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 6 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 6 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 6 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 6], ["commentable_type", "Article"]]
+  [1m[35m (5.6ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 3 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 3 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 3 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 3], ["commentable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 4 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 4], ["commentable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 5 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 5 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 5 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 5], ["commentable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (31.8ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 1], ["commentable_type", "Article"]]
+  Rendered home/index.html.slim within layouts/application (194.3ms)
+Completed 200 OK in 729ms (Views: 668.2ms | ActiveRecord: 56.3ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-04-16 12:34:42 +0600
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (33.3ms)
+Completed 200 OK in 390ms (Views: 387.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2016-04-16 12:34:50 +0600
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ly2Ufpb74uUXkYkJ8h7GGp9MHPHQAN7jvUdKJtYBwC1VtJ2XXFtf8mmkdlrX91MyODHbwbTGM3iyJgpaKArWow==", "user"=>{"email"=>"merch2@yandex.ru", "password"=>"[FILTERED]", "remember_me"=>"1"}, "button"=>""}
+  [1m[35mUser Load (18.1ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`email` = 'merch2@yandex.ru'  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (12.9ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (13.7ms)[0m  UPDATE `users` SET `last_sign_in_at` = '2016-04-11 15:13:19.000000', `current_sign_in_at` = '2016-04-16 06:34:50.438464', `sign_in_count` = 33, `updated_at` = '2016-04-16 06:34:50.455048' WHERE `users`.`id` = 1
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://www.www.localhost:3000/profile/edit
+Completed 302 Found in 190ms (ActiveRecord: 45.6ms)
+
+
+Started GET "/profile/edit" for ::1 at 2016-04-16 12:34:50 +0600
+Processing by UsersController#edit as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mCountry Load (0.5ms)[0m  [1mSELECT  `countries`.* FROM `countries` WHERE `countries`.`id` = 3 LIMIT 1[0m
+  [1m[35mCountry Load (0.3ms)[0m  SELECT `countries`.* FROM `countries`
+  [1m[36mCity Load (13.0ms)[0m  [1mSELECT `cities`.* FROM `cities` WHERE `cities`.`country_id` = 3[0m
+  Rendered users/_edit_form.html.erb (27.8ms)
+  Rendered users/edit.html.slim within layouts/application (34.6ms)
+  [1m[35m (33.2ms)[0m  SELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)
+  [1m[36mNotice Load (4.6ms)[0m  [1mSELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1[0m
+Completed 200 OK in 706ms (Views: 483.8ms | ActiveRecord: 200.8ms)
+
+
+Started GET "/reviews" for ::1 at 2016-04-16 12:34:58 +0600
+Processing by ReviewsController#index as HTML
+  Rendered reviews/_nav.html.erb (2.1ms)
+  [1m[35mBreed Load (0.4ms)[0m  SELECT  `breeds`.* FROM `breeds`  ORDER BY reviews_count desc LIMIT 7
+  [1m[36mBreed Load (0.4ms)[0m  [1mSELECT  `breeds`.* FROM `breeds`  ORDER BY reviews_count desc LIMIT 7 OFFSET 7[0m
+  [1m[35mBreed Load (0.4ms)[0m  SELECT  `breeds`.* FROM `breeds`  ORDER BY reviews_count desc LIMIT 7 OFFSET 14
+  Rendered reviews/_filter.html.erb (5.6ms)
+  [1m[36mReview Load (33.5ms)[0m  [1mSELECT `reviews`.* FROM `reviews`  ORDER BY created_at DESC[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 40 AND `votes`.`votable_type` = 'Review'
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCity Load (0.3ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1
+  [1m[36m (1.9ms)[0m  [1mSELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 40[0m
+  [1m[35mBreed Load (0.3ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 1 LIMIT 1
+  Rendered reviews/_review.html.erb (50.9ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 39 AND `votes`.`votable_type` = 'Review'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 39
+  [1m[36mBreed Load (0.4ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1[0m
+  Rendered reviews/_review.html.erb (9.1ms)
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 38 AND `votes`.`votable_type` = 'Review'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1  [["id", 5]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 38[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1  [["id", 2]]
+  Rendered reviews/_review.html.erb (7.6ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 37 AND `votes`.`votable_type` = 'Review'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 37
+  [1m[36mReviewAttachment Load (0.4ms)[0m  [1mSELECT `review_attachments`.* FROM `review_attachments` WHERE `review_attachments`.`review_id` = 37[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1  [["id", 2]]
+  Rendered reviews/_review.html.erb (18.5ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 36 AND `votes`.`votable_type` = 'Review'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 36
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1[0m  [["id", 2]]
+  Rendered reviews/_review.html.erb (7.4ms)
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 35 AND `votes`.`votable_type` = 'Review'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1  [["id", 5]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 35[0m
+  [1m[35mReviewAttachment Load (0.3ms)[0m  SELECT `review_attachments`.* FROM `review_attachments` WHERE `review_attachments`.`review_id` = 35
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  Rendered reviews/_review.html.erb (7.1ms)
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 34 AND `votes`.`votable_type` = 'Review'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1  [["id", 5]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 34[0m
+  [1m[35mReviewAttachment Load (0.3ms)[0m  SELECT `review_attachments`.* FROM `review_attachments` WHERE `review_attachments`.`review_id` = 34
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  Rendered reviews/_review.html.erb (7.1ms)
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 33 AND `votes`.`votable_type` = 'Review'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1  [["id", 5]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 33[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 1 LIMIT 1  [["id", 1]]
+  Rendered reviews/_review.html.erb (8.4ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 32 AND `votes`.`votable_type` = 'Review'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 32
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  Rendered reviews/_review.html.erb (6.6ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 31 AND `votes`.`votable_type` = 'Review'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1  [["id", 5]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 31[0m
+  [1m[35mReviewAttachment Load (0.2ms)[0m  SELECT `review_attachments`.* FROM `review_attachments` WHERE `review_attachments`.`review_id` = 31
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1[0m  [["id", 2]]
+  Rendered reviews/_review.html.erb (6.4ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 30 AND `votes`.`votable_type` = 'Review'
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 30
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1[0m  [["id", 2]]
+  Rendered reviews/_review.html.erb (7.4ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 27 AND `votes`.`votable_type` = 'Review'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1  [["id", 5]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 27[0m
+  [1m[35mReviewAttachment Load (0.2ms)[0m  SELECT `review_attachments`.* FROM `review_attachments` WHERE `review_attachments`.`review_id` = 27
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  Rendered reviews/_review.html.erb (6.4ms)
+  Rendered reviews/index.html.erb within layouts/application (218.0ms)
+  [1m[35mUser Load (0.6ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)[0m
+  [1m[35mNotice Load (0.3ms)[0m  SELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1
+Completed 200 OK in 616ms (Views: 530.2ms | ActiveRecord: 76.5ms)
+
+
+Started GET "/reviews" for ::1 at 2016-04-16 12:34:59 +0600
+Processing by ReviewsController#index as HTML
+  Rendered reviews/_nav.html.erb (0.4ms)
+  [1m[36mBreed Load (0.5ms)[0m  [1mSELECT  `breeds`.* FROM `breeds`  ORDER BY reviews_count desc LIMIT 7[0m
+  [1m[35mBreed Load (0.5ms)[0m  SELECT  `breeds`.* FROM `breeds`  ORDER BY reviews_count desc LIMIT 7 OFFSET 7
+  [1m[36mBreed Load (0.4ms)[0m  [1mSELECT  `breeds`.* FROM `breeds`  ORDER BY reviews_count desc LIMIT 7 OFFSET 14[0m
+  Rendered reviews/_filter.html.erb (4.7ms)
+  [1m[35mReview Load (0.5ms)[0m  SELECT `reviews`.* FROM `reviews`  ORDER BY created_at DESC
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 40 AND `votes`.`votable_type` = 'Review'[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mCity Load (0.3ms)[0m  [1mSELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 40
+  [1m[36mBreed Load (0.4ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 1 LIMIT 1[0m
+  Rendered reviews/_review.html.erb (11.8ms)
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 39 AND `votes`.`votable_type` = 'Review'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1  [["id", 5]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 39[0m
+  [1m[35mBreed Load (0.4ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1
+  Rendered reviews/_review.html.erb (11.2ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 38 AND `votes`.`votable_type` = 'Review'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.9ms)[0m  SELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 38
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1[0m  [["id", 2]]
+  Rendered reviews/_review.html.erb (11.9ms)
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 37 AND `votes`.`votable_type` = 'Review'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1  [["id", 5]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 37[0m
+  [1m[35mReviewAttachment Load (0.3ms)[0m  SELECT `review_attachments`.* FROM `review_attachments` WHERE `review_attachments`.`review_id` = 37
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1[0m  [["id", 2]]
+  Rendered reviews/_review.html.erb (8.7ms)
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 36 AND `votes`.`votable_type` = 'Review'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1  [["id", 5]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 36[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1  [["id", 2]]
+  Rendered reviews/_review.html.erb (9.8ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 35 AND `votes`.`votable_type` = 'Review'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 35
+  [1m[36mReviewAttachment Load (0.3ms)[0m  [1mSELECT `review_attachments`.* FROM `review_attachments` WHERE `review_attachments`.`review_id` = 35[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 1 LIMIT 1  [["id", 1]]
+  Rendered reviews/_review.html.erb (7.8ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 34 AND `votes`.`votable_type` = 'Review'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.9ms)[0m  SELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 34
+  [1m[36mReviewAttachment Load (0.3ms)[0m  [1mSELECT `review_attachments`.* FROM `review_attachments` WHERE `review_attachments`.`review_id` = 34[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 1 LIMIT 1  [["id", 1]]
+  Rendered reviews/_review.html.erb (8.7ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 33 AND `votes`.`votable_type` = 'Review'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 33
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  Rendered reviews/_review.html.erb (8.5ms)
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 32 AND `votes`.`votable_type` = 'Review'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1  [["id", 5]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 32[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 1 LIMIT 1  [["id", 1]]
+  Rendered reviews/_review.html.erb (10.2ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 31 AND `votes`.`votable_type` = 'Review'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 31
+  [1m[36mReviewAttachment Load (0.4ms)[0m  [1mSELECT `review_attachments`.* FROM `review_attachments` WHERE `review_attachments`.`review_id` = 31[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1  [["id", 2]]
+  Rendered reviews/_review.html.erb (9.3ms)
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 30 AND `votes`.`votable_type` = 'Review'[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 30[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1  [["id", 2]]
+  Rendered reviews/_review.html.erb (11.5ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 27 AND `votes`.`votable_type` = 'Review'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 27
+  [1m[36mReviewAttachment Load (0.4ms)[0m  [1mSELECT `review_attachments`.* FROM `review_attachments` WHERE `review_attachments`.`review_id` = 27[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 1 LIMIT 1  [["id", 1]]
+  Rendered reviews/_review.html.erb (10.1ms)
+  Rendered reviews/index.html.erb within layouts/application (151.6ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)
+  [1m[36mNotice Load (0.3ms)[0m  [1mSELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1[0m
+Completed 200 OK in 603ms (Views: 585.7ms | ActiveRecord: 17.3ms)
+
+
+Started GET "/images/default.jpg" for ::1 at 2016-04-16 12:35:00 +0600
+
+
+Started GET "/" for ::1 at 2016-04-16 12:35:00 +0600
+Processing by HomeController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `winners`
+  [1m[36mUser Load (15.8ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCity Load (1.1ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1
+  [1m[36mMypet Load (0.9ms)[0m  [1mSELECT  `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)  ORDER BY `mypets`.`id` DESC LIMIT 5[0m
+  [1m[35mPetAttachment Load (0.7ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49
+  [1m[36mUser Load (1.8ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `winners`
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `mypets` WHERE (pet_attachments_count > 0)[0m
+  [1m[35mMypet Load (7.1ms)[0m  SELECT `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m
+  [1m[35mCACHE (0.1ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49  [["mypet_id", 49]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBreed Load (0.4ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1
+  Rendered home/_no_pet_day.html.slim (11.6ms)
+  [1m[36mMypet Load (1.6ms)[0m  [1mSELECT  `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)  ORDER BY Rand() LIMIT 12[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49  [["mypet_id", 49]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  Rendered home/_general.html.slim (7.0ms)
+  [1m[35mMypet Load (15.1ms)[0m  SELECT  `mypets`.* FROM `mypets` INNER JOIN `users` ON `mypets`.`user_id` = `users`.`id` WHERE `users`.`city_id` = 5 AND (pet_attachments_count > 0)  ORDER BY Rand() LIMIT 12
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m  [["mypet_id", 49]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  Rendered home/_town01.html.slim (35.4ms)
+  [1m[36mUser Load (4.6ms)[0m  [1mSELECT  `users`.* FROM `users`  ORDER BY repa DESC LIMIT 10[0m
+  [1m[35mUser Load (2.5ms)[0m  SELECT  `users`.* FROM `users`  ORDER BY repa_total DESC LIMIT 10
+  [1m[36mArticle Load (1.1ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE (created_at < '2016-04-16 06:35:00.450537')  ORDER BY created_at DESC LIMIT 6[0m
+  [1m[35m (2.7ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 7 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 7 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 7 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 7], ["commentable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 6 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 6 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 6 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 6], ["commentable_type", "Article"]]
+  [1m[35m (1.3ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 3 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.8ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 3 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 3 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 3], ["commentable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 4 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 4], ["commentable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 5 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 5 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 5 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 5], ["commentable_type", "Article"]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 1], ["commentable_type", "Article"]]
+  Rendered home/index.html.slim within layouts/application (185.8ms)
+  [1m[35m (0.7ms)[0m  SELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)
+  [1m[36mNotice Load (0.6ms)[0m  [1mSELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1[0m
+Completed 200 OK in 654ms (Views: 576.7ms | ActiveRecord: 64.7ms)
+
+
+Started GET "/reviews/new" for ::1 at 2016-04-16 12:35:06 +0600
+Processing by ReviewsController#new as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mBreed Load (0.4ms)[0m  [1mSELECT `breeds`.* FROM `breeds` WHERE `breeds`.`breed_type` = 'dog'[0m
+  Rendered reviews/new.html.erb within layouts/application (521.9ms)
+  [1m[35m (0.6ms)[0m  SELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)
+  [1m[36mNotice Load (0.3ms)[0m  [1mSELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1[0m
+Completed 200 OK in 1111ms (Views: 1106.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/reviews/new" for ::1 at 2016-04-16 12:35:37 +0600
+Processing by ReviewsController#new as HTML
+  [1m[35mUser Load (2.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mBreed Load (2.2ms)[0m  [1mSELECT `breeds`.* FROM `breeds` WHERE `breeds`.`breed_type` = 'dog'[0m
+  Rendered reviews/new.html.erb within layouts/application (704.2ms)
+  [1m[35m (9.4ms)[0m  SELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)
+  [1m[36mNotice Load (10.7ms)[0m  [1mSELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1[0m
+Completed 200 OK in 1929ms (Views: 1883.6ms | ActiveRecord: 24.8ms)
+
+
+Started GET "/assets/blogs.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:35:39 +0600
+
+
+Started GET "/assets/admin/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:35:39 +0600
+
+
+Started GET "/assets/articles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:35:39 +0600
+
+
+Started GET "/assets/dialogs.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:35:39 +0600
+
+
+Started GET "/assets/admin.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:35:39 +0600
+
+
+Started GET "/assets/home.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:35:39 +0600
+
+
+Started GET "/assets/breeds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:35:39 +0600
+
+
+Started GET "/assets/jcf.self-120b58eca0a3e001ec120e080a74b6569fdadf029ab7a2e73299fbd5f52d0aa3.css?body=1" for ::1 at 2016-04-16 12:35:39 +0600
+
+
+Started GET "/assets/all.self-8f4ccfebf69e477c8aeecb6d23ae84a49873b0df57472d9ee42b9baf53bca198.css?body=1" for ::1 at 2016-04-16 12:35:39 +0600
+
+
+Started GET "/assets/mypets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:35:39 +0600
+
+
+Started GET "/assets/notices.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:35:39 +0600
+
+
+Started GET "/assets/tinymce_assets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:35:39 +0600
+
+
+Started GET "/assets/writer.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:35:39 +0600
+
+
+Started GET "/assets/jquery-ui/theme.self-df1da30301997b52795cb0213bccd335f2897b65f84d1d7d7c63c04f048d902f.css?body=1" for ::1 at 2016-04-16 12:35:39 +0600
+
+
+Started GET "/assets/jquery-ui/core.self-23329dbe1961b938278306c019037fe36ff6ccb28193f1038e52ccbf52858163.css?body=1" for ::1 at 2016-04-16 12:35:39 +0600
+
+
+Started GET "/assets/pets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:35:40 +0600
+
+
+Started GET "/assets/reviews.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:35:40 +0600
+
+
+Started GET "/assets/search.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:35:40 +0600
+
+
+Started GET "/assets/subscribers.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:35:40 +0600
+
+
+Started GET "/assets/jquery-ui/accordion.self-ab9f397561a07488cf14279bc7186619e859cdd485b81d3a6439e85b81d32a05.css?body=1" for ::1 at 2016-04-16 12:35:40 +0600
+
+
+Started GET "/assets/jquery-ui/draggable.self-ff524fb7ae3023ef910b4e6c5cd7260e4f4dc6fb2eca9a525dd478017639bbba.css?body=1" for ::1 at 2016-04-16 12:35:40 +0600
+
+
+Started GET "/assets/jquery-ui/resizable.self-3a16663ae8d70cc7f633554daff3a5875f54915ae3071fc3f3a1aeb0f7c8ab24.css?body=1" for ::1 at 2016-04-16 12:35:40 +0600
+
+
+Started GET "/assets/jquery-ui/dialog.self-3e41d6ad769c697e76dceeef1bf376008c8e93e85c144fea25437fa3188d86b8.css?body=1" for ::1 at 2016-04-16 12:35:40 +0600
+
+
+Started GET "/assets/jquery-ui/selectable.self-fa1d88ada89c5a57dae84c7cb4f17bf153cb1cff063ed4ba2091b5b5f54e77e6.css?body=1" for ::1 at 2016-04-16 12:35:40 +0600
+
+
+Started GET "/assets/jquery-ui/sortable.self-bd8078895e9d12cd8586eb9b507ccb4d533daadd0f103f7387554c30cc96313f.css?body=1" for ::1 at 2016-04-16 12:35:40 +0600
+
+
+Started GET "/assets/jquery-ui/progressbar.self-de3d9f82b3ceaaa88bb0686e77f2548a3cfea1cf4dc37df4f3bc70f99d86a95a.css?body=1" for ::1 at 2016-04-16 12:35:40 +0600
+
+
+Started GET "/assets/jquery-ui/selectmenu.self-9a2b20dc7f10d3a7b09d0dc5d038d02dd1aff160e97abf8eaa3d3f5ab09fbb4b.css?body=1" for ::1 at 2016-04-16 12:35:40 +0600
+
+
+Started GET "/assets/jquery-ui/menu.self-5277268fc75b8d6e851ccb5ca12e162c7440315d70974f34db800bc70330f135.css?body=1" for ::1 at 2016-04-16 12:35:40 +0600
+
+
+Started GET "/assets/jquery-ui/spinner.self-2d292d2e83f1281032010a5acb9cb23492aeecdc95395a5d93f2a3bba9a2c400.css?body=1" for ::1 at 2016-04-16 12:35:40 +0600
+
+
+Started GET "/assets/jquery-ui/tabs.self-3dec02555ec77af087a252cdd5be276e714d0059e052a2c92dc2c5401e9df63d.css?body=1" for ::1 at 2016-04-16 12:35:41 +0600
+
+
+Started GET "/assets/jquery-ui/autocomplete.self-2d6dfccae4fba2fe27d00372b974d4540d75a00cea6ceaa0a6aa33852b9d3ac3.css?body=1" for ::1 at 2016-04-16 12:35:41 +0600
+
+
+Started GET "/assets/jquery-ui/base.self-1b94b6a8eaf399d6f662a2ffe0b9b52a958c6180e15b6e07a7ecab0087c9234d.css?body=1" for ::1 at 2016-04-16 12:35:41 +0600
+
+
+Started GET "/assets/jquery-ui/all.self-a9629accff9d629face2489f3b6d620ded83dd62f6f04f69e5b33eea2b8d73b6.css?body=1" for ::1 at 2016-04-16 12:35:41 +0600
+
+
+Started GET "/assets/jquery-ui.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:35:41 +0600
+
+
+Started GET "/assets/application.self-d885a0a66bd595c10edb24f8879f94e334d88be0730c4d7c7a7b57c731c09037.css?body=1" for ::1 at 2016-04-16 12:35:41 +0600
+
+
+Started GET "/assets/jquery-ui/button.self-524bbf2d9cf9547e14eda3866ad90726890ff390563ea46013c1ca019694c320.css?body=1" for ::1 at 2016-04-16 12:35:41 +0600
+
+
+Started GET "/assets/jquery-ui/datepicker.self-bf92a2196df590f06fad4ab5bb7ed4db1874a9bef0c9af85ea0490d2108b9966.css?body=1" for ::1 at 2016-04-16 12:35:41 +0600
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-04-16 12:35:41 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/load-image.all.min.self-a3decd3471e27cc44c17cc9f176569a047d8935eea573063a69b2ed5772808a7.js?body=1" for ::1 at 2016-04-16 12:35:41 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/jquery.ui.widget.self-92c37a41e67e528eecf100716907331b4b9aa4f546bf75ef2e0529c8c03a562d.js?body=1" for ::1 at 2016-04-16 12:35:41 +0600
+
+
+Started GET "/assets/jquery-ui/slider.self-57c4d255d192836d85e1253fe091b5b01fed1c389b0dbdedd71c129dcf1cfd35.css?body=1" for ::1 at 2016-04-16 12:35:41 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.iframe-transport.self-6fdaccef712b63a5a9aa8fbcd0e6d2071a6056eb3e165835e05ff0734dd9d5fe.js?body=1" for ::1 at 2016-04-16 12:35:41 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/canvas-to-blob.self-c99e244311177f0f13838c99b020b483faf38285f2b27666c65d8fccc763dd8c.js?body=1" for ::1 at 2016-04-16 12:35:41 +0600
+
+
+Started GET "/assets/jquery-ui/tooltip.self-a349b3ba7b1458eed72dc3ffba597af53b9ceb622e7a324cdfd1c01c7b351f1f.css?body=1" for ::1 at 2016-04-16 12:35:41 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload.self-c6cbb0b05ba3d5565ddfbc78d52abc7a89e964b7cb015b0c930d5bb6c89e4b8f.js?body=1" for ::1 at 2016-04-16 12:35:41 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-process.self-b6c54bbe6f4ba84a6cd34e268e09f983787e0d753b5fa02b954bdeeca8f72359.js?body=1" for ::1 at 2016-04-16 12:35:41 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-image.self-54a7741d50863381c24017e646802b5fbca6e02889e3b9b9e2b6e99514432728.js?body=1" for ::1 at 2016-04-16 12:35:41 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-audio.self-f4a39f4b95d17c6f777258564f8fa563ba75368a43163d090a7494e7523c623c.js?body=1" for ::1 at 2016-04-16 12:35:41 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-video.self-7d0c1888cad62b161fd980eef98269ac6977c0cb9affa9fd3202c2221a94f80c.js?body=1" for ::1 at 2016-04-16 12:35:41 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-validate.self-950050c5bc37f6061bb71c43af1194f0d3f9b0476f6a4cdb66802bb975ecf07f.js?body=1" for ::1 at 2016-04-16 12:35:41 +0600
+
+
+Started GET "/assets/jquery-fileupload/locale.self-0f10a6e25d374828492cc17fafc26ee33cb9980d3152cb6c2437d5395fe63847.js?body=1" for ::1 at 2016-04-16 12:35:41 +0600
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-04-16 12:35:41 +0600
+
+
+Started GET "/assets/jquery-fileupload/basic-plus.self-636159b35205da4142a43bc02d2849d77d3ac07a0946211585cde15a9c6ff21f.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/tmpl.self-c2108a63ad9ae9ab4a723bcf0104f6a92a63eb917331ff69fad6f02fe7219488.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/jquery.infinite-pages.self-afd06674b95a6a7b0bf1e568c2f9470bc852dd39668a22ec097cc7d424393d5a.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/tinymce/preinit.self-84328a53e798df12f891eb49871773fd9f925439c8630e9e22423a82ef9e6f89.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/tinymce/tinymce.self-715a15cb3cb25c032ccc2afacfd8e02d068a7f1ca80de9f7a1adfd7f33eadcf6.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/tinymce.self-75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/admin.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/dialogs.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/breeds.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/blogs.self-0183d592b9ea09f83f10dffc2f58a69fd0b7698a324a4f412421251b8ff3989b.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/admin/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/home.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/jquery.fancybox.self-69b20ea1f20f8f0b0c228ba0986a139f353039e8ab43bd66d60d81ad63ad642f.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/jquery.slideshow.self-9408ca078c8ce5cea9239010c466afc0ba4314aad5e60ee682db3d09134c6834.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/jquery.tabs.self-1cd5668db686a49c1a4be091979011e7869c29c20c1896b256085b2ac7665ba0.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/html5.self-223b9ac2fdbc5da5433f4c05c5ae0f7a80733bb77f0ff1c5d9db9acb2fc42014.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/jcf.self-41018834b0b5f6f2c05b056186170ba2f87f8bdb93fada802711518a3bc4cbed.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/mypets.self-06597c66f20796e7c340b7d431b93446255c93cc41b6060ababb79402ad3019f.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/notices.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/pets.self-b3488b2cfe48102eb1cc4459060b56af152daf384b556671757c19da440afd72.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/search.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/subscribers.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/popups.self-f3caed5b40dae466daf7f6fd7da3a1fc8f17388790175bbc1c9ee22392413bef.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/writer.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/reviews.self-ee9186cbcde2e9956f5a1aaacd8cbf84c91e869deba95bc022b0b88fce39037d.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/tinymce_assets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:35:42 +0600
+
+
+Started GET "/assets/application.self-538d6440534fa5f615e8a26932792a82a2e4a33a97886e2d815eab8fc216d415.js?body=1" for ::1 at 2016-04-16 12:35:43 +0600
+
+
+Started GET "/assets/users.self-70aa361306486c1a674cd8bed16c906c5366e1b502722f9d641297b9b8916ee7.js?body=1" for ::1 at 2016-04-16 12:35:43 +0600
+
+
+Started GET "/reviews/new" for ::1 at 2016-04-16 12:36:16 +0600
+Processing by ReviewsController#new as HTML
+  [1m[35mUser Load (1.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mBreed Load (0.6ms)[0m  [1mSELECT `breeds`.* FROM `breeds` WHERE `breeds`.`breed_type` = 'dog'[0m
+  Rendered reviews/new.html.erb within layouts/application (388.4ms)
+  [1m[35m (1.7ms)[0m  SELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)
+  [1m[36mNotice Load (0.6ms)[0m  [1mSELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1[0m
+Completed 200 OK in 887ms (Views: 874.3ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/assets/admin/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:17 +0600
+
+
+Started GET "/assets/articles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:17 +0600
+
+
+Started GET "/assets/home.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:17 +0600
+
+
+Started GET "/assets/breeds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:17 +0600
+
+
+Started GET "/assets/dialogs.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:17 +0600
+
+
+Started GET "/assets/admin.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:17 +0600
+
+
+Started GET "/assets/all.self-8f4ccfebf69e477c8aeecb6d23ae84a49873b0df57472d9ee42b9baf53bca198.css?body=1" for ::1 at 2016-04-16 12:36:17 +0600
+
+
+Started GET "/assets/jcf.self-120b58eca0a3e001ec120e080a74b6569fdadf029ab7a2e73299fbd5f52d0aa3.css?body=1" for ::1 at 2016-04-16 12:36:17 +0600
+
+
+Started GET "/assets/blogs.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:17 +0600
+
+
+Started GET "/assets/mypets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:17 +0600
+
+
+Started GET "/assets/notices.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:17 +0600
+
+
+Started GET "/assets/tinymce_assets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:17 +0600
+
+
+Started GET "/assets/pets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:17 +0600
+
+
+Started GET "/assets/jquery-ui/theme.self-df1da30301997b52795cb0213bccd335f2897b65f84d1d7d7c63c04f048d902f.css?body=1" for ::1 at 2016-04-16 12:36:17 +0600
+
+
+Started GET "/assets/jquery-ui/core.self-23329dbe1961b938278306c019037fe36ff6ccb28193f1038e52ccbf52858163.css?body=1" for ::1 at 2016-04-16 12:36:17 +0600
+
+
+Started GET "/assets/reviews.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:17 +0600
+
+
+Started GET "/assets/search.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:17 +0600
+
+
+Started GET "/assets/subscribers.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:17 +0600
+
+
+Started GET "/assets/writer.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:17 +0600
+
+
+Started GET "/assets/jquery-ui/accordion.self-ab9f397561a07488cf14279bc7186619e859cdd485b81d3a6439e85b81d32a05.css?body=1" for ::1 at 2016-04-16 12:36:17 +0600
+
+
+Started GET "/assets/jquery-ui/menu.self-5277268fc75b8d6e851ccb5ca12e162c7440315d70974f34db800bc70330f135.css?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-ui/draggable.self-ff524fb7ae3023ef910b4e6c5cd7260e4f4dc6fb2eca9a525dd478017639bbba.css?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-ui/resizable.self-3a16663ae8d70cc7f633554daff3a5875f54915ae3071fc3f3a1aeb0f7c8ab24.css?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-ui/dialog.self-3e41d6ad769c697e76dceeef1bf376008c8e93e85c144fea25437fa3188d86b8.css?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-ui/autocomplete.self-2d6dfccae4fba2fe27d00372b974d4540d75a00cea6ceaa0a6aa33852b9d3ac3.css?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-ui/button.self-524bbf2d9cf9547e14eda3866ad90726890ff390563ea46013c1ca019694c320.css?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-ui/datepicker.self-bf92a2196df590f06fad4ab5bb7ed4db1874a9bef0c9af85ea0490d2108b9966.css?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-ui/progressbar.self-de3d9f82b3ceaaa88bb0686e77f2548a3cfea1cf4dc37df4f3bc70f99d86a95a.css?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-ui/selectable.self-fa1d88ada89c5a57dae84c7cb4f17bf153cb1cff063ed4ba2091b5b5f54e77e6.css?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-ui/selectmenu.self-9a2b20dc7f10d3a7b09d0dc5d038d02dd1aff160e97abf8eaa3d3f5ab09fbb4b.css?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-ui/sortable.self-bd8078895e9d12cd8586eb9b507ccb4d533daadd0f103f7387554c30cc96313f.css?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-ui/spinner.self-2d292d2e83f1281032010a5acb9cb23492aeecdc95395a5d93f2a3bba9a2c400.css?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-ui/tabs.self-3dec02555ec77af087a252cdd5be276e714d0059e052a2c92dc2c5401e9df63d.css?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-ui/base.self-1b94b6a8eaf399d6f662a2ffe0b9b52a958c6180e15b6e07a7ecab0087c9234d.css?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-ui/all.self-a9629accff9d629face2489f3b6d620ded83dd62f6f04f69e5b33eea2b8d73b6.css?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-ui/slider.self-57c4d255d192836d85e1253fe091b5b01fed1c389b0dbdedd71c129dcf1cfd35.css?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-ui/tooltip.self-a349b3ba7b1458eed72dc3ffba597af53b9ceb622e7a324cdfd1c01c7b351f1f.css?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-ui.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/application.self-d885a0a66bd595c10edb24f8879f94e334d88be0730c4d7c7a7b57c731c09037.css?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/jquery.ui.widget.self-92c37a41e67e528eecf100716907331b4b9aa4f546bf75ef2e0529c8c03a562d.js?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/load-image.all.min.self-a3decd3471e27cc44c17cc9f176569a047d8935eea573063a69b2ed5772808a7.js?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.iframe-transport.self-6fdaccef712b63a5a9aa8fbcd0e6d2071a6056eb3e165835e05ff0734dd9d5fe.js?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload.self-c6cbb0b05ba3d5565ddfbc78d52abc7a89e964b7cb015b0c930d5bb6c89e4b8f.js?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-image.self-54a7741d50863381c24017e646802b5fbca6e02889e3b9b9e2b6e99514432728.js?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-process.self-b6c54bbe6f4ba84a6cd34e268e09f983787e0d753b5fa02b954bdeeca8f72359.js?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/canvas-to-blob.self-c99e244311177f0f13838c99b020b483faf38285f2b27666c65d8fccc763dd8c.js?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-audio.self-f4a39f4b95d17c6f777258564f8fa563ba75368a43163d090a7494e7523c623c.js?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-video.self-7d0c1888cad62b161fd980eef98269ac6977c0cb9affa9fd3202c2221a94f80c.js?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-validate.self-950050c5bc37f6061bb71c43af1194f0d3f9b0476f6a4cdb66802bb975ecf07f.js?body=1" for ::1 at 2016-04-16 12:36:18 +0600
+
+
+Started GET "/assets/jquery-fileupload/locale.self-0f10a6e25d374828492cc17fafc26ee33cb9980d3152cb6c2437d5395fe63847.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/jquery-fileupload/basic-plus.self-636159b35205da4142a43bc02d2849d77d3ac07a0946211585cde15a9c6ff21f.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/tmpl.self-c2108a63ad9ae9ab4a723bcf0104f6a92a63eb917331ff69fad6f02fe7219488.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/jquery.infinite-pages.self-afd06674b95a6a7b0bf1e568c2f9470bc852dd39668a22ec097cc7d424393d5a.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/tinymce.self-75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/tinymce/preinit.self-84328a53e798df12f891eb49871773fd9f925439c8630e9e22423a82ef9e6f89.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/tinymce/tinymce.self-715a15cb3cb25c032ccc2afacfd8e02d068a7f1ca80de9f7a1adfd7f33eadcf6.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/admin.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/blogs.self-0183d592b9ea09f83f10dffc2f58a69fd0b7698a324a4f412421251b8ff3989b.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/admin/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/breeds.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/dialogs.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/home.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/jcf.self-41018834b0b5f6f2c05b056186170ba2f87f8bdb93fada802711518a3bc4cbed.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/html5.self-223b9ac2fdbc5da5433f4c05c5ae0f7a80733bb77f0ff1c5d9db9acb2fc42014.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/jquery.tabs.self-1cd5668db686a49c1a4be091979011e7869c29c20c1896b256085b2ac7665ba0.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/jquery.fancybox.self-69b20ea1f20f8f0b0c228ba0986a139f353039e8ab43bd66d60d81ad63ad642f.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/mypets.self-06597c66f20796e7c340b7d431b93446255c93cc41b6060ababb79402ad3019f.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/jquery.slideshow.self-9408ca078c8ce5cea9239010c466afc0ba4314aad5e60ee682db3d09134c6834.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/notices.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/pets.self-b3488b2cfe48102eb1cc4459060b56af152daf384b556671757c19da440afd72.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/reviews.self-ee9186cbcde2e9956f5a1aaacd8cbf84c91e869deba95bc022b0b88fce39037d.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/tinymce_assets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/subscribers.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/popups.self-f3caed5b40dae466daf7f6fd7da3a1fc8f17388790175bbc1c9ee22392413bef.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/search.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/users.self-70aa361306486c1a674cd8bed16c906c5366e1b502722f9d641297b9b8916ee7.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/writer.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/assets/application.self-538d6440534fa5f615e8a26932792a82a2e4a33a97886e2d815eab8fc216d415.js?body=1" for ::1 at 2016-04-16 12:36:19 +0600
+
+
+Started GET "/images/yes-photo.png" for ::1 at 2016-04-16 12:36:23 +0600
+
+
+Started GET "/" for ::1 at 2016-04-16 12:36:23 +0600
+Processing by HomeController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `winners`
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCity Load (0.4ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1
+  [1m[36mMypet Load (0.6ms)[0m  [1mSELECT  `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)  ORDER BY `mypets`.`id` DESC LIMIT 5[0m
+  [1m[35mPetAttachment Load (0.5ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `winners`
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `mypets` WHERE (pet_attachments_count > 0)[0m
+  [1m[35mMypet Load (0.4ms)[0m  SELECT `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49  [["mypet_id", 49]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBreed Load (0.3ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1
+  Rendered home/_no_pet_day.html.slim (5.9ms)
+  [1m[36mMypet Load (12.9ms)[0m  [1mSELECT  `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)  ORDER BY Rand() LIMIT 12[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49  [["mypet_id", 49]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  Rendered home/_general.html.slim (17.6ms)
+  [1m[35mMypet Load (0.9ms)[0m  SELECT  `mypets`.* FROM `mypets` INNER JOIN `users` ON `mypets`.`user_id` = `users`.`id` WHERE `users`.`city_id` = 5 AND (pet_attachments_count > 0)  ORDER BY Rand() LIMIT 12
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m  [["mypet_id", 49]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  Rendered home/_town01.html.slim (4.7ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users`  ORDER BY repa DESC LIMIT 10[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users`  ORDER BY repa_total DESC LIMIT 10
+  [1m[36mArticle Load (0.6ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE (created_at < '2016-04-16 06:36:23.231798')  ORDER BY created_at DESC LIMIT 6[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 7 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 7 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 7 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 7], ["commentable_type", "Article"]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 6 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 6 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 6 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 6], ["commentable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 3 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 3 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 3 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 3], ["commentable_type", "Article"]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 4 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 4], ["commentable_type", "Article"]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 5 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 5 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 5 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 5], ["commentable_type", "Article"]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 1], ["commentable_type", "Article"]]
+  Rendered home/index.html.slim within layouts/application (89.6ms)
+  [1m[35m (0.7ms)[0m  SELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)
+  [1m[36mNotice Load (0.3ms)[0m  [1mSELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1[0m
+Completed 200 OK in 503ms (Views: 471.1ms | ActiveRecord: 25.5ms)
+
+
+Started GET "/reviews/new" for ::1 at 2016-04-16 12:36:37 +0600
+Processing by ReviewsController#new as HTML
+  [1m[35mUser Load (4.7ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mBreed Load (0.5ms)[0m  [1mSELECT `breeds`.* FROM `breeds` WHERE `breeds`.`breed_type` = 'dog'[0m
+  Rendered reviews/new.html.erb within layouts/application (537.7ms)
+  [1m[35m (4.9ms)[0m  SELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)
+  [1m[36mNotice Load (1.3ms)[0m  [1mSELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1[0m
+Completed 200 OK in 1323ms (Views: 1290.5ms | ActiveRecord: 11.5ms)
+
+
+Started GET "/assets/admin/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:39 +0600
+
+
+Started GET "/assets/all.self-bdd9d45518acdf2c1d2796b6ca72d6fedd959ddeec8468c2cbe2d50d481a8aa3.css?body=1" for ::1 at 2016-04-16 12:36:39 +0600
+
+
+Started GET "/assets/articles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:39 +0600
+
+
+Started GET "/assets/breeds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:39 +0600
+
+
+Started GET "/assets/blogs.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:39 +0600
+
+
+Started GET "/assets/admin.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:39 +0600
+
+
+Started GET "/assets/mypets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:39 +0600
+
+
+Started GET "/assets/home.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:39 +0600
+
+
+Started GET "/assets/dialogs.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:39 +0600
+
+
+Started GET "/assets/notices.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:39 +0600
+
+
+Started GET "/assets/jcf.self-120b58eca0a3e001ec120e080a74b6569fdadf029ab7a2e73299fbd5f52d0aa3.css?body=1" for ::1 at 2016-04-16 12:36:39 +0600
+
+
+Started GET "/assets/pets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:39 +0600
+
+
+Started GET "/assets/reviews.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:39 +0600
+
+
+Started GET "/assets/search.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:39 +0600
+
+
+Started GET "/assets/subscribers.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:39 +0600
+
+
+Started GET "/assets/tinymce_assets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:39 +0600
+
+
+Started GET "/assets/writer.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:39 +0600
+
+
+Started GET "/assets/jquery-ui/core.self-23329dbe1961b938278306c019037fe36ff6ccb28193f1038e52ccbf52858163.css?body=1" for ::1 at 2016-04-16 12:36:39 +0600
+
+
+Started GET "/assets/jquery-ui/theme.self-df1da30301997b52795cb0213bccd335f2897b65f84d1d7d7c63c04f048d902f.css?body=1" for ::1 at 2016-04-16 12:36:39 +0600
+
+
+Started GET "/assets/jquery-ui/accordion.self-ab9f397561a07488cf14279bc7186619e859cdd485b81d3a6439e85b81d32a05.css?body=1" for ::1 at 2016-04-16 12:36:39 +0600
+
+
+Started GET "/assets/jquery-ui/menu.self-5277268fc75b8d6e851ccb5ca12e162c7440315d70974f34db800bc70330f135.css?body=1" for ::1 at 2016-04-16 12:36:39 +0600
+
+
+Started GET "/assets/jquery-ui/autocomplete.self-2d6dfccae4fba2fe27d00372b974d4540d75a00cea6ceaa0a6aa33852b9d3ac3.css?body=1" for ::1 at 2016-04-16 12:36:39 +0600
+
+
+Started GET "/assets/jquery-ui/button.self-524bbf2d9cf9547e14eda3866ad90726890ff390563ea46013c1ca019694c320.css?body=1" for ::1 at 2016-04-16 12:36:39 +0600
+
+
+Started GET "/assets/jquery-ui/datepicker.self-bf92a2196df590f06fad4ab5bb7ed4db1874a9bef0c9af85ea0490d2108b9966.css?body=1" for ::1 at 2016-04-16 12:36:40 +0600
+
+
+Started GET "/assets/jquery-ui/draggable.self-ff524fb7ae3023ef910b4e6c5cd7260e4f4dc6fb2eca9a525dd478017639bbba.css?body=1" for ::1 at 2016-04-16 12:36:40 +0600
+
+
+Started GET "/assets/jquery-ui/resizable.self-3a16663ae8d70cc7f633554daff3a5875f54915ae3071fc3f3a1aeb0f7c8ab24.css?body=1" for ::1 at 2016-04-16 12:36:40 +0600
+
+
+Started GET "/assets/jquery-ui/dialog.self-3e41d6ad769c697e76dceeef1bf376008c8e93e85c144fea25437fa3188d86b8.css?body=1" for ::1 at 2016-04-16 12:36:40 +0600
+
+
+Started GET "/assets/jquery-ui/progressbar.self-de3d9f82b3ceaaa88bb0686e77f2548a3cfea1cf4dc37df4f3bc70f99d86a95a.css?body=1" for ::1 at 2016-04-16 12:36:40 +0600
+
+
+Started GET "/assets/jquery-ui/selectable.self-fa1d88ada89c5a57dae84c7cb4f17bf153cb1cff063ed4ba2091b5b5f54e77e6.css?body=1" for ::1 at 2016-04-16 12:36:40 +0600
+
+
+Started GET "/assets/jquery-ui/selectmenu.self-9a2b20dc7f10d3a7b09d0dc5d038d02dd1aff160e97abf8eaa3d3f5ab09fbb4b.css?body=1" for ::1 at 2016-04-16 12:36:40 +0600
+
+
+Started GET "/assets/jquery-ui/sortable.self-bd8078895e9d12cd8586eb9b507ccb4d533daadd0f103f7387554c30cc96313f.css?body=1" for ::1 at 2016-04-16 12:36:40 +0600
+
+
+Started GET "/assets/jquery-ui/slider.self-57c4d255d192836d85e1253fe091b5b01fed1c389b0dbdedd71c129dcf1cfd35.css?body=1" for ::1 at 2016-04-16 12:36:40 +0600
+
+
+Started GET "/assets/jquery-ui/spinner.self-2d292d2e83f1281032010a5acb9cb23492aeecdc95395a5d93f2a3bba9a2c400.css?body=1" for ::1 at 2016-04-16 12:36:40 +0600
+
+
+Started GET "/assets/jquery-ui/tabs.self-3dec02555ec77af087a252cdd5be276e714d0059e052a2c92dc2c5401e9df63d.css?body=1" for ::1 at 2016-04-16 12:36:40 +0600
+
+
+Started GET "/assets/jquery-ui/tooltip.self-a349b3ba7b1458eed72dc3ffba597af53b9ceb622e7a324cdfd1c01c7b351f1f.css?body=1" for ::1 at 2016-04-16 12:36:40 +0600
+
+
+Started GET "/assets/jquery-ui/base.self-1b94b6a8eaf399d6f662a2ffe0b9b52a958c6180e15b6e07a7ecab0087c9234d.css?body=1" for ::1 at 2016-04-16 12:36:40 +0600
+
+
+Started GET "/assets/jquery-ui/all.self-a9629accff9d629face2489f3b6d620ded83dd62f6f04f69e5b33eea2b8d73b6.css?body=1" for ::1 at 2016-04-16 12:36:40 +0600
+
+
+Started GET "/assets/jquery-ui.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 12:36:40 +0600
+
+
+Started GET "/assets/application.self-d885a0a66bd595c10edb24f8879f94e334d88be0730c4d7c7a7b57c731c09037.css?body=1" for ::1 at 2016-04-16 12:36:40 +0600
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-04-16 12:36:40 +0600
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-04-16 12:36:40 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/jquery.ui.widget.self-92c37a41e67e528eecf100716907331b4b9aa4f546bf75ef2e0529c8c03a562d.js?body=1" for ::1 at 2016-04-16 12:36:40 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-process.self-b6c54bbe6f4ba84a6cd34e268e09f983787e0d753b5fa02b954bdeeca8f72359.js?body=1" for ::1 at 2016-04-16 12:36:40 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/canvas-to-blob.self-c99e244311177f0f13838c99b020b483faf38285f2b27666c65d8fccc763dd8c.js?body=1" for ::1 at 2016-04-16 12:36:41 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload.self-c6cbb0b05ba3d5565ddfbc78d52abc7a89e964b7cb015b0c930d5bb6c89e4b8f.js?body=1" for ::1 at 2016-04-16 12:36:41 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.iframe-transport.self-6fdaccef712b63a5a9aa8fbcd0e6d2071a6056eb3e165835e05ff0734dd9d5fe.js?body=1" for ::1 at 2016-04-16 12:36:41 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/load-image.all.min.self-a3decd3471e27cc44c17cc9f176569a047d8935eea573063a69b2ed5772808a7.js?body=1" for ::1 at 2016-04-16 12:36:41 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-image.self-54a7741d50863381c24017e646802b5fbca6e02889e3b9b9e2b6e99514432728.js?body=1" for ::1 at 2016-04-16 12:36:41 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-audio.self-f4a39f4b95d17c6f777258564f8fa563ba75368a43163d090a7494e7523c623c.js?body=1" for ::1 at 2016-04-16 12:36:41 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-video.self-7d0c1888cad62b161fd980eef98269ac6977c0cb9affa9fd3202c2221a94f80c.js?body=1" for ::1 at 2016-04-16 12:36:41 +0600
+
+
+Started GET "/assets/jquery-fileupload/locale.self-0f10a6e25d374828492cc17fafc26ee33cb9980d3152cb6c2437d5395fe63847.js?body=1" for ::1 at 2016-04-16 12:36:41 +0600
+
+
+Started GET "/assets/jquery-fileupload/basic-plus.self-636159b35205da4142a43bc02d2849d77d3ac07a0946211585cde15a9c6ff21f.js?body=1" for ::1 at 2016-04-16 12:36:41 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-validate.self-950050c5bc37f6061bb71c43af1194f0d3f9b0476f6a4cdb66802bb975ecf07f.js?body=1" for ::1 at 2016-04-16 12:36:41 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/tmpl.self-c2108a63ad9ae9ab4a723bcf0104f6a92a63eb917331ff69fad6f02fe7219488.js?body=1" for ::1 at 2016-04-16 12:36:41 +0600
+
+
+Started GET "/assets/tinymce/tinymce.self-715a15cb3cb25c032ccc2afacfd8e02d068a7f1ca80de9f7a1adfd7f33eadcf6.js?body=1" for ::1 at 2016-04-16 12:36:41 +0600
+
+
+Started GET "/assets/tinymce/preinit.self-84328a53e798df12f891eb49871773fd9f925439c8630e9e22423a82ef9e6f89.js?body=1" for ::1 at 2016-04-16 12:36:41 +0600
+
+
+Started GET "/assets/tinymce.self-75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070.js?body=1" for ::1 at 2016-04-16 12:36:41 +0600
+
+
+Started GET "/assets/jquery.infinite-pages.self-afd06674b95a6a7b0bf1e568c2f9470bc852dd39668a22ec097cc7d424393d5a.js?body=1" for ::1 at 2016-04-16 12:36:41 +0600
+
+
+Started GET "/assets/admin.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:36:41 +0600
+
+
+Started GET "/assets/admin/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:36:41 +0600
+
+
+Started GET "/assets/blogs.self-0183d592b9ea09f83f10dffc2f58a69fd0b7698a324a4f412421251b8ff3989b.js?body=1" for ::1 at 2016-04-16 12:36:41 +0600
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:36:41 +0600
+
+
+Started GET "/assets/breeds.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:36:41 +0600
+
+
+Started GET "/assets/dialogs.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:36:41 +0600
+
+
+Started GET "/assets/home.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:36:41 +0600
+
+
+Started GET "/assets/html5.self-223b9ac2fdbc5da5433f4c05c5ae0f7a80733bb77f0ff1c5d9db9acb2fc42014.js?body=1" for ::1 at 2016-04-16 12:36:41 +0600
+
+
+Started GET "/assets/jcf.self-41018834b0b5f6f2c05b056186170ba2f87f8bdb93fada802711518a3bc4cbed.js?body=1" for ::1 at 2016-04-16 12:36:41 +0600
+
+
+Started GET "/assets/jquery.fancybox.self-69b20ea1f20f8f0b0c228ba0986a139f353039e8ab43bd66d60d81ad63ad642f.js?body=1" for ::1 at 2016-04-16 12:36:42 +0600
+
+
+Started GET "/assets/jquery.slideshow.self-9408ca078c8ce5cea9239010c466afc0ba4314aad5e60ee682db3d09134c6834.js?body=1" for ::1 at 2016-04-16 12:36:42 +0600
+
+
+Started GET "/assets/jquery.tabs.self-1cd5668db686a49c1a4be091979011e7869c29c20c1896b256085b2ac7665ba0.js?body=1" for ::1 at 2016-04-16 12:36:42 +0600
+
+
+Started GET "/assets/mypets.self-06597c66f20796e7c340b7d431b93446255c93cc41b6060ababb79402ad3019f.js?body=1" for ::1 at 2016-04-16 12:36:42 +0600
+
+
+Started GET "/assets/notices.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:36:42 +0600
+
+
+Started GET "/assets/pets.self-b3488b2cfe48102eb1cc4459060b56af152daf384b556671757c19da440afd72.js?body=1" for ::1 at 2016-04-16 12:36:42 +0600
+
+
+Started GET "/assets/popups.self-f3caed5b40dae466daf7f6fd7da3a1fc8f17388790175bbc1c9ee22392413bef.js?body=1" for ::1 at 2016-04-16 12:36:42 +0600
+
+
+Started GET "/assets/reviews.self-ee9186cbcde2e9956f5a1aaacd8cbf84c91e869deba95bc022b0b88fce39037d.js?body=1" for ::1 at 2016-04-16 12:36:42 +0600
+
+
+Started GET "/assets/search.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:36:42 +0600
+
+
+Started GET "/assets/subscribers.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:36:42 +0600
+
+
+Started GET "/assets/tinymce_assets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:36:42 +0600
+
+
+Started GET "/assets/users.self-70aa361306486c1a674cd8bed16c906c5366e1b502722f9d641297b9b8916ee7.js?body=1" for ::1 at 2016-04-16 12:36:42 +0600
+
+
+Started GET "/assets/writer.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 12:36:42 +0600
+
+
+Started GET "/assets/application.self-538d6440534fa5f615e8a26932792a82a2e4a33a97886e2d815eab8fc216d415.js?body=1" for ::1 at 2016-04-16 12:36:42 +0600
+
+
+Started GET "/reviews/new" for ::1 at 2016-04-16 13:05:43 +0600
+Processing by ReviewsController#new as HTML
+  [1m[35mUser Load (64.8ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mBreed Load (30.2ms)[0m  [1mSELECT `breeds`.* FROM `breeds` WHERE `breeds`.`breed_type` = 'dog'[0m
+  Rendered reviews/new.html.erb within layouts/application (790.2ms)
+  [1m[35m (52.7ms)[0m  SELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)
+  [1m[36mNotice Load (0.5ms)[0m  [1mSELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1[0m
+Completed 200 OK in 2253ms (Views: 2041.0ms | ActiveRecord: 148.2ms)
+
+
+Started GET "/assets/admin.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/articles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/breeds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/blogs.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/admin/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/all.self-348fe5dcd124070168b31e7ddfc9df94fd7f2a7ba2cec494cbec92ac5cf8205a.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/dialogs.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/jcf.self-120b58eca0a3e001ec120e080a74b6569fdadf029ab7a2e73299fbd5f52d0aa3.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/mypets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/home.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/notices.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/pets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/reviews.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/subscribers.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/tinymce_assets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/search.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/writer.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/jquery-ui/button.self-524bbf2d9cf9547e14eda3866ad90726890ff390563ea46013c1ca019694c320.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/jquery-ui/datepicker.self-bf92a2196df590f06fad4ab5bb7ed4db1874a9bef0c9af85ea0490d2108b9966.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/jquery-ui/theme.self-df1da30301997b52795cb0213bccd335f2897b65f84d1d7d7c63c04f048d902f.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/jquery-ui/core.self-23329dbe1961b938278306c019037fe36ff6ccb28193f1038e52ccbf52858163.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/jquery-ui/accordion.self-ab9f397561a07488cf14279bc7186619e859cdd485b81d3a6439e85b81d32a05.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/jquery-ui/menu.self-5277268fc75b8d6e851ccb5ca12e162c7440315d70974f34db800bc70330f135.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/jquery-ui/autocomplete.self-2d6dfccae4fba2fe27d00372b974d4540d75a00cea6ceaa0a6aa33852b9d3ac3.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/jquery-ui/draggable.self-ff524fb7ae3023ef910b4e6c5cd7260e4f4dc6fb2eca9a525dd478017639bbba.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/jquery-ui/selectmenu.self-9a2b20dc7f10d3a7b09d0dc5d038d02dd1aff160e97abf8eaa3d3f5ab09fbb4b.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/jquery-ui/resizable.self-3a16663ae8d70cc7f633554daff3a5875f54915ae3071fc3f3a1aeb0f7c8ab24.css?body=1" for ::1 at 2016-04-16 13:05:46 +0600
+
+
+Started GET "/assets/jquery-ui/dialog.self-3e41d6ad769c697e76dceeef1bf376008c8e93e85c144fea25437fa3188d86b8.css?body=1" for ::1 at 2016-04-16 13:05:47 +0600
+
+
+Started GET "/assets/jquery-ui/progressbar.self-de3d9f82b3ceaaa88bb0686e77f2548a3cfea1cf4dc37df4f3bc70f99d86a95a.css?body=1" for ::1 at 2016-04-16 13:05:47 +0600
+
+
+Started GET "/assets/jquery-ui/selectable.self-fa1d88ada89c5a57dae84c7cb4f17bf153cb1cff063ed4ba2091b5b5f54e77e6.css?body=1" for ::1 at 2016-04-16 13:05:47 +0600
+
+
+Started GET "/assets/jquery-ui/sortable.self-bd8078895e9d12cd8586eb9b507ccb4d533daadd0f103f7387554c30cc96313f.css?body=1" for ::1 at 2016-04-16 13:05:47 +0600
+
+
+Started GET "/assets/jquery-ui/slider.self-57c4d255d192836d85e1253fe091b5b01fed1c389b0dbdedd71c129dcf1cfd35.css?body=1" for ::1 at 2016-04-16 13:05:47 +0600
+
+
+Started GET "/assets/jquery-ui/tabs.self-3dec02555ec77af087a252cdd5be276e714d0059e052a2c92dc2c5401e9df63d.css?body=1" for ::1 at 2016-04-16 13:05:47 +0600
+
+
+Started GET "/assets/jquery-ui/spinner.self-2d292d2e83f1281032010a5acb9cb23492aeecdc95395a5d93f2a3bba9a2c400.css?body=1" for ::1 at 2016-04-16 13:05:47 +0600
+
+
+Started GET "/assets/jquery-ui/base.self-1b94b6a8eaf399d6f662a2ffe0b9b52a958c6180e15b6e07a7ecab0087c9234d.css?body=1" for ::1 at 2016-04-16 13:05:47 +0600
+
+
+Started GET "/assets/jquery-ui/tooltip.self-a349b3ba7b1458eed72dc3ffba597af53b9ceb622e7a324cdfd1c01c7b351f1f.css?body=1" for ::1 at 2016-04-16 13:05:47 +0600
+
+
+Started GET "/assets/jquery-ui/all.self-a9629accff9d629face2489f3b6d620ded83dd62f6f04f69e5b33eea2b8d73b6.css?body=1" for ::1 at 2016-04-16 13:05:47 +0600
+
+
+Started GET "/assets/jquery-ui.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:05:47 +0600
+
+
+Started GET "/assets/application.self-d885a0a66bd595c10edb24f8879f94e334d88be0730c4d7c7a7b57c731c09037.css?body=1" for ::1 at 2016-04-16 13:05:47 +0600
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-04-16 13:05:47 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.iframe-transport.self-6fdaccef712b63a5a9aa8fbcd0e6d2071a6056eb3e165835e05ff0734dd9d5fe.js?body=1" for ::1 at 2016-04-16 13:05:47 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload.self-c6cbb0b05ba3d5565ddfbc78d52abc7a89e964b7cb015b0c930d5bb6c89e4b8f.js?body=1" for ::1 at 2016-04-16 13:05:47 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-process.self-b6c54bbe6f4ba84a6cd34e268e09f983787e0d753b5fa02b954bdeeca8f72359.js?body=1" for ::1 at 2016-04-16 13:05:47 +0600
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-04-16 13:05:47 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/jquery.ui.widget.self-92c37a41e67e528eecf100716907331b4b9aa4f546bf75ef2e0529c8c03a562d.js?body=1" for ::1 at 2016-04-16 13:05:47 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/load-image.all.min.self-a3decd3471e27cc44c17cc9f176569a047d8935eea573063a69b2ed5772808a7.js?body=1" for ::1 at 2016-04-16 13:05:47 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/canvas-to-blob.self-c99e244311177f0f13838c99b020b483faf38285f2b27666c65d8fccc763dd8c.js?body=1" for ::1 at 2016-04-16 13:05:47 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-image.self-54a7741d50863381c24017e646802b5fbca6e02889e3b9b9e2b6e99514432728.js?body=1" for ::1 at 2016-04-16 13:05:47 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-audio.self-f4a39f4b95d17c6f777258564f8fa563ba75368a43163d090a7494e7523c623c.js?body=1" for ::1 at 2016-04-16 13:05:47 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-video.self-7d0c1888cad62b161fd980eef98269ac6977c0cb9affa9fd3202c2221a94f80c.js?body=1" for ::1 at 2016-04-16 13:05:47 +0600
+
+
+Started GET "/assets/jquery-fileupload/basic-plus.self-636159b35205da4142a43bc02d2849d77d3ac07a0946211585cde15a9c6ff21f.js?body=1" for ::1 at 2016-04-16 13:05:47 +0600
+
+
+Started GET "/assets/tinymce/preinit.self-84328a53e798df12f891eb49871773fd9f925439c8630e9e22423a82ef9e6f89.js?body=1" for ::1 at 2016-04-16 13:05:47 +0600
+
+
+Started GET "/assets/tinymce/tinymce.self-715a15cb3cb25c032ccc2afacfd8e02d068a7f1ca80de9f7a1adfd7f33eadcf6.js?body=1" for ::1 at 2016-04-16 13:05:47 +0600
+
+
+Started GET "/assets/tinymce.self-75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-validate.self-950050c5bc37f6061bb71c43af1194f0d3f9b0476f6a4cdb66802bb975ecf07f.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/jquery-fileupload/locale.self-0f10a6e25d374828492cc17fafc26ee33cb9980d3152cb6c2437d5395fe63847.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/tmpl.self-c2108a63ad9ae9ab4a723bcf0104f6a92a63eb917331ff69fad6f02fe7219488.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/jquery.infinite-pages.self-afd06674b95a6a7b0bf1e568c2f9470bc852dd39668a22ec097cc7d424393d5a.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/admin.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/dialogs.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/admin/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/blogs.self-0183d592b9ea09f83f10dffc2f58a69fd0b7698a324a4f412421251b8ff3989b.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/breeds.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/home.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/html5.self-223b9ac2fdbc5da5433f4c05c5ae0f7a80733bb77f0ff1c5d9db9acb2fc42014.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/jquery.tabs.self-1cd5668db686a49c1a4be091979011e7869c29c20c1896b256085b2ac7665ba0.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/jcf.self-41018834b0b5f6f2c05b056186170ba2f87f8bdb93fada802711518a3bc4cbed.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/jquery.fancybox.self-69b20ea1f20f8f0b0c228ba0986a139f353039e8ab43bd66d60d81ad63ad642f.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/mypets.self-06597c66f20796e7c340b7d431b93446255c93cc41b6060ababb79402ad3019f.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/search.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/subscribers.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/notices.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/pets.self-b3488b2cfe48102eb1cc4459060b56af152daf384b556671757c19da440afd72.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/popups.self-f3caed5b40dae466daf7f6fd7da3a1fc8f17388790175bbc1c9ee22392413bef.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/reviews.self-ee9186cbcde2e9956f5a1aaacd8cbf84c91e869deba95bc022b0b88fce39037d.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/tinymce_assets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/users.self-70aa361306486c1a674cd8bed16c906c5366e1b502722f9d641297b9b8916ee7.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/writer.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/application.self-538d6440534fa5f615e8a26932792a82a2e4a33a97886e2d815eab8fc216d415.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/assets/jquery.slideshow.self-9408ca078c8ce5cea9239010c466afc0ba4314aad5e60ee682db3d09134c6834.js?body=1" for ::1 at 2016-04-16 13:05:48 +0600
+
+
+Started GET "/images/yes-photo.png" for ::1 at 2016-04-16 13:06:11 +0600
+
+
+Started GET "/" for ::1 at 2016-04-16 13:06:11 +0600
+Processing by HomeController#index as HTML
+  [1m[35m (5.9ms)[0m  SELECT COUNT(*) FROM `winners`
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCity Load (0.4ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1
+  [1m[36mMypet Load (12.5ms)[0m  [1mSELECT  `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)  ORDER BY `mypets`.`id` DESC LIMIT 5[0m
+  [1m[35mPetAttachment Load (0.4ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `winners`
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `mypets` WHERE (pet_attachments_count > 0)[0m
+  [1m[35mMypet Load (0.3ms)[0m  SELECT `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49  [["mypet_id", 49]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBreed Load (0.3ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1
+  Rendered home/_no_pet_day.html.slim (6.0ms)
+  [1m[36mMypet Load (71.2ms)[0m  [1mSELECT  `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)  ORDER BY Rand() LIMIT 12[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49  [["mypet_id", 49]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  Rendered home/_general.html.slim (76.1ms)
+  [1m[35mMypet Load (18.3ms)[0m  SELECT  `mypets`.* FROM `mypets` INNER JOIN `users` ON `mypets`.`user_id` = `users`.`id` WHERE `users`.`city_id` = 5 AND (pet_attachments_count > 0)  ORDER BY Rand() LIMIT 12
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m  [["mypet_id", 49]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  Rendered home/_town01.html.slim (23.8ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users`  ORDER BY repa DESC LIMIT 10[0m
+  [1m[35mUser Load (6.0ms)[0m  SELECT  `users`.* FROM `users`  ORDER BY repa_total DESC LIMIT 10
+  [1m[36mArticle Load (25.0ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE (created_at < '2016-04-16 07:06:11.503963')  ORDER BY created_at DESC LIMIT 6[0m
+  [1m[35m (13.0ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 7 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 7 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 7 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 7], ["commentable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 6 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 6 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 6 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 6], ["commentable_type", "Article"]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 3 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 3 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 3 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 3], ["commentable_type", "Article"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 4 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 4], ["commentable_type", "Article"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 5 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 5 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 5 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 5], ["commentable_type", "Article"]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 1], ["commentable_type", "Article"]]
+  Rendered home/index.html.slim within layouts/application (248.8ms)
+  [1m[35m (3.1ms)[0m  SELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)
+  [1m[36mNotice Load (0.7ms)[0m  [1mSELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1[0m
+Completed 200 OK in 701ms (Views: 529.2ms | ActiveRecord: 163.7ms)
+
+
+Started GET "/reviews/new" for ::1 at 2016-04-16 13:07:16 +0600
+Processing by ReviewsController#new as HTML
+  [1m[35mUser Load (2.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mBreed Load (2.0ms)[0m  [1mSELECT `breeds`.* FROM `breeds` WHERE `breeds`.`breed_type` = 'dog'[0m
+  Rendered reviews/new.html.erb within layouts/application (729.3ms)
+  [1m[35m (1.7ms)[0m  SELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)
+  [1m[36mNotice Load (0.7ms)[0m  [1mSELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1[0m
+Completed 200 OK in 1515ms (Views: 1454.2ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/assets/admin/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:07:17 +0600
+
+
+Started GET "/assets/all.self-348fe5dcd124070168b31e7ddfc9df94fd7f2a7ba2cec494cbec92ac5cf8205a.css?body=1" for ::1 at 2016-04-16 13:07:17 +0600
+
+
+Started GET "/assets/admin.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:07:17 +0600
+
+
+Started GET "/assets/articles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:07:17 +0600
+
+
+Started GET "/assets/blogs.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:07:17 +0600
+
+
+Started GET "/assets/breeds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:07:17 +0600
+
+
+Started GET "/assets/dialogs.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:07:17 +0600
+
+
+Started GET "/assets/home.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:07:17 +0600
+
+
+Started GET "/assets/jcf.self-120b58eca0a3e001ec120e080a74b6569fdadf029ab7a2e73299fbd5f52d0aa3.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/mypets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/notices.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/pets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/reviews.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/search.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/subscribers.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/tinymce_assets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/writer.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/jquery-ui/theme.self-df1da30301997b52795cb0213bccd335f2897b65f84d1d7d7c63c04f048d902f.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/jquery-ui/core.self-23329dbe1961b938278306c019037fe36ff6ccb28193f1038e52ccbf52858163.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/jquery-ui/accordion.self-ab9f397561a07488cf14279bc7186619e859cdd485b81d3a6439e85b81d32a05.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/jquery-ui/menu.self-5277268fc75b8d6e851ccb5ca12e162c7440315d70974f34db800bc70330f135.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/jquery-ui/autocomplete.self-2d6dfccae4fba2fe27d00372b974d4540d75a00cea6ceaa0a6aa33852b9d3ac3.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/jquery-ui/button.self-524bbf2d9cf9547e14eda3866ad90726890ff390563ea46013c1ca019694c320.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/jquery-ui/datepicker.self-bf92a2196df590f06fad4ab5bb7ed4db1874a9bef0c9af85ea0490d2108b9966.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/jquery-ui/draggable.self-ff524fb7ae3023ef910b4e6c5cd7260e4f4dc6fb2eca9a525dd478017639bbba.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/jquery-ui/resizable.self-3a16663ae8d70cc7f633554daff3a5875f54915ae3071fc3f3a1aeb0f7c8ab24.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/jquery-ui/dialog.self-3e41d6ad769c697e76dceeef1bf376008c8e93e85c144fea25437fa3188d86b8.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/jquery-ui/progressbar.self-de3d9f82b3ceaaa88bb0686e77f2548a3cfea1cf4dc37df4f3bc70f99d86a95a.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/jquery-ui/selectable.self-fa1d88ada89c5a57dae84c7cb4f17bf153cb1cff063ed4ba2091b5b5f54e77e6.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/jquery-ui/selectmenu.self-9a2b20dc7f10d3a7b09d0dc5d038d02dd1aff160e97abf8eaa3d3f5ab09fbb4b.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/jquery-ui/sortable.self-bd8078895e9d12cd8586eb9b507ccb4d533daadd0f103f7387554c30cc96313f.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/jquery-ui/slider.self-57c4d255d192836d85e1253fe091b5b01fed1c389b0dbdedd71c129dcf1cfd35.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/jquery-ui/spinner.self-2d292d2e83f1281032010a5acb9cb23492aeecdc95395a5d93f2a3bba9a2c400.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/jquery-ui/tabs.self-3dec02555ec77af087a252cdd5be276e714d0059e052a2c92dc2c5401e9df63d.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/jquery-ui/tooltip.self-a349b3ba7b1458eed72dc3ffba597af53b9ceb622e7a324cdfd1c01c7b351f1f.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/jquery-ui/base.self-1b94b6a8eaf399d6f662a2ffe0b9b52a958c6180e15b6e07a7ecab0087c9234d.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/jquery-ui/all.self-a9629accff9d629face2489f3b6d620ded83dd62f6f04f69e5b33eea2b8d73b6.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/jquery-ui.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/application.self-d885a0a66bd595c10edb24f8879f94e334d88be0730c4d7c7a7b57c731c09037.css?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/jquery.ui.widget.self-92c37a41e67e528eecf100716907331b4b9aa4f546bf75ef2e0529c8c03a562d.js?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/load-image.all.min.self-a3decd3471e27cc44c17cc9f176569a047d8935eea573063a69b2ed5772808a7.js?body=1" for ::1 at 2016-04-16 13:07:18 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/canvas-to-blob.self-c99e244311177f0f13838c99b020b483faf38285f2b27666c65d8fccc763dd8c.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.iframe-transport.self-6fdaccef712b63a5a9aa8fbcd0e6d2071a6056eb3e165835e05ff0734dd9d5fe.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload.self-c6cbb0b05ba3d5565ddfbc78d52abc7a89e964b7cb015b0c930d5bb6c89e4b8f.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-process.self-b6c54bbe6f4ba84a6cd34e268e09f983787e0d753b5fa02b954bdeeca8f72359.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-image.self-54a7741d50863381c24017e646802b5fbca6e02889e3b9b9e2b6e99514432728.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-audio.self-f4a39f4b95d17c6f777258564f8fa563ba75368a43163d090a7494e7523c623c.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-video.self-7d0c1888cad62b161fd980eef98269ac6977c0cb9affa9fd3202c2221a94f80c.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-validate.self-950050c5bc37f6061bb71c43af1194f0d3f9b0476f6a4cdb66802bb975ecf07f.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/jquery-fileupload/locale.self-0f10a6e25d374828492cc17fafc26ee33cb9980d3152cb6c2437d5395fe63847.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/jquery-fileupload/basic-plus.self-636159b35205da4142a43bc02d2849d77d3ac07a0946211585cde15a9c6ff21f.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/tmpl.self-c2108a63ad9ae9ab4a723bcf0104f6a92a63eb917331ff69fad6f02fe7219488.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/jquery.infinite-pages.self-afd06674b95a6a7b0bf1e568c2f9470bc852dd39668a22ec097cc7d424393d5a.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/tinymce/preinit.self-84328a53e798df12f891eb49871773fd9f925439c8630e9e22423a82ef9e6f89.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/tinymce/tinymce.self-715a15cb3cb25c032ccc2afacfd8e02d068a7f1ca80de9f7a1adfd7f33eadcf6.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/tinymce.self-75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/admin.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/admin/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/blogs.self-0183d592b9ea09f83f10dffc2f58a69fd0b7698a324a4f412421251b8ff3989b.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/breeds.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/home.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/html5.self-223b9ac2fdbc5da5433f4c05c5ae0f7a80733bb77f0ff1c5d9db9acb2fc42014.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/jcf.self-41018834b0b5f6f2c05b056186170ba2f87f8bdb93fada802711518a3bc4cbed.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/dialogs.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/jquery.fancybox.self-69b20ea1f20f8f0b0c228ba0986a139f353039e8ab43bd66d60d81ad63ad642f.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/jquery.slideshow.self-9408ca078c8ce5cea9239010c466afc0ba4314aad5e60ee682db3d09134c6834.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/jquery.tabs.self-1cd5668db686a49c1a4be091979011e7869c29c20c1896b256085b2ac7665ba0.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/mypets.self-06597c66f20796e7c340b7d431b93446255c93cc41b6060ababb79402ad3019f.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/notices.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/pets.self-b3488b2cfe48102eb1cc4459060b56af152daf384b556671757c19da440afd72.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/popups.self-f3caed5b40dae466daf7f6fd7da3a1fc8f17388790175bbc1c9ee22392413bef.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/reviews.self-ee9186cbcde2e9956f5a1aaacd8cbf84c91e869deba95bc022b0b88fce39037d.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/search.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/subscribers.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/tinymce_assets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/users.self-70aa361306486c1a674cd8bed16c906c5366e1b502722f9d641297b9b8916ee7.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/writer.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/assets/application.self-538d6440534fa5f615e8a26932792a82a2e4a33a97886e2d815eab8fc216d415.js?body=1" for ::1 at 2016-04-16 13:07:19 +0600
+
+
+Started GET "/pet/update_breeds?breed_type=cat&_=1460790438972" for ::1 at 2016-04-16 13:09:28 +0600
+Processing by MypetsController#update_breeds as JS
+  Parameters: {"breed_type"=>"cat", "_"=>"1460790438972"}
+  [1m[35mUser Load (1.7ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mBreed Load (7.3ms)[0m  [1mSELECT `breeds`.* FROM `breeds` WHERE (breed_type = 'cat')[0m
+  Rendered breeds/_breed.html.erb (2.0ms)
+  Rendered mypets/update_breeds.js.coffee (193.2ms)
+Completed 200 OK in 246ms (Views: 215.2ms | ActiveRecord: 9.0ms)
+
+
+Started GET "/pet/update_breeds?breed_type=dog&_=1460790438973" for ::1 at 2016-04-16 13:09:32 +0600
+Processing by MypetsController#update_breeds as JS
+  Parameters: {"breed_type"=>"dog", "_"=>"1460790438973"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mBreed Load (0.7ms)[0m  [1mSELECT `breeds`.* FROM `breeds` WHERE (breed_type = 'dog')[0m
+  Rendered breeds/_breed.html.erb (1.3ms)
+  Rendered mypets/update_breeds.js.coffee (9.2ms)
+Completed 200 OK in 28ms (Views: 23.4ms | ActiveRecord: 1.3ms)
+
+
+Started PUT "/reviews/image_create" for ::1 at 2016-04-16 13:09:38 +0600
+Processing by ReviewsController#image_create as */*
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"InA7sKRfnd+Vy3tf7Oa9KhyZaQc6wpWcUPkDEoum3RGHqN+0mXNKCZuvMzfWiN5ABsSkE8xQVM2miAzmTRsLMA==", "review"=>{"title"=>"", "breed_id"=>"1", "body"=>"", "review_attachments"=>[#<ActionDispatch::Http::UploadedFile:0x007f8e9330a100 @tempfile=#<Tempfile:/var/folders/qg/d1knzp_13nz6j6p4nv_4vp5h0000gn/T/RackMultipart20160416-525-1xpgmex.jpg>, @original_filename="350667-admin.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"review[review_attachments][]\"; filename=\"350667-admin.jpg\"\r\nContent-Type: image/jpeg\r\n">]}, "breed_type"=>"dog"}
+  [1m[35mUser Load (6.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (16.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (23.9ms)[0m  INSERT INTO `review_attachments` (`file`, `user_id`, `created_at`, `updated_at`) VALUES ('pic.jpg', 1, '2016-04-16 07:09:39.322187', '2016-04-16 07:09:39.322187')
+  [1m[36m (35.1ms)[0m  [1mCOMMIT[0m
+  Rendered reviews/image_create.js.erb (3.8ms)
+Completed 200 OK in 486ms (Views: 35.0ms | ActiveRecord: 81.9ms)
+
+
+Started GET "/" for ::1 at 2016-04-16 13:09:42 +0600
+Processing by HomeController#index as HTML
+  [1m[35m (46.2ms)[0m  SELECT COUNT(*) FROM `winners`
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCity Load (0.4ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1
+  [1m[36mMypet Load (12.5ms)[0m  [1mSELECT  `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)  ORDER BY `mypets`.`id` DESC LIMIT 5[0m
+  [1m[35mPetAttachment Load (0.7ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `winners`
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `mypets` WHERE (pet_attachments_count > 0)[0m
+  [1m[35mMypet Load (0.7ms)[0m  SELECT `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49  [["mypet_id", 49]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBreed Load (0.8ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1
+  Rendered home/_no_pet_day.html.slim (12.2ms)
+  [1m[36mMypet Load (39.5ms)[0m  [1mSELECT  `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)  ORDER BY Rand() LIMIT 12[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49  [["mypet_id", 49]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  Rendered home/_general.html.slim (46.9ms)
+  [1m[35mMypet Load (24.5ms)[0m  SELECT  `mypets`.* FROM `mypets` INNER JOIN `users` ON `mypets`.`user_id` = `users`.`id` WHERE `users`.`city_id` = 5 AND (pet_attachments_count > 0)  ORDER BY Rand() LIMIT 12
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m  [["mypet_id", 49]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  Rendered home/_town01.html.slim (32.6ms)
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  `users`.* FROM `users`  ORDER BY repa DESC LIMIT 10[0m
+  [1m[35mUser Load (1.1ms)[0m  SELECT  `users`.* FROM `users`  ORDER BY repa_total DESC LIMIT 10
+  [1m[36mArticle Load (12.3ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE (created_at < '2016-04-16 07:09:42.564596')  ORDER BY created_at DESC LIMIT 6[0m
+  [1m[35m (24.7ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 7 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 7 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 7 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 7], ["commentable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 6 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 6 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 6 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 6], ["commentable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 3 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 3 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 3 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 3], ["commentable_type", "Article"]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 4 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 4], ["commentable_type", "Article"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 5 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 5 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.1ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 5 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 5], ["commentable_type", "Article"]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 1], ["commentable_type", "Article"]]
+  Rendered home/index.html.slim within layouts/application (255.2ms)
+  [1m[35m (24.1ms)[0m  SELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)
+  [1m[36mNotice Load (0.6ms)[0m  [1mSELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1[0m
+Completed 200 OK in 1160ms (Views: 951.1ms | ActiveRecord: 196.1ms)
+
+
+Started GET "/avatars/original/missing.png" for ::1 at 2016-04-16 13:09:44 +0600
+
+
+Started GET "/" for ::1 at 2016-04-16 13:09:44 +0600
+Processing by HomeController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `winners`
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCity Load (0.4ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1
+  [1m[36mMypet Load (0.5ms)[0m  [1mSELECT  `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)  ORDER BY `mypets`.`id` DESC LIMIT 5[0m
+  [1m[35mPetAttachment Load (0.5ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49
+  [1m[36mUser Load (3.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.1ms)[0m  SELECT COUNT(*) FROM `winners`
+  [1m[36m (11.0ms)[0m  [1mSELECT COUNT(*) FROM `mypets` WHERE (pet_attachments_count > 0)[0m
+  [1m[35mMypet Load (1.2ms)[0m  SELECT `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)
+  [1m[36m (1.4ms)[0m  [1mSELECT COUNT(*) FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m
+  [1m[35mCACHE (2.1ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49  [["mypet_id", 49]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBreed Load (3.2ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1
+  Rendered home/_no_pet_day.html.slim (64.8ms)
+  [1m[36mMypet Load (1.4ms)[0m  [1mSELECT  `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)  ORDER BY Rand() LIMIT 12[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49  [["mypet_id", 49]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  Rendered home/_general.html.slim (6.8ms)
+  [1m[35mMypet Load (7.4ms)[0m  SELECT  `mypets`.* FROM `mypets` INNER JOIN `users` ON `mypets`.`user_id` = `users`.`id` WHERE `users`.`city_id` = 5 AND (pet_attachments_count > 0)  ORDER BY Rand() LIMIT 12
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m  [["mypet_id", 49]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  Rendered home/_town01.html.slim (17.7ms)
+  [1m[36mUser Load (1.6ms)[0m  [1mSELECT  `users`.* FROM `users`  ORDER BY repa DESC LIMIT 10[0m
+  [1m[35mUser Load (1.1ms)[0m  SELECT  `users`.* FROM `users`  ORDER BY repa_total DESC LIMIT 10
+  [1m[36mArticle Load (8.6ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE (created_at < '2016-04-16 07:09:44.662860')  ORDER BY created_at DESC LIMIT 6[0m
+  [1m[35m (0.8ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 7 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.8ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 7 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 7 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 7], ["commentable_type", "Article"]]
+  [1m[36m (4.9ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 6 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 6 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 6 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 6], ["commentable_type", "Article"]]
+  [1m[35m (3.3ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 3 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 3 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.1ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 3 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 3], ["commentable_type", "Article"]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 4 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 4], ["commentable_type", "Article"]]
+  [1m[35m (6.2ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 5 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 5 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 5 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 5], ["commentable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 1], ["commentable_type", "Article"]]
+  Rendered home/index.html.slim within layouts/application (286.7ms)
+  [1m[35m (0.6ms)[0m  SELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)
+  [1m[36mNotice Load (0.3ms)[0m  [1mSELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1[0m
+Completed 200 OK in 890ms (Views: 809.5ms | ActiveRecord: 65.8ms)
+
+
+Started GET "/reviews" for ::1 at 2016-04-16 13:09:48 +0600
+Processing by ReviewsController#index as HTML
+  Rendered reviews/_nav.html.erb (0.4ms)
+  [1m[35mBreed Load (0.4ms)[0m  SELECT  `breeds`.* FROM `breeds`  ORDER BY reviews_count desc LIMIT 7
+  [1m[36mBreed Load (0.5ms)[0m  [1mSELECT  `breeds`.* FROM `breeds`  ORDER BY reviews_count desc LIMIT 7 OFFSET 7[0m
+  [1m[35mBreed Load (0.3ms)[0m  SELECT  `breeds`.* FROM `breeds`  ORDER BY reviews_count desc LIMIT 7 OFFSET 14
+  Rendered reviews/_filter.html.erb (4.5ms)
+  [1m[36mReview Load (0.7ms)[0m  [1mSELECT `reviews`.* FROM `reviews`  ORDER BY created_at DESC[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 40 AND `votes`.`votable_type` = 'Review'
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCity Load (0.3ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 40[0m
+  [1m[35mBreed Load (0.4ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 1 LIMIT 1
+  Rendered reviews/_review.html.erb (13.7ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 39 AND `votes`.`votable_type` = 'Review'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 39
+  [1m[36mBreed Load (0.3ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1[0m
+  Rendered reviews/_review.html.erb (9.0ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 38 AND `votes`.`votable_type` = 'Review'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1  [["id", 5]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 38[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1  [["id", 2]]
+  Rendered reviews/_review.html.erb (8.0ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 37 AND `votes`.`votable_type` = 'Review'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 37
+  [1m[36mReviewAttachment Load (0.3ms)[0m  [1mSELECT `review_attachments`.* FROM `review_attachments` WHERE `review_attachments`.`review_id` = 37[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1  [["id", 2]]
+  Rendered reviews/_review.html.erb (7.4ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 36 AND `votes`.`votable_type` = 'Review'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 36
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1[0m  [["id", 2]]
+  Rendered reviews/_review.html.erb (7.5ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 35 AND `votes`.`votable_type` = 'Review'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1  [["id", 5]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 35[0m
+  [1m[35mReviewAttachment Load (0.3ms)[0m  SELECT `review_attachments`.* FROM `review_attachments` WHERE `review_attachments`.`review_id` = 35
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  Rendered reviews/_review.html.erb (6.7ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 34 AND `votes`.`votable_type` = 'Review'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1  [["id", 5]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 34[0m
+  [1m[35mReviewAttachment Load (0.3ms)[0m  SELECT `review_attachments`.* FROM `review_attachments` WHERE `review_attachments`.`review_id` = 34
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  Rendered reviews/_review.html.erb (6.5ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 33 AND `votes`.`votable_type` = 'Review'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1  [["id", 5]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 33[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 1 LIMIT 1  [["id", 1]]
+  Rendered reviews/_review.html.erb (7.7ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 32 AND `votes`.`votable_type` = 'Review'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 32
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  Rendered reviews/_review.html.erb (9.9ms)
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 31 AND `votes`.`votable_type` = 'Review'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1  [["id", 5]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 31[0m
+  [1m[35mReviewAttachment Load (0.3ms)[0m  SELECT `review_attachments`.* FROM `review_attachments` WHERE `review_attachments`.`review_id` = 31
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1[0m  [["id", 2]]
+  Rendered reviews/_review.html.erb (8.3ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 30 AND `votes`.`votable_type` = 'Review'
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 30
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1[0m  [["id", 2]]
+  Rendered reviews/_review.html.erb (24.3ms)
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 27 AND `votes`.`votable_type` = 'Review'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1  [["id", 5]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `review_attachments` WHERE `review_attachments`.`review_id` = 27[0m
+  [1m[35mReviewAttachment Load (0.3ms)[0m  SELECT `review_attachments`.* FROM `review_attachments` WHERE `review_attachments`.`review_id` = 27
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  Rendered reviews/_review.html.erb (6.9ms)
+  Rendered reviews/index.html.erb within layouts/application (144.3ms)
+  [1m[35mUser Load (1.1ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (1.2ms)[0m  [1mSELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)[0m
+  [1m[35mNotice Load (0.3ms)[0m  SELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1
+Completed 200 OK in 593ms (Views: 576.8ms | ActiveRecord: 15.8ms)
+
+
+Started GET "/images/default.jpg" for ::1 at 2016-04-16 13:09:48 +0600
+
+
+Started GET "/" for ::1 at 2016-04-16 13:09:49 +0600
+Processing by HomeController#index as HTML
+  [1m[36m (4.0ms)[0m  [1mSELECT COUNT(*) FROM `winners`[0m
+  [1m[35mUser Load (4.7ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mCity Load (4.8ms)[0m  [1mSELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1[0m
+  [1m[35mMypet Load (3.0ms)[0m  SELECT  `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)  ORDER BY `mypets`.`id` DESC LIMIT 5
+  [1m[36mPetAttachment Load (0.5ms)[0m  [1mSELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m
+  [1m[35mUser Load (1.2ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `winners`[0m
+  [1m[35m (2.6ms)[0m  SELECT COUNT(*) FROM `mypets` WHERE (pet_attachments_count > 0)
+  [1m[36mMypet Load (3.2ms)[0m  [1mSELECT `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)[0m
+  [1m[35m (2.7ms)[0m  SELECT COUNT(*) FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m  [["mypet_id", 49]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  [1m[36mBreed Load (3.7ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1[0m
+  Rendered home/_no_pet_day.html.slim (13.2ms)
+  [1m[35mMypet Load (4.3ms)[0m  SELECT  `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)  ORDER BY Rand() LIMIT 12
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m  [["mypet_id", 49]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  Rendered home/_general.html.slim (13.2ms)
+  [1m[36mMypet Load (16.2ms)[0m  [1mSELECT  `mypets`.* FROM `mypets` INNER JOIN `users` ON `mypets`.`user_id` = `users`.`id` WHERE `users`.`city_id` = 5 AND (pet_attachments_count > 0)  ORDER BY Rand() LIMIT 12[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49  [["mypet_id", 49]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  Rendered home/_town01.html.slim (21.4ms)
+  [1m[35mUser Load (12.7ms)[0m  SELECT  `users`.* FROM `users`  ORDER BY repa DESC LIMIT 10
+  [1m[36mUser Load (23.4ms)[0m  [1mSELECT  `users`.* FROM `users`  ORDER BY repa_total DESC LIMIT 10[0m
+  [1m[35mArticle Load (15.8ms)[0m  SELECT  `articles`.* FROM `articles` WHERE (created_at < '2016-04-16 07:09:49.064285')  ORDER BY created_at DESC LIMIT 6
+  [1m[36m (7.7ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 7 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (16.8ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 7 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 7 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 7], ["commentable_type", "Article"]]
+  [1m[35m (3.1ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 6 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.9ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 6 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 6 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 6], ["commentable_type", "Article"]]
+  [1m[36m (2.2ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 3 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (1.6ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 3 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 3 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 3], ["commentable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 4 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 4], ["commentable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 5 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 5 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 5 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 5], ["commentable_type", "Article"]]
+  [1m[35m (0.9ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.8ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 1], ["commentable_type", "Article"]]
+  Rendered home/index.html.slim within layouts/application (288.6ms)
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)[0m
+  [1m[35mNotice Load (0.5ms)[0m  SELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1
+Completed 200 OK in 808ms (Views: 643.8ms | ActiveRecord: 140.4ms)

@@ -5081,7 +5081,8 @@ form .row.attachments .thumbs .file-name {
 .filter-block .filter-block-table .filter-block-row {
   display: table-row;
 }
-.filter-block .filter-block-table .filter-block-row .filter-block-col {
+.filter-block .filter-block-table .filter-block-row .filter-block-col,
+.filter-block .filter-block-table .filter-block-row .filter-block-col-alt {
   display: table-cell;
   padding: 5px 15px;
   vertical-align: middle;
@@ -5802,7 +5803,9 @@ form .row.attachments .thumbs .file-name {
   color: #5e5e5e;
   border: 1px solid #dcdcdc;
   background: linear-gradient(to bottom, #e3e3e3 0%, #ededed 100%);
-  margin-top: 12px;
+}
+.notification-block ul li .notification-item.new {
+  margin-top: 31px;
 }
 .notification-block ul li .notification-item.new:before {
   width: 110px;
@@ -5814,15 +5817,26 @@ form .row.attachments .thumbs .file-name {
   content: '';
 }
 .notification-block ul li .notification-item .pic-block {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
   width: 60px;
   height: 60px;
   border-radius: 50%;
   overflow: hidden;
 }
+.notification-block ul li .notification-item .pic-block img {
+  max-width: 60px;
+  height: auto;
+  margin: auto;
+}
 .notification-block ul li .notification-item .pic-block i {
   width: 60px;
   height: 60px;
   display: block;
+  margin: auto;
 }
 .notification-block ul li .notification-item .pic-block i.notification-new-message {
   background: url(../images/ico_new_message.png) no-repeat;
@@ -5957,5 +5971,203 @@ form .row.attachments .thumbs .file-name {
   text-decoration: underline;
 }
 .subscribers-block li .name a:hover {
+  text-decoration: none;
+}
+.feed2-block .feed2-cloud {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  padding: 15px 20px 15px 10px;
+  border: 1px solid #dbdbdb;
+  background: #e3e3e3;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #e3e3e3 0%, #eee 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e3e3e3), color-stop(100%, #eee));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #e3e3e3 0%, #eee 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #e3e3e3 0%, #eee 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #e3e3e3 0%, #eee 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #e3e3e3 0%, #eee 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e3e3e3', endColorstr='#eeeeee', GradientType=0);
+  /* IE6-9 */
+}
+.feed2-block .feed2-cloud ul {
+  list-style: none;
+}
+.feed2-block .feed2-cloud ul li {
+  list-style: none;
+  line-height: 1.6em;
+}
+.feed2-block .feed2-cloud ul li a {
+  text-decoration: underline;
+}
+.feed2-block .feed2-cloud ul li a:hover {
+  text-decoration: none;
+}
+.feed2-block .feed2-list {
+  list-style: none;
+  padding: 0;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.feed2-block .feed2-list li {
+  list-style: none;
+  padding: 0 0 25px;
+}
+.feed2-block .feed2-list li .feed2-add {
+  font-size: 22px;
+  color: #fff;
+  border: 1px solid #dbdbdb;
+  background: linear-gradient(to bottom, #de99a8 0%, #edd8dc 100%);
+}
+.feed2-block .feed2-list li .feed2-add a {
+  width: 187px;
+  height: 232px;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  color: #fff;
+  text-decoration: underline;
+}
+.feed2-block .feed2-list li .feed2-add a:hover {
+  text-decoration: none;
+}
+.feed2-block .feed2-list li .feed2-add a span {
+  display: block;
+  text-align: center;
+  margin: auto;
+}
+.feed2-block .feed2-list li .feed2-add a span i {
+  margin: 0 auto 20px;
+  display: block;
+  width: 50px;
+  height: 50px;
+  background: url(../images/ico_plus.png) no-repeat;
+}
+.feed2-block .feed2-list li .feed2-list-item {
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 187px;
+  height: 232px;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  padding: 3px;
+  border: 1px solid #dbdbdb;
+  background: #e3e3e3;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #e3e3e3 0%, #eee 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e3e3e3), color-stop(100%, #eee));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #e3e3e3 0%, #eee 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #e3e3e3 0%, #eee 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #e3e3e3 0%, #eee 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #e3e3e3 0%, #eee 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e3e3e3', endColorstr='#eeeeee', GradientType=0);
+  /* IE6-9 */
+}
+.feed2-block .feed2-list li .feed2-list-item .feed2-list-item-top-block {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+}
+.feed2-block .feed2-list li .feed2-list-item .feed2-list-item-top-block .feed2-list-item-top-block-num {
+  width: 51px;
+  min-width: 51px;
+  height: 51px;
+  line-height: 51px;
+  text-align: center;
+  font-size: 24px;
+  color: #fff;
+  background: #de97a6;
+  border-radius: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.feed2-block .feed2-list li .feed2-list-item .feed2-list-item-top-block .feed2-list-item-top-block-text {
+  -webkit-flex-grow: 1;
+  -moz-flex-grow: 1;
+  -ms-flex-grow: 1;
+  flex-grow: 1;
+  padding-left: 13px;
+  overflow: hidden;
+}
+.feed2-block .feed2-list li .feed2-list-item .feed2-list-item-top-block .feed2-list-item-top-block-text .feed2-list-item-top-block-text-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 17px;
+  padding-top: 10px;
+}
+.feed2-block .feed2-list li .feed2-list-item .feed2-list-item-top-block .feed2-list-item-top-block-text .feed2-list-item-top-block-text-place {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+}
+.feed2-block .feed2-list li .feed2-list-item .feed2-list-item-pic-block {
+  margin-top: 3px;
+  width: 179px;
+  height: 120px;
+  overflow: hidden;
+}
+.feed2-block .feed2-list li .feed2-list-item .feed2-list-item-pic-block img {
+  width: 179px;
+}
+.feed2-block .feed2-list li .feed2-list-item .feed2-list-item-bottom-block {
+  padding: 5px;
+  overflow: hidden;
+}
+.feed2-block .feed2-list li .feed2-list-item .feed2-list-item-bottom-block .feed2-list-item-bottom-block-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 20px;
+  line-height: normal;
+}
+.feed2-block .feed2-list li .feed2-list-item .feed2-list-item-bottom-block .feed2-list-item-bottom-block-breed {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+}
+.feed2-block .feed2-add-link {
+  text-align: center;
+  font-size: 22px;
+}
+.feed2-block .feed2-add-link a {
+  text-decoration: underline;
+}
+.feed2-block .feed2-add-link a:hover {
   text-decoration: none;
 }
