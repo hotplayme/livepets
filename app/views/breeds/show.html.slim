@@ -1,4 +1,5 @@
 - content_for :title, "Порода #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name} - LivePets"
+- content_for :description, "Все о породе #{@breed.breed_type == "dog" ? "собак" : "кошек" } #{@breed.name}. Отзывы о #{@breed.name}, блоги участиников, статьи и обсуждение на форуме."
 div class="content"
   div class="vote-holder"
     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
