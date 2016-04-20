@@ -24,10 +24,10 @@ class BlogsController < ApplicationController
     #Установка created_at для писателей
     if current_user.writer
       if current_user.blogs.count > 0
-        if Time.now - current_user.blogs.last.created_at > 3.days
+        if Time.now - current_user.blogs.order("created_at desc").first.created_at > 3.days
           time = Time.now
         else
-          time = current_user.blogs.last.created_at + Random.rand(48..120).hours
+          time = current_user.blogs.order("created_at desc").first.created_at + Random.rand(48..120).hours
         end
       else
         time = Time.now

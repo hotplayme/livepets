@@ -4004,3 +4004,632 @@ Processing by BreedsController#show as HTML
   [1m[36m (0.6ms)[0m  [1mSELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)[0m
   [1m[35mNotice Load (0.4ms)[0m  SELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1
 Completed 200 OK in 378ms (Views: 373.5ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/" for ::1 at 2016-04-20 18:16:53 +0600
+  [1m[36mActiveRecord::SchemaMigration Load (6.1ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+
+
+Started GET "/" for ::1 at 2016-04-20 18:16:54 +0600
+
+
+Started GET "/" for ::1 at 2016-04-20 18:16:54 +0600
+Processing by HomeController#index as HTML
+  [1m[35m (6.3ms)[0m  SELECT COUNT(*) FROM `winners`
+  [1m[36mUser Load (2.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (22.7ms)[0m  [1mUPDATE `users` SET `last_sign_in_at` = '2016-04-19 03:05:29.000000', `current_sign_in_at` = '2016-04-20 12:16:54.530084', `sign_in_count` = 35, `updated_at` = '2016-04-20 12:16:54.532015' WHERE `users`.`id` = 1[0m
+  [1m[35m (3.7ms)[0m  COMMIT
+  [1m[36mCity Load (0.5ms)[0m  [1mSELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1[0m
+  [1m[35mMypet Load (0.5ms)[0m  SELECT  `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)  ORDER BY `mypets`.`id` DESC LIMIT 5
+  [1m[36mPetAttachment Load (0.5ms)[0m  [1mSELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `winners`[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `mypets` WHERE (pet_attachments_count > 0)
+  [1m[36mMypet Load (0.3ms)[0m  [1mSELECT `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m  [["mypet_id", 49]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  [1m[36mBreed Load (0.6ms)[0m  [1mSELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1[0m
+  Rendered home/_no_pet_day.html.slim (46.9ms)
+  [1m[35mMypet Load (7.1ms)[0m  SELECT  `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)  ORDER BY Rand() LIMIT 12
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m  [["mypet_id", 49]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  Rendered home/_general.html.slim (15.8ms)
+  [1m[36mMypet Load (0.6ms)[0m  [1mSELECT  `mypets`.* FROM `mypets` INNER JOIN `users` ON `mypets`.`user_id` = `users`.`id` WHERE `users`.`city_id` = 5 AND (pet_attachments_count > 0)  ORDER BY Rand() LIMIT 12[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49  [["mypet_id", 49]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  Rendered home/_town01.html.slim (21.4ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users`  ORDER BY repa DESC LIMIT 10
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  `users`.* FROM `users`  ORDER BY repa_total DESC LIMIT 10[0m
+  [1m[35mArticle Load (0.5ms)[0m  SELECT  `articles`.* FROM `articles` WHERE (created_at < '2016-04-20 12:16:54.421069')  ORDER BY created_at DESC LIMIT 6
+  [1m[36m (1.1ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 7 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 7 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 7 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 7], ["commentable_type", "Article"]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 6 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 6 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 6 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 6], ["commentable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 3 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 3 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 3 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 3], ["commentable_type", "Article"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 4 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 4], ["commentable_type", "Article"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 5 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 5 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 5 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 5], ["commentable_type", "Article"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (1.7ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 1], ["commentable_type", "Article"]]
+  Rendered home/index.html.slim within layouts/application (859.8ms)
+  [1m[36m (23.0ms)[0m  [1mSELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)[0m
+  [1m[35mNotice Load (0.7ms)[0m  SELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1
+Completed 200 OK in 3068ms (Views: 2570.9ms | ActiveRecord: 354.1ms)
+
+
+Started GET "/" for ::1 at 2016-04-20 18:16:57 +0600
+
+
+Started GET "/" for ::1 at 2016-04-20 18:16:57 +0600
+
+
+Started GET "/" for ::1 at 2016-04-20 18:16:57 +0600
+Processing by HomeController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `winners`[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE `users` SET `last_sign_in_at` = '2016-04-20 12:16:55.000000', `current_sign_in_at` = '2016-04-20 12:16:57.525056', `sign_in_count` = 36, `updated_at` = '2016-04-20 12:16:57.527558' WHERE `users`.`id` = 1
+  [1m[36m (17.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mCity Load (0.4ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1
+  [1m[36mMypet Load (0.4ms)[0m  [1mSELECT  `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)  ORDER BY `mypets`.`id` DESC LIMIT 5[0m
+  [1m[35mPetAttachment Load (0.4ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `winners`
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `mypets` WHERE (pet_attachments_count > 0)[0m
+  [1m[35mMypet Load (0.3ms)[0m  SELECT `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49  [["mypet_id", 49]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBreed Load (0.4ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1
+  Rendered home/_no_pet_day.html.slim (7.5ms)
+  [1m[36mMypet Load (0.5ms)[0m  [1mSELECT  `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)  ORDER BY Rand() LIMIT 12[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49  [["mypet_id", 49]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  Rendered home/_general.html.slim (5.7ms)
+  [1m[35mMypet Load (0.7ms)[0m  SELECT  `mypets`.* FROM `mypets` INNER JOIN `users` ON `mypets`.`user_id` = `users`.`id` WHERE `users`.`city_id` = 5 AND (pet_attachments_count > 0)  ORDER BY Rand() LIMIT 12
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m  [["mypet_id", 49]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  Rendered home/_town01.html.slim (6.1ms)
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  `users`.* FROM `users`  ORDER BY repa DESC LIMIT 10[0m
+  [1m[35mUser Load (1.8ms)[0m  SELECT  `users`.* FROM `users`  ORDER BY repa_total DESC LIMIT 10
+  [1m[36mArticle Load (0.4ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE (created_at < '2016-04-20 12:16:57.518835')  ORDER BY created_at DESC LIMIT 6[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 7 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 7 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 7 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 7], ["commentable_type", "Article"]]
+  [1m[36m (6.0ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 6 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 6 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 6 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 6], ["commentable_type", "Article"]]
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 3 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 3 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 3 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 3], ["commentable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 4 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 4], ["commentable_type", "Article"]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 5 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 5 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 5 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 5], ["commentable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 1], ["commentable_type", "Article"]]
+  Rendered home/index.html.slim within layouts/application (101.3ms)
+  [1m[35m (0.6ms)[0m  SELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)
+  [1m[36mNotice Load (0.4ms)[0m  [1mSELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1[0m
+Completed 200 OK in 601ms (Views: 546.1ms | ActiveRecord: 39.3ms)
+
+
+Started GET "/assets/articles.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-20 18:16:58 +0600
+
+
+Started GET "/assets/admin.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-20 18:16:58 +0600
+
+
+Started GET "/assets/admin/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-20 18:16:58 +0600
+
+
+Started GET "/assets/home.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-20 18:16:58 +0600
+
+
+Started GET "/assets/blogs.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-20 18:16:58 +0600
+
+
+Started GET "/assets/breeds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-20 18:16:58 +0600
+
+
+Started GET "/assets/dialogs.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-20 18:16:58 +0600
+
+
+Started GET "/assets/jcf.self-120b58eca0a3e001ec120e080a74b6569fdadf029ab7a2e73299fbd5f52d0aa3.css?body=1" for ::1 at 2016-04-20 18:16:58 +0600
+
+
+Started GET "/assets/mypets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-20 18:16:58 +0600
+
+
+Started GET "/assets/notices.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-20 18:16:58 +0600
+
+
+Started GET "/assets/tinymce_assets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-20 18:16:58 +0600
+
+
+Started GET "/assets/reviews.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-20 18:16:58 +0600
+
+
+Started GET "/assets/search.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-20 18:16:58 +0600
+
+
+Started GET "/assets/pets.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-20 18:16:58 +0600
+
+
+Started GET "/assets/subscribers.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-20 18:16:58 +0600
+
+
+Started GET "/assets/all.self-bdd9d45518acdf2c1d2796b6ca72d6fedd959ddeec8468c2cbe2d50d481a8aa3.css?body=1" for ::1 at 2016-04-20 18:16:58 +0600
+
+
+Started GET "/assets/writer.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-20 18:16:58 +0600
+
+
+Started GET "/assets/jquery-ui/core.self-23329dbe1961b938278306c019037fe36ff6ccb28193f1038e52ccbf52858163.css?body=1" for ::1 at 2016-04-20 18:16:58 +0600
+
+
+Started GET "/assets/jquery-ui/theme.self-df1da30301997b52795cb0213bccd335f2897b65f84d1d7d7c63c04f048d902f.css?body=1" for ::1 at 2016-04-20 18:16:58 +0600
+
+
+Started GET "/assets/jquery-ui/accordion.self-ab9f397561a07488cf14279bc7186619e859cdd485b81d3a6439e85b81d32a05.css?body=1" for ::1 at 2016-04-20 18:16:58 +0600
+
+
+Started GET "/assets/jquery-ui/menu.self-5277268fc75b8d6e851ccb5ca12e162c7440315d70974f34db800bc70330f135.css?body=1" for ::1 at 2016-04-20 18:16:58 +0600
+
+
+Started GET "/assets/jquery-ui/autocomplete.self-2d6dfccae4fba2fe27d00372b974d4540d75a00cea6ceaa0a6aa33852b9d3ac3.css?body=1" for ::1 at 2016-04-20 18:16:58 +0600
+
+
+Started GET "/assets/jquery-ui/button.self-524bbf2d9cf9547e14eda3866ad90726890ff390563ea46013c1ca019694c320.css?body=1" for ::1 at 2016-04-20 18:16:58 +0600
+
+
+Started GET "/assets/jquery-ui/draggable.self-ff524fb7ae3023ef910b4e6c5cd7260e4f4dc6fb2eca9a525dd478017639bbba.css?body=1" for ::1 at 2016-04-20 18:16:58 +0600
+
+
+Started GET "/assets/jquery-ui/dialog.self-3e41d6ad769c697e76dceeef1bf376008c8e93e85c144fea25437fa3188d86b8.css?body=1" for ::1 at 2016-04-20 18:16:58 +0600
+
+
+Started GET "/assets/jquery-ui/resizable.self-3a16663ae8d70cc7f633554daff3a5875f54915ae3071fc3f3a1aeb0f7c8ab24.css?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery-ui/progressbar.self-de3d9f82b3ceaaa88bb0686e77f2548a3cfea1cf4dc37df4f3bc70f99d86a95a.css?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery-ui/selectable.self-fa1d88ada89c5a57dae84c7cb4f17bf153cb1cff063ed4ba2091b5b5f54e77e6.css?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery-ui/selectmenu.self-9a2b20dc7f10d3a7b09d0dc5d038d02dd1aff160e97abf8eaa3d3f5ab09fbb4b.css?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery-ui/datepicker.self-bf92a2196df590f06fad4ab5bb7ed4db1874a9bef0c9af85ea0490d2108b9966.css?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery-ui/sortable.self-bd8078895e9d12cd8586eb9b507ccb4d533daadd0f103f7387554c30cc96313f.css?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery-ui/tooltip.self-a349b3ba7b1458eed72dc3ffba597af53b9ceb622e7a324cdfd1c01c7b351f1f.css?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery-ui/slider.self-57c4d255d192836d85e1253fe091b5b01fed1c389b0dbdedd71c129dcf1cfd35.css?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery-ui/spinner.self-2d292d2e83f1281032010a5acb9cb23492aeecdc95395a5d93f2a3bba9a2c400.css?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery-ui/tabs.self-3dec02555ec77af087a252cdd5be276e714d0059e052a2c92dc2c5401e9df63d.css?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery-ui/base.self-1b94b6a8eaf399d6f662a2ffe0b9b52a958c6180e15b6e07a7ecab0087c9234d.css?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery-ui/all.self-a9629accff9d629face2489f3b6d620ded83dd62f6f04f69e5b33eea2b8d73b6.css?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery-ui.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/application.self-d885a0a66bd595c10edb24f8879f94e334d88be0730c4d7c7a7b57c731c09037.css?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery.self-c64a74367bda6ef8b860f19e74df08927ca99d2be2ac934e9e92d5fd361e0da4.js?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery_ujs.self-d602bdfe68ffc63b9f9cc512872aa3cfff046228a0a36e90dd476e8ef54c1b09.js?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/jquery.ui.widget.self-92c37a41e67e528eecf100716907331b4b9aa4f546bf75ef2e0529c8c03a562d.js?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/load-image.all.min.self-a3decd3471e27cc44c17cc9f176569a047d8935eea573063a69b2ed5772808a7.js?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/canvas-to-blob.self-c99e244311177f0f13838c99b020b483faf38285f2b27666c65d8fccc763dd8c.js?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.iframe-transport.self-6fdaccef712b63a5a9aa8fbcd0e6d2071a6056eb3e165835e05ff0734dd9d5fe.js?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload.self-c6cbb0b05ba3d5565ddfbc78d52abc7a89e964b7cb015b0c930d5bb6c89e4b8f.js?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-process.self-b6c54bbe6f4ba84a6cd34e268e09f983787e0d753b5fa02b954bdeeca8f72359.js?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-audio.self-f4a39f4b95d17c6f777258564f8fa563ba75368a43163d090a7494e7523c623c.js?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-image.self-54a7741d50863381c24017e646802b5fbca6e02889e3b9b9e2b6e99514432728.js?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-video.self-7d0c1888cad62b161fd980eef98269ac6977c0cb9affa9fd3202c2221a94f80c.js?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery-fileupload/jquery.fileupload-validate.self-950050c5bc37f6061bb71c43af1194f0d3f9b0476f6a4cdb66802bb975ecf07f.js?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery-fileupload/locale.self-0f10a6e25d374828492cc17fafc26ee33cb9980d3152cb6c2437d5395fe63847.js?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery-fileupload/basic-plus.self-636159b35205da4142a43bc02d2849d77d3ac07a0946211585cde15a9c6ff21f.js?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery-fileupload/vendor/tmpl.self-c2108a63ad9ae9ab4a723bcf0104f6a92a63eb917331ff69fad6f02fe7219488.js?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/tinymce/preinit.self-84328a53e798df12f891eb49871773fd9f925439c8630e9e22423a82ef9e6f89.js?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/jquery.infinite-pages.self-afd06674b95a6a7b0bf1e568c2f9470bc852dd39668a22ec097cc7d424393d5a.js?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/tinymce/tinymce.self-715a15cb3cb25c032ccc2afacfd8e02d068a7f1ca80de9f7a1adfd7f33eadcf6.js?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/tinymce.self-75a11da44c802486bc6f65640aa48a730f0f684c5c07a42ba3cd1735eb3fb070.js?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/admin.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/admin/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/articles.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-20 18:16:59 +0600
+
+
+Started GET "/assets/blogs.self-0183d592b9ea09f83f10dffc2f58a69fd0b7698a324a4f412421251b8ff3989b.js?body=1" for ::1 at 2016-04-20 18:17:00 +0600
+
+
+Started GET "/assets/breeds.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-20 18:17:00 +0600
+
+
+Started GET "/assets/dialogs.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-20 18:17:00 +0600
+
+
+Started GET "/assets/jcf.self-41018834b0b5f6f2c05b056186170ba2f87f8bdb93fada802711518a3bc4cbed.js?body=1" for ::1 at 2016-04-20 18:17:00 +0600
+
+
+Started GET "/assets/html5.self-223b9ac2fdbc5da5433f4c05c5ae0f7a80733bb77f0ff1c5d9db9acb2fc42014.js?body=1" for ::1 at 2016-04-20 18:17:00 +0600
+
+
+Started GET "/assets/home.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-20 18:17:00 +0600
+
+
+Started GET "/assets/jquery.tabs.self-1cd5668db686a49c1a4be091979011e7869c29c20c1896b256085b2ac7665ba0.js?body=1" for ::1 at 2016-04-20 18:17:00 +0600
+
+
+Started GET "/assets/jquery.fancybox.self-69b20ea1f20f8f0b0c228ba0986a139f353039e8ab43bd66d60d81ad63ad642f.js?body=1" for ::1 at 2016-04-20 18:17:00 +0600
+
+
+Started GET "/assets/mypets.self-06597c66f20796e7c340b7d431b93446255c93cc41b6060ababb79402ad3019f.js?body=1" for ::1 at 2016-04-20 18:17:00 +0600
+
+
+Started GET "/assets/pets.self-b3488b2cfe48102eb1cc4459060b56af152daf384b556671757c19da440afd72.js?body=1" for ::1 at 2016-04-20 18:17:00 +0600
+
+
+Started GET "/assets/notices.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-20 18:17:00 +0600
+
+
+Started GET "/assets/reviews.self-ee9186cbcde2e9956f5a1aaacd8cbf84c91e869deba95bc022b0b88fce39037d.js?body=1" for ::1 at 2016-04-20 18:17:00 +0600
+
+
+Started GET "/assets/tinymce_assets.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-20 18:17:00 +0600
+
+
+Started GET "/assets/users.self-70aa361306486c1a674cd8bed16c906c5366e1b502722f9d641297b9b8916ee7.js?body=1" for ::1 at 2016-04-20 18:17:00 +0600
+
+
+Started GET "/assets/popups.self-f3caed5b40dae466daf7f6fd7da3a1fc8f17388790175bbc1c9ee22392413bef.js?body=1" for ::1 at 2016-04-20 18:17:00 +0600
+
+
+Started GET "/assets/search.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-20 18:17:00 +0600
+
+
+Started GET "/assets/subscribers.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-20 18:17:00 +0600
+
+
+Started GET "/assets/writer.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-04-20 18:17:00 +0600
+
+
+Started GET "/assets/application.self-538d6440534fa5f615e8a26932792a82a2e4a33a97886e2d815eab8fc216d415.js?body=1" for ::1 at 2016-04-20 18:17:00 +0600
+
+
+Started GET "/assets/jquery.slideshow.self-9408ca078c8ce5cea9239010c466afc0ba4314aad5e60ee682db3d09134c6834.js?body=1" for ::1 at 2016-04-20 18:17:00 +0600
+
+
+Started GET "/avatars/original/missing.png" for ::1 at 2016-04-20 18:17:00 +0600
+
+
+Started GET "/" for ::1 at 2016-04-20 18:17:00 +0600
+Processing by HomeController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `winners`
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCity Load (0.3ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1
+  [1m[36mMypet Load (0.5ms)[0m  [1mSELECT  `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)  ORDER BY `mypets`.`id` DESC LIMIT 5[0m
+  [1m[35mPetAttachment Load (0.4ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49
+  [1m[36mUser Load (12.6ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `winners`
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `mypets` WHERE (pet_attachments_count > 0)[0m
+  [1m[35mMypet Load (0.3ms)[0m  SELECT `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49  [["mypet_id", 49]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBreed Load (0.4ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1
+  Rendered home/_no_pet_day.html.slim (8.0ms)
+  [1m[36mMypet Load (0.5ms)[0m  [1mSELECT  `mypets`.* FROM `mypets` WHERE (pet_attachments_count > 0)  ORDER BY Rand() LIMIT 12[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49  [["mypet_id", 49]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1]]
+  Rendered home/_general.html.slim (5.9ms)
+  [1m[35mMypet Load (0.6ms)[0m  SELECT  `mypets`.* FROM `mypets` INNER JOIN `users` ON `mypets`.`user_id` = `users`.`id` WHERE `users`.`city_id` = 5 AND (pet_attachments_count > 0)  ORDER BY Rand() LIMIT 12
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m  [["mypet_id", 49]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1  [["id", 1]]
+  Rendered home/_town01.html.slim (6.4ms)
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  `users`.* FROM `users`  ORDER BY repa DESC LIMIT 10[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users`  ORDER BY repa_total DESC LIMIT 10
+  [1m[36mArticle Load (0.5ms)[0m  [1mSELECT  `articles`.* FROM `articles` WHERE (created_at < '2016-04-20 12:17:00.919838')  ORDER BY created_at DESC LIMIT 6[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 7 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 7 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 7 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 7], ["commentable_type", "Article"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 6 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 6 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 6 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 6], ["commentable_type", "Article"]]
+  [1m[35m (2.4ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 3 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 3 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 3 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 3], ["commentable_type", "Article"]]
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 4 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 4 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 4], ["commentable_type", "Article"]]
+  [1m[35m (0.9ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 5 AND `votes`.`votable_type` = 'Article'
+  [1m[36m (2.2ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 5 AND `comments`.`commentable_type` = 'Article'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 5 AND `comments`.`commentable_type` = 'Article'  [["commentable_id", 5], ["commentable_type", "Article"]]
+  [1m[36m (0.8ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Article'[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Article'
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 1 AND `comments`.`commentable_type` = 'Article'[0m  [["commentable_id", 1], ["commentable_type", "Article"]]
+  Rendered home/index.html.slim within layouts/application (133.6ms)
+  [1m[35m (0.6ms)[0m  SELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)
+  [1m[36mNotice Load (0.4ms)[0m  [1mSELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1[0m
+Completed 200 OK in 800ms (Views: 761.7ms | ActiveRecord: 30.8ms)
+
+
+Started GET "/dialogs" for ::1 at 2016-04-20 18:17:06 +0600
+Processing by DialogsController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mSQL (12.1ms)[0m  [1mSELECT `dialogs`.`id` AS t0_r0, `dialogs`.`created_at` AS t0_r1, `dialogs`.`updated_at` AS t0_r2, `messages`.`id` AS t1_r0, `messages`.`body` AS t1_r1, `messages`.`user_id` AS t1_r2, `messages`.`dialog_id` AS t1_r3, `messages`.`state` AS t1_r4, `messages`.`created_at` AS t1_r5, `messages`.`updated_at` AS t1_r6 FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1  ORDER BY messages.created_at desc[0m
+  [1m[35mUser Load (1.6ms)[0m  SELECT  `users`.* FROM `users` INNER JOIN `dialogs_users` ON `users`.`id` = `dialogs_users`.`user_id` WHERE `dialogs_users`.`dialog_id` = 2 AND (`users`.`id` != 1)  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `messages` WHERE `messages`.`dialog_id` = 2 AND (user_id != 1) AND `messages`.`state` = 'new'[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT  `users`.* FROM `users` INNER JOIN `dialogs_users` ON `users`.`id` = `dialogs_users`.`user_id` WHERE `dialogs_users`.`dialog_id` = 1 AND (`users`.`id` != 1)  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `messages` WHERE `messages`.`dialog_id` = 1 AND (user_id != 1) AND `messages`.`state` = 'new'[0m
+  Rendered dialogs/index.html.erb within layouts/application (60.2ms)
+  [1m[35m (0.6ms)[0m  SELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)
+  [1m[36mNotice Load (0.4ms)[0m  [1mSELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1[0m
+Completed 200 OK in 482ms (Views: 461.3ms | ActiveRecord: 17.1ms)
+
+
+Started GET "/user/admin" for ::1 at 2016-04-20 18:17:06 +0600
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"admin"}
+  [1m[35mUser Load (13.0ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`nickname` = 'admin' LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCity Load (0.3ms)[0m  SELECT  `cities`.* FROM `cities` WHERE `cities`.`id` = 5 LIMIT 1
+  [1m[36mCountry Load (0.3ms)[0m  [1mSELECT  `countries`.* FROM `countries` WHERE `countries`.`id` = 3 LIMIT 1[0m
+  Rendered users/_info_profile.html.slim (47.4ms)
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `mypets` WHERE `mypets`.`user_id` = 1
+  [1m[36mMypet Load (0.5ms)[0m  [1mSELECT `mypets`.* FROM `mypets` WHERE `mypets`.`user_id` = 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM `mypets` WHERE `mypets`.`user_id` = 1  [["user_id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49[0m
+  [1m[35mPetAttachment Load (0.3ms)[0m  SELECT  `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49 AND `pet_attachments`.`main` = 1  ORDER BY `pet_attachments`.`id` ASC LIMIT 1
+  [1m[36mPetAttachment Load (0.4ms)[0m  [1mSELECT  `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 49 AND `pet_attachments`.`main` = 0 LIMIT 10[0m
+  [1m[35mBreed Load (0.3ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 2 LIMIT 1
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 49 AND `votes`.`votable_type` = 'Mypet'[0m
+  Rendered mypets/_likes.html.slim (9.3ms)
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 50
+  [1m[36mPetAttachment Load (0.3ms)[0m  [1mSELECT  `pet_attachments`.* FROM `pet_attachments` WHERE `pet_attachments`.`mypet_id` = 50 AND `pet_attachments`.`main` = 0 LIMIT 10[0m
+  [1m[35mBreed Load (0.4ms)[0m  SELECT  `breeds`.* FROM `breeds` WHERE `breeds`.`id` = 1 LIMIT 1
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 50 AND `votes`.`votable_type` = 'Mypet'[0m
+  Rendered mypets/_likes.html.slim (2.7ms)
+  [1m[35mBlog Load (0.6ms)[0m  SELECT `blogs`.* FROM `blogs` WHERE `blogs`.`user_id` = 1 AND (created_at < '2016-04-20 12:17:07.025299') AND `blogs`.`del` = 0  ORDER BY created_at DESC
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `blog_attachments` WHERE `blog_attachments`.`blog_id` = 44417[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 44417 AND `comments`.`commentable_type` = 'Blog'
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 44417 AND `votes`.`votable_type` = 'Blog'[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `blog_attachments` WHERE `blog_attachments`.`blog_id` = 44416
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 44416 AND `comments`.`commentable_type` = 'Blog'[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 44416 AND `votes`.`votable_type` = 'Blog'
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `blog_attachments` WHERE `blog_attachments`.`blog_id` = 44415[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 44415 AND `comments`.`commentable_type` = 'Blog'
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 44415 AND `votes`.`votable_type` = 'Blog'[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `blog_attachments` WHERE `blog_attachments`.`blog_id` = 44414
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 44414 AND `comments`.`commentable_type` = 'Blog'[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 44414 AND `votes`.`votable_type` = 'Blog'
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `blog_attachments` WHERE `blog_attachments`.`blog_id` = 44412[0m
+  [1m[35mBlogAttachment Load (0.4ms)[0m  SELECT  `blog_attachments`.* FROM `blog_attachments` WHERE `blog_attachments`.`blog_id` = 44412 LIMIT 3
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 44412 AND `comments`.`commentable_type` = 'Blog'[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 44412 AND `votes`.`votable_type` = 'Blog'
+  Rendered users/show.html.slim within layouts/application (234.6ms)
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)[0m
+  [1m[35mNotice Load (0.4ms)[0m  SELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1
+Completed 200 OK in 657ms (Views: 559.3ms | ActiveRecord: 88.3ms)
+
+
+Started GET "/blogs/new" for ::1 at 2016-04-20 18:17:09 +0600
+Processing by BlogsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  Rendered blogs/new.html.erb within layouts/application (554.9ms)
+  [1m[35m (0.7ms)[0m  SELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)
+  [1m[36mNotice Load (0.6ms)[0m  [1mSELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1[0m
+Completed 200 OK in 1074ms (Views: 1068.1ms | ActiveRecord: 2.0ms)
+  [1m[36mBlog Load (0.4ms)[0m  [1mSELECT  `blogs`.* FROM `blogs`  ORDER BY `blogs`.`id` DESC LIMIT 1[0m
+  [1m[35mBlog Load (0.4ms)[0m  SELECT  `blogs`.* FROM `blogs`  ORDER BY `blogs`.`id` DESC LIMIT 1
+
+
+Started POST "/blogs" for ::1 at 2016-04-20 18:17:23 +0600
+Processing by BlogsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FXucLsir5Nz54vxXpdDky49D5qMWzEs3vZNmqB6JbB01lm3qrh9l5dPRu2vD2kJupJ/bVyWngjI7m3/XZLFT9A==", "blog"=>{"title"=>"2222222", "body"=>"<p>222222</p>"}, "button"=>""}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `blogs` WHERE `blogs`.`user_id` = 1[0m
+  [1m[35mBlog Load (0.2ms)[0m  SELECT  `blogs`.* FROM `blogs` WHERE `blogs`.`user_id` = 1  ORDER BY created_at desc LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (6.5ms)[0m  INSERT INTO `blogs` (`title`, `body`, `created_at`, `user_id`, `updated_at`) VALUES ('2222222', '<p>222222</p>', '2016-04-20 12:17:23.330868', 1, '2016-04-20 12:17:23.332774')
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE `blogs` SET `title` = '2222222', `body` = '<p>222222</p>', `created_at` = '2016-04-20 12:17:23.330868', `user_id` = 1, `updated_at` = '2016-04-20 12:17:23.332774', `id` = 44420, `body_size` = 6 WHERE `blogs`.`id` = 44420[0m
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `blog_attachments` WHERE `blog_attachments`.`blog_id` = 44420[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (7.5ms)[0m  [1mUPDATE `users` SET `repa` = 281.5, `updated_at` = '2016-04-20 12:17:23.348820' WHERE `users`.`id` = 1[0m
+  [1m[35m (11.8ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO `subscribers` (`user_id`, `subscribable_id`, `subscribable_type`, `created_at`, `updated_at`) VALUES (1, 44420, 'Blog', '2016-04-20 12:17:23.410916', '2016-04-20 12:17:23.410916')
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (1.7ms)[0m  UPDATE `subscribers` INNER JOIN `users` ON `users`.`id` = `subscribers`.`user_id` SET users.my_feed_count = users.my_feed_count + 1 WHERE `subscribers`.`subscribable_id` = 1 AND `subscribers`.`subscribable_type` = 'User'
+Redirected to http://www.www.localhost:3000/blogs/44420
+Completed 302 Found in 95ms (ActiveRecord: 53.4ms)
+
+
+Started GET "/blogs/44420" for ::1 at 2016-04-20 18:17:23 +0600
+Processing by BlogsController#show as HTML
+  Parameters: {"id"=>"44420"}
+  [1m[36mBlog Load (0.3ms)[0m  [1mSELECT  `blogs`.* FROM `blogs` WHERE `blogs`.`id` = 44420 LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mSQL (1.5ms)[0m  [1mDELETE FROM `notices` WHERE `notices`.`noticeable_id` = 44420 AND `notices`.`noticeable_type` = 'Blog' AND `notices`.`user_id` = 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mVote Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM `votes` WHERE `votes`.`votable_id` = 44420 AND `votes`.`votable_type` = 'Blog' AND `votes`.`user_id` = 1 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 44420 AND `votes`.`votable_type` = 'Blog'
+  Rendered blogs/_like.html.erb (8.3ms)
+  [1m[36mBlogAttachment Load (0.3ms)[0m  [1mSELECT `blog_attachments`.* FROM `blog_attachments` WHERE `blog_attachments`.`blog_id` = 44420[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 44420 AND `comments`.`commentable_type` = 'Blog'
+  Rendered blogs/_comments.html.erb (10.3ms)
+  Rendered blogs/show.html.erb within layouts/application (30.6ms)
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)[0m
+  [1m[35mNotice Load (0.4ms)[0m  SELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1
+Completed 200 OK in 407ms (Views: 396.7ms | ActiveRecord: 5.4ms)
+  [1m[36mBlog Load (0.4ms)[0m  [1mSELECT  `blogs`.* FROM `blogs`  ORDER BY `blogs`.`id` DESC LIMIT 1[0m
+  [1m[35mBlog Load (0.4ms)[0m  SELECT  `blogs`.* FROM `blogs`  ORDER BY `blogs`.`id` DESC LIMIT 1
+  [1m[36mBlog Load (0.4ms)[0m  [1mSELECT  `blogs`.* FROM `blogs`  ORDER BY `blogs`.`id` DESC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE `blogs` SET `created_at` = '2016-04-18 12:17:43.946611', `updated_at` = '2016-04-20 12:17:43.952348' WHERE `blogs`.`id` = 44420[0m
+  [1m[35m (6.5ms)[0m  COMMIT
+  [1m[36mBlog Load (0.4ms)[0m  [1mSELECT  `blogs`.* FROM `blogs`  ORDER BY `blogs`.`id` DESC LIMIT 1[0m
+
+
+Started POST "/blogs" for ::1 at 2016-04-20 18:17:57 +0600
+Processing by BlogsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FXucLsir5Nz54vxXpdDky49D5qMWzEs3vZNmqB6JbB01lm3qrh9l5dPRu2vD2kJupJ/bVyWngjI7m3/XZLFT9A==", "blog"=>{"title"=>"2222222", "body"=>"<p>222222</p>"}, "button"=>""}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `blogs` WHERE `blogs`.`user_id` = 1
+  [1m[36mBlog Load (0.3ms)[0m  [1mSELECT  `blogs`.* FROM `blogs` WHERE `blogs`.`user_id` = 1  ORDER BY created_at desc LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `blogs`.* FROM `blogs` WHERE `blogs`.`user_id` = 1  ORDER BY created_at desc LIMIT 1  [["user_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `blogs` (`title`, `body`, `created_at`, `user_id`, `updated_at`) VALUES ('2222222', '<p>222222</p>', '2016-04-21 06:17:44.000000', 1, '2016-04-20 12:17:57.361007')
+  [1m[36mSQL (5.2ms)[0m  [1mUPDATE `blogs` SET `title` = '2222222', `body` = '<p>222222</p>', `created_at` = '2016-04-21 06:17:44.000000', `user_id` = 1, `updated_at` = '2016-04-20 12:17:57.361007', `id` = 44421, `body_size` = 6 WHERE `blogs`.`id` = 44421[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `blog_attachments` WHERE `blog_attachments`.`blog_id` = 44421[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.9ms)[0m  [1mUPDATE `users` SET `repa` = 301.5, `updated_at` = '2016-04-20 12:17:57.375497' WHERE `users`.`id` = 1[0m
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `subscribers` (`user_id`, `subscribable_id`, `subscribable_type`, `created_at`, `updated_at`) VALUES (1, 44421, 'Blog', '2016-04-20 12:17:57.382495', '2016-04-20 12:17:57.382495')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE `subscribers` INNER JOIN `users` ON `users`.`id` = `subscribers`.`user_id` SET users.my_feed_count = users.my_feed_count + 1 WHERE `subscribers`.`subscribable_id` = 1 AND `subscribers`.`subscribable_type` = 'User'
+Redirected to http://www.www.localhost:3000/blogs/44421
+Completed 302 Found in 35ms (ActiveRecord: 10.4ms)
+
+
+Started GET "/blogs/44421" for ::1 at 2016-04-20 18:17:57 +0600
+Processing by BlogsController#show as HTML
+  Parameters: {"id"=>"44421"}
+  [1m[36mBlog Load (0.3ms)[0m  [1mSELECT  `blogs`.* FROM `blogs` WHERE `blogs`.`id` = 44421 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM `notices` WHERE `notices`.`noticeable_id` = 44421 AND `notices`.`noticeable_type` = 'Blog' AND `notices`.`user_id` = 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mVote Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM `votes` WHERE `votes`.`votable_id` = 44421 AND `votes`.`votable_type` = 'Blog' AND `votes`.`user_id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 44421 AND `votes`.`votable_type` = 'Blog'
+  Rendered blogs/_like.html.erb (3.1ms)
+  [1m[36mBlogAttachment Load (0.3ms)[0m  [1mSELECT `blog_attachments`.* FROM `blog_attachments` WHERE `blog_attachments`.`blog_id` = 44421[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 44421 AND `comments`.`commentable_type` = 'Blog'
+  Rendered blogs/_comments.html.erb (2.1ms)
+  Rendered blogs/show.html.erb within layouts/application (12.5ms)
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)[0m
+  [1m[35mNotice Load (0.4ms)[0m  SELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1
+Completed 200 OK in 405ms (Views: 398.2ms | ActiveRecord: 3.6ms)
+  [1m[35mBlog Load (0.4ms)[0m  SELECT  `blogs`.* FROM `blogs`  ORDER BY `blogs`.`id` DESC LIMIT 1
+  [1m[36mBlog Load (0.4ms)[0m  [1mSELECT  `blogs`.* FROM `blogs`  ORDER BY `blogs`.`id` DESC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE `blogs` SET `created_at` = '2015-09-11 12:18:17.739113', `updated_at` = '2016-04-20 12:18:17.740857' WHERE `blogs`.`id` = 44421[0m
+  [1m[35m (6.5ms)[0m  COMMIT
+  [1m[36mBlog Load (0.3ms)[0m  [1mSELECT  `blogs`.* FROM `blogs`  ORDER BY `blogs`.`id` DESC LIMIT 1[0m
+
+
+Started POST "/blogs" for ::1 at 2016-04-20 18:18:26 +0600
+Processing by BlogsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FXucLsir5Nz54vxXpdDky49D5qMWzEs3vZNmqB6JbB01lm3qrh9l5dPRu2vD2kJupJ/bVyWngjI7m3/XZLFT9A==", "blog"=>{"title"=>"2222222", "body"=>"<p>222222</p>"}, "button"=>""}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `blogs` WHERE `blogs`.`user_id` = 1
+  [1m[36mBlog Load (0.3ms)[0m  [1mSELECT  `blogs`.* FROM `blogs` WHERE `blogs`.`user_id` = 1  ORDER BY created_at desc LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  `blogs`.* FROM `blogs` WHERE `blogs`.`user_id` = 1  ORDER BY created_at desc LIMIT 1  [["user_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `blogs` (`title`, `body`, `created_at`, `user_id`, `updated_at`) VALUES ('2222222', '<p>222222</p>', '2016-04-22 17:17:44.000000', 1, '2016-04-20 12:18:26.615657')
+  [1m[36mSQL (0.5ms)[0m  [1mUPDATE `blogs` SET `title` = '2222222', `body` = '<p>222222</p>', `created_at` = '2016-04-22 17:17:44.000000', `user_id` = 1, `updated_at` = '2016-04-20 12:18:26.615657', `id` = 44422, `body_size` = 6 WHERE `blogs`.`id` = 44422[0m
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `blog_attachments` WHERE `blog_attachments`.`blog_id` = 44422[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE `users` SET `repa` = 321.5, `updated_at` = '2016-04-20 12:18:26.624570' WHERE `users`.`id` = 1[0m
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `subscribers` (`user_id`, `subscribable_id`, `subscribable_type`, `created_at`, `updated_at`) VALUES (1, 44422, 'Blog', '2016-04-20 12:18:26.631917', '2016-04-20 12:18:26.631917')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE `subscribers` INNER JOIN `users` ON `users`.`id` = `subscribers`.`user_id` SET users.my_feed_count = users.my_feed_count + 1 WHERE `subscribers`.`subscribable_id` = 1 AND `subscribers`.`subscribable_type` = 'User'
+Redirected to http://www.www.localhost:3000/blogs/44422
+Completed 302 Found in 28ms (ActiveRecord: 5.1ms)
+
+
+Started GET "/blogs/44422" for ::1 at 2016-04-20 18:18:26 +0600
+Processing by BlogsController#show as HTML
+  Parameters: {"id"=>"44422"}
+  [1m[36mBlog Load (0.3ms)[0m  [1mSELECT  `blogs`.* FROM `blogs` WHERE `blogs`.`id` = 44422 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1  ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM `notices` WHERE `notices`.`noticeable_id` = 44422 AND `notices`.`noticeable_type` = 'Blog' AND `notices`.`user_id` = 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  [1m[36mVote Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM `votes` WHERE `votes`.`votable_id` = 44422 AND `votes`.`votable_type` = 'Blog' AND `votes`.`user_id` = 1 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 44422 AND `votes`.`votable_type` = 'Blog'
+  Rendered blogs/_like.html.erb (2.8ms)
+  [1m[36mBlogAttachment Load (0.2ms)[0m  [1mSELECT `blog_attachments`.* FROM `blog_attachments` WHERE `blog_attachments`.`blog_id` = 44422[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `comments` WHERE `comments`.`commentable_id` = 44422 AND `comments`.`commentable_type` = 'Blog'
+  Rendered blogs/_comments.html.erb (2.1ms)
+  Rendered blogs/show.html.erb within layouts/application (11.9ms)
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(DISTINCT `dialogs`.`id`) FROM `dialogs` LEFT OUTER JOIN `messages` ON `messages`.`dialog_id` = `dialogs`.`id` INNER JOIN `dialogs_users` ON `dialogs`.`id` = `dialogs_users`.`dialog_id` WHERE `dialogs_users`.`user_id` = 1 AND `messages`.`state` = 'new' AND (`messages`.`user_id` != 1)[0m
+  [1m[35mNotice Load (0.4ms)[0m  SELECT `notices`.* FROM `notices` WHERE `notices`.`user_id` = 1 AND `notices`.`new` = 1
+Completed 200 OK in 421ms (Views: 413.9ms | ActiveRecord: 3.9ms)
+  [1m[35mBlog Load (0.3ms)[0m  SELECT  `blogs`.* FROM `blogs`  ORDER BY `blogs`.`id` DESC LIMIT 1
