@@ -2,6 +2,14 @@ class MypetsController < ApplicationController
 
   include Voted
 
+  def show
+    if pet = Mypet.find_by_id(params[:id])
+      redirect_to user_path(pet.user.nickname.downcase)
+    else
+      redirect_to root_path
+    end
+  end
+
   def new
     if current_user.mypets.count > 3
       redirect_to im_path
