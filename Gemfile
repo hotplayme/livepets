@@ -47,7 +47,7 @@ gem 'omniauth-mailru'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-odnoklassniki'
 gem 'unicorn'
-
+gem "recaptcha", require: "recaptcha/rails"
 
 
 gem 'tinymce-rails'

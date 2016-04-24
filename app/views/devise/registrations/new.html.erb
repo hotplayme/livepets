@@ -17,6 +17,9 @@
         <p>Ваш пароль (5 знаков минимум)</p>
         <span><%= f.text_field :password, class: "text #{'pass' if resource.errors.messages.has_key?(:password)}" %></span>
       </label>
+      <label>
+        <p><%= recaptcha_tags %></p>
+      </label>
       <div><%= f.button "Регистрация", type:"submit", data: { disable_with: 'Ожидайте...' } %></div>
     </fieldset>
   <% end %>
