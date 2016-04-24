@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   devise   :database_authenticatable, :registerable,
-           :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook, :vkontakte, :odnoklassniki, :yandex, :mailru, :google_oauth2]
+           :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable, omniauth_providers: [:facebook, :vkontakte, :odnoklassniki, :yandex, :mailru, :google_oauth2]
   
   validates :nickname, presence: true, :uniqueness  => { case_sensitive: false }, length: { minimum: 3 }, format: { with: /\A[a-zA-Z0-9]+\z/, message: "только английские буквы и цифры" }
 
@@ -38,7 +38,6 @@ class User < ActiveRecord::Base
                       :url => "/system/:attachment/:id/:style/:basename.:extension",
                       :path => ":rails_root/public/system/:attachment/:id/:style/:basename.:extension"
   validates_attachment_content_type :avatar, :content_type => /\Aimage/
- #validates_attachment_presence :avatar
   validates_attachment_size :avatar, :less_than => 5.megabytes
 
 

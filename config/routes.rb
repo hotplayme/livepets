@@ -87,7 +87,7 @@ Rails.application.routes.draw do
     get ':any', to: redirect(subdomain: 'www', path: '/%{any}', status: 301), any: /.*/
   end
 
-  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks', registrations: "registrations" }
   devise_scope :user do
     post "/complete_auth" => "omniauth_callbacks#complete_auth"
   end

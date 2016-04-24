@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160412061009) do
+ActiveRecord::Schema.define(version: 20160424054451) do
 
   create_table "article_attachments", force: :cascade do |t|
     t.string   "file",       limit: 255
@@ -298,8 +298,12 @@ ActiveRecord::Schema.define(version: 20160412061009) do
     t.string   "purse",                  limit: 255
     t.integer  "my_feed_count",          limit: 4,   default: 0
     t.boolean  "moderator",              limit: 1,   default: false
+    t.string   "confirmation_token",     limit: 255
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
   end
 
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["nickname"], name: "index_users_on_nickname", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
