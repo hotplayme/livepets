@@ -10,7 +10,7 @@
           <div class="feed-user-block-item">
             <div class="feed-user-block-item-title">
               <div class="feed-user-block-item-title-wrapp"><span><%= link_to @blog.user.nickname, user_path(@blog.user.nickname.downcase) %></span> опубликовал(a) запись <%= time_ago_in_words(@blog.created_at, :highest_measures => 1) %> назад</div>
-              <% if current_user && @blog.user == current_user %>
+              <% if current_user && @blog.user == current_user && current_user.writer == false %>
                   <div class="feed-user-block-item-title-edit"><%= link_to 'Редактировать', edit_blog_path(@blog) %></div>
               <% end %>
             </div>
