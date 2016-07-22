@@ -34,7 +34,9 @@
             <% @blog.blog_attachments.each do |image| %>
                 <li id="attach_<%= image.id %>">
                   <%= image_tag image.file.url(:thumb) %>
-                  <%= link_to 'Удалить', a_delete_blogs_path(image), method: :delete, remote: true %>
+                  <% unless current_user.writer %>
+                    <%= link_to 'Удалить', a_delete_blogs_path(image), method: :delete, remote: true %>
+                  <% end %>
                 </li>
             <% end %>
           </ul>

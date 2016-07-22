@@ -1,0 +1,14 @@
+h1 Массовая рассылка сообщений
+
+
+= form_tag
+  p Получатель:
+  p
+    | Все #{radio_button("users", "category", "all")} Все писатели #{radio_button("users", "category", "writer")} Юзер(ы) #{radio_button("users", "category", "user")}
+  p
+    - User.where.not(id: current_user.id).where(bot:false).each do |user|
+      font color="#{ 'red' if user.writer}"
+        = user.nickname
+      = check_box_tag 'user_ids[]', user.id
+  p = text_area_tag :message, nil, size:'50x10'
+  p = submit_tag 'Отправить', data: { confirm: "Точно?" }

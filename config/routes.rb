@@ -160,6 +160,8 @@ Rails.application.routes.draw do
         get :unblock
         get :approve
       end
+      resources :mass_spam, controller: 'admin/mass_spam', as: 'admin_mass_spam'
+      resources :badges,    controller: 'admin/badges',    as: 'admin_badges'
     end
   end
   # ADMIN CONTROLLER BEGIN

@@ -1,0 +1,4 @@
+h1 Список значков
+p = link_to 'Добавить', new_admin_badge_path
+- @badges.each do |b|
+  p #{b.id} - #{b.name} - #{b.desc} - #{link_to 'edit', edit_admin_badge_path(b)} - #{link_to 'del', admin_badge_path(b), method: 'delete', data: { confirm: 'точно?' } }

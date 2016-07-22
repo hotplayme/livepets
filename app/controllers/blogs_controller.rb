@@ -52,6 +52,18 @@ class BlogsController < ApplicationController
       # Увеличение my_feed_count для подписчиков
       current_user.subscribers.joins(:user).update_all("users.my_feed_count = users.my_feed_count + 1")
 
+      # проверка для создания награды для юзера
+      current_user.blogs.reload
+      if current_user.blogs.count >= 500
+        current_user.rewards.create(badge: Badge.find_by_slug('blogger-platinum')) unless current_user.rewards.where(badge: Badge.find_by_slug('blogger-platinum')).present?
+      elsif current_user.blogs.count >= 100
+        current_user.rewards.create(badge: Badge.find_by_slug('blogger-gold')) unless current_user.rewards.where(badge: Badge.find_by_slug('blogger-gold')).present?
+      elsif current_user.blogs.count >= 10
+        current_user.rewards.create(badge: Badge.find_by_slug('blogger-silver')) unless current_user.rewards.where(badge: Badge.find_by_slug('blogger-silver')).present?
+      elsif current_user.blogs.count >= 1
+        current_user.rewards.create(badge: Badge.find_by_slug('blogger-bronze')) unless current_user.rewards.where(badge: Badge.find_by_slug('blogger-bronze')).present?
+      end
+
       redirect_to blog_path(@blog)
     else
       flash[:notice] = "Заполните все поля"
@@ -67,7 +79,32 @@ class BlogsController < ApplicationController
   
   def show
     if @blog = Blog.find_by_id(params[:id])
-      @blog.notices.where(user: current_user).delete_all if current_user
+      if browser.known?
+        @blog.notices.where(user: current_user).delete_all if current_user
+        # инкремент views для блога
+        #@blog.increment!(:views, 1)
+        # создание награды для автора @blog за views
+        if @blog.views >= 10000
+          @blog.user.rewards.create(badge: Badge.find_by_slug('blog-views-platinum')) unless @blog.user.rewards.where(badge: Badge.find_by_slug('blog-views-platinum')).present?
+        elsif @blog.views >= 2500
+          @blog.user.rewards.create(badge: Badge.find_by_slug('blog-views-gold')) unless @blog.user.rewards.where(badge: Badge.find_by_slug('blog-views-gold')).present?
+        elsif @blog.views >= 1000
+          @blog.user.rewards.create(badge: Badge.find_by_slug('blog-views-silver')) unless @blog.user.rewards.where(badge: Badge.find_by_slug('blog-views-silver')).present?
+        elsif @blog.views >= 100
+          @blog.user.rewards.create(badge: Badge.find_by_slug('blog-views-bronze')) unless @blog.user.rewards.where(badge: Badge.find_by_slug('blog-views-bronze')).present?
+        end
+
+        # создание награды для автора @blog за лайки блога
+        if @blog.votes.count >= 200
+          @blog.user.rewards.create(badge: Badge.find_by_slug('blog-votes-platinum')) unless @blog.user.rewards.where(badge: Badge.find_by_slug('blog-votes-platinum')).present?
+        elsif @blog.votes.count >= 100
+          @blog.user.rewards.create(badge: Badge.find_by_slug('blog-votes-gold')) unless @blog.user.rewards.where(badge: Badge.find_by_slug('blog-votes-gold')).present?
+        elsif @blog.votes.count >= 50
+          @blog.user.rewards.create(badge: Badge.find_by_slug('blog-votes-silver')) unless @blog.user.rewards.where(badge: Badge.find_by_slug('blog-votes-silver')).present?
+        elsif @blog.votes.count >= 10
+          @blog.user.rewards.create(badge: Badge.find_by_slug('blog-votes-bronze')) unless @blog.user.rewards.where(badge: Badge.find_by_slug('blog-votes-bronze')).present?
+        end
+      end
     else
       redirect_to root_path, status: 301
     end

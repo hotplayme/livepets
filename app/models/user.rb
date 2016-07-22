@@ -31,8 +31,11 @@ class User < ActiveRecord::Base
 
   has_many   :winners
   has_many   :authorizations, dependent: :destroy
+  has_many   :rewards
+  cattr_accessor :current_user
 
-  
+
+
   has_attached_file :avatar, :styles => { :small => "200x200#", :large => "500x500>" },
                       :processors => [:cropper],
                       :url => "/system/:attachment/:id/:style/:basename.:extension",
@@ -50,6 +53,16 @@ class User < ActiveRecord::Base
     UserMailer.send_new_user_message(self).deliver_now
   end
 
+  def send_message(body)
+    if User.current_user.dialogs.includes(:users).where(users: {id: self.id}).exists?
+      dialog = User.current_user.dialogs.includes(:users).where(users: {id: self.id}).first
+      dialog.messages.create(body: body, user: User.current_user)
+    else
+      dialog = User.current_user.dialogs.create
+      self.dialogs << dialog
+      dialog.messages.create(body: body, user: User.current_user)
+    end
+  end
 
 
   def cropping?

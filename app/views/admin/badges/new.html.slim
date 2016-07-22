@@ -1,0 +1,10 @@
+= form_for @badge, url: admin_badges_path do |f|
+  p Название
+  p = f.text_field :name
+  p Слаг для урла
+  p = f.text_field :slug
+  p Описание
+  p = f.text_area  :desc, size: '50x10'
+  p Ценность
+  p = f.text_field :metal
+  p = f.submit

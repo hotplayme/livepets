@@ -1,0 +1,7 @@
+h1 Изменить награду - #{@badge.name}
+= form_for @badge, url: admin_badge_path, method: 'put' do |f|
+  p Название
+  p= f.text_field :name
+  p = f.text_field :slug
+  p = f.text_area  :desc
+  p = f.submit

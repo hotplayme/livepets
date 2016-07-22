@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160424054451) do
+ActiveRecord::Schema.define(version: 20160502091106) do
 
   create_table "article_attachments", force: :cascade do |t|
     t.string   "file",       limit: 255
@@ -61,6 +61,15 @@ ActiveRecord::Schema.define(version: 20160424054451) do
 
   add_index "authorizations", ["user_id"], name: "index_authorizations_on_user_id", using: :btree
 
+  create_table "badges", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "slug",       limit: 255
+    t.text     "desc",       limit: 65535
+    t.string   "metal",      limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
   create_table "blog_attachments", force: :cascade do |t|
     t.string   "file",       limit: 255
     t.boolean  "main",       limit: 1
@@ -83,6 +92,7 @@ ActiveRecord::Schema.define(version: 20160424054451) do
     t.string   "comment",                limit: 255,   default: "на проверке"
     t.integer  "cost",                   limit: 4,     default: 0
     t.integer  "body_size",              limit: 4
+    t.integer  "views",                  limit: 4,     default: 0
   end
 
   create_table "breeds", force: :cascade do |t|
@@ -232,6 +242,16 @@ ActiveRecord::Schema.define(version: 20160424054451) do
 
   add_index "reviews", ["breed_id"], name: "index_reviews_on_breed_id", using: :btree
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
+
+  create_table "rewards", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "badge_id",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "rewards", ["badge_id"], name: "index_rewards_on_badge_id", using: :btree
+  add_index "rewards", ["user_id"], name: "index_rewards_on_user_id", using: :btree
 
   create_table "subscribers", force: :cascade do |t|
     t.integer  "user_id",           limit: 4
