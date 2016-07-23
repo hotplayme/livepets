@@ -112,7 +112,7 @@ class BlogsController < ApplicationController
 
   def edit
     if @blog = Blog.find_by_id(params[:id])
-      redirect_to root_path if current_user != @blog.user || current_user.writer == true
+      redirect_to root_path if current_user != @blog.user || @blog.payed
     else
       redirect_to root_path
     end
