@@ -1,11 +1,12 @@
 source 'http://rubygems.org'
 
-gem 'rails', '4.2.0'
+gem 'rails', '5.0.2'
 gem 'devise'
 gem 'paperclip'
 gem 'route_downcaser'
 gem 'mysql2', '~> 0.3.18'
 gem 'browser'
+gem 'json', github: 'flori/json', branch: 'v1.8'
 
 gem 'rails_autolink'
 gem 'slim-rails'
