@@ -49,7 +49,7 @@ gem 'omniauth-odnoklassniki'
 
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
-gem 'tinymce-rails-imageupload'
+#gem 'tinymce-rails-imageupload'
 
 group :development do
   gem 'capistrano', '~> 3.7', '>= 3.7.1', require: false

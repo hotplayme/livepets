@@ -321,9 +321,6 @@ GEM
     tilt (2.0.6)
     tinymce-rails (4.5.5)
       railties (>= 3.1.1)
-    tinymce-rails-imageupload (4.0.17.beta)
-      railties (>= 3.2, < 6)
-      tinymce-rails (~> 4.0)
     tinymce-rails-langs (4.20160310)
       tinymce-rails (~> 4.1, >= 4.1.10)
     tzinfo (1.2.2)
@@ -389,7 +386,6 @@ DEPENDENCIES
   sprockets-rails!
   therubyracer
   tinymce-rails
-  tinymce-rails-imageupload
   tinymce-rails-langs
   uglifier
 
