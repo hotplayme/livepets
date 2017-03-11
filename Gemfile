@@ -44,13 +44,12 @@ gem 'omniauth-yandex'
 gem 'omniauth-mailru'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-odnoklassniki'
-gem 'unicorn'
-gem "recaptcha", require: "recaptcha/rails"
+#gem "recaptcha", require: "recaptcha/rails"
 
 
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'
-gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
+gem 'tinymce-rails-imageupload'
 
 group :development do
   gem 'capistrano', '~> 3.7', '>= 3.7.1', require: false
