@@ -31,9 +31,6 @@ gem 'mini_magick'
 gem 'nested_form'
 gem 'remotipart'
 
-gem 'dotenv'
-gem 'dotenv-deployment', require: 'dotenv/deployment'
-gem 'sitemap_generator'
 
 
 group :assets do
@@ -56,11 +53,10 @@ gem 'tinymce-rails-langs'
 gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
 
 group :development do
-  gem 'capistrano', require: false
-  gem 'capistrano-bundler', require: false
-  gem 'capistrano-rails', require: false
-  gem 'capistrano-rbenv', require: false
-  gem 'capistrano3-unicorn', require: false
+  gem 'capistrano', '~> 3.7', '>= 3.7.1', require: false
+  gem 'capistrano-rails', '~> 1.2', require: false
+  gem 'capistrano-passenger', '~> 0.2.0', require: false
+  gem 'capistrano-rbenv', '~> 2.1', require: false
 end
 
 group :test, :development do
