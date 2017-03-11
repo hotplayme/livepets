@@ -30,6 +30,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'nested_form'
 gem 'remotipart'
+gem 'yaml_db'
 
 
 
