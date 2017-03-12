@@ -47857,3 +47857,1036 @@ to this:
 match "pet/update_breeds", :as => "pet/update_breeds", :action => "pet/update_breeds"
  (called from block in <top (required)> at /Users/alex/ruby/livepets/config/routes.rb:69)
 DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from <top (required)> at /Users/alex/ruby/livepets/app/models/user.rb:1)
+DEPRECATION WARNING: Passing strings or symbols to the middleware builder is deprecated, please change
+them to actual class references.  For example:
+
+  "RouteDowncaser::DowncaseRouteMiddleware" => RouteDowncaser::DowncaseRouteMiddleware
+
+ (called from <top (required)> at /Users/alex/ruby/livepets/config/environment.rb:5)
+DEPRECATION WARNING: Specifying strings for both :path and the route path is deprecated. Change things like this:
+
+match "pet/update_breeds", :path => "pet/update_breeds"
+
+to this:
+
+match "pet/update_breeds", :as => "pet/update_breeds", :action => "pet/update_breeds"
+ (called from block in <top (required)> at /Users/alex/ruby/livepets/config/routes.rb:69)
+DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from <top (required)> at /Users/alex/ruby/livepets/app/models/user.rb:1)
+DEPRECATION WARNING: Passing strings or symbols to the middleware builder is deprecated, please change
+them to actual class references.  For example:
+
+  "RouteDowncaser::DowncaseRouteMiddleware" => RouteDowncaser::DowncaseRouteMiddleware
+
+ (called from <top (required)> at /Users/alex/ruby/livepets/config/environment.rb:5)
+DEPRECATION WARNING: Specifying strings for both :path and the route path is deprecated. Change things like this:
+
+match "pet/update_breeds", :path => "pet/update_breeds"
+
+to this:
+
+match "pet/update_breeds", :as => "pet/update_breeds", :action => "pet/update_breeds"
+ (called from block in <top (required)> at /Users/alex/ruby/livepets/config/routes.rb:69)
+DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from <top (required)> at /Users/alex/ruby/livepets/app/models/user.rb:1)
+  [1m[35m (98.7ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) PRIMARY KEY) ENGINE=InnoDB[0m
+  [1m[35m (16.9ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT GET_LOCK('4475467841591330430', 0);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (40.6ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to DeviseCreateUsers (20150102124153)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class DeviseCreateUsers < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (32.2ms)[0m  [1m[35mCREATE TABLE `users` (`id` int AUTO_INCREMENT PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int DEFAULT 0 NOT NULL, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35m (24.7ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_email`  ON `users` (`email`) [0m
+  [1m[35m (12.0ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_reset_password_token`  ON `users` (`reset_password_token`) [0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150102124153')[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUsersColumn (20150102131104)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddUsersColumn < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (33.7ms)[0m  [1m[35mALTER TABLE `users` ADD `first_name` varchar(255)[0m
+  [1m[35m (13.4ms)[0m  [1m[35mALTER TABLE `users` ADD `last_name` varchar(255)[0m
+  [1m[35m (15.0ms)[0m  [1m[35mALTER TABLE `users` ADD `sex` varchar(255)[0m
+  [1m[35m (19.2ms)[0m  [1m[35mALTER TABLE `users` ADD `day` int[0m
+  [1m[35m (13.3ms)[0m  [1m[35mALTER TABLE `users` ADD `month` int[0m
+  [1m[35m (13.8ms)[0m  [1m[35mALTER TABLE `users` ADD `year` int[0m
+  [1m[35m (15.9ms)[0m  [1m[35mALTER TABLE `users` ADD `city` varchar(255)[0m
+  [1m[35m (17.2ms)[0m  [1m[35mALTER TABLE `users` ADD `country` varchar(255)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150102131104')[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateMypets (20150103032152)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateMypets < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (26.3ms)[0m  [1m[35mCREATE TABLE `mypets` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `user_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150103032152')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAttachmentAvatarToUsers (20150103080301)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddAttachmentAvatarToUsers < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (31.3ms)[0m  [1m[35mALTER TABLE `users` ADD `avatar_file_name` varchar(255)[0m
+  [1m[35m (14.7ms)[0m  [1m[35mALTER TABLE `users` ADD `avatar_content_type` varchar(255)[0m
+  [1m[35m (15.3ms)[0m  [1m[35mALTER TABLE `users` ADD `avatar_file_size` int[0m
+  [1m[35m (14.5ms)[0m  [1m[35mALTER TABLE `users` ADD `avatar_updated_at` datetime[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150103080301')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBlogs (20150104041257)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateBlogs < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (30.4ms)[0m  [1m[35mCREATE TABLE `blogs` (`id` int AUTO_INCREMENT PRIMARY KEY, `title` varchar(255), `body` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150104041257')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUserIdBlog (20150104041544)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddUserIdBlog < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (31.5ms)[0m  [1m[35mALTER TABLE `blogs` ADD `user_id` int[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150104041544')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBreeds (20150104093610)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateBreeds < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (26.6ms)[0m  [1m[35mCREATE TABLE `breeds` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `type` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150104093610')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveColumnTypeBreed (20150104095755)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class RemoveColumnTypeBreed < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (32.6ms)[0m  [1m[35mALTER TABLE `breeds` DROP `type`[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150104095755')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnTypeBreed (20150104095951)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddColumnTypeBreed < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (30.2ms)[0m  [1m[35mALTER TABLE `breeds` ADD `breed_type` varchar(255)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150104095951')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnTranslateBreed (20150104101155)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddColumnTranslateBreed < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (30.0ms)[0m  [1m[35mALTER TABLE `breeds` ADD `translate` varchar(255)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150104101155')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnBreedId (20150104103125)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddColumnBreedId < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (30.7ms)[0m  [1m[35mALTER TABLE `mypets` ADD `breed_id` int[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150104103125')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateComments (20150104145356)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateComments < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (26.5ms)[0m  [1m[35mCREATE TABLE `comments` (`id` int AUTO_INCREMENT PRIMARY KEY, `body` text, `blog_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150104145356')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnUserIdToComment (20150104154947)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddColumnUserIdToComment < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (32.4ms)[0m  [1m[35mALTER TABLE `comments` ADD `user_id` int[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150104154947')[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DropTableMypets (20150107074717)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class DropTableMypets < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (29.3ms)[0m  [1m[35mDROP TABLE `mypets`[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150107074717')[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTableMypets (20150107074759)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateTableMypets < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (27.2ms)[0m  [1m[35mCREATE TABLE `mypets` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `user_id` int, `breed_id` int) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150107074759')[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddSexColumnMypets (20150107080331)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddSexColumnMypets < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (31.6ms)[0m  [1m[35mALTER TABLE `mypets` ADD `sex` int[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150107080331')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAttachmentPhotoToMypets (20150107133642)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddAttachmentPhotoToMypets < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (31.4ms)[0m  [1m[35mALTER TABLE `mypets` ADD `photo_file_name` varchar(255)[0m
+  [1m[35m (12.9ms)[0m  [1m[35mALTER TABLE `mypets` ADD `photo_content_type` varchar(255)[0m
+  [1m[35m (12.7ms)[0m  [1m[35mALTER TABLE `mypets` ADD `photo_file_size` int[0m
+  [1m[35m (12.6ms)[0m  [1m[35mALTER TABLE `mypets` ADD `photo_updated_at` datetime[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150107133642')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCities (20150108114142)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateCities < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (27.6ms)[0m  [1m[35mCREATE TABLE `cities` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150108114142')[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnCityidToUser (20150108114415)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddColumnCityidToUser < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (33.0ms)[0m  [1m[35mALTER TABLE `users` ADD `city_id` int[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150108114415')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveColumnCityToUser (20150108114744)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class RemoveColumnCityToUser < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (31.5ms)[0m  [1m[35mALTER TABLE `users` DROP `city`[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150108114744')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnNicknameUsers (20150109055628)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddColumnNicknameUsers < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (33.5ms)[0m  [1m[35mALTER TABLE `users` ADD `nickname` varchar(255)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150109055628')[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AnketaUsers (20150109070639)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AnketaUsers < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (31.3ms)[0m  [1m[35mALTER TABLE `users` ADD `anketa` tinyint(1) DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150109070639')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveSexDateFromUser (20150110090648)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class RemoveSexDateFromUser < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (33.0ms)[0m  [1m[35mALTER TABLE `users` DROP `sex`[0m
+  [1m[35m (13.5ms)[0m  [1m[35mALTER TABLE `users` DROP `day`[0m
+  [1m[35m (16.9ms)[0m  [1m[35mALTER TABLE `users` DROP `month`[0m
+  [1m[35m (22.2ms)[0m  [1m[35mALTER TABLE `users` DROP `year`[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150110090648')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DefaultIdCityUser (20150110101547)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class DefaultIdCityUser < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (19.2ms)[0m  [1m[35mALTER TABLE `users` CHANGE `city_id` `city_id` int DEFAULT 16[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150110101547')[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateArticles (20150112040220)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateArticles < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (26.5ms)[0m  [1m[35mCREATE TABLE `articles` (`id` int AUTO_INCREMENT PRIMARY KEY, `title` varchar(255), `body` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150112040220')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAttachmentAvatarToBreeds (20150114090720)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddAttachmentAvatarToBreeds < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (30.3ms)[0m  [1m[35mALTER TABLE `breeds` ADD `avatar_file_name` varchar(255)[0m
+  [1m[35m (14.9ms)[0m  [1m[35mALTER TABLE `breeds` ADD `avatar_content_type` varchar(255)[0m
+  [1m[35m (17.3ms)[0m  [1m[35mALTER TABLE `breeds` ADD `avatar_file_size` int[0m
+  [1m[35m (12.7ms)[0m  [1m[35mALTER TABLE `breeds` ADD `avatar_updated_at` datetime[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150114090720')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddDateToUsersAndMypets (20150117050324)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddDateToUsersAndMypets < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (242.2ms)[0m  [1m[35mALTER TABLE `users` ADD `birthday` date[0m
+  [1m[35m (24.9ms)[0m  [1m[35mALTER TABLE `mypets` ADD `birthday` date[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150117050324')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnRandidToArticles (20150120021705)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddColumnRandidToArticles < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (30.8ms)[0m  [1m[35mALTER TABLE `articles` ADD `randid` varchar(255)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150120021705')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnViewsToArticles (20150120031405)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddColumnViewsToArticles < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (30.2ms)[0m  [1m[35mALTER TABLE `articles` ADD `views` int DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150120031405')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAttachmentAvatarToArticles (20150120034045)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddAttachmentAvatarToArticles < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (30.9ms)[0m  [1m[35mALTER TABLE `articles` ADD `avatar_file_name` varchar(255)[0m
+  [1m[35m (12.5ms)[0m  [1m[35mALTER TABLE `articles` ADD `avatar_content_type` varchar(255)[0m
+  [1m[35m (12.9ms)[0m  [1m[35mALTER TABLE `articles` ADD `avatar_file_size` int[0m
+  [1m[35m (13.6ms)[0m  [1m[35mALTER TABLE `articles` ADD `avatar_updated_at` datetime[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150120034045')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnAdminToUsers (20150121092140)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddColumnAdminToUsers < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (33.3ms)[0m  [1m[35mALTER TABLE `users` ADD `admin` tinyint(1) DEFAULT 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150121092140')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnDelToBlogs (20150121104821)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddColumnDelToBlogs < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (31.3ms)[0m  [1m[35mALTER TABLE `blogs` ADD `del` tinyint(1) DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150121104821')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddImagesToBlogs (20150122093254)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddImagesToBlogs < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (32.4ms)[0m  [1m[35mALTER TABLE `blogs` ADD `images` text[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150122093254')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTopics (20150329061227)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateTopics < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (26.7ms)[0m  [1m[35mCREATE TABLE `topics` (`id` int AUTO_INCREMENT PRIMARY KEY, `title` varchar(255), `body` text, `user_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150329061227')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePosts (20150329064753)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreatePosts < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (28.4ms)[0m  [1m[35mCREATE TABLE `posts` (`id` int AUTO_INCREMENT PRIMARY KEY, `body` text, `user_id` int, `topic_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150329064753')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddViewsToTopics (20150401034804)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddViewsToTopics < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (32.4ms)[0m  [1m[35mALTER TABLE `topics` ADD `views` int DEFAULT 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150401034804')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveCityId16Default3 (20150618081149)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class RemoveCityId16Default3 < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (32.0ms)[0m  [1m[35mALTER TABLE `users` DROP `city_id`[0m
+  [1m[35m (14.8ms)[0m  [1m[35mALTER TABLE `users` ADD `city_id` int[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150618081149')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCountries (20150618102348)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateCountries < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (27.0ms)[0m  [1m[35mCREATE TABLE `countries` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150618102348')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddCountryIdToUserAndCity (20150618104733)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddCountryIdToUserAndCity < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (32.1ms)[0m  [1m[35mALTER TABLE `users` ADD `country_id` int[0m
+  [1m[35m (14.5ms)[0m  [1m[35mALTER TABLE `cities` ADD `country_id` int[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150618104733')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to FixUsersFields (20150619134243)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class FixUsersFields < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (32.8ms)[0m  [1m[35mALTER TABLE `users` DROP `anketa`[0m
+  [1m[35m (19.9ms)[0m  [1m[35mALTER TABLE `users` DROP `birthday`[0m
+  [1m[35m (18.9ms)[0m  [1m[35mALTER TABLE `users` DROP `country_id`[0m
+  [1m[35m (22.3ms)[0m  [1m[35mALTER TABLE `users` DROP `country`[0m
+  [1m[35m (16.9ms)[0m  [1m[35mALTER TABLE `users` ADD `approve` tinyint(1) DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150619134243')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddBlockToUser (20150619140213)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddBlockToUser < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (32.6ms)[0m  [1m[35mALTER TABLE `users` ADD `block` tinyint(1) DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150619140213')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveCommentsTable (20150620020732)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class RemoveCommentsTable < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (28.5ms)[0m  [1m[35mDROP TABLE `comments`[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150620020732')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCommentable (20150620021034)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateCommentable < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (26.7ms)[0m  [1m[35mCREATE TABLE `comments` (`id` int AUTO_INCREMENT PRIMARY KEY, `body` text, `user_id` int, `commentable_id` int, `commentable_type` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (8.9ms)[0m  [1m[35mCREATE  INDEX `index_comments_on_user_id`  ON `comments` (`user_id`) [0m
+  [1m[35m (9.0ms)[0m  [1m[35mCREATE  INDEX `index_comments_on_commentable_id_and_commentable_type`  ON `comments` (`commentable_id`, `commentable_type`) [0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150620021034')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateVotes (20150621140136)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateVotes < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (26.3ms)[0m  [1m[35mCREATE TABLE `votes` (`id` int AUTO_INCREMENT PRIMARY KEY, `user_id` int, `votable_id` int, `votable_type` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (9.9ms)[0m  [1m[35mCREATE  INDEX `index_votes_on_user_id`  ON `votes` (`user_id`) [0m
+  [1m[35m (9.9ms)[0m  [1m[35mCREATE  INDEX `index_votes_on_votable_id_and_votable_type`  ON `votes` (`votable_id`, `votable_type`) [0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150621140136')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddApproveToBlog (20150623072109)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddApproveToBlog < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (30.6ms)[0m  [1m[35mALTER TABLE `blogs` ADD `approve` tinyint(1) DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150623072109')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to FixDialogsTable (20150625120230)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class FixDialogsTable < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150625120230')[0m
+  [1m[35m (11.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddBotFlagToUser (20150627075541)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddBotFlagToUser < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (32.5ms)[0m  [1m[35mALTER TABLE `users` ADD `bot` tinyint(1) DEFAULT 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150627075541')[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddApproveAndBlockToPet (20150703041806)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddApproveAndBlockToPet < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (36.4ms)[0m  [1m[35mALTER TABLE `mypets` ADD `approve` tinyint(1) DEFAULT 0[0m
+  [1m[35m (12.4ms)[0m  [1m[35mALTER TABLE `mypets` ADD `block` tinyint(1) DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150703041806')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateImpressionsTable (20150708000002)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateImpressionsTable < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (28.3ms)[0m  [1m[35mCREATE TABLE `impressions` (`id` int AUTO_INCREMENT PRIMARY KEY, `impressionable_type` varchar(255), `impressionable_id` int, `user_id` int, `controller_name` varchar(255), `action_name` varchar(255), `view_name` varchar(255), `request_hash` varchar(255), `ip_address` varchar(255), `session_hash` varchar(255), `message` text, `referrer` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35m (10.1ms)[0m  [1m[35mCREATE  INDEX `impressionable_type_message_index`  ON `impressions` (`impressionable_type`, `message`(255), `impressionable_id`) [0m
+  [1m[35m (9.7ms)[0m  [1m[35mCREATE  INDEX `poly_request_index`  ON `impressions` (`impressionable_type`, `impressionable_id`, `request_hash`) [0m
+  [1m[35m (8.7ms)[0m  [1m[35mCREATE  INDEX `poly_ip_index`  ON `impressions` (`impressionable_type`, `impressionable_id`, `ip_address`) [0m
+  [1m[35m (10.5ms)[0m  [1m[35mCREATE  INDEX `poly_session_index`  ON `impressions` (`impressionable_type`, `impressionable_id`, `session_hash`) [0m
+  [1m[35m (9.9ms)[0m  [1m[35mCREATE  INDEX `controlleraction_request_index`  ON `impressions` (`controller_name`, `action_name`, `request_hash`) [0m
+  [1m[35m (10.4ms)[0m  [1m[35mCREATE  INDEX `controlleraction_ip_index`  ON `impressions` (`controller_name`, `action_name`, `ip_address`) [0m
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE  INDEX `controlleraction_session_index`  ON `impressions` (`controller_name`, `action_name`, `session_hash`) [0m
+  [1m[35m (11.0ms)[0m  [1m[35mCREATE  INDEX `index_impressions_on_user_id`  ON `impressions` (`user_id`) [0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150708000002')[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddFileToBlogs (20150708012856)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddFileToBlogs < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (30.7ms)[0m  [1m[35mALTER TABLE `blogs` ADD `file` varchar(255)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150708012856')[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAttachments (20150708032836)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateAttachments < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (29.5ms)[0m  [1m[35mCREATE TABLE `attachments` (`id` int AUTO_INCREMENT PRIMARY KEY, `file` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150708032836')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAttachId (20150708033106)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddAttachId < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (32.7ms)[0m  [1m[35mALTER TABLE `attachments` ADD `blog_id` int[0m
+  [1m[35m (10.1ms)[0m  [1m[35mCREATE  INDEX `index_attachments_on_blog_id`  ON `attachments` (`blog_id`) [0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150708033106')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to ConvertAttachmentToPolymorphic (20150708042414)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class ConvertAttachmentToPolymorphic < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (24.1ms)[0m  [1m[35mDROP INDEX `index_attachments_on_blog_id` ON `attachments`[0m
+  [1m[35m (8.5ms)[0m  [1m[35mALTER TABLE `attachments` CHANGE `blog_id` `attachable_id` int(11)[0m
+  [1m[35m (13.5ms)[0m  [1m[35mALTER TABLE `attachments` ADD `attachable_type` varchar(255)[0m
+  [1m[35m (10.1ms)[0m  [1m[35mCREATE  INDEX `index_attachments_on_attachable_id_and_attachable_type`  ON `attachments` (`attachable_id`, `attachable_type`) [0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150708042414')[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddIndexTopicId (20150711042134)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddIndexTopicId < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (26.8ms)[0m  [1m[35mCREATE  INDEX `index_posts_on_topic_id`  ON `posts` (`topic_id`) [0m
+  [1m[35m (9.9ms)[0m  [1m[35mCREATE  INDEX `index_posts_on_user_id`  ON `posts` (`user_id`) [0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150711042134')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddIndexUserId (20150711042541)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddIndexUserId < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (28.9ms)[0m  [1m[35mCREATE  INDEX `index_topics_on_user_id`  ON `topics` (`user_id`) [0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150711042541')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddIndexUserIdToMypets (20150711042929)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddIndexUserIdToMypets < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (25.8ms)[0m  [1m[35mCREATE  INDEX `index_mypets_on_user_id`  ON `mypets` (`user_id`) [0m
+  [1m[35m (10.2ms)[0m  [1m[35mCREATE  INDEX `index_mypets_on_breed_id`  ON `mypets` (`breed_id`) [0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150711042929')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddIndexNicknameUser (20150711043154)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddIndexNicknameUser < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (27.1ms)[0m  [1m[35mCREATE  INDEX `index_users_on_nickname`  ON `users` (`nickname`) [0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150711043154')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateWinners (20150720110302)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateWinners < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (25.7ms)[0m  [1m[35mCREATE TABLE `winners` (`id` int AUTO_INCREMENT PRIMARY KEY, `user_id` int, `score` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150720110302')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddApproveToTopicAndPost (20150805135741)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddApproveToTopicAndPost < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (31.5ms)[0m  [1m[35mALTER TABLE `topics` ADD `approve` tinyint(1) DEFAULT 0[0m
+  [1m[35m (11.9ms)[0m  [1m[35mALTER TABLE `posts` ADD `approve` tinyint(1) DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150805135741')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DropRepasTable (20150807125542)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class DropRepasTable < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150807125542')[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddRepaToUser (20150807132129)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddRepaToUser < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (33.8ms)[0m  [1m[35mALTER TABLE `users` ADD `repa` float DEFAULT 0.0[0m
+  [1m[35m (16.7ms)[0m  [1m[35mALTER TABLE `users` ADD `repa_total` float DEFAULT 0.0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150807132129')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddApproveToComment (20150807144001)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddApproveToComment < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (34.4ms)[0m  [1m[35mALTER TABLE `comments` ADD `approve` tinyint(1) DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150807144001')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBlogAttachments (20150820064112)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateBlogAttachments < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (27.8ms)[0m  [1m[35mCREATE TABLE `blog_attachments` (`id` int AUTO_INCREMENT PRIMARY KEY, `file` varchar(255), `main` tinyint(1), `blog_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150820064112')[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePetAttachments (20150820094504)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreatePetAttachments < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (27.9ms)[0m  [1m[35mCREATE TABLE `pet_attachments` (`id` int AUTO_INCREMENT PRIMARY KEY, `file` varchar(255), `main` tinyint(1), `mypet_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150820094504')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAttachmentsCountToMypet (20150822114559)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddAttachmentsCountToMypet < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (32.3ms)[0m  [1m[35mALTER TABLE `mypets` ADD `pet_attachments_count` int DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150822114559')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAttachmentsCountToBlog (20150822123307)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddAttachmentsCountToBlog < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (31.1ms)[0m  [1m[35mALTER TABLE `blogs` ADD `blog_attachments_count` int DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150822123307')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAuthorizations (20150829181020)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateAuthorizations < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (26.6ms)[0m  [1m[35mCREATE TABLE `authorizations` (`id` int AUTO_INCREMENT PRIMARY KEY, `user_id` int, `provider` varchar(255), `uid` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_authorizations_on_user_id`  (`user_id`)) ENGINE=InnoDB[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150829181020')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddNicknameUpdatedAt (20150912063818)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddNicknameUpdatedAt < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (32.5ms)[0m  [1m[35mALTER TABLE `users` ADD `nickname_updated_at` datetime[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20150912063818')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddCountryIdToUser (20160119082410)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddCountryIdToUser < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (32.5ms)[0m  [1m[35mALTER TABLE `users` ADD `country_id` int[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160119082410')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateReviews (20160120131120)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateReviews < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (25.8ms)[0m  [1m[35mCREATE TABLE `reviews` (`id` int AUTO_INCREMENT PRIMARY KEY, `user_id` int, `breed_id` int, `views` int, `comments_count` int, `votes_count` int, `body` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_reviews_on_user_id`  (`user_id`),  INDEX `index_reviews_on_breed_id`  (`breed_id`)) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160120131120')[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to FixReviews (20160120131626)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class FixReviews < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (56.8ms)[0m  [1m[35mALTER TABLE `reviews` ADD `title` varchar(255)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160120131626')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnWriter (20160121042725)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddColumnWriter < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (32.5ms)[0m  [1m[35mALTER TABLE `users` ADD `writer` tinyint(1) DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160121042725')[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to FixUser (20160121051601)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class FixUser < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (58.1ms)[0m  [1m[35mALTER TABLE `users` ADD `balance` int DEFAULT 0[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160121051601')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddPurseToUser (20160121051818)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddPurseToUser < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (32.9ms)[0m  [1m[35mALTER TABLE `users` ADD `purse` varchar(255)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160121051818')[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to FixBlog (20160121053314)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class FixBlog < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (31.4ms)[0m  [1m[35mALTER TABLE `blogs` ADD `payed` tinyint(1) DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160121053314')[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddCommentToBlog (20160121065013)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddCommentToBlog < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (30.1ms)[0m  [1m[35mALTER TABLE `blogs` ADD `comment` varchar(255) DEFAULT 'wait approve'[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160121065013')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateReviewAttachments (20160121155304)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateReviewAttachments < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (26.8ms)[0m  [1m[35mCREATE TABLE `review_attachments` (`id` int AUTO_INCREMENT PRIMARY KEY, `review_id` int, `file` varchar(255), `main` tinyint(1) DEFAULT 0, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160121155304')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddScoreToVotes (20160121164313)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddScoreToVotes < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (30.4ms)[0m  [1m[35mALTER TABLE `votes` ADD `score` int[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160121164313')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUserToBlogattchment (20160125045731)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddUserToBlogattchment < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (31.4ms)[0m  [1m[35mALTER TABLE `blog_attachments` ADD `user_id` int[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160125045731')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DropImpressionist (20160127101616)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class DropImpressionist < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (29.6ms)[0m  [1m[35mDROP TABLE `impressions`[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160127101616')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateNotices (20160127101927)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateNotices < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (27.8ms)[0m  [1m[35mCREATE TABLE `notices` (`id` int AUTO_INCREMENT PRIMARY KEY, `user_id` int, `noticeable_id` int, `noticeable_type` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (10.0ms)[0m  [1m[35mCREATE  INDEX `index_notices_on_user_id`  ON `notices` (`user_id`) [0m
+  [1m[35m (9.8ms)[0m  [1m[35mCREATE  INDEX `index_notices_on_noticeable_id_and_noticeable_type`  ON `notices` (`noticeable_id`, `noticeable_type`) [0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160127101927')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnsToNotices (20160127104746)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddColumnsToNotices < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (34.4ms)[0m  [1m[35mALTER TABLE `notices` ADD `body` text[0m
+  [1m[35m (16.2ms)[0m  [1m[35mALTER TABLE `notices` ADD `new` tinyint(1) DEFAULT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160127104746')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddCidToNotices (20160127114957)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddCidToNotices < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (33.1ms)[0m  [1m[35mALTER TABLE `notices` ADD `cid` int[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160127114957')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DropSubscribeTable (20160128035921)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class DropSubscribeTable < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160128035921')[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSubscribers (20160128041028)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateSubscribers < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (26.8ms)[0m  [1m[35mCREATE TABLE `subscribers` (`id` int AUTO_INCREMENT PRIMARY KEY, `user_id` int, `subscribable_id` int, `subscribable_type` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (9.4ms)[0m  [1m[35mCREATE  INDEX `index_subscribers_on_user_id`  ON `subscribers` (`user_id`) [0m
+  [1m[35m (9.9ms)[0m  [1m[35mCREATE  INDEX `index_subscribers_on_subscribable_id_and_subscribable_type`  ON `subscribers` (`subscribable_id`, `subscribable_type`) [0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160128041028')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddMyFeedCountToUser (20160128065903)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddMyFeedCountToUser < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (32.1ms)[0m  [1m[35mALTER TABLE `users` ADD `my_feed_count` int DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160128065903')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAddToNotice (20160129041743)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddAddToNotice < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (31.9ms)[0m  [1m[35mALTER TABLE `notices` ADD `add` tinyint(1) DEFAULT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160129041743')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddCostToBlog (20160130172631)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddCostToBlog < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (30.4ms)[0m  [1m[35mALTER TABLE `blogs` ADD `cost` int DEFAULT 0[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160130172631')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddBreedTypeToReview (20160202082044)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddBreedTypeToReview < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (31.7ms)[0m  [1m[35mALTER TABLE `reviews` ADD `breed_type` varchar(255)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160202082044')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddBodySizeToBlog (20160204101250)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddBodySizeToBlog < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (30.9ms)[0m  [1m[35mALTER TABLE `blogs` ADD `body_size` int[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160204101250')[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddDefaultFalseToPetAppatachments (20160204122838)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddDefaultFalseToPetAppatachments < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (13.9ms)[0m  [1m[35mALTER TABLE `pet_attachments` CHANGE `main` `main` tinyint(1) DEFAULT 0[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160204122838')[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUserIdToPetattachment (20160205042707)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddUserIdToPetattachment < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (30.4ms)[0m  [1m[35mALTER TABLE `pet_attachments` ADD `user_id` int[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160205042707')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddDelBooleanForReview (20160211090111)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddDelBooleanForReview < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (30.6ms)[0m  [1m[35mALTER TABLE `reviews` ADD `del` tinyint(1) DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160211090111')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAttachToTopics (20160216025918)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddAttachToTopics < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (29.4ms)[0m  [1m[35mALTER TABLE `topics` ADD `attach` tinyint(1) DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160216025918')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTags (20160308050202)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateTags < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (26.1ms)[0m  [1m[35mCREATE TABLE `tags` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `slug` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (11.1ms)[0m  [1m[35mCREATE TABLE `articles_tags` (`article_id` int, `tag_id` int,  INDEX `index_articles_tags_on_article_id`  (`article_id`),  INDEX `index_articles_tags_on_tag_id`  (`tag_id`)) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160308050202')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateArticleAttachments (20160309030236)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateArticleAttachments < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (26.8ms)[0m  [1m[35mCREATE TABLE `article_attachments` (`id` int AUTO_INCREMENT PRIMARY KEY, `file` varchar(255), `article_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160309030236')[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddModeratorFlagToUser (20160309035215)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddModeratorFlagToUser < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (34.4ms)[0m  [1m[35mALTER TABLE `users` ADD `moderator` tinyint(1) DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160309035215')[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCrons (20160409142344)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateCrons < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (27.4ms)[0m  [1m[35mCREATE TABLE `crons` (`id` int AUTO_INCREMENT PRIMARY KEY, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160409142344')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddReviewsCountToBreed (20160412040144)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddReviewsCountToBreed < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (31.7ms)[0m  [1m[35mALTER TABLE `breeds` ADD `reviews_count` int[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160412040144')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddReviewsCountToBreedDefault0 (20160412040338)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddReviewsCountToBreedDefault0 < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (19.8ms)[0m  [1m[35mALTER TABLE `breeds` CHANGE `reviews_count` `reviews_count` int DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160412040338')[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUserIdToReviewAttachment (20160412061009)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddUserIdToReviewAttachment < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (30.5ms)[0m  [1m[35mALTER TABLE `review_attachments` ADD `user_id` int[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160412061009')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddConfirmableToDevise (20160424054302)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddConfirmableToDevise < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160424054302')[0m
+  [1m[35m (11.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddConfirmableToDevise2 (20160424054451)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddConfirmableToDevise2 < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (32.6ms)[0m  [1m[35mALTER TABLE `users` ADD `confirmation_token` varchar(255)[0m
+  [1m[35m (19.9ms)[0m  [1m[35mALTER TABLE `users` ADD `confirmed_at` datetime[0m
+  [1m[35m (13.3ms)[0m  [1m[35mALTER TABLE `users` ADD `confirmation_sent_at` datetime[0m
+  [1m[35m (15.8ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_confirmation_token`  ON `users` (`confirmation_token`) [0m
+  [1m[35m (3.1ms)[0m  [1m[33mUPDATE users SET confirmed_at = NOW()[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160424054451')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBadges (20160502052709)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateBadges < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (26.6ms)[0m  [1m[35mCREATE TABLE `badges` (`id` int AUTO_INCREMENT PRIMARY KEY, `name` varchar(255), `slug` varchar(255), `desc` text, `metal` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160502052709')[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRewards (20160502053930)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateRewards < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (27.2ms)[0m  [1m[35mCREATE TABLE `rewards` (`id` int AUTO_INCREMENT PRIMARY KEY, `user_id` int, `badge_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_rewards_on_user_id`  (`user_id`),  INDEX `index_rewards_on_badge_id`  (`badge_id`)) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160502053930')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddViewsToBlogs (20160502091106)
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class AddViewsToBlogs < ActiveRecord::Migration[4.2] (called from load at /Users/alex/.rbenv/versions/2.4.0/bin/rake:22)
+  [1m[35m (29.9ms)[0m  [1m[35mALTER TABLE `blogs` ADD `views` int DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20160502091106')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to FixUsersTable (20170312023659)
+  [1m[35m (34.0ms)[0m  [1m[35mALTER TABLE `users` DROP `writer`[0m
+  [1m[35m (18.1ms)[0m  [1m[35mALTER TABLE `users` DROP `balance`[0m
+  [1m[35m (23.2ms)[0m  [1m[35mALTER TABLE `users` DROP `purse`[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20170312023659')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2017-03-12 03:17:05', '2017-03-12 03:17:05')[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT RELEASE_LOCK('4475467841591330430')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSHOW CREATE TABLE `article_attachments`[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'article_attachments'[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSHOW CREATE TABLE `articles`[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'articles'[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSHOW CREATE TABLE `articles_tags`[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSHOW CREATE TABLE `attachments`[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'attachments'[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSHOW CREATE TABLE `authorizations`[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'authorizations'[0m
+  [1m[35m (5.5ms)[0m  [1m[35mSHOW CREATE TABLE `badges`[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'badges'[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSHOW CREATE TABLE `blog_attachments`[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'blog_attachments'[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSHOW CREATE TABLE `blogs`[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'blogs'[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `breeds`[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'breeds'[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSHOW CREATE TABLE `cities`[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'cities'[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSHOW CREATE TABLE `comments`[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'comments'[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSHOW CREATE TABLE `countries`[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'countries'[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `crons`[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `mypets`[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'mypets'[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `notices`[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'notices'[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `pet_attachments`[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'pet_attachments'[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `posts`[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'posts'[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSHOW CREATE TABLE `review_attachments`[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'review_attachments'[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSHOW CREATE TABLE `reviews`[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'reviews'[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `rewards`[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `subscribers`[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'subscribers'[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `tags`[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'tags'[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSHOW CREATE TABLE `topics`[0m
+  [1m[35m (0.6ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'topics'[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `users`[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'users'[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSHOW CREATE TABLE `votes`[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'votes'[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSHOW CREATE TABLE `winners`[0m
+DEPRECATION WARNING: Passing strings or symbols to the middleware builder is deprecated, please change
+them to actual class references.  For example:
+
+  "RouteDowncaser::DowncaseRouteMiddleware" => RouteDowncaser::DowncaseRouteMiddleware
+
+ (called from <top (required)> at /Users/alex/ruby/livepets/config/environment.rb:5)
+DEPRECATION WARNING: Specifying strings for both :path and the route path is deprecated. Change things like this:
+
+match "pet/update_breeds", :path => "pet/update_breeds"
+
+to this:
+
+match "pet/update_breeds", :as => "pet/update_breeds", :action => "pet/update_breeds"
+ (called from block in <top (required)> at /Users/alex/ruby/livepets/config/routes.rb:69)
+DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from <top (required)> at /Users/alex/ruby/livepets/app/models/user.rb:1)
+  [1m[35m (23.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `tags`[0m
+DEPRECATION WARNING: Passing strings or symbols to the middleware builder is deprecated, please change
+them to actual class references.  For example:
+
+  "RouteDowncaser::DowncaseRouteMiddleware" => RouteDowncaser::DowncaseRouteMiddleware
+
+ (called from <top (required)> at /Users/alex/ruby/livepets/config/environment.rb:5)
+DEPRECATION WARNING: Specifying strings for both :path and the route path is deprecated. Change things like this:
+
+match "pet/update_breeds", :path => "pet/update_breeds"
+
+to this:
+
+match "pet/update_breeds", :as => "pet/update_breeds", :action => "pet/update_breeds"
+ (called from block in <top (required)> at /Users/alex/ruby/livepets/config/routes.rb:69)
+DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from <top (required)> at /Users/alex/ruby/livepets/app/models/user.rb:1)

@@ -166,10 +166,6 @@ Rails.application.routes.draw do
   end
   # ADMIN CONTROLLER BEGIN
 
-
-
-  resources :writer
-
   get  'dialogs'                => 'dialogs#index',        as: :dialogs
   get  'dialogs/:nickname'      => 'dialogs#show',         as: :dialogs_show
   post 'dialogs/:nickname/send' => 'dialogs#send_message', as: :dialogs_send
