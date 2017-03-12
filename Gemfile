@@ -30,9 +30,6 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'nested_form'
 gem 'remotipart'
-gem 'yaml_db'
-
-
 
 group :assets do
   gem 'sprockets-rails', github: 'rails/sprockets-rails'
@@ -45,8 +42,7 @@ gem 'omniauth-yandex'
 gem 'omniauth-mailru'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-odnoklassniki'
-#gem "recaptcha", require: "recaptcha/rails"
-
+gem "recaptcha", require: "recaptcha/rails"
 
 gem 'tinymce-rails'
 gem 'tinymce-rails-langs'

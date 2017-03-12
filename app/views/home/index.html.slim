@@ -2,9 +2,9 @@
 - content_for :description, "Социальная сеть для любитилей домашних животных. Верный друг для тебя и твоего питомца. Размещай фотографии и видеозаписи, рассказывай самые важные события, задавай вопросы и делись опытом, изучай новое. На LivePets все только самое интересное о наших четырехлапых друзьях."
 div class="content"
   ul class="photo-list"
-    - Mypet.where("pet_attachments_count > 0").last(5).reverse.each do |pet|
+    - @pets.limit(5).each do |pet|
       li
-        = link_to (image_tag pet.pet_attachments.sample.file.thumb_174), user_path(pet.user.nickname.downcase) if pet.pet_attachments
+        = link_to (image_tag pet.pet_attachments.first.file.thumb_174), user_path(pet.user.nickname.downcase) if pet.pet_attachments
   - if Winner.count > 1 && Time.now - Winner.last.created_at < 1.week
     = render partial: 'pet_day', object: @pet_day, as: 'pet_day'
   - else
@@ -79,8 +79,8 @@ div class="content"
 
           div class="like-box"
             = link_to article.views, article_path(article.randid), class: "views", title:"Просмотров #{article.views}"
-            = link_to article.votes.count, '#', class: "like"
-            = link_to article.comments.count, "#{article_path(article.randid)}#comments", class: "comments", title:"Комментариев #{article.comments.count}"
+            = link_to '1', '#', class: "like"
+            = link_to '1', "#{article_path(article.randid)}#comments", class: "comments", title:"Комментариев 1"
             span = l article.created_at, :format => :short
     div class="load-more-holder"
       = link_to "Все статьи", articles_path, class: "load-more"

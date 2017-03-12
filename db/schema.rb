@@ -12,34 +12,34 @@
 
 ActiveRecord::Schema.define(version: 20170312023659) do
 
-  create_table "article_attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "article_attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "file"
     t.integer  "article_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "title"
-    t.text     "body",                limit: 65535
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
+    t.text     "body",                limit: 16777215
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.string   "randid"
-    t.integer  "views",                             default: 0
+    t.integer  "views",                                default: 0
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
   end
 
-  create_table "articles_tags", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "articles_tags", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "article_id"
     t.integer "tag_id"
     t.index ["article_id"], name: "index_articles_tags_on_article_id", using: :btree
     t.index ["tag_id"], name: "index_articles_tags_on_tag_id", using: :btree
   end
 
-  create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "file"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20170312023659) do
     t.index ["attachable_id", "attachable_type"], name: "index_attachments_on_attachable_id_and_attachable_type", using: :btree
   end
 
-  create_table "authorizations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "authorizations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "user_id"
     t.string   "provider"
     t.string   "uid"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20170312023659) do
     t.index ["user_id"], name: "index_authorizations_on_user_id", using: :btree
   end
 
-  create_table "badges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "badges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.string   "slug"
     t.text     "desc",       limit: 65535
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20170312023659) do
     t.datetime "updated_at",               null: false
   end
 
-  create_table "blog_attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "blog_attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "file"
     t.boolean  "main"
     t.integer  "blog_id"
@@ -75,25 +75,24 @@ ActiveRecord::Schema.define(version: 20170312023659) do
     t.integer  "user_id"
   end
 
-  create_table "blogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "blogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "title"
-    t.text     "body",                   limit: 65535
-    t.datetime "created_at",                                                    null: false
-    t.datetime "updated_at",                                                    null: false
+    t.text     "body",                   limit: 16777215
+    t.datetime "created_at",                                                      null: false
+    t.datetime "updated_at",                                                      null: false
     t.integer  "user_id"
-    t.boolean  "del",                                  default: false
-    t.text     "images",                 limit: 65535
-    t.boolean  "approve",                              default: false
+    t.boolean  "del",                                     default: false
+    t.boolean  "approve",                                 default: false
     t.string   "file"
-    t.integer  "blog_attachments_count",               default: 0
-    t.boolean  "payed",                                default: false
-    t.string   "comment",                              default: "wait approve"
-    t.integer  "cost",                                 default: 0
+    t.integer  "blog_attachments_count",                  default: 0
+    t.boolean  "payed",                                   default: false
+    t.string   "comment",                                 default: "на проверке"
+    t.integer  "cost",                                    default: 0
     t.integer  "body_size"
-    t.integer  "views",                                default: 0
+    t.integer  "views",                                   default: 0
   end
 
-  create_table "breeds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "breeds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
@@ -106,14 +105,14 @@ ActiveRecord::Schema.define(version: 20170312023659) do
     t.integer  "reviews_count",       default: 0
   end
 
-  create_table "cities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "cities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "country_id"
   end
 
-  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.text     "body",             limit: 65535
     t.integer  "user_id"
     t.integer  "commentable_id"
@@ -125,18 +124,50 @@ ActiveRecord::Schema.define(version: 20170312023659) do
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
-  create_table "countries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "countries", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "crons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "crons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "mypets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "dialogs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "dialogs_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.integer "dialog_id"
+    t.integer "user_id"
+    t.index ["dialog_id"], name: "index_dialogs_users_on_dialog_id", using: :btree
+    t.index ["user_id"], name: "index_dialogs_users_on_user_id", using: :btree
+  end
+
+  create_table "like_articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.integer "user_id"
+    t.integer "article_id"
+  end
+
+  create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.integer  "count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.text     "body",       limit: 16777215
+    t.integer  "user_id"
+    t.integer  "dialog_id"
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+    t.string   "state",                       default: "new"
+  end
+
+  create_table "mypets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "name"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
@@ -155,7 +186,7 @@ ActiveRecord::Schema.define(version: 20170312023659) do
     t.index ["user_id"], name: "index_mypets_on_user_id", using: :btree
   end
 
-  create_table "notices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "notices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "user_id"
     t.integer  "noticeable_id"
     t.string   "noticeable_type"
@@ -169,7 +200,7 @@ ActiveRecord::Schema.define(version: 20170312023659) do
     t.index ["user_id"], name: "index_notices_on_user_id", using: :btree
   end
 
-  create_table "pet_attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "pet_attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "file"
     t.boolean  "main",       default: false
     t.integer  "mypet_id"
@@ -178,7 +209,17 @@ ActiveRecord::Schema.define(version: 20170312023659) do
     t.integer  "user_id"
   end
 
-  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "blog_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.text     "body",       limit: 65535
     t.integer  "user_id"
     t.integer  "topic_id"
@@ -189,7 +230,7 @@ ActiveRecord::Schema.define(version: 20170312023659) do
     t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
   end
 
-  create_table "review_attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "review_attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "review_id"
     t.string   "file"
     t.boolean  "main",       default: false
@@ -198,7 +239,7 @@ ActiveRecord::Schema.define(version: 20170312023659) do
     t.integer  "user_id"
   end
 
-  create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "user_id"
     t.integer  "breed_id"
     t.integer  "views"
@@ -214,7 +255,7 @@ ActiveRecord::Schema.define(version: 20170312023659) do
     t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
 
-  create_table "rewards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "rewards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "user_id"
     t.integer  "badge_id"
     t.datetime "created_at", null: false
@@ -223,7 +264,7 @@ ActiveRecord::Schema.define(version: 20170312023659) do
     t.index ["user_id"], name: "index_rewards_on_user_id", using: :btree
   end
 
-  create_table "subscribers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "subscribers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "user_id"
     t.integer  "subscribable_id"
     t.string   "subscribable_type"
@@ -240,7 +281,7 @@ ActiveRecord::Schema.define(version: 20170312023659) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "topics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "topics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "title"
     t.text     "body",       limit: 65535
     t.integer  "user_id"
@@ -252,7 +293,7 @@ ActiveRecord::Schema.define(version: 20170312023659) do
     t.index ["user_id"], name: "index_topics_on_user_id", using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "email",                             default: "",    null: false
     t.string   "encrypted_password",                default: "",    null: false
     t.string   "reset_password_token"
@@ -292,7 +333,7 @@ ActiveRecord::Schema.define(version: 20170312023659) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  create_table "votes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "votes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "user_id"
     t.integer  "votable_id"
     t.string   "votable_type"
@@ -303,7 +344,7 @@ ActiveRecord::Schema.define(version: 20170312023659) do
     t.index ["votable_id", "votable_type"], name: "index_votes_on_votable_id_and_votable_type", using: :btree
   end
 
-  create_table "winners", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "winners", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "user_id"
     t.integer  "score"
     t.datetime "created_at", null: false

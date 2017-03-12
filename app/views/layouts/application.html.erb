@@ -6,7 +6,7 @@
   <% unless yield(:keywords).blank? %>
   <meta name="keywords" content="<%= h(yield(:keywords) || '') %>">
   <% end %>
-
+  <meta name="yandex-verification" content="3cc4db05cd55cbf2" />
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
@@ -97,9 +97,6 @@
         <strong class="logo"><a href="/">LivePets</a></strong>
         <% if current_user && current_user.admin %>
             <%= link_to "admin", admin_index_path %>
-        <% end %>
-        <% if current_user && current_user.writer %>
-            <b><%= link_to "Админ зона.", writer_index_path %><font color="#006400"></font></b>
         <% end %>
       </header>
 
