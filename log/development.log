@@ -47842,3 +47842,18 @@ Started GET "/assets/writer.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde4
 
 
 Started GET "/assets/application.self-538d6440534fa5f615e8a26932792a82a2e4a33a97886e2d815eab8fc216d415.js?body=1" for ::1 at 2016-05-03 21:47:11 +0600
+DEPRECATION WARNING: Passing strings or symbols to the middleware builder is deprecated, please change
+them to actual class references.  For example:
+
+  "RouteDowncaser::DowncaseRouteMiddleware" => RouteDowncaser::DowncaseRouteMiddleware
+
+ (called from <top (required)> at /Users/alex/ruby/livepets/config/environment.rb:5)
+DEPRECATION WARNING: Specifying strings for both :path and the route path is deprecated. Change things like this:
+
+match "pet/update_breeds", :path => "pet/update_breeds"
+
+to this:
+
+match "pet/update_breeds", :as => "pet/update_breeds", :action => "pet/update_breeds"
+ (called from block in <top (required)> at /Users/alex/ruby/livepets/config/routes.rb:69)
+DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from <top (required)> at /Users/alex/ruby/livepets/app/models/user.rb:1)
