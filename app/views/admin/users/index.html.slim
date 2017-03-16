@@ -1,5 +1,5 @@
 h1 Список пользователей (#{User.count})
-p #{link_to "реальные (#{User.where(bot: false).count})", "?"} / #{link_to "боты (#{User.where(bot: true).count})", '?sort=bots'} / #{link_to "Новые (#{User.where(approve: false).count})", '?sort=new'} / #{link_to "Заблокированные (#{User.where(block: true).count})", '?sort=banned'} / #{link_to "Писатели (#{User.where(writer:true).count})", '?sort=writer'}
+p #{link_to "реальные (#{User.where(bot: false).count})", "?"} / #{link_to "боты (#{User.where(bot: true).count})", '?sort=bots'} / #{link_to "Новые (#{User.where(approve: false).count})", '?sort=new'} / #{link_to "Заблокированные (#{User.where(block: true).count})", '?sort=banned'}
 p = paginate @users
 table border=1
   tr bgcolor="grey"
