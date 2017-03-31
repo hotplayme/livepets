@@ -93,6 +93,7 @@ Rails.application.routes.draw do
   end
 
   root   'home#index'
+  get 'index2' => 'home#index2'
   resources :users, only: [:show], path: 'user' do
     delete 'subscribers' => 'subscribers#destroy'
     resources :subscribers, only: [:create]

@@ -19,6 +19,10 @@ class HomeController < ApplicationController
     @winners = Winner.all
   end
 
+  def index2
+    render :layout => false
+  end
+
 
   private
   def user_params

@@ -1,0 +1,2 @@
+DOMAIN = 'livepets.ru'
+
