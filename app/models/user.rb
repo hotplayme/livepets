@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
 
 
-  has_many   :mypets, dependent: :destroy
+  has_many   :pets, dependent: :destroy
   has_many   :pet_attachments
   has_many   :reviews
   has_many   :review_attachments

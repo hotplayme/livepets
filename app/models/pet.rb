@@ -1,4 +1,4 @@
-class Mypet < ActiveRecord::Base
+class Pet < ActiveRecord::Base
 
   include Votable
   
@@ -27,7 +27,7 @@ class Mypet < ActiveRecord::Base
     if pet.pet_attachments.count > 0
       pet.pet_attachments.where(main:true).first.file.thumb_600
     else
-      Mypet.default_url
+      Pet.default_url
     end
   end
 

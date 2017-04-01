@@ -4,7 +4,7 @@ require 'rails/all'
 
 Bundler.require(*Rails.groups)
 
-module Pet
+module LivePet
   class Application < Rails::Application
     config.active_record.raise_in_transactional_callbacks = true
     config.i18n.default_locale = :ru
@@ -18,6 +18,5 @@ module Pet
           controller_spec: true
       g.fixture_replacement :factory_girl, dir: 'spec/factories'
     end
-
   end
 end

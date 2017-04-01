@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  #NEW#
+  get 'new' => 'new/home#index'
+
+  #NEW#
+
+
   post '/tinymce_assets' => 'tinymce_assets#create'
 
   # ARTICLES CONTROLLER BEGIN

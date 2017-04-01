@@ -1,7 +1,7 @@
 class Breed < ActiveRecord::Base
 
   validates :name, uniqueness: true 
-  has_many :mypets
+  has_many :pets
   has_many :reviews
   has_many :subscribers, as: :subscribable, dependent: :destroy
 

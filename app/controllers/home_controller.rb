@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   def index
     @articles = Article.where("created_at < ?", Time.now).order("created_at DESC").limit(6)
     @pet_day = Winner.last.user.mypets.where("pet_attachments_count > 0").sample if Winner.count > 1
-    @pets = Mypet.where("pet_attachments_count > 0").includes(:pet_attachments).includes(:user).order("created_at DESC").limit(12)
+    @pets = Pet.where("pet_attachments_count > 0").includes(:pet_attachments).includes(:user).order("created_at DESC").limit(12)
     if current_user && current_user.city
       @pets_city = current_user.city.mypets.where("pet_attachments_count > 0").includes(:pet_attachments).includes(:user).order("created_at DESC").limit(12)
     end
@@ -11,7 +11,7 @@ class HomeController < ApplicationController
 
 
   def refresh
-    @pets = Mypet.where("photo_file_name NOT IN (?)", "nil").order("Rand()").limit(12)
+    @pets = Pet.where("photo_file_name NOT IN (?)", "nil").order("Rand()").limit(12)
   end
 
   def weekly

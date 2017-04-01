@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170312023659) do
+ActiveRecord::Schema.define(version: 20170401134932) do
 
   create_table "article_attachments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "file"
@@ -167,25 +167,6 @@ ActiveRecord::Schema.define(version: 20170312023659) do
     t.string   "state",                       default: "new"
   end
 
-  create_table "mypets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string   "name"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
-    t.integer  "user_id"
-    t.integer  "breed_id"
-    t.integer  "sex"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
-    t.date     "birthday"
-    t.boolean  "approve",               default: false
-    t.boolean  "block",                 default: false
-    t.integer  "pet_attachments_count", default: 0
-    t.index ["breed_id"], name: "index_mypets_on_breed_id", using: :btree
-    t.index ["user_id"], name: "index_mypets_on_user_id", using: :btree
-  end
-
   create_table "notices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.integer  "user_id"
     t.integer  "noticeable_id"
@@ -207,6 +188,25 @@ ActiveRecord::Schema.define(version: 20170312023659) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.integer  "user_id"
+  end
+
+  create_table "pets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
+    t.string   "name"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.integer  "user_id"
+    t.integer  "breed_id"
+    t.integer  "sex"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.date     "birthday"
+    t.boolean  "approve",               default: false
+    t.boolean  "block",                 default: false
+    t.integer  "pet_attachments_count", default: 0
+    t.index ["breed_id"], name: "index_pets_on_breed_id", using: :btree
+    t.index ["user_id"], name: "index_pets_on_user_id", using: :btree
   end
 
   create_table "pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
