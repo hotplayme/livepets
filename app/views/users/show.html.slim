@@ -7,14 +7,14 @@ div class="content #{"user-page" if current_user != @user}"
   div class="profile-frame"
     div class="info-profile"
       = render partial: 'info_profile', object: @user, as: 'user'
-    - if @user.mypets.count == 0
+    - if @user.pets.count == 0
       div class="info-pets"
 	    div class="image-holder"
 		  img src="../images/img20.jpg" width="600" height="470" /
 		  div class="footnote"
 		    - if current_user && current_user == @user
               p Здесь будет информация о вашем любимчике, добавьте питомца и заполните для него профиль
-              = link_to "Добавить питомца", new_mypet_path
+              = link_to "Добавить питомца", new_pet_path
             - else
               p Пользователь пока не добавил ни одного питомца
 	- else
@@ -27,9 +27,9 @@ div class="content #{"user-page" if current_user != @user}"
                 a href="#pets-0#{x}" class="#{x == 1 ? "active" : ""}"
                   = pet.name
               - x += 1
-          - if current_user && current_user == @user && current_user.mypets.count < 3
+          - if current_user && current_user == @user && current_user.pets.count < 3
             div class="add-pet"
-              = link_to "Добавить питомца", new_mypet_path
+              = link_to "Добавить питомца", new_pet_path
         - x = 0
         - @pets.each do |pet|
             - x = x + 1
@@ -42,7 +42,7 @@ div class="content #{"user-page" if current_user != @user}"
                     div class="gmask"
                       div class="slideset"
                         div class="slide active"
-                          = image_tag Mypet.main_image(pet)
+                          = image_tag Pet.main_image(pet)
                         - pet.pet_attachments.where(main: false).limit(10).each do |attachment|
                           div class="slide"
                             = image_tag attachment.file.thumb_600
@@ -55,8 +55,8 @@ div class="content #{"user-page" if current_user != @user}"
                               = link_to pet.breed.name, show_cats_breed_path(pet.breed.translate)
 							- else
 							  = link_to pet.breed.name, show_dogs_breed_path(pet.breed.translate)
-                          = link_to "Изменить", edit_mypet_path(pet), class: "button" if current_user && current_user == @user
-                          = link_to vote_mypet_path(pet), remote: true
+                          = link_to "Изменить", edit_pet_path(pet), class: "button" if current_user && current_user == @user
+                          = link_to vote_pet_path(pet), remote: true
                             div class="likes"
                               = render partial: 'mypets/likes', object: pet, as: 'pet'
   - if current_user && current_user == @user

@@ -73,7 +73,7 @@ Rails.application.routes.draw do
 
   # MYPETS CONTROLLER BEGIN #
   get 'pet/update_breeds' => 'mypets#update_breeds', path: 'pet/update_breeds', as: 'update_breeds'
-  resources :mypets, path: 'pet' do
+  resources :pets, path: 'pet' do
     post :image_create, on: :collection
     put :image_create, on: :collection
     get :do_main, path: 'attach/:id'

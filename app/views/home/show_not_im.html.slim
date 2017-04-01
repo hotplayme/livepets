@@ -3,7 +3,7 @@ div class="content user-page"
   div class="profile-frame"
     div class="info-profile"
       = render partial: 'subscribe', object: @user, as: 'user'
-    - if @user.mypets.count == 0
+    - if @user.pets.count == 0
       div class="info-pets"
         div class="image-holder"
           img src="../images/img20.jpg" width="600" height="470" /
@@ -14,72 +14,5 @@ div class="content user-page"
         div class="pets-holder"
           ul class="info-pets-list tabset"
             - x = 0
-            - @user.mypets.each do |pet|
+            - @user.pets.each do |pet|
             - x = x + 1
-            li
-              a <%= "class = active" if x == 1 %> href="#pets-0<%= x %>"><%= t.name %></a></li>
-            <% end %>
-          </ul>
-        </div>
-
-<% x = 0 %>
-<% @user.mypets.each do |t| %>
-<% x = x + 1 %>
-
-            <div id="pets-0<%= x %>">
-                <div class="gallery-holder slideshow">
-                    <div class="gallery">
-                        <div class="gholder">
-                            <a class="btn-prev" href="#">&nbsp;</a>
-                            <a class="btn-next" href="#">&nbsp;</a>
-                            <div class="gmask">
-                                <div class="slideset">
-                                    <div class="slide active">
-                                        <%= image_tag t.photo.url(:medium) %>
-                                    </div>
-
-                                    <div class="data-pet">
-                                        <div class="name-pet">
-                                            <span><%= t.name %><strong>&nbsp<%= t.birthday ? "#{distance_of_time_in_words(t.birthday, Time.now, :only => [:years, :months, :days], :highest_measures => 2, :two_words_connector => ' ',  :locale => :ru)}" : "" %></strong></span>
-                                          <%= link_to "#{t.breed.name}", show_breed_path(t.breed.translate) %>
-                                        </div>
-                                        <div class="subscriber">
-                                            <strong><%= Subscribe.where(subscriber_id: @user.id).count %></strong>
-                                            <span>подписчика</span>
-                                        </div>
-                                        <%= link_to vote_mypet_path(t), remote: true do %>
-                                            <div class="likes">
-                                              <%= render partial: 'mypets/likes', object: t, as: 'pet' %>
-                                            </div>
-                                        <% end %>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <% end %>
-
-        </div>
-        <% end %>
-    </div>
-
-
-    <% @blogs.each do |blog| %>
-    <div class="note-holder">
-        <div class="note">
-            <div class="note-title">
-                <span><%= link_to "#{@user.first_name}", user_path %> пишет <%= time_ago_in_words(blog.created_at) %> назад</span>
-            </div>
-            <h4><%= link_to blog.title, blog_path(blog) %></h4>
-            <p><%= blog.body %></p>
-            <div class="actions-row">
-                <a class="comment" href="<%= blog_path(blog) %>#comments">Комментировать <span><%= blog.comments.count %></span></a>
-                <a class="like-me" href="#">Нравится <span><%= blog.votes.count %></span></a>
-              <%= link_to "Далее", blog_path(blog), class: "write-to-blog" %>
-            </div>
-        </div>
-    </div>
-    <% end %>
-</div>

@@ -1,2 +1,2 @@
-$("ul.post-pics").append('<li id="attach_<%= @file.id %>"><%= image_tag @file.file.url(:thumb_185) %><%= link_to 'Удалить', a_delete_mypets_path(@file), method: :delete, remote: true %></li>');
+$("ul.post-pics").append('<li id="attach_<%= @file.id %>"><%= image_tag @file.file.url(:thumb_185) %><%= link_to 'Удалить', a_delete_pets_path(@file), method: :delete, remote: true %></li>');
 $("#picture_ids").append("<input type='hidden' name='attach_ids[]' value='<%= @file.id %>'>");

@@ -66,7 +66,7 @@
               </div>
               <div class="vote-list-score"><span><%= user.repa %></span></div>
             </div>
-            <!--<div class="vote-pet-photo"><%= image_tag user.mypets.first.pet_attachments.first.file.thumb_70 if user.mypets.count > 0 && user.mypets.first.pet_attachments.count > 0 %></div>-->
+            <!--<div class="vote-pet-photo"><%= image_tag user.pets.first.pet_attachments.first.file.thumb_70 if user.pets.count > 0 && user.pets.first.pet_attachments.count > 0 %></div>-->
           </li>
           <% x += 1 %>
           <% y -= 20 %>
@@ -88,7 +88,7 @@
                     </div>
                   </div>
                   <div class="last-winners-bttm">
-                    <span><%= image_tag winner.user.mypets.first.pet_attachments.first.file.thumb_174 if winner.user.mypets.count > 0 %></span>
+                    <span><%= image_tag winner.user.pets.first.pet_attachments.first.file.thumb_174 if winner.user.pets.count > 0 %></span>
                     <span>
                       <span>
                         <span>Победитель!</span>

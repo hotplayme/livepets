@@ -6,9 +6,9 @@
         a class="cover"
           span Обложка
       - else
-        = link_to mypet_do_main_path(pet, attachment), class: "do-cover", remote: true
+        = link_to pet_do_main_path(pet, attachment), class: "do-cover", remote: true
           span Сделать <br />обложкой
         /a class="do-cover" href="#{attachment_do_main_path(attachment)}", remote: true
           span Сделать <br />обложкой
     span class="ok"загружено
-    = link_to 'Удалить', mypet_a_delete_path(pet, attachment), class:"delete", title: "Удалить фото", method: :delete, remote: true
+    = link_to 'Удалить', pet_a_delete_path(pet, attachment), class:"delete", title: "Удалить фото", method: :delete, remote: true

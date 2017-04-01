@@ -17,13 +17,13 @@ div class="content"
           = current_user.city ? current_user.city.name : "Не указал"
           = current_user.country ? ", #{current_user.country.name}" : ""
       = link_to "Редактировать профиль", im_edit_path, class: "show-all"
-    - if current_user.mypets.count == 0
+    - if current_user.pets.count == 0
       div class="info-pets"
 	    div class="image-holder"
 		  img src="../images/img20.jpg" width="600" height="470" /
 		  div class="footnote"
 			p Здесь будет информация о вашем любимчике, добавьте питомца и заполните для него профиль
-            = link_to "Добавить питомца", new_mypet_path
+            = link_to "Добавить питомца", new_pet_path
 	- else
 	  div class="info-pets"
         div class="pets-holder"
@@ -36,7 +36,7 @@ div class="content"
               - x += 1
 
           div class="add-pet"
-            = link_to "Добавить питомца", new_mypet_path
+            = link_to "Добавить питомца", new_pet_path
 
         - x = 0
         - @pets.each do |pet|
@@ -59,10 +59,10 @@ div class="content"
                               = pet.name
                               strong = distance_of_time_in_words(pet.birthday, Time.now, :only => [:years, :months, :days], :highest_measures => 2, :two_words_connector => ' ',  :locale => :ru) if pet.birthday
 							= link_to pet.breed.name, show_breed_path(pet.breed.translate)
-                          = link_to "Изменить", edit_mypet_path(pet), class: "button"
-                          = link_to vote_mypet_path(pet), remote: true
+                          = link_to "Изменить", edit_pet_path(pet), class: "button"
+                          = link_to vote_pet_path(pet), remote: true
                             div class="likes"
-                              = render partial: 'mypets/likes', object: pet, as: 'pet'
+                              = render partial: 'pets/likes', object: pet, as: 'pet'
   div class="all-notes"
     strong = current_user.blogs.where(del: false).count == 0 ? "0 posts" : ""
     ul class="all-notes-list"

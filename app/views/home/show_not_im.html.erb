@@ -7,7 +7,7 @@
 
 					</div>
 					
-					<% if @user.mypets.count == 0 %>
+					<% if @user.pets.count == 0 %>
 					
 		      <div class="info-pets">
 		            <div class="image-holder">
@@ -25,7 +25,7 @@
                       <div class="pets-holder">
 						<ul class="info-pets-list tabset">
 							<% x = 0 %>
-							<% @user.mypets.each do |t| %>
+							<% @user.pets.each do |t| %>
 							<% x = x + 1 %>
 							<li><a <%= "class = active" if x == 1 %> href="#pets-0<%= x %>"><%= t.name %></a></li>
 							<% end %>
@@ -33,7 +33,7 @@
                       </div>
 						
             <% x = 0 %>
-            <% @user.mypets.each do |t| %>
+            <% @user.pets.each do |t| %>
             <% x = x + 1 %>
 						
 						<div id="pets-0<%= x %>">
@@ -57,7 +57,7 @@
                                                         <strong><%= Subscribe.where(subscriber_id: @user.id).count %></strong>
                                                         <span>подписчика</span>
                                                     </div>
-                                                    <%= link_to vote_mypet_path(t), remote: true do %>
+                                                    <%= link_to vote_pet_path(t), remote: true do %>
                                                         <div class="likes">
                                                           <%= render partial: 'mypets/likes', object: t, as: 'pet' %>
                                                         </div>

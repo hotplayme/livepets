@@ -12,7 +12,7 @@ div class="content user-page"
         span #{@user.city ? "#{@user.city.name}, #{@user.city.country.name}" : "Город не указан"}
       = link_to "Отправить сообщение", new_user_registration_path, class: "send-massege"
       = link_to "Следить за новостями", new_user_registration_path, class: "news"
-    - if @user.mypets.count == 0
+    - if @user.pets.count == 0
       div class="info-pets"
         div class="image-holder"
           img src="../images/img20.jpg" width="600" height="470" /
@@ -23,13 +23,13 @@ div class="content user-page"
         div class="pets-holder"
           ul class="info-pets-list tabset"
             - x = 1
-            - @user.mypets.each do |pet|
+            - @user.pets.each do |pet|
               li
                 a class="#{"active" if x == 1}" href="#pets-0#{x}"
                   = pet.name
                 - x += 1
         - x = 0
-        - @user.mypets.each do |pet|
+        - @user.pets.each do |pet|
           - x += 1
           div id="pets-0#{x}"
             div class="gallery-holder slideshow"

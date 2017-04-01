@@ -8,15 +8,15 @@ class AdminController < ApplicationController
 
   def pet
     if params[:sort] == 'real'
-      @pets = Mypet.joins(:user).where("users.bot = false").order("created_at DESC").paginate(:page => params[:page], :per_page => 30)
+      @pets = Pet.joins(:user).where("users.bot = false").order("created_at DESC").paginate(:page => params[:page], :per_page => 30)
     elsif params[:sort] == 'bots'
-      @pets = Mypet.joins(:user).where("users.bot = true").order("created_at DESC").paginate(:page => params[:page], :per_page => 30)
+      @pets = Pet.joins(:user).where("users.bot = true").order("created_at DESC").paginate(:page => params[:page], :per_page => 30)
     elsif params[:sort] == 'new'
-      @pets = Mypet.where(approve: false).order("created_at DESC").paginate(:page => params[:page], :per_page => 30)
+      @pets = Pet.where(approve: false).order("created_at DESC").paginate(:page => params[:page], :per_page => 30)
     elsif params[:sort] == 'banned'
-      @pets = Mypet.where(block: true).order("created_at DESC").paginate(:page => params[:page], :per_page => 30)
+      @pets = Pet.where(block: true).order("created_at DESC").paginate(:page => params[:page], :per_page => 30)
     else
-      @pets = Mypet.order("created_at DESC").paginate(:page => params[:page], :per_page => 30)
+      @pets = Pet.order("created_at DESC").paginate(:page => params[:page], :per_page => 30)
     end
   end
 
