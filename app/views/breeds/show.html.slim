@@ -4,7 +4,7 @@ div class="content"
   div class="vote-holder"
     h1 Порода #{@breed.breed_type == "dog" ? "собак" : "кошек"} #{@breed.name}
     ul class="vote-list"
-      - @breed.mypets.each do |pet|
+      - @breed.pets.each do |pet|
         li
           div class="image-holder"
             a href="#{user_path(pet.user.nickname.downcase)}"

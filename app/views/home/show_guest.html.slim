@@ -50,7 +50,7 @@ div class="content user-page"
                           strong = Subscribe.where(subscriber_id: @user.id).count
                           span подписчика
                         div class="likes"
-                          = render partial: 'mypets/likes', object: pet, as: 'pet'
+                          = render partial: 'pets/likes', object: pet, as: 'pet'
 
   - @blogs.each do |blog|
     div class="note-holder"

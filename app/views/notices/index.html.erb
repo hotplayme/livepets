@@ -20,7 +20,7 @@
                   <div class="pic-block"><%= image_tag notice.noticeable.avatar.url(:small) %></div>
                   <div class="text-block"><span><%= notice.add ? "У вас новый подписчик" : "От вас отписался" %> - <%= link_to notice.noticeable.nickname, user_path(notice.noticeable.nickname.downcase) %>, <%= time_ago_in_words(notice.created_at, highest_measures: 1) %> назад</span></div>
                   <div class="link-block"><i class="<%= notice.add ? "like-ico" : "dislike-ico" %>"></i></div>
-                <% elsif notice.noticeable.class.name == 'Mypet' %>
+                <% elsif notice.noticeable.class.name == 'Pet' %>
                   <div class="pic-block"><i class="notification-new-message"></i></div>
                   <div class="text-block"><span>На сайте новый питомец породы <%= notice.noticeable.breed.name %> - <%= link_to notice.noticeable.name, user_path(notice.noticeable.user.nickname.downcase) %>, <%= time_ago_in_words(notice.created_at, highest_measures: 1) %> назад</span></div>
                   <div class="link-block"><i class="<%= notice.add ? "like-ico" : "dislike-ico" %>"></i></div>

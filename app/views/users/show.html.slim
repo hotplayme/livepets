@@ -58,7 +58,7 @@ div class="content #{"user-page" if current_user != @user}"
                           = link_to "Изменить", edit_pet_path(pet), class: "button" if current_user && current_user == @user
                           = link_to vote_pet_path(pet), remote: true
                             div class="likes"
-                              = render partial: 'mypets/likes', object: pet, as: 'pet'
+                              = render partial: 'pets/likes', object: pet, as: 'pet'
   - if current_user && current_user == @user
     div class="all-notes"
       ul class="all-notes-list"

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def show
     if @user = User.find_by_nickname(params[:id])
-      @pets = @user.mypets
+      @pets = @user.pets
       @blogs = @user.blogs.where("created_at < ?", Time.now).where(del: false).order('created_at DESC')
     else
       redirect_to root_path, status: 301
