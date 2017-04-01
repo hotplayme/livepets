@@ -8,7 +8,7 @@ div class="content"
   - if Winner.count > 1 && Time.now - Winner.last.created_at < 1.week
     = render partial: 'pet_day', object: @pet_day, as: 'pet_day'
   - else
-    = render partial: 'no_pet_day', object: Mypet.where("pet_attachments_count > 0").sample, as: 'pet' if Mypet.where("pet_attachments_count > 0").count > 0
+    = render partial: 'no_pet_day', object: Pet.where("pet_attachments_count > 0").sample, as: 'pet' if Pet.where("pet_attachments_count > 0").count > 0
   div class="top-holder"
     div class="top-100"
       div class="top-title"
